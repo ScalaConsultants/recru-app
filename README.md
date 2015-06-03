@@ -14,3 +14,7 @@ http://thecodeplayer.com/walkthrough/make-an-accordian-style-slider-in-css3
 https://css-tricks.com/star-ratings/
 
 ## Drag & Drop file upload + Upload button
+Talk to @kejt about designing an unobtrusive drop area
+
+## Smooth animated transition to thank you with either Rotate 2 or Rotate 3
+http://codyhouse.co/demo/animated-headlines/index.html#0
