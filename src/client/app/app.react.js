@@ -1,18 +1,12 @@
 import * as appState from '../state';
 import Component from '../components/component.react';
-import Menu from './menu.react';
 import React from 'react';
 import exposeRouter from '../components/exposerouter.react';
 import {RouteHandler} from 'react-router';
-import {FormattedHTMLMessage} from 'react-intl';
-import {msg} from '../intl/store';
 
 // Load stores, but don't import anything. Read from global app state instead.
 // Remember: Anytime you create a new store, you have to load it here.
 import '../app/store';
-import '../auth/store';
-import '../todos/store';
-import '../user/store';
 
 // Leverage webpack require goodness for feature toggle based dead code removal.
 require('./app.styl');
@@ -28,11 +22,7 @@ class App extends Component {
   getState() {
     return {
       app: appState.appCursor(),
-      auth: appState.authCursor(),
-      isLoggedIn: appState.userCursor().get('isLoggedIn'),
-      pendingActions: appState.pendingActionsCursor(),
-      todos: appState.todosCursor(),
-      user: appState.userCursor()
+      pendingActions: appState.pendingActionsCursor()
     };
   }
 
@@ -52,12 +42,6 @@ class App extends Component {
         console.timeEnd('app render'); // eslint-disable-line no-console
       });
     });
-
-    // This is for client based auths like Firebase. Server redirects unauth
-    // user to login path defined in requireAuth. If this.state.isLoggedIn
-    // equals true and next path is defined, redirect user to original page.
-    // TODO: All example with localStorage persisted auth.
-    this.maybeRedirectAfterClientSideAuth();
   }
 
   onDocumentKeypress(e) {
@@ -83,22 +67,10 @@ class App extends Component {
     }
   }
 
-  maybeRedirectAfterClientSideAuth() {
-    const nextPath = this.props.router.getCurrentQuery().nextPath;
-    if (nextPath && this.state.isLoggedIn)
-      this.props.router.replaceWith(nextPath);
-  }
-
   render() {
     return (
       <div className="page">
-        <Menu isLoggedIn={this.state.isLoggedIn} />
         <RouteHandler {...this.state} />
-        <footer>
-          <p>
-            <FormattedHTMLMessage message={msg('app.madeByHtml')} />
-          </p>
-        </footer>
       </div>
     );
   }
