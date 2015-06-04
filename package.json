@@ -1,8 +1,8 @@
 {
-  "name": "este-app",
-  "description": "Robust and comfortable dev stack for isomorphic web apps",
-  "author": "Daniel Steigerwald",
-  "version": "9.2.0",
+  "name": "recru-app",
+  "description": "Awesome recruitment app for the IT folks",
+  "author": "Marek Suscak",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "postinstall": "gulp build --production",
