@@ -1,6 +1,7 @@
 // Remember to use rems and ems. http://css-tricks.com/rems-ems.
 
 @import '../../../node_modules/normalize.css/normalize.css'
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:700,600,400')
 
 // http://phonegap-tips.com/articles/essential-phonegap-css-webkit-tap-highlight-color.html
 *
@@ -14,26 +15,13 @@ html,
 body
   height 100%
 
-body {
-  font-family 'Segoe UI', 'Lucida Grande','Ubuntu','sans-serif'
+body
+  font-family 'Open Sans', sans-serif
   color #333
   font-size 16px
   line-height 1.5
-}
 
 #app
-  margin 1em 2em
-
-  > header
-    h1
-      margin-bottom 0
-    ul
-      li
-        font-size 1em
-
-  > footer
-    font-size .75em
-    font-style italic
 
   :focus
     outline-style none
