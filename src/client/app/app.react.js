@@ -1,6 +1,5 @@
 import * as appState from '../state';
 import Component from '../components/component.react';
-import Menu from './menu.react';
 import React from 'react';
 import TransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 import exposeRouter from '../components/exposerouter.react';
@@ -73,7 +72,6 @@ class App extends Component {
     var name = this.context.router.getCurrentPath();
     return (
       <div className="page">
-        <Menu/>
         <TransitionGroup component="div" transitionAppear={true} transitionName="example">
           <RouteHandler {...this.state} key={name} />
         </TransitionGroup>
