@@ -7,8 +7,6 @@ const initialState = process.env.IS_BROWSER
 // Custom revirer example, check how to convert JSON to custom record types.
 // http://facebook.github.io/immutable-js/docs/#/fromJS
 export const state = new State(initialState, function(key, value) {
-  switch (key) {
-  }
 });
 
 export const appCursor = state.cursor(['app']);
