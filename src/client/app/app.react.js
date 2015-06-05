@@ -74,7 +74,7 @@ class App extends Component {
     return (
       <div className="page">
         <Menu/>
-        <TransitionGroup component="div" transitionName="example">
+        <TransitionGroup component="div" transitionAppear={true} transitionName="example">
           <RouteHandler {...this.state} key={name} />
         </TransitionGroup>
       </div>
