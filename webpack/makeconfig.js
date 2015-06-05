@@ -43,17 +43,6 @@ module.exports = function(isDevelopment) {
         './src/client/main.js'
       ] : [
         './src/client/main.js'
-      ],
-      // For Safari, IE<11, and some old browsers. More languages will need more
-      // specific builds.
-      appintl: isDevelopment ? [
-        'webpack-dev-server/client?http://localhost:8888',
-        // Why only-dev-server instead of dev-server:
-        // https://github.com/webpack/webpack/issues/418#issuecomment-54288041
-        'webpack/hot/only-dev-server',
-        './src/client/main.js'
-      ] : [
-        './src/client/main.js'
       ]
     },
     module: {
