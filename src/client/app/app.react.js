@@ -1,6 +1,8 @@
 import * as appState from '../state';
 import Component from '../components/component.react';
+import Menu from './menu.react';
 import React from 'react';
+import TransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 import exposeRouter from '../components/exposerouter.react';
 import {RouteHandler} from 'react-router';
 
@@ -68,9 +70,13 @@ class App extends Component {
   }
 
   render() {
+    var name = this.context.router.getCurrentPath();
     return (
       <div className="page">
-        <RouteHandler {...this.state} />
+        <Menu/>
+        <TransitionGroup component="div" transitionName="example">
+          <RouteHandler {...this.state} key={name} />
+        </TransitionGroup>
       </div>
     );
   }
