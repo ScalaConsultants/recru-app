@@ -1,15 +1,13 @@
+import './app.styl';
 import * as appState from '../state';
 import Component from '../components/component.react';
 import React from 'react';
 import exposeRouter from '../components/exposerouter.react';
 import {RouteHandler} from 'react-router';
 
-// Load stores, but don't import anything. Read from global app state instead.
-// Remember: Anytime you create a new store, you have to load it here.
+// Load stores, but don't import anything from them. Read from global app state.
+// Remember: Anytime you create a new store, you have to load module here.
 import '../app/store';
-
-// Leverage webpack require goodness for feature toggle based dead code removal.
-require('./app.styl');
 
 class App extends Component {
 
