@@ -9,6 +9,7 @@ http://nicinabox.com/superslides/
 
 ## Class selection on the second screen
 http://thecodeplayer.com/walkthrough/make-an-accordian-style-slider-in-css3
+https://www.voxtravel.com/
 
 ## CSS rating
 https://css-tricks.com/star-ratings/
