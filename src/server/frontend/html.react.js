@@ -18,6 +18,7 @@ export default class Html extends Component {
           <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
           <title>{this.props.title}</title>
           {linkStyles}
+          <link href="assets/img/favicon.ico" rel="shortcut icon"/>
         </head>
         <body dangerouslySetInnerHTML={{__html: this.props.bodyHtml}} />
       </html>

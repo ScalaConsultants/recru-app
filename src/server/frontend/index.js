@@ -1,13 +1,12 @@
 import compression from 'compression';
 import express from 'express';
-// import favicon from 'serve-favicon';
+import favicon from 'serve-favicon';
 import render from './render';
 
 const app = express();
 
 app.use(compression());
-// TODO: Add favicon.
-// app.use(favicon('assets/img/favicon.ico'))
+app.use(favicon('assets/img/favicon.ico'));
 // TODO: Move to CDN.
 app.use('/build', express.static('build'));
 app.use('/assets', express.static('assets'));
