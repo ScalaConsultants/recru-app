@@ -68,7 +68,6 @@ class App extends Component {
   }
 
   render() {
-    var name = this.context.router.getCurrentPath();
     return (
       <div className="page">
         <RouteHandler {...this.state}/>
