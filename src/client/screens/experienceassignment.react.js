@@ -4,7 +4,7 @@ import React from 'react';
 export default class ExperienceAssignment extends Component {
   render() {
     return (
-      <section className="experience-assignment-screen">
+      <section className="experience-assignment-screen screen">
         <header>Pack your bag</header>
         <ul>
           <li>

@@ -4,7 +4,7 @@ import React from 'react';
 export default class PathSelection extends Component {
   render() {
     return (
-      <section className="path-selection-screen">
+      <section className="path-selection-screen screen">
         <header>Choose your path</header>
         <ul>
           <li>
