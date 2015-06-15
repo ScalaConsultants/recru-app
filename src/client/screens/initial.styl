@@ -1,10 +1,48 @@
 .initial-screen
-  > header > span
-    font-size 3.5em
-    display block
+  &
+    position relative
 
-  input
+  > header
+    position absolute
+    top 212px
+    left 510px
+
+  > header > span
+    font-size 4em
+    display block
+    line-height 1.27em
+
+  > header > span:nth-child(2)
+    position relative
+    left: -178px
+
+  > header > span:nth-child(3)
+    position relative
+    left: -116px
+
+  .controls-box
+    position absolute
+    top 524px
+    left 372px
+
+  .controls-box > input
+  .controls-box > button
     font-weight 300
-    font-size 2em
+    font-size 1.9em
+    letter-spacing 1px
+    padding 20px
+
+  .controls-box > input
+    width 408px
+    border 1px solid #040404
+    border-right none
+
+  .controls-box > button
+    width 100px
+    background-color #780811
+    color #FBFAF8
+    border 1px solid #030403
+    border-left none
+
 
 

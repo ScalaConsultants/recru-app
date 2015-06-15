@@ -12,7 +12,7 @@ export default class Initial extends Component {
           <span>to the <strong>top</strong></span>
         </header>
 
-        <div>
+        <div className="controls-box">
           <input placeholder="type your name" type="text" />
           <button>go</button>
         </div>
