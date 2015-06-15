@@ -13,7 +13,7 @@ export default class Initial extends Component {
         </header>
 
         <div>
-          <input type="text" placeholder="type your name" />
+          <input placeholder="type your name" type="text" />
           <button>go</button>
         </div>
 
