@@ -5,7 +5,6 @@ import PathSelectionScreen from '../screens/pathselection.react';
 import ExperienceAssignmentScreen from '../screens/experienceassignment.react';
 import UploadResumeScreen from '../screens/uploadresume.react';
 import React from 'react';
-import './page.styl';
 
 export default class Home extends Component {
   render() {
