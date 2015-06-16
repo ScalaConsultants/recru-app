@@ -10,7 +10,7 @@ export default class SecondScreen extends Component {
           <span>There are</span>
           <span><strong>several ways</strong></span>
           <span>to the <strong>top</strong></span>
-          <button>Down</button>
+          <button tabIndex="-1">Down</button>
           <img src="assets/img/logo.svg" />
         </div>
       </section>

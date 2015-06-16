@@ -9,7 +9,7 @@ export default class FirstScreen extends Component {
         <div>
           <h1>Join our team</h1>
           <h2>we are looking for talented passionate people</h2>
-          <input placeholder="type your name" type="text" />
+          <input placeholder="type your name" tabIndex="-1" type="text"/>
         </div>
       </section>
     );
