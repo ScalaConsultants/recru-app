@@ -65,8 +65,6 @@ function getPageHtml(Handler, appState) {
         window._appState = ${JSON.stringify(appState)};
         var app = document.createElement('script'); app.type = 'text/javascript'; app.async = true;
         var src = '${appScriptSrc}';
-        // IE<11 and Safari need Intl polyfill.
-        if (!window.Intl) src = src.replace('.js', 'intl.js');
         app.src = src;
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(app, s);
       })();
