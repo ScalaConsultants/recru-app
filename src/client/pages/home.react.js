@@ -1,20 +1,22 @@
 import Component from '../components/component.react';
 import DocumentTitle from 'react-document-title';
-import InitialScreen from '../screens/initial.react';
-import PathSelectionScreen from '../screens/pathselection.react';
-import ExperienceAssignmentScreen from '../screens/experienceassignment.react';
-import UploadResumeScreen from '../screens/uploadresume.react';
+import FirstScreen from '../screens/first-screen.react';
+import SecondScreen from '../screens/second-screen.react';
+import ThirdScreen from '../screens/third-screen.react';
+import FourthScreen from '../screens/fourth-screen.react';
+import FifthScreen from '../screens/fifth-screen.react';
 import React from 'react';
 
 export default class Home extends Component {
   render() {
     return (
       <DocumentTitle title="Scalac - Best Scala hAkkers">
-        <div className="home-page page">
-          <InitialScreen />
-          <PathSelectionScreen />
-          <ExperienceAssignmentScreen />
-          <UploadResumeScreen />
+        <div className="page">
+          <FirstScreen/>
+          <SecondScreen/>
+          <ThirdScreen/>
+          <FourthScreen/>
+          <FifthScreen/>
         </div>
       </DocumentTitle>
     );

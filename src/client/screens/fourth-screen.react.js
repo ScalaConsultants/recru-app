@@ -1,10 +1,10 @@
 import Component from '../components/component.react';
 import React from 'react';
 
-export default class ExperienceAssignment extends Component {
+export default class FourthScreen extends Component {
   render() {
     return (
-      <section className="experience-assignment-screen screen">
+      <section className="fourth-screen screen">
         <header>Pack your bag</header>
         <ul>
           <li>

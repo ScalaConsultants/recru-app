@@ -1,10 +1,10 @@
 import Component from '../components/component.react';
 import React from 'react';
 
-export default class PathSelection extends Component {
+export default class ThirdScreen extends Component {
   render() {
     return (
-      <section className="path-selection-screen screen">
+      <section className="third-screen screen">
         <header>Choose your path</header>
         <ul>
           <li>
