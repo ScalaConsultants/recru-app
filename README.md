@@ -25,3 +25,11 @@ http://codyhouse.co/demo/animated-headlines/index.html#0
 ## Optional Minigame - Rock climbing
 
 ## Outdated browsers - Message -> We believe that professionals use the latest technology.
+
+# To clear out
+
+1. Rating scale arrows' angle - for better usability make it lower
+2. Drop area
+3. LinkedIn profile URI input field
+4. Minigame with social network share buttons
+5. 404 page - abdoc.net/asdasd
