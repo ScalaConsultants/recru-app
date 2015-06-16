@@ -10,7 +10,7 @@ import React from 'react';
 export default class Home extends Component {
   render() {
     let style = {
-      transform: 'translateY(0%)'
+      transform: 'translate3d(0%, 0%, 0)'
     };
     return (
       <DocumentTitle title="Scalac - Best Scala hAkkers">
