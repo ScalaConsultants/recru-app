@@ -9,9 +9,12 @@ import React from 'react';
 
 export default class Home extends Component {
   render() {
+    let style = {
+      transform: 'translateY(0%)'
+    };
     return (
       <DocumentTitle title="Scalac - Best Scala hAkkers">
-        <div className="page">
+        <div className="page" style={style}>
           <FirstScreen/>
           <SecondScreen/>
           <ThirdScreen/>
