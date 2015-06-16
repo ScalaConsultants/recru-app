@@ -6,10 +6,11 @@ export default class FirstScreen extends Component {
   render() {
     return (
       <section className="first-screen screen">
-        <h1>Join our team</h1>
-        <h2>we are looking for talented passionate people</h2>
-        <input placeholder="type your name" type="text" />
-        <button>Down</button>
+        <div>
+          <h1>Join our team</h1>
+          <h2>we are looking for talented passionate people</h2>
+          <input placeholder="type your name" type="text" />
+        </div>
       </section>
     );
   }

@@ -2,14 +2,50 @@
   background-image url('../../../assets/img/bg.jpg')
   background-size cover
   background-attachment fixed
+  display table
+  position relative
+
+  &:after
+    content ''
+    position absolute
+    left 0
+    right 0
+    top 0
+    bottom 0
+    background-color rgba(0,0,0,0.5)
+    z-index 1
+
+  > div
+    display table-cell
+    position relative
+    text-align center
+    vertical-align middle
+    z-index 2
 
   h1, h2
     color #fff
     font-weight 300
+    margin-top 0
     text-align center
+    word-spacing 1px
 
   h1
-    font-size 4em
+    font-size 3.7em
+    margin-bottom 15px
 
   h2
+    font-size 1.86em
+    margin-bottom 105px
+
+  input
+    border 3px solid #fff
+    background-color transparent
+    color #fff
+    padding 15px 40px
     font-size 2em
+    font-weight 300
+    text-align center
+    width 310px
+
+  input::-webkit-input-placeholder
+    color #fff
