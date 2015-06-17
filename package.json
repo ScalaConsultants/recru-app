@@ -5,7 +5,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "postinstall": "gulp build --production",
     "start": "node src/server",
     "test": "gulp test"
   },
