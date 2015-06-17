@@ -7,12 +7,15 @@ export default class SecondScreen extends Component {
     return (
       <section className="second-screen screen">
         <div>
-          <span>There are</span>
-          <span><strong>several ways</strong></span>
-          <span>to the <strong>top</strong></span>
-          <button tabIndex="-1">Down</button>
           <img src="assets/img/logo.svg" />
+          <h1>
+            <span>There are</span>
+            <span><strong>several ways</strong></span>
+            <span>to the <strong>top</strong></span>
+            <button tabIndex="-1">choose your path</button>
+          </h1>
         </div>
+        
       </section>
     );
   }
