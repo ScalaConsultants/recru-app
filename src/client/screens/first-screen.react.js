@@ -8,11 +8,19 @@ export default class FirstScreen extends Component {
   constructor(props) {
     super(props);
     this.proceed = this.proceed.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   proceed() {
     // TODO: if the name is empty do not allow the transition and show the error
     actions.nextScreen();
+  }
+
+  handleKeyDown(e) {
+    if (e.keyCode === 13) {
+      this.refs.nameInput.getDOMNode().blur();
+      this.proceed();
+    }
   }
 
   render() {
@@ -22,7 +30,7 @@ export default class FirstScreen extends Component {
           <header>
             <h1>Join our team</h1>
             <h2>we are looking for talented passionate people</h2>
-            <input placeholder="type your name" tabIndex="-1" type="text"/>
+            <input onKeyDown={this.handleKeyDown} placeholder="type your name" ref="nameInput" tabIndex="-1" type="text"/>
           </header>
         </div>
 
