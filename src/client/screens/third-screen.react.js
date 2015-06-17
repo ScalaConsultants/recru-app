@@ -1,27 +1,27 @@
 import Component from '../components/component.react';
 import React from 'react';
+import './third-screen.styl';
 
 export default class ThirdScreen extends Component {
   render() {
     return (
       <section className="third-screen screen">
-        <header>Choose your path</header>
         <ul>
           <li>
-            <span><em>Backend</em> Climber</span>
-            <img alt="Backend Climber path" src="" />
+            <p><strong>Backend</strong> Climber</p>
+            <img alt="Backend Climber path" src="assets/img/climber.JPG" />
           </li>
           <li>
-            <span><em>Frontend</em> Explorer</span>
-            <img alt="Frontend Explorer path" src="" />
+            <p><strong>Frontend</strong> Explorer</p>
+            <img alt="Frontend Explorer path" src="assets/img/climber.JPG" />
           </li>
           <li>
-            <span><em>Mobile</em> Hiker</span>
-            <img alt="Mobile Hiker path" src="" />
+            <p><strong>Mobile</strong> Hiker</p>
+            <img alt="Mobile Hiker path" src="assets/img/climber.JPG" />
           </li>
           <li>
-            <span><em>devOps</em> Sherpa</span>
-            <img alt="devOps Sherpa path" src="" />
+            <p><strong>devOps</strong> Sherpa</p>
+            <img alt="devOps Sherpa path" src="assets/img/climber.JPG" />
           </li>
         </ul>
       </section>
