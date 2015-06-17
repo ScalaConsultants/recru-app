@@ -18,7 +18,7 @@ export default class FirstScreen extends Component {
           </header>
         </div>
 
-        <Chevron animated={true} onClick={this.proceed.bind(this)}/>
+        <Chevron isAnimated={true} onClick={this.proceed}/>
       </section>
     );
   }
