@@ -1,13 +1,13 @@
 .second-screen
   position relative
 
-  div
+  > div
     position absolute
     bottom 0
     right 0
     width 60%
-    
-    h1
+
+    > h1
       font-size 4vw
       font-weight 300
       position absolute
@@ -15,7 +15,7 @@
       top 0
       width 600px
 
-      button
+      > button
         font-weight 300
         font-size 14px
         letter-spacing 1px
@@ -23,28 +23,38 @@
         background none
         border none
 
-      span
+      > span
         font-size 1em
         display block
         line-height 1.27em
 
-      span:nth-child(2)
+      > span:nth-child(2)
         position relative
         left: -178px
 
-      span:nth-child(3)
+      > span:nth-child(3)
         position relative
-        left: -116px  
+        left: -116px
 
         span,strong
           display inline
-  
-    img
+
+      > .chevron
+        width 125px
+
+        > i
+          border-color black
+          opacity 0.2
+
+    > img
       width 100%
       max-width 1200px
       bottom 0
 
-  
+
+
+
+
 
 
 
