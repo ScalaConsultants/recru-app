@@ -8,6 +8,7 @@ import {RouteHandler} from 'react-router';
 // Load stores, but don't import anything from them. Read from global app state.
 // Remember: Anytime you create a new store, you have to load module here.
 import '../app/store';
+import '../screens/store';
 
 class App extends Component {
 
@@ -20,7 +21,8 @@ class App extends Component {
   getState() {
     return {
       app: appState.appCursor(),
-      pendingActions: appState.pendingActionsCursor()
+      pendingActions: appState.pendingActionsCursor(),
+      screens: appState.screensCursor()
     };
   }
 

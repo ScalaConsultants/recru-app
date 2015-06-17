@@ -6,12 +6,23 @@ import ThirdScreen from '../screens/third-screen.react';
 import FourthScreen from '../screens/fourth-screen.react';
 import FifthScreen from '../screens/fifth-screen.react';
 import React from 'react';
+import immutable from 'immutable';
 
-export default class Home extends Component {
+class Home extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  getPageOffset() {
+    const {screens} = this.props;
+    return -(screens.get('currentScreen') * 100);
+  }
+
   render() {
-    let style = {
-      transform: 'translate3d(0%, 0%, 0)'
+    const style = {
+      transform: `translate3d(0%, ${this.getPageOffset()}%, 0)`
     };
+
     return (
       <DocumentTitle title="Scalac - Best Scala hAkkers">
         <div className="page" style={style}>
@@ -26,3 +37,9 @@ export default class Home extends Component {
   }
 
 }
+
+Home.propTypes = {
+  screens: React.PropTypes.instanceOf(immutable.Map).isRequired
+};
+
+export default Home;

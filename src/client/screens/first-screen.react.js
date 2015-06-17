@@ -1,10 +1,18 @@
 import Component from '../components/component.react';
 import Chevron from '../components/chevron.react';
 import React from 'react';
+import * as actions from './actions';
 import './first-screen.styl';
 
 export default class FirstScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.proceed = this.proceed.bind(this);
+  }
+
   proceed() {
+    // TODO: if the name is empty do not allow the transition and show the error
+    actions.nextScreen();
   }
 
   render() {
