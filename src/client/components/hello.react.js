@@ -4,10 +4,6 @@ import React from 'react';
 import './hello.styl';
 
 class Hello extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const className = classNames('hello', this.props.className);
     return (

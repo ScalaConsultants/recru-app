@@ -6,6 +6,7 @@ import ThirdScreen from '../screens/third-screen.react';
 import FourthScreen from '../screens/fourth-screen.react';
 import FifthScreen from '../screens/fifth-screen.react';
 import MiniMap from '../components/minimap.react';
+import Hello from '../components/hello.react';
 import React from 'react';
 import classNames from 'classnames';
 import immutable from 'immutable';
@@ -24,9 +25,10 @@ class Home extends Component {
     const listStyle = {
       transform: `translate3d(0%, ${this.getPageOffset()}%, 0)`
     };
-    const miniMapClassName = classNames({
+    const miniMapAndHelloClassName = classNames({
       '-visible': this.props.screens.get('currentScreen') > 0
     });
+    const message = `Hello, ${this.props.candidate.get('name')}.`;
 
     return (
       <DocumentTitle title="Scalac - Best Scala hAkkers">
@@ -38,7 +40,8 @@ class Home extends Component {
             <FourthScreen/>
             <FifthScreen/>
           </div>
-          <MiniMap className={miniMapClassName} screens={this.props.screens}/>
+          <Hello className={miniMapAndHelloClassName} message={message}/>
+          <MiniMap className={miniMapAndHelloClassName} screens={this.props.screens}/>
         </div>
       </DocumentTitle>
     );
@@ -47,6 +50,7 @@ class Home extends Component {
 }
 
 Home.propTypes = {
+  candidate: React.PropTypes.instanceOf(immutable.Map).isRequired,
   screens: React.PropTypes.instanceOf(immutable.Map).isRequired
 };
 
