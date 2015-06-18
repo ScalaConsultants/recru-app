@@ -50,7 +50,7 @@ export default class FirstScreen extends Component {
             <h1>Join our team</h1>
             <h2>we are looking for talented passionate people</h2>
             <div className={formControlClassName}>
-              <input onKeyDown={this.handleKeyDown} placeholder="type your name" ref="nameInput" tabIndex="-1" type="text"/>
+              <input autocomplete="off" onKeyDown={this.handleKeyDown} placeholder="type your name" ref="nameInput" tabIndex="-1" type="text"/>
               <span>{this.state.error}</span>
             </div>
           </header>
