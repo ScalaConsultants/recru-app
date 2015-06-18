@@ -25,7 +25,7 @@ class Home extends Component {
     const translate = `translate3d(0%, ${this.getPageOffset()}%, 0)`;
     const listStyle = {
       transform: translate,
-      '-webkit-transform': translate
+      WebkitTransform: translate
     };
     const miniMapAndHelloClassName = classNames({
       '-visible': this.props.screens.get('currentScreen') > 0
