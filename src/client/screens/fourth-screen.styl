@@ -34,7 +34,7 @@
       img
         max-width 80px
         vertical-align middle
-        margin-right 40px
+        margin 0 40px 0 20px
         opacity 0.5
       div
         display inline-block
@@ -54,14 +54,21 @@
 
 @media (max-width: 767px) 
   .fourth-screen
+    overflow scroll
+
+    > .chevron
+      width 100%
+      position initial
     ul
+      margin-bottom 20px
       li
         width: 50%
 
 @media (max-width: 480px)
   .fourth-screen
     ul
+      
       li
-        width 80%
+        width 90%
         display block
         margin 0 auto 20px
