@@ -32,7 +32,7 @@ export default class ThirdScreen extends Component {
             <img alt="Mobile Hiker path" src="assets/img/hiker.jpg" />
           </li>
           <li onClick={() => this.proceed(3)}>
-            <p><strong>devOp</strong> Sherpa</p>
+            <p><strong>DevOps</strong> Sherpa</p>
             <img alt="devOps Sherpa path" src="assets/img/sherpa.jpg" />
           </li>
         </ul>
