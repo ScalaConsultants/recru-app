@@ -21,19 +21,31 @@ export default class ThirdScreen extends Component {
         <ul>
           <li onClick={() => this.proceed(0)}>
             <p><strong>Backend</strong> Climber</p>
-            <img alt="Backend Climber path" src="assets/img/climber.jpg" />
+            <div>
+              <img alt="Backend Climber path" src="assets/img/climber.jpg" />
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis mi ipsum, at rutrum tellus egestas eget. Curabitur dolor sem, tincidunt pulvinar vestibulum vel, luctus hendrerit velit. Donec lobortis varius facilisis.</p>
+            </div>
           </li>
           <li onClick={() => this.proceed(1)}>
             <p><strong>Frontend</strong> Explorer</p>
-            <img alt="Frontend Explorer path" src="assets/img/explorer.jpg" />
+            <div>
+              <img alt="Frontend Explorer path" src="assets/img/explorer.jpg" />
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis mi ipsum, at rutrum tellus egestas eget. Curabitur dolor sem, tincidunt pulvinar vestibulum vel, luctus hendrerit velit. Donec lobortis varius facilisis.</p>
+            </div>
           </li>
           <li onClick={() => this.proceed(2)}>
             <p><strong>Mobile</strong> Hiker</p>
-            <img alt="Mobile Hiker path" src="assets/img/hiker.jpg" />
+            <div>
+              <img alt="Mobile Hiker path" src="assets/img/hiker.jpg" />
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis mi ipsum, at rutrum tellus egestas eget. Curabitur dolor sem, tincidunt pulvinar vestibulum vel, luctus hendrerit velit. Donec lobortis varius facilisis.</p>
+            </div>
           </li>
           <li onClick={() => this.proceed(3)}>
             <p><strong>DevOps</strong> Sherpa</p>
-            <img alt="devOps Sherpa path" src="assets/img/sherpa.jpg" />
+            <div>
+              <img alt="devOps Sherpa path" src="assets/img/sherpa.jpg" />
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis mi ipsum, at rutrum tellus egestas eget. Curabitur dolor sem, tincidunt pulvinar vestibulum vel, luctus hendrerit velit. Donec lobortis varius facilisis.</p>
+            </div>
           </li>
         </ul>
       </section>
