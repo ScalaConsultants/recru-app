@@ -7,7 +7,7 @@ export default class FifthScreen extends Component {
     return (
       <section className="fifth-screen screen">
         <header>One more thing...</header>
-        <div class="drop-area" id="drop">
+        <div className="drop-area" id="drop">
           <span>drop your resume</span>
         </div>
       </section>

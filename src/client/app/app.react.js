@@ -7,6 +7,7 @@ import {RouteHandler} from 'react-router';
 
 // Remember to import all app stores here.
 import '../screens/store';
+import '../candidate/store';
 
 class App extends Component {
 
@@ -18,7 +19,8 @@ class App extends Component {
   getState() {
     return {
       pendingActions: state.pendingActionsCursor(),
-      screens: state.screensCursor()
+      screens: state.screensCursor(),
+      candidate: state.candidateCursor()
     };
   }
 

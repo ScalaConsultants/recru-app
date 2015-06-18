@@ -41,31 +41,50 @@
       font-size 1.86em
       margin-bottom 95px
 
-    input
-      border 3px solid #fff
-      background-color transparent
-      color #fff
-      padding 15px 40px
-      font-size 2em
-      font-weight 300
-      text-align center
+    .form-control
+      position relative
       width 310px
+      margin 0 auto
 
-    input::-webkit-input-placeholder
-      color #fff
-      opacity 0.7
+      > span
+        display none
+        position absolute
+        background-color #FF0000
+        font-size 1em
+        padding 5px 10px
+        right 0
 
-    input:-moz-placeholder
-      color #fff
-      opacity 0.7
+      > input
+        border 3px solid #fff
+        background-color transparent
+        color #fff
+        padding 15px 40px
+        font-size 2em
+        font-weight 300
+        text-align center
+        width 100%
 
-    input::-moz-placeholder
-      color #fff
-      opacity 0.7
+      &.-error > span
+        display block
 
-    input:-ms-input-placeholder
-      color #fff
-      opacity 0.7
+      &.-error > input
+        border 3px solid #FF0000
+
+      > input::-webkit-input-placeholder
+        color #fff
+        opacity 0.7
+
+      > input:-moz-placeholder
+        color #fff
+        opacity 0.7
+
+      > input::-moz-placeholder
+        color #fff
+        opacity 0.7
+
+      > input:-ms-input-placeholder
+        color #fff
+        opacity 0.7
 
   > .chevron
     display block
