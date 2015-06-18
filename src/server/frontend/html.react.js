@@ -7,7 +7,7 @@ export default class Html extends Component {
     // Only for production. For dev, it's handled by webpack with livereload.
     const linkStyles = this.props.isProduction &&
       <link
-        href={`/build/app.css?v=${this.props.version}`}
+        href={`build/app.css?v=${this.props.version}`}
         rel="stylesheet"
       />;
 
@@ -19,6 +19,7 @@ export default class Html extends Component {
           <title>{this.props.title}</title>
           {linkStyles}
           <link href="assets/img/favicon.ico" rel="shortcut icon"/>
+          <base href="/"/>
         </head>
         <body dangerouslySetInnerHTML={{__html: this.props.bodyHtml}} />
       </html>
