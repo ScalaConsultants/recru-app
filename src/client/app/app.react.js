@@ -1,70 +1,38 @@
 import './app.styl';
-import * as appState from '../state';
+import * as state from '../state';
 import Component from '../components/component.react';
 import React from 'react';
-import exposeRouter from '../components/exposerouter.react';
+import persistState from './persiststate.react';
 import {RouteHandler} from 'react-router';
 
-// Load stores, but don't import anything from them. Read from global app state.
-// Remember: Anytime you create a new store, you have to load module here.
-import '../app/store';
+// Remember to import all app stores here.
 import '../screens/store';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
-    // Set initial state.
     this.state = this.getState();
   }
 
   getState() {
     return {
-      app: appState.appCursor(),
-      pendingActions: appState.pendingActionsCursor(),
-      screens: appState.screensCursor()
+      pendingActions: state.pendingActionsCursor(),
+      screens: state.screensCursor()
     };
   }
 
-  // This method is not called on the server.
-  componentDidMount() {
-    // fastclick must be required here because there is no DOM in Node.js.
-    // Remember, mocking DOM in Node.js is an anti-pattern, because it can
-    // confuse isomorphic libraries. TODO: Wait for iOS fix, then remove it.
-    // http://developer.telerik.com/featured/300-ms-click-delay-ios-8/
-    require('fastclick').attach(document.body);
-
-    document.addEventListener('keypress', this.onDocumentKeypress);
-
-    appState.state.on('change', () => {
-      console.time('app render'); // eslint-disable-line no-console
+  // https://github.com/steida/este/issues/274
+  componentWillMount() {
+    if (!process.env.IS_BROWSER) return;
+    state.state.on('change', () => {
+      //if ('production' !== process.env.NODE_ENV)
+      //  console.time('app render'); // eslint-disable-line no-console
       this.setState(this.getState(), () => {
-        console.timeEnd('app render'); // eslint-disable-line no-console
+        //if ('production' !== process.env.NODE_ENV)
+        //  console.timeEnd('app render'); // eslint-disable-line no-console
       });
     });
-  }
-
-  onDocumentKeypress(e) {
-    // Press ctrl+shift+s to save app state, and ctrl+shift+l to load.
-    if (!e.ctrlKey || !e.shiftKey) return;
-    const state = appState.state;
-    switch (e.keyCode) {
-      case 19:
-        window._appState = state.save();
-        window._appStateString = JSON.stringify(window._appState);
-        /*eslint-disable no-console */
-        console.log('App state saved.');
-        console.log('To report error, type copy(_appStateString) and press enter.');
-        console.log('To debug app state, type _appState and press enter.');
-        /*eslint-enable */
-        break;
-      case 12:
-        const stateStr = window.prompt('Paste the serialized state into the input'); // eslint-disable-line no-alert
-        const newState = JSON.parse(stateStr);
-        if (!newState) return;
-        state.load(newState);
-        break;
-    }
   }
 
   render() {
@@ -77,8 +45,6 @@ class App extends Component {
 
 }
 
-App.propTypes = {
-  router: React.PropTypes.func
-};
+App = persistState(App);
 
-export default exposeRouter(App);
+export default App;

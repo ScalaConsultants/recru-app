@@ -33,7 +33,8 @@ gulp.task('eslint', function() {
   return gulp.src([
       'gulpfile.js',
       'src/**/*.js',
-      'webpack/*.js'
+      'webpack/*.js',
+      '!**/__tests__/*.*'
     ])
     .pipe(eslint())
     .pipe(eslint.format())
