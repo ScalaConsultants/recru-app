@@ -5,13 +5,13 @@ import './chevron.styl';
 
 class Chevron extends Component {
   render() {
-    const className = classNames("chevron", {
+    const className = classNames('chevron', {
       '-animated': !!this.props.isAnimated,
       '-clickable': !!this.props.onClick
     });
 
     return (
-      <div onClick={this.props.onClick} className={className}>
+      <div className={className} onClick={this.props.onClick}>
         <i></i>
       </div>
     );
