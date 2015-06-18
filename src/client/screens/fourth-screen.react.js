@@ -74,7 +74,7 @@ export default class FourthScreen extends Component {
             </div>
           </li>
           <li>
-            <img alt="Angular" src="assets/img/frontend/angular.png"/>
+            <img alt="Vanilla.js" src="assets/img/frontend/js.png"/>
             <div>
               <img src="assets/img/arrow2.svg" />
               <img src="assets/img/arrow2.svg" />
@@ -84,17 +84,7 @@ export default class FourthScreen extends Component {
             </div>
           </li>
           <li>
-            <img alt="Angular" src="assets/img/frontend/angular.png"/>
-            <div>
-              <img src="assets/img/arrow2.svg" />
-              <img src="assets/img/arrow2.svg" />
-              <img src="assets/img/arrow2.svg" />
-              <img src="assets/img/arrow2.svg" />
-              <img src="assets/img/arrow2.svg" />
-            </div>
-          </li>
-          <li>
-            <img alt="Angular" src="assets/img/frontend/angular.png"/>
+            <img alt="Angular" src="assets/img/generic/github.png"/>
             <div>
               <img src="assets/img/arrow2.svg" />
               <img src="assets/img/arrow2.svg" />
