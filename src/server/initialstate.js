@@ -4,5 +4,11 @@ export default {
   screens: {
     currentScreen: 0,
     lastScreen: 4
+  },
+  candidate: {
+    name: '',
+    role: null,
+    skills: {},
+    resume: null
   }
 };
