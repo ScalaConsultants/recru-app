@@ -9,7 +9,12 @@ export function previousScreen() {
   dispatch(previousScreen);
 }
 
+export function setScreen(id) {
+  dispatch(setScreen, id);
+}
+
 setToString('todos', {
   nextScreen,
-  previousScreen
+  previousScreen,
+  setScreen
 });

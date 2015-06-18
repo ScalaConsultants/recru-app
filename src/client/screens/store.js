@@ -22,5 +22,13 @@ export const dispatchToken = register(({action, data}) => {
         return screens.set('currentScreen', previousScreen);
       });
       break;
+
+    case actions.setScreen:
+      screensCursor(screens => {
+        if (data < 0 || data > screens.get('lastScreen'))
+          return screens.get('currentScreen');
+        return screens.set('currentScreen', data);
+      });
+      break;
   }
 });

@@ -1,17 +1,34 @@
 import Component from '../components/component.react';
+import * as actions from '../screens/actions';
 import classNames from 'classnames';
 import React from 'react';
 import immutable from 'immutable';
 import './minimap.styl';
 
 class MiniMap extends Component {
-  renderPoint(id, isCurrent) {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event, id) {
+    event.preventDefault();
+    actions.setScreen(id);
+  }
+
+  renderPoint(id, currentScreen) {
+    const isCurrent = id === currentScreen;
+    const isInactive = id > currentScreen;
     const className = classNames({
-      current: isCurrent
+      current: isCurrent,
+      inactive: isInactive
     });
+    const fx = (isInactive || isCurrent) ?
+      ((e) => {}) :
+      ((e) => this.handleClick(e, id));
     return (
       <li key={id}>
-        <a className={className} href="#"></a>
+        <a className={className} href="#" onClick={fx}></a>
       </li>
     );
   }
@@ -21,7 +38,7 @@ class MiniMap extends Component {
     const currentScreen = this.props.screens.get('currentScreen');
     const list = [];
     for (let i = 0; i <= lastScreen; i++)
-      list.push(this.renderPoint(i, i === currentScreen));
+      list.push(this.renderPoint(i, currentScreen));
     return list;
   }
 
