@@ -22,7 +22,7 @@
       -webkit-transition all 0.5s
       -moz-transition all 0.5s
 
-      p
+      > p
         position absolute
         bottom 40px
         box-sizing border-box
@@ -31,6 +31,7 @@
         width 80%
         text-align center
         color #ffffff
+        z-index 99
         border 2px solid #ffffff
         background-color rgba(0,0,0,0.5)
 
@@ -38,6 +39,22 @@
         display block
         height 100%
         border-left 1px solid rgba(255,255,255,0.5)
+
+      div
+        height 100%
+        width 55vw
+        position relative
+
+        p
+          position absolute
+          right 10%
+          top 10px 
+          width 30%
+          box-sizing border-box
+          padding 20px
+          color #ffffff
+          border 2px solid #ffffff
+          background-color rgba(0,0,0,0.5)
 
     li:first-child
       img
