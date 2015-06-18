@@ -24,7 +24,7 @@ class MiniMap extends Component {
       inactive: isInactive
     });
     const fx = (isInactive || isCurrent) ?
-      ((e) => {}) :
+      ((e) => { e.preventDefault(); }) :
       ((e) => this.handleClick(e, id));
     return (
       <li key={id}>
