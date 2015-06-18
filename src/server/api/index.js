@@ -9,7 +9,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.on('mount', () => {
-  console.log('Este.js api is now available at path %s', app.mountpath);
+  console.log('Api is available at %s', app.mountpath);
 });
 
 export default app;

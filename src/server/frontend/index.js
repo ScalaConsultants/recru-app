@@ -19,7 +19,7 @@ app.use('/assets', express.static('assets'));
 
 // Example how initialState, which is the same for all users, is enriched with
 // user state. With state-less Flux, we don't need instances.
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
 
   const acceptsLanguages = req.acceptsLanguages(config.appLocales);
 
@@ -37,7 +37,7 @@ app.get('*', (req, res, next) => {
 });
 
 app.on('mount', () => {
-  console.log('Este.js app is now available at path %s', app.mountpath);
+  console.log('App is available at %s', app.mountpath);
 });
 
 export default app;
