@@ -5,6 +5,7 @@ import SecondScreen from '../screens/second-screen.react';
 import ThirdScreen from '../screens/third-screen.react';
 import FourthScreen from '../screens/fourth-screen.react';
 import FifthScreen from '../screens/fifth-screen.react';
+import MiniMap from '../components/minimap.react';
 import React from 'react';
 import immutable from 'immutable';
 
@@ -31,6 +32,7 @@ class Home extends Component {
           <ThirdScreen/>
           <FourthScreen/>
           <FifthScreen/>
+          <MiniMap/>
         </div>
       </DocumentTitle>
     );
