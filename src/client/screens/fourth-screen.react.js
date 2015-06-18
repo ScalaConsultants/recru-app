@@ -1,8 +1,20 @@
 import Component from '../components/component.react';
+import Chevron from '../components/chevron.react';
 import React from 'react';
+import * as actions from './actions';
 import './fourth-screen.styl';
 
 export default class FourthScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.proceed = this.proceed.bind(this);
+  }
+
+  proceed() {
+    // TODO: if the name is empty do not allow the transition and show the error
+    actions.nextScreen();
+  }  
+    
   render() {
     return (
       <section className="fourth-screen screen">
@@ -104,6 +116,8 @@ export default class FourthScreen extends Component {
             </div>
           </li>
         </ul>
+
+        <Chevron isAnimated={true} onClick={this.proceed}/>  
       </section>
     );
   }
