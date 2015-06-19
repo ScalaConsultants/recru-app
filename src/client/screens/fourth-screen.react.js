@@ -16,6 +16,7 @@ export default class FourthScreen extends Component {
   }  
     
   render() {
+    
     return (
       <section className="fourth-screen screen">
         <header>pack your bag</header>
@@ -28,11 +29,6 @@ export default class FourthScreen extends Component {
               <img src="assets/img/arrow2.svg" />
               <img src="assets/img/arrow2.svg" />
               <img src="assets/img/arrow2.svg" />
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
             </div>
           </li>
           <li>
