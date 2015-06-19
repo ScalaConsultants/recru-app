@@ -39,7 +39,7 @@ class Home extends Component {
             <FirstScreen/>
             <SecondScreen/>
             <ThirdScreen/>
-            <FourthScreen/>
+            <FourthScreen candidate={this.props.candidate}/>
             <FifthScreen/>
           </div>
           <Hello className={miniMapAndHelloClassName} message={message}/>
