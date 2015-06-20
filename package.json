@@ -23,7 +23,7 @@
     "classnames": "^2.1.2",
     "compression": "^1.4.4",
     "cors": "^2.7.1",
-    "css-loader": "^0.14.4",
+    "css-loader": "^0.15.1",
     "del": "^1.2.0",
     "eslint": "^0.23.0",
     "eslint-plugin-react": "^2.5.0",

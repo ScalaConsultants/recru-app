@@ -6,13 +6,13 @@ const initialState = process.env.IS_BROWSER
   ? window._appState
   : require('../server/initialstate');
 
-export const state = new State(initialState, function(key, value) {
+export const appState = new State(initialState, function(key, value) {
   switch (key) {
     case 'screens': return reviveScreens(value);
     case 'candidate': return reviveCandidate(value);
   }
 });
 
-export const pendingActionsCursor = state.cursor(['pendingActions']);
-export const screensCursor = state.cursor(['screens']);
-export const candidateCursor = state.cursor(['candidate']);
+export const pendingActionsCursor = appState.cursor(['pendingActions']);
+export const screensCursor = appState.cursor(['screens']);
+export const candidateCursor = appState.cursor(['candidate']);

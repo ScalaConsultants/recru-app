@@ -2,8 +2,8 @@ import './app.styl';
 import * as state from '../state';
 import Component from '../components/component.react';
 import React from 'react';
-import persistState from './persiststate.react';
 import {RouteHandler} from 'react-router';
+import {measureRender} from '../console';
 
 // Remember to import all app stores here.
 import '../screens/store';
@@ -24,16 +24,12 @@ class App extends Component {
     };
   }
 
+  // Why componentWillMount instead of componentDidMount.
   // https://github.com/steida/este/issues/274
   componentWillMount() {
     if (!process.env.IS_BROWSER) return;
-    state.state.on('change', () => {
-      //if ('production' !== process.env.NODE_ENV)
-      //  console.time('app render'); // eslint-disable-line no-console
-      this.setState(this.getState(), () => {
-        //if ('production' !== process.env.NODE_ENV)
-        //  console.timeEnd('app render'); // eslint-disable-line no-console
-      });
+    state.appState.on('change', () => {
+      measureRender(done => this.setState(this.getState(), done));
     });
   }
 
@@ -46,7 +42,5 @@ class App extends Component {
   }
 
 }
-
-App = persistState(App);
 
 export default App;
