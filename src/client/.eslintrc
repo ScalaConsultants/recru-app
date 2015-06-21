@@ -1,6 +1,8 @@
 {
   "env": {
-    "browser": true
+    "browser": true,
+    "mocha": true,
+    "node": true
   },
   "globals": {
     // Because webpack handles it.
@@ -8,6 +10,6 @@
     "require": true
   },
   "rules": {
-    "strict": [0, "never"] // don't require "use strict" in source files, webpack adds it
+    "strict": [2, "never"] // Not sure about it.
   }
 }
