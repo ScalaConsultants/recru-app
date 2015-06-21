@@ -17,7 +17,6 @@ export default class SecondScreen extends Component {
             <Chevron isAnimated={true} onClick={actions.nextScreen}/>
           </h1>
           <img src="assets/img/logo.svg" />
-          
         </div>
       </section>
     );

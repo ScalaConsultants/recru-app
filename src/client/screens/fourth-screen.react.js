@@ -17,7 +17,6 @@ class FourthScreen extends Component {
   }
 
   render() {
-    
     return (
       <section className="fourth-screen screen">
         <header>pack your bag</header>
