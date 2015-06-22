@@ -16,6 +16,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = this.getState();
+    this.handleMouseWheel = this.handleMouseWheel.bind(this);
     this.handleMouseWheel = throttle(this.handleMouseWheel, 1000, {
       'leading': true,
       'trailing': false
