@@ -1,5 +1,5 @@
 {
-  "frontend":[
+  "1":[
     {
       "name" : "js",
       "src" : "assets/img/frontend/js.png"
@@ -29,19 +29,19 @@
       "src" : "assets/img/frontend/react.png"
     }
   ],
-  "backend" : [
+  "0" : [
     {
       "name" : "node",
       "src" : "assets/img/frontend/node.png"
     }
   ],
-  "mobile" : [
+  "2" : [
     {
       "name" : "node",
       "src" : "assets/img/frontend/node.png"
     }
   ],
-  "devops" : [
+  "3" : [
     {
       "name" : "node",
       "src" : "assets/img/frontend/node.png"
