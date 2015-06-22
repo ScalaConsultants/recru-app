@@ -3,10 +3,12 @@ import Chevron from '../components/chevron.react';
 import React from 'react';
 import * as actions from './actions';
 import immutable from 'immutable';
+import json from '../data/technologies.json';
 import './fourth-screen.styl';
 
 class FourthScreen extends Component {
   constructor(props) {
+    console.log(["test",json]);
     super(props);
     this.proceed = this.proceed.bind(this);
   }
