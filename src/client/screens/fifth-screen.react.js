@@ -9,7 +9,6 @@ export default class FifthScreen extends Component {
     super(props);
     this.state = this.getDefaultState();
     this.handleDragOver = this.handleDragOver.bind(this);
-    this.handleDragLeave = this.handleDragLeave.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
   }
 
@@ -19,41 +18,54 @@ export default class FifthScreen extends Component {
     };
   }
 
-  handleDragOver() {
-    this.setState({dragOver: true});
+  handleDragOver(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    this.setState({dragOver: e.type === 'dragover'});
   }
 
-  handleDragLeave() {
-    this.setState({dragOver: false});
-  }
+  handleDrop(e) {
+    this.handleDragOver(e);
 
-  handleDrop() {
+    // fetch FileList object
+    const files = e.target.files || e.dataTransfer.files;
 
+    // process all File objects
+    for (let i = 0, f; f = files[i]; i++) {
+      // f.name, f.type, f.size
+      console.log(f.name);
+    }
   }
 
   componentDidMount() {
     const dropArea = this.refs.dropArea.getDOMNode();
+    const fileInput = this.refs.fileInput.getDOMNode();
     dropArea.addEventListener('dragover', this.handleDragOver, false);
-    dropArea.addEventListener('dragleave', this.handleDragLeave, false);
+    dropArea.addEventListener('dragleave', this.handleDragOver, false);
     dropArea.addEventListener('drop', this.handleDrop, false);
+    fileInput.addEventListener('change', this.handleDrop, false);
   }
 
   componentDidUnmount() {
     const dropArea = this.refs.dropArea.getDOMNode();
+    const fileInput = this.refs.fileInput.getDOMNode();
     dropArea.removeEventListener('dragover', this.handleDragOver);
-    dropArea.removeEventListener('dragleave', this.handleDragLeave);
+    dropArea.removeEventListener('dragleave', this.handleDragOver);
     dropArea.removeEventListener('drop', this.handleDrop);
+    fileInput.removeEventListener('change', this.handleDrop, false);
   }
 
   render() {
     const className = classNames('drop-area', {
       hover: this.state.dragOver
     });
+
     return (
       <section className="fifth-screen screen">
         <header>One more thing...</header>
-        <div className={className} id="drop" ref="dropArea">
-          <span>drop your resume here</span>
+        <input ref="fileInput" type="file"/>
+        <div className={className} id="drop" onClick={() => this.refs.fileInput.getDOMNode().click()} ref="dropArea">
+          <span>drop or click to select resume</span>
         </div>
       </section>
     );
