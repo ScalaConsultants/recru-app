@@ -11,6 +11,9 @@ export default class Html extends Component {
         rel="stylesheet"
       />;
 
+    // TODO: Refactor the ugly way to define environment specific base href
+    const baseHref = this.props.isProduction ? '/recru-app/' : '/';
+
     return (
       <html lang="en">
         <head>
@@ -19,7 +22,7 @@ export default class Html extends Component {
           <title>{this.props.title}</title>
           {linkStyles}
           <link href="assets/img/favicon.ico" rel="shortcut icon"/>
-          <base href="/"/>
+          <base href={baseHref}/>
         </head>
         <body dangerouslySetInnerHTML={{__html: this.props.bodyHtml}} />
       </html>
