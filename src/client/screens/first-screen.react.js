@@ -22,7 +22,7 @@ export default class FirstScreen extends Component {
     const name = this.refs.nameInput.getDOMNode().value.trim();
 
     if (!name) {
-      this.setState({error: 'Name is a required field.'});
+      this.setState({error: 'We really need your name.'});
       return;
     }
 
