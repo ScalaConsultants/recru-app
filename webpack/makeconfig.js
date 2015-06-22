@@ -55,9 +55,9 @@ module.exports = function(isDevelopment) {
     },
     module: {
       loaders: [
-      { 
-        loader: "json", 
-        test: /\.json$/         
+      {
+        loader: 'json',
+        test: /\.json$/
       },
       {
         loader: 'url-loader?limit=100000',
