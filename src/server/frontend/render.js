@@ -18,6 +18,8 @@ export default function render(req, res, userState = {}) {
 function renderPage(req, res, appState) {
   return new Promise((resolve, reject) => {
 
+    console.log(`${req.originalUrl}`);
+
     const router = Router.create({
       routes,
       location: req.originalUrl,
@@ -84,6 +86,7 @@ function getPageHtml(Handler, appState) {
 
   return '<!DOCTYPE html>' + React.renderToStaticMarkup(
     <Html
+      baseUri={config.baseUri}
       bodyHtml={appHtml + scriptHtml}
       isProduction={config.isProduction}
       title={title}

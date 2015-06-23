@@ -11,9 +11,7 @@ const server = Server(app);
 app.use('/api/v1', api);
 
 // Load react-js frontend.
-// TODO: Refactor the ugly way to define environment specific base href
-const baseUri = config.isProduction ? '/recru-app' : '/';
-app.use(baseUri, frontend);
+app.use(config.baseUri, frontend);
 
 // Add error handler. Four arguments need to be defined in order for the
 // middleware to act as an error handler.
