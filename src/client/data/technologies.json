@@ -1,50 +1,60 @@
 {
   "1":[
     {
+      "id" : 1,
       "name" : "js",
-      "src" : "assets/img/frontend/js.png"
+      "src" : "/assets/img/frontend/js.png"
     },
     {
+      "id" : 2,
       "name" : "html5",
-      "src" : "assets/img/frontend/html5.png"
+      "src" : "/assets/img/frontend/html5.png"
     },
     {
+      "id" : 3,
       "name" : "css3",
-      "src" : "assets/img/frontend/css3.svg"
+      "src" : "/assets/img/frontend/css3.svg"
     },
     {
+      "id" : 4,
       "name" : "ember",
-      "src" : "assets/img/frontend/ember.png"
+      "src" : "/assets/img/frontend/ember.png"
     },
     {
+      "id" : 5,
       "name" : "angular",
-      "src" : "assets/img/frontend/angular.png"
+      "src" : "/assets/img/frontend/angular.png"
     },
     {
+      "id" : 6,
       "name" : "node",
-      "src" : "assets/img/frontend/node.png"
+      "src" : "/assets/img/frontend/node.png"
     },
     {
+      "id" : 7,
       "name" : "react",
-      "src" : "assets/img/frontend/react.png"
+      "src" : "/assets/img/frontend/react.png"
     }
   ],
   "0" : [
     {
+      "id" : 8,
       "name" : "node",
-      "src" : "assets/img/frontend/node.png"
+      "src" : "/assets/img/frontend/node.png"
     }
   ],
   "2" : [
     {
+      "id" : 9,
       "name" : "node",
-      "src" : "assets/img/frontend/node.png"
+      "src" : "/assets/img/frontend/node.png"
     }
   ],
   "3" : [
     {
+      "id" : 10,
       "name" : "node",
-      "src" : "assets/img/frontend/node.png"
+      "src" : "/assets/img/frontend/node.png"
     }
   ]
 }

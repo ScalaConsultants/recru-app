@@ -21,12 +21,17 @@ class FourthScreen extends Component {
   }
 
   render() {   
-    var skills = json[this.props.candidate.get('role')];
-
+    var skills = json[this.props.candidate.get('role')], arr = [];
+    if(typeof skills === 'object')
+      arr = Object.keys(skills).map(function (key) {return skills[key]});
+    
     return (
       <section className="fourth-screen screen">
         <header>pack your bag</header>
         <ul>
+        {arr.map(function(element) {
+          return <SkillItem key={element.id} data={element}/>;
+        })}
         </ul>
 
         <Chevron isAnimated={true} onClick={this.proceed}/>
