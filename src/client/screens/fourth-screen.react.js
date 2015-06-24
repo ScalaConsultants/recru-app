@@ -12,25 +12,24 @@ class FourthScreen extends Component {
     super(props);
     this.proceed = this.proceed.bind(this);
     this.skills = json[this.props.candidate.get('role')];
-    
+
   }
 
   proceed() {
-    console.log(this.props.candidate.get("skills"));
     actions.nextScreen();
   }
 
-  render() {   
+  render() {
     var skills = json[this.props.candidate.get('role')], arr = [];
-    if(typeof skills === 'object')
-      arr = Object.keys(skills).map(function (key) {return skills[key]});
-    
+    if (typeof skills === 'object')
+      arr = Object.keys(skills).map(function(key) { return skills[key]; });
+
     return (
       <section className="fourth-screen screen">
         <header>pack your bag</header>
         <ul>
         {arr.map(function(element) {
-          return <SkillItem key={element.id} data={element}/>;
+          return <SkillItem data={element} key={element.id}/>;
         })}
         </ul>
 
