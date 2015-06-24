@@ -16,7 +16,7 @@ class FourthScreen extends Component {
   }
 
   proceed() {
-    // TODO: if the name is empty do not allow the transition and show the error
+    console.log(this.props.candidate.get("skills"));
     actions.nextScreen();
   }
 
