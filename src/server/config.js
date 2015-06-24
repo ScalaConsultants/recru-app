@@ -5,7 +5,7 @@ var nconf = require('nconf');
 nconf.env('__');
 
 var config = {
-  baseUri: '/recru-app/',
+  baseUri: '/',
   appLocales: ['en', 'fr'],
   defaultLocale: 'en',
   googleAnalyticsId: 'UA-XXXXXXX-X',

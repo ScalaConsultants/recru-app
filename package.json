@@ -53,6 +53,7 @@
     "less": "^2.5.1",
     "less-loader": "^2.2.0",
     "lodash.throttle": "^3.0.3",
+    "lodash.trimright": "^3.0.2",
     "mocha": "^2.2.5",
     "nconf": "^0.7.1",
     "node-notifier": "^4.2.1",
