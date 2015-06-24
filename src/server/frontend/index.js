@@ -26,6 +26,9 @@ app.use((req, res, next) => {
   req.userState = {
     i18n: {
       locales: acceptsLanguages || config.defaultLocale
+    },
+    environment: {
+      baseUri: config.baseUri
     }
   };
 

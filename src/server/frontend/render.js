@@ -7,7 +7,7 @@ import Router from 'react-router';
 import config from '../config';
 import immutable from 'immutable';
 import initialState from '../initialstate';
-import routes from '../../client/routes';
+import {createRoutes} from '../../client/routes';
 import stateMerger from '../lib/merger';
 
 export default function render(req, res, userState = {}) {
@@ -17,6 +17,10 @@ export default function render(req, res, userState = {}) {
 
 function renderPage(req, res, appState) {
   return new Promise((resolve, reject) => {
+
+    console.log(`${req.originalUrl}`);
+
+    const routes = createRoutes(config.baseUri);
 
     const router = Router.create({
       routes,
@@ -84,6 +88,7 @@ function getPageHtml(Handler, appState) {
 
   return '<!DOCTYPE html>' + React.renderToStaticMarkup(
     <Html
+      baseUri={config.baseUri}
       bodyHtml={appHtml + scriptHtml}
       isProduction={config.isProduction}
       title={title}

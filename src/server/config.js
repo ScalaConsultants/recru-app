@@ -5,6 +5,7 @@ var nconf = require('nconf');
 nconf.env('__');
 
 var config = {
+  baseUri: '/',
   appLocales: ['en', 'fr'],
   defaultLocale: 'en',
   googleAnalyticsId: 'UA-XXXXXXX-X',

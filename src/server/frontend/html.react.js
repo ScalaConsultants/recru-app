@@ -11,9 +11,6 @@ export default class Html extends Component {
         rel="stylesheet"
       />;
 
-    // TODO: Refactor the ugly way to define environment specific base href
-    const baseHref = this.props.isProduction ? '/recru-app/' : '/';
-
     return (
       <html lang="en">
         <head>
@@ -22,7 +19,7 @@ export default class Html extends Component {
           <title>{this.props.title}</title>
           {linkStyles}
           <link href="assets/img/favicon.ico" rel="shortcut icon"/>
-          <base href={baseHref}/>
+          <base href={this.props.baseUri}/>
         </head>
         <body dangerouslySetInnerHTML={{__html: this.props.bodyHtml}} />
       </html>
@@ -32,6 +29,7 @@ export default class Html extends Component {
 }
 
 Html.propTypes = {
+  baseUri: React.PropTypes.string.isRequired,
   bodyHtml: React.PropTypes.string.isRequired,
   isProduction: React.PropTypes.bool.isRequired,
   title: React.PropTypes.string.isRequired,
