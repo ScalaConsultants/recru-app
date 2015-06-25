@@ -63,7 +63,7 @@ export default class FifthScreen extends Component {
     return (
       <section className="fifth-screen screen">
         <header>One more thing...</header>
-        <h2>Give us your linkedIn profile adress</h2>
+        <h2>Give us your linkedIn...</h2>
         <input type="text" value="Pass here url" />
         <span>or</span>
         <input ref="fileInput" type="file"/>
