@@ -7,7 +7,7 @@ class Hello extends Component {
   render() {
     const className = classNames('hello', this.props.className);
     return (
-      <span className={className}>{this.props.message}</span>
+      <div className={className}><span>{this.props.message}</span></div>
     );
   }
 }
