@@ -59,11 +59,14 @@
           transition transform .25s
 
         input:checked ~ label.star:before
-          background-position -64px 0
+          background-position -64px 0 !important
 
         label.star:hover:before
-          background-position -32px 0
           transform scale(1.1)
+
+        label.star:hover:before
+        label.star:hover ~ label.star:before
+          background-position -32px 0
 
 @media (max-width: 767px)
   .fourth-screen
