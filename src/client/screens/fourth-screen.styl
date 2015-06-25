@@ -35,7 +35,6 @@
         max-width 80px
         vertical-align middle
         margin 0 20px 0 20px
-        opacity 0.5
 
       form
         display inline-block
@@ -45,45 +44,33 @@
           display none
 
         label
-          float: right;
-          padding: 0;
-          font-size: 36px;
-          color: #444;
+          float right
+          padding 0
+          font-size 36px
           cursor pointer
-          transition: all .2s;
 
+        label.star:before
+          content ''
+          width 32px
+          height 31px
+          opacity 0.8
+          display block
+          background url('../../../assets/img/rating-arrows.png') no-repeat
+          transition transform .25s
 
-        input:checked ~ label:before
-          opacity 1.0
-          transition: all .25s;
+        input:checked ~ label.star:before
+          background-position -64px 0
 
+        label.star:hover:before
+          background-position -32px 0
+          transform scale(1.1)
 
         input.star-5:checked ~ label.star:before
           color #FE7
           text-shadow 0 0 30px #952
 
-
         input.star-1:checked ~ label.star:before
           color #F62
-
-        label.star:hover
-          opacity 0.8
-          transform rotate(5deg) scale(1.3)
-
-
-        label.star:before
-          content: '';
-          width: 30px;
-          height: 30px;
-          display: block;
-          opacity 0.5
-          background: url('../../../assets/img/arrow2.svg') no-repeat;
-
-
-    li:hover
-      >img
-        transition: all .25s
-        opacity 1.0
 
 @media (max-width: 767px)
   .fourth-screen
