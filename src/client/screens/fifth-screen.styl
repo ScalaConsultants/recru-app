@@ -1,23 +1,45 @@
 .fifth-screen
   background-color #010101
   padding-top 30px
+  text-align center
+  color #ffffff
+  font-size 24px
+  font-weight 300
 
   header
-    color #ffffff
     font-size 36px
+    margin-bottom 0px
+
+  h2
+    margin 0px auto 30px
     font-weight 300
-    margin-bottom 60px
-    text-align center
+    max-width 300px
+    font-size 24px
+
+  span
+    display block
+    margin auto auto 30px
 
   input[type=file]
     visibility hidden
     position absolute
     z-index 0
 
+  input[type=text]
+    margin auto auto 20px
+    background none
+    padding 10px
+    width 300px
+    border 1px solid #fff
+
+  input[type=text]:active, input[type=text]:focus
+    border-color #ff0000
+    color #ff0000
+
   #drop
-    border 5px dashed #aaa
+    border 2px dashed #fff
     margin auto auto
-    border-radius 50px
+    border-radius 0px
     width 300px
     height 200px
     max-width 100%
