@@ -27,9 +27,9 @@ export default class ThirdScreen extends Component {
             </div>
           </li>
           <li onClick={() => this.proceed(1)}>
-            <p><strong>Frontend</strong> Explorer</p>
+            <p><strong>Clojure</strong> Explorer</p>
             <div>
-              <img alt="Frontend Explorer path" src="assets/img/explorer.jpg" />
+              <img alt="Clojure Explorer path" src="assets/img/explorer.jpg" />
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis mi ipsum, at rutrum tellus egestas eget. Curabitur dolor sem, tincidunt pulvinar vestibulum vel, luctus hendrerit velit. Donec lobortis varius facilisis.</p>
             </div>
           </li>
@@ -41,9 +41,9 @@ export default class ThirdScreen extends Component {
             </div>
           </li>
           <li onClick={() => this.proceed(3)}>
-            <p><strong>DevOps</strong> Sherpa</p>
+            <p><strong>Frontend</strong> Observer</p>
             <div>
-              <img alt="devOps Sherpa path" src="assets/img/sherpa.jpg" />
+              <img alt="frontend observer path" src="assets/img/observer.jpg" />
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis mi ipsum, at rutrum tellus egestas eget. Curabitur dolor sem, tincidunt pulvinar vestibulum vel, luctus hendrerit velit. Donec lobortis varius facilisis.</p>
             </div>
           </li>
