@@ -70,6 +70,7 @@ export default class FifthScreen extends Component {
         <div className={className} id="drop" onClick={() => this.refs.fileInput.getDOMNode().click()} ref="dropArea">
           <span>drop or click to select resume</span>
         </div>
+        <button><i></i>get me to the ScalaC</button>
       </section>
     );
   }
