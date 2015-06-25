@@ -1,13 +1,11 @@
 import * as state from '../../client/state';
-import DocumentTitle from 'react-document-title';
 import Html from './html.react';
 import Promise from 'bluebird';
 import React from 'react';
-import Router from 'react-router';
+import App from '../../client/app/app.react';
 import config from '../config';
 import immutable from 'immutable';
 import initialState from '../initialstate';
-import {createRoutes} from '../../client/routes';
 import stateMerger from '../lib/merger';
 
 export default function render(req, res, userState = {}) {
@@ -17,36 +15,9 @@ export default function render(req, res, userState = {}) {
 
 function renderPage(req, res, appState) {
   return new Promise((resolve, reject) => {
-
-    console.log(`${req.originalUrl}`);
-
-    const routes = createRoutes(config.baseUri);
-
-    const router = Router.create({
-      routes,
-      location: req.originalUrl,
-      onError: reject,
-      onAbort: (abortReason) => {
-        // Some requireAuth higher order component requested redirect.
-        if (abortReason.constructor.name === 'Redirect') {
-          const {to, params, query} = abortReason;
-          const path = router.makePath(to, params, query);
-          res.redirect(path);
-          resolve();
-          return;
-        }
-        reject(abortReason);
-      }
-    });
-
-    router.run((Handler, routerState) => {
-      const html = loadAppStateThenRenderHtml(Handler, appState);
-      const notFound = routerState.routes.some(route => route.name === 'not-found');
-      const status = notFound ? 404 : 200;
-      res.status(status).send(html);
-      resolve();
-    });
-
+    const html = loadAppStateThenRenderHtml(App, appState);
+    res.status(200).send(html);
+    resolve();
   });
 }
 
@@ -84,14 +55,12 @@ function getPageHtml(Handler, appState) {
         ga('create','${config.googleAnalyticsId}');ga('send','pageview');
       </script>`;
 
-  const title = DocumentTitle.rewind();
-
   return '<!DOCTYPE html>' + React.renderToStaticMarkup(
     <Html
       baseUri={config.baseUri}
       bodyHtml={appHtml + scriptHtml}
       isProduction={config.isProduction}
-      title={title}
+      title={config.defaultTitle}
       version={config.version}
     />
   );

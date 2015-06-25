@@ -35,7 +35,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('*', (req, res, next) => {
+app.get('/', (req, res, next) => {
   render(req, res, req.userState).catch(next);
 });
 

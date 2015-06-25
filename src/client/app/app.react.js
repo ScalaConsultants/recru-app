@@ -2,9 +2,16 @@ import './app.styl';
 import * as state from '../state';
 import Component from '../components/component.react';
 import React from 'react';
+import FirstScreen from '../screens/first-screen.react';
+import SecondScreen from '../screens/second-screen.react';
+import ThirdScreen from '../screens/third-screen.react';
+import FourthScreen from '../screens/fourth-screen.react';
+import FifthScreen from '../screens/fifth-screen.react';
+import MiniMap from '../components/minimap.react';
+import Hello from '../components/hello.react';
 import throttle from 'lodash.throttle';
+import classNames from 'classnames';
 import {previousScreen} from '../screens/actions';
-import {RouteHandler} from 'react-router';
 import {measureRender} from '../console';
 
 // Remember to import all app stores here.
@@ -29,6 +36,11 @@ class App extends Component {
       screens: state.screensCursor(),
       candidate: state.candidateCursor()
     };
+  }
+
+  getPageOffset() {
+    const {screens} = this.state;
+    return -(screens.get('currentScreen') * 100);
   }
 
   handleMouseWheel(e) {
@@ -57,9 +69,27 @@ class App extends Component {
   }
 
   render() {
+    const translate = `translate3d(0%, ${this.getPageOffset()}%, 0)`;
+    const listStyle = {
+      transform: translate,
+      WebkitTransform: translate
+    };
+    const miniMapAndHelloClassName = classNames({
+      '-visible': this.state.screens.get('currentScreen') > 0
+    });
+    const message = `Hello, ${this.state.candidate.get('name')}.`;
+
     return (
       <div className="page">
-        <RouteHandler {...this.state}/>
+        <div className="screen-list" style={listStyle}>
+          <FirstScreen/>
+          <SecondScreen/>
+          <ThirdScreen/>
+          <FourthScreen candidate={this.state.candidate}/>
+          <FifthScreen/>
+        </div>
+        <Hello className={miniMapAndHelloClassName} message={message}/>
+        <MiniMap className={miniMapAndHelloClassName} screens={this.state.screens}/>
       </div>
     );
   }

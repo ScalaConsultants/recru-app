@@ -12,7 +12,8 @@ const server = Server(app);
 app.use('/api/v1', api);
 
 // Load react-js frontend.
-app.use(trimRight(config.baseUri, '/'), frontend);
+const trimmedBaseUri = trimRight(config.baseUri, '/');
+app.use(trimmedBaseUri, frontend);
 
 // Add error handler. Four arguments need to be defined in order for the
 // middleware to act as an error handler.

@@ -6,6 +6,7 @@ nconf.env('__');
 
 var config = {
   baseUri: '/',
+  defaultTitle: 'Scalac - Best Scala hAkkers!',
   appLocales: ['en', 'fr'],
   defaultLocale: 'en',
   googleAnalyticsId: 'UA-XXXXXXX-X',
