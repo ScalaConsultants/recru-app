@@ -66,7 +66,7 @@ export default class FifthScreen extends Component {
       <section className="fifth-screen screen">
         <header>One more thing...</header>
         <h2>Give us your linkedIn...</h2>
-        <input defaultValue="Pass url here" type="text"/>
+        <input placeholder="Pass url here" type="text"/>
         <span>or</span>
         <input ref="fileInput" type="file"/>
         <div className={className} id="drop" onClick={() => React.findDOMNode(this.refs.fileInput).click()} ref="dropArea">
