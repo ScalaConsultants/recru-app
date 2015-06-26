@@ -86,7 +86,7 @@ class App extends Component {
           <SecondScreen/>
           <ThirdScreen/>
           <FourthScreen candidate={this.state.candidate}/>
-          <FifthScreen/>
+          <FifthScreen candidate={this.state.candidate}/>
         </div>
         <Hello className={miniMapAndHelloClassName} message={message}/>
         <MiniMap className={miniMapAndHelloClassName} screens={this.state.screens}/>

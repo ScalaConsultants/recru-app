@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import React from 'react';
 import './fifth-screen.styl';
 
-export default class FifthScreen extends Component {
+class FifthScreen extends Component {
 
   constructor(props) {
     super(props);
@@ -21,6 +21,7 @@ export default class FifthScreen extends Component {
 
   proceed() {
     // TODO: make an XHR request which would send all the data and files to the backend
+    //       to get the data use this.props.candidate immutable.js Map
     // TODO: if the XHR request is successful, display thank you overlay
   }
 
@@ -76,5 +77,10 @@ export default class FifthScreen extends Component {
       </section>
     );
   }
-
 }
+
+FifthScreen.propTypes = {
+  candidate: React.PropTypes.instanceOf(immutable.Map).isRequired
+};
+
+export default FifthScreen;
