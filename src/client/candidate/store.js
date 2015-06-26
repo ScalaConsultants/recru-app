@@ -1,4 +1,5 @@
 import * as actions from './actions';
+import {Map} from 'immutable';
 import {register} from '../dispatcher';
 import {candidateCursor} from '../state';
 
@@ -13,13 +14,15 @@ export const dispatchToken = register(({action, data}) => {
 
     case actions.saveRole:
       candidateCursor(candidate => {
-        return candidate.set('role', data);
+        return candidate
+          .set('role', data)
+          .set('skills', Map());
       });
       break;
 
     case actions.saveSkill:
       candidateCursor(candidate => {
-        return candidate.set(['skills', data.title], data.rating);
+        return candidate.setIn(['skills', data.id], data.level);
       });
       break;
 

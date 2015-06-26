@@ -9,8 +9,8 @@ export function saveRole(role) {
   dispatch(saveRole, role);
 }
 
-export function saveSkill(skill, level) {
-  dispatch(saveSkill, {skill, level});
+export function saveSkill(id, level) {
+  dispatch(saveSkill, {id, level});
 }
 
 export function saveResume(file) {
