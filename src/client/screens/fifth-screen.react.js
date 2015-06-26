@@ -1,4 +1,5 @@
 import Component from '../components/component.react';
+import {submit} from '../candidate/actions';
 import classNames from 'classnames';
 import immutable from 'immutable';
 import React from 'react';
@@ -27,6 +28,7 @@ class FifthScreen extends Component {
     // TODO: make an XHR request which would send all the data and files to the backend
     //       to get the data use this.props.candidate immutable.js Map
     // TODO: if the XHR request is successful, display thank you overlay
+    submit();
   }
 
   handleUrlChange(e) {

@@ -9,6 +9,7 @@ export default {
     name: '',
     role: null,
     skills: {},
-    resume: null
+    resume: null,
+    hasSubmittedForm: false
   }
 };

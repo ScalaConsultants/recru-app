@@ -17,9 +17,14 @@ export function saveResume(file) {
   dispatch(saveResume, file);
 }
 
+export function submit() {
+  dispatch(submit);
+}
+
 setToString('candidate', {
   saveName,
   saveRole,
   saveSkill,
-  saveResume
+  saveResume,
+  submit
 });

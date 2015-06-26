@@ -31,5 +31,11 @@ export const dispatchToken = register(({action, data}) => {
         return candidate.set('resume', data);
       });
       break;
+
+    case actions.submit:
+      candidateCursor(candidate => {
+        return candidate.set('hasSubmittedForm', true);
+      });
+      break;
   }
 });

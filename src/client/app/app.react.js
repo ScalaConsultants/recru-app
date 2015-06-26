@@ -9,6 +9,7 @@ import FourthScreen from '../screens/fourth-screen.react';
 import FifthScreen from '../screens/fifth-screen.react';
 import MiniMap from '../components/minimap.react';
 import Hello from '../components/hello.react';
+import ThankYou from '../components/thank-you.react.js';
 import throttle from 'lodash.throttle';
 import classNames from 'classnames';
 import {previousScreen} from '../screens/actions';
@@ -75,7 +76,10 @@ class App extends Component {
       WebkitTransform: translate
     };
     const miniMapAndHelloClassName = classNames({
-      '-visible': this.state.screens.get('currentScreen') > 0
+      '-visible': this.state.screens.get('currentScreen') > 0 && !this.state.candidate.get('hasSubmittedForm')
+    });
+    const thankYouClassName = classNames({
+      '-visible': this.state.candidate.get('hasSubmittedForm')
     });
     const message = `Hello, ${this.state.candidate.get('name')}.`;
 
@@ -90,6 +94,7 @@ class App extends Component {
         </div>
         <Hello className={miniMapAndHelloClassName} message={message}/>
         <MiniMap className={miniMapAndHelloClassName} screens={this.state.screens}/>
+        <ThankYou className={thankYouClassName}/>
       </div>
     );
   }
