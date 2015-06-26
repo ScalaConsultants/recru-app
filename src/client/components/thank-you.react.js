@@ -17,4 +17,8 @@ class ThankYou extends Component {
   }
 }
 
+ThankYou.propTypes = {
+  className: React.PropTypes.string
+};
+
 export default ThankYou;

@@ -47,7 +47,7 @@ class FifthScreen extends Component {
     this.setState({fileUploaded: true});
 
     // fetch FileList object
-    const files = e.target.files || e.dataTransfer.files;
+    // const files = e.target.files || e.dataTransfer.files;
 
     // TODO: do something with files, store them somewhere temporarily
   }
@@ -84,12 +84,12 @@ class FifthScreen extends Component {
       <section className="fifth-screen screen">
         <header>One more thing...</header>
         <h2>Give us your linkedIn...</h2>
-        <input className={inputClassName} placeholder="Pass url here" type="text" onChange={this.handleUrlChange}/>
+        <input className={inputClassName} onChange={this.handleUrlChange} placeholder="Pass url here" type="text"/>
         <span>or</span>
         <input ref="fileInput" type="file" />
         <div className={dropAreaclassName} id="drop" onClick={() => React.findDOMNode(this.refs.fileInput).click()} ref="dropArea">
           <span>
-            { !!this.state.fileUploaded ? 'file(s) included' : 'drop or click to select resume'}
+            { this.state.fileUploaded ? 'file(s) included' : 'drop or click to select resume'}
           </span>
         </div>
         <button onClick={this.proceed}><i></i>Get me to the ScalaC</button>
