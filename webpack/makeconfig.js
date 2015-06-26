@@ -50,7 +50,7 @@ module.exports = function(isDevelopment) {
         'webpack/hot/only-dev-server',
         path.join(constants.SRC_DIR, 'client/main.js')
       ] : [
-        './src/client/main.js'
+        path.join(constants.SRC_DIR, 'client/main.js')
       ]
     },
     module: {
