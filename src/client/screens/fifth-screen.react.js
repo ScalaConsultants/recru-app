@@ -64,7 +64,7 @@ export default class FifthScreen extends Component {
       <section className="fifth-screen screen">
         <header>One more thing...</header>
         <h2>Give us your linkedIn...</h2>
-        <input type="text" value="Pass here url" />
+        <input defaultValue="Pass url here" type="text"/>
         <span>or</span>
         <input ref="fileInput" type="file"/>
         <div className={className} id="drop" onClick={() => this.refs.fileInput.getDOMNode().click()} ref="dropArea">
