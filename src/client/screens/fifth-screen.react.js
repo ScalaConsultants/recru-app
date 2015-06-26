@@ -86,7 +86,9 @@ class FifthScreen extends Component {
         <span>or</span>
         <input ref="fileInput" type="file" />
         <div className={dropAreaclassName} id="drop" onClick={() => React.findDOMNode(this.refs.fileInput).click()} ref="dropArea">
-          <span>drop or click to select resume</span>
+          <span>
+            { !!this.state.fileUploaded ? 'file(s) included' : 'drop or click to select resume'}
+          </span>
         </div>
         <button onClick={this.proceed}><i></i>Get me to the ScalaC</button>
       </section>
