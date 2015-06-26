@@ -1,5 +1,6 @@
 import Component from '../components/component.react';
 import classNames from 'classnames';
+import immutable from 'immutable';
 import React from 'react';
 import './fifth-screen.styl';
 
@@ -9,13 +10,16 @@ class FifthScreen extends Component {
     super(props);
     this.state = this.getDefaultState();
     this.proceed = this.proceed.bind(this);
+    this.handleUrlChange = this.handleUrlChange.bind(this);
     this.handleDragOver = this.handleDragOver.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
   }
 
   getDefaultState() {
     return {
-      dragOver: false
+      dragOver: false,
+      fileUploaded: false,
+      urlPassed: false
     };
   }
 
@@ -23,6 +27,11 @@ class FifthScreen extends Component {
     // TODO: make an XHR request which would send all the data and files to the backend
     //       to get the data use this.props.candidate immutable.js Map
     // TODO: if the XHR request is successful, display thank you overlay
+  }
+
+  handleUrlChange(e) {
+    const hasNoValue = !e.target.value || e.target.value.trim().length === 0;
+    this.setState({urlPassed: !hasNoValue});
   }
 
   handleDragOver(e) {
@@ -33,6 +42,7 @@ class FifthScreen extends Component {
 
   handleDrop(e) {
     this.handleDragOver(e);
+    this.setState({fileUploaded: true});
 
     // fetch FileList object
     const files = e.target.files || e.dataTransfer.files;
@@ -59,18 +69,23 @@ class FifthScreen extends Component {
   }
 
   render() {
-    const className = classNames('drop-area', {
-      hover: this.state.dragOver
+    const dropAreaclassName = classNames('drop-area', {
+      hover: this.state.dragOver,
+      active: this.state.fileUploaded
+    });
+
+    const inputClassName = classNames({
+      active: this.state.urlPassed
     });
 
     return (
       <section className="fifth-screen screen">
         <header>One more thing...</header>
         <h2>Give us your linkedIn...</h2>
-        <input placeholder="Pass url here" type="text"/>
+        <input className={inputClassName} placeholder="Pass url here" type="text" onChange={this.handleUrlChange}/>
         <span>or</span>
-        <input ref="fileInput" type="file"/>
-        <div className={className} id="drop" onClick={() => React.findDOMNode(this.refs.fileInput).click()} ref="dropArea">
+        <input ref="fileInput" type="file" />
+        <div className={dropAreaclassName} id="drop" onClick={() => React.findDOMNode(this.refs.fileInput).click()} ref="dropArea">
           <span>drop or click to select resume</span>
         </div>
         <button onClick={this.proceed}><i></i>Get me to the ScalaC</button>
