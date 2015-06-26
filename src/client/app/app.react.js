@@ -63,7 +63,7 @@ class App extends Component {
     window.addEventListener('DOMMouseScroll', this.handleMouseWheel, false);
   }
 
-  componentDidUnmount() {
+  componentWillUnmount() {
     window.removeEventListener('mousewheel', this.handleMouseWheel);
     window.removeEventListener('DOMMouseScroll', this.handleMouseWheel);
   }
