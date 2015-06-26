@@ -1,3 +1,5 @@
+@require '../app/animations'
+
 .hello
   display none
   background-color rgba(0,0,0,0.4)
@@ -11,7 +13,7 @@
 
   &.-visible
     display block
-    animation fadeIn 2s
+    animation fadeInLater 2s
 
   > span
     text-transform capitalize
