@@ -60,6 +60,7 @@
     "piping": "0.1.8",
     "react": "^0.13.3",
     "react-hot-loader": "^1.2.7",
+    "react-mixin": "^1.4.0",
     "react-pure-render": "^1.0.1",
     "run-sequence": "^1.1.1",
     "serve-favicon": "^2.2.1",

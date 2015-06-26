@@ -1,10 +1,12 @@
 import Component from '../components/component.react';
 import React from 'react';
+import boundScrollMixin from '../mixins/bound-scroll';
+import reactMixin from 'react-mixin';
 import {saveRole} from '../candidate/actions';
 import {nextScreen} from './actions';
 import './third-screen.styl';
 
-export default class ThirdScreen extends Component {
+class ThirdScreen extends Component {
   constructor(props) {
     super(props);
     this.proceed = this.proceed.bind(this);
@@ -51,5 +53,8 @@ export default class ThirdScreen extends Component {
       </section>
     );
   }
-
 }
+
+reactMixin(ThirdScreen.prototype, boundScrollMixin);
+
+export default ThirdScreen;

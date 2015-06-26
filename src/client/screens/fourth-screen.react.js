@@ -3,6 +3,8 @@ import Chevron from '../components/chevron.react';
 import React from 'react';
 import * as actions from './actions';
 import immutable from 'immutable';
+import boundScrollMixin from '../mixins/bound-scroll';
+import reactMixin from 'react-mixin';
 import SkillItem from './skillItem.react';
 import json from '../data/technologies.json';
 import './fourth-screen.styl';
@@ -12,7 +14,6 @@ class FourthScreen extends Component {
     super(props);
     this.proceed = this.proceed.bind(this);
     this.skills = json[this.props.candidate.get('role')];
-
   }
 
   proceed() {
@@ -43,5 +44,7 @@ class FourthScreen extends Component {
 FourthScreen.propTypes = {
   candidate: React.PropTypes.instanceOf(immutable.Map).isRequired
 };
+
+reactMixin(FourthScreen.prototype, boundScrollMixin);
 
 export default FourthScreen;
