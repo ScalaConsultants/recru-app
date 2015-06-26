@@ -8,6 +8,7 @@ export default class FifthScreen extends Component {
   constructor(props) {
     super(props);
     this.state = this.getDefaultState();
+    this.proceed = this.proceed.bind(this);
     this.handleDragOver = this.handleDragOver.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
   }
@@ -16,6 +17,11 @@ export default class FifthScreen extends Component {
     return {
       dragOver: false
     };
+  }
+
+  proceed() {
+    // TODO: make an XHR request which would send all the data and files to the backend
+    // TODO: if the XHR request is successful, display thank you overlay
   }
 
   handleDragOver(e) {
@@ -30,11 +36,7 @@ export default class FifthScreen extends Component {
     // fetch FileList object
     const files = e.target.files || e.dataTransfer.files;
 
-    // process all File objects
-    for (let i = 0, f; f = files[i]; i++) {
-      // f.name, f.type, f.size
-      console.log(f.name);
-    }
+    // TODO: do something with files, store them somewhere temporarily
   }
 
   componentDidMount() {
@@ -46,7 +48,7 @@ export default class FifthScreen extends Component {
     fileInput.addEventListener('change', this.handleDrop, false);
   }
 
-  componentDidUnmount() {
+  componentWillUnmount() {
     const dropArea = React.findDOMNode(this.refs.dropArea);
     const fileInput = React.findDOMNode(this.refs.fileInput);
     dropArea.removeEventListener('dragover', this.handleDragOver);
@@ -67,10 +69,10 @@ export default class FifthScreen extends Component {
         <input defaultValue="Pass url here" type="text"/>
         <span>or</span>
         <input ref="fileInput" type="file"/>
-        <div className={className} id="drop" onClick={() => this.refs.fileInput.getDOMNode().click()} ref="dropArea">
+        <div className={className} id="drop" onClick={() => React.findDOMNode(this.refs.fileInput).click()} ref="dropArea">
           <span>drop or click to select resume</span>
         </div>
-        <button><i></i>get me to the ScalaC</button>
+        <button onClick={this.proceed}><i></i>Get me to the ScalaC</button>
       </section>
     );
   }
