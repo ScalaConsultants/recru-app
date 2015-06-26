@@ -19,7 +19,7 @@ export default class FirstScreen extends Component {
   }
 
   proceed() {
-    const name = this.refs.nameInput.getDOMNode().value.trim();
+    const name = React.findDOMNode(this.refs.nameInput).value.trim();
 
     if (!name) {
       this.setState({error: 'We really need your name.'});
@@ -33,7 +33,7 @@ export default class FirstScreen extends Component {
 
   handleKeyDown(e) {
     if (e.keyCode === 13) {
-      this.refs.nameInput.getDOMNode().blur();
+      React.findDOMNode(this.refs.nameInput).blur();
       this.proceed();
     }
   }

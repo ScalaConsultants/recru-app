@@ -38,8 +38,8 @@ export default class FifthScreen extends Component {
   }
 
   componentDidMount() {
-    const dropArea = this.refs.dropArea.getDOMNode();
-    const fileInput = this.refs.fileInput.getDOMNode();
+    const dropArea = React.findDOMNode(this.refs.dropArea);
+    const fileInput = React.findDOMNode(this.refs.fileInput);
     dropArea.addEventListener('dragover', this.handleDragOver, false);
     dropArea.addEventListener('dragleave', this.handleDragOver, false);
     dropArea.addEventListener('drop', this.handleDrop, false);
@@ -47,8 +47,8 @@ export default class FifthScreen extends Component {
   }
 
   componentDidUnmount() {
-    const dropArea = this.refs.dropArea.getDOMNode();
-    const fileInput = this.refs.fileInput.getDOMNode();
+    const dropArea = React.findDOMNode(this.refs.dropArea);
+    const fileInput = React.findDOMNode(this.refs.fileInput);
     dropArea.removeEventListener('dragover', this.handleDragOver);
     dropArea.removeEventListener('dragleave', this.handleDragOver);
     dropArea.removeEventListener('drop', this.handleDrop);
