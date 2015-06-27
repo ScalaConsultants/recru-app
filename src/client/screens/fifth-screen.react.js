@@ -92,7 +92,7 @@ class FifthScreen extends Component {
             { this.state.fileUploaded ? 'file(s) included' : 'drop or click to select resume'}
           </span>
         </div>
-        <button onClick={this.proceed}><i></i>Get me to the ScalaC</button>
+        <button onClick={this.proceed}><i></i>Take me to ScalaC</button>
       </section>
     );
   }
