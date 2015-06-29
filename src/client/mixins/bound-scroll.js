@@ -21,10 +21,10 @@ export default {
     return (element.scrollTop === 0 && delta < 0) || (element.scrollTop === maxScrollPosition && delta > 0);
   },
 
-  hasSwipeStartedAtBounds: function() {
+  hasSwipeStartedAtBounds: function(delta) {
     const element = React.findDOMNode(this);
     const maxScrollPosition = element.scrollHeight - element.clientHeight;
-    return (this.swipeDetails.sScrollTop === 0 || this.swipeDetails.sScrollTop === maxScrollPosition);
+    return ((this.swipeDetails.sScrollTop === 0 && delta > 0) || (this.swipeDetails.sScrollTop === maxScrollPosition && delta < 0));
   },
 
   handleMouseWheel: function(e) {
@@ -42,7 +42,8 @@ export default {
   },
 
   handleTouchEnd: function(e) {
-    if (this.isWithinBounds() || !this.hasSwipeStartedAtBounds())
+    const delta = (this.swipeDetails.eY - this.swipeDetails.sY);
+    if (this.isWithinBounds() || !this.hasSwipeStartedAtBounds(delta))
       e.stopPropagation();
   },
 
