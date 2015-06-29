@@ -1,0 +1,26 @@
+[
+  {
+    "id": 0,
+    "name": "Backend Climber",
+    "img": "assets/img/climber.jpg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis mi ipsum, at rutrum tellus egestas eget. Curabitur dolor sem, tincidunt pulvinar vestibulum vel, luctus hendrerit velit. Donec lobortis varius facilisis."
+  },
+  {
+    "id": 1,
+    "name": "Clojure Explorer",
+    "img": "assets/img/explorer.jpg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis mi ipsum, at rutrum tellus egestas eget. Curabitur dolor sem, tincidunt pulvinar vestibulum vel, luctus hendrerit velit. Donec lobortis varius facilisis."
+  },
+  {
+    "id": 2,
+    "name": "Mobile Hiker",
+    "img": "assets/img/hiker.jpg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis mi ipsum, at rutrum tellus egestas eget. Curabitur dolor sem, tincidunt pulvinar vestibulum vel, luctus hendrerit velit. Donec lobortis varius facilisis."
+  },
+  {
+    "id": 3,
+    "name": "Frontend Observer",
+    "img": "assets/img/observer.jpg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis mi ipsum, at rutrum tellus egestas eget. Curabitur dolor sem, tincidunt pulvinar vestibulum vel, luctus hendrerit velit. Donec lobortis varius facilisis."
+  }
+]
