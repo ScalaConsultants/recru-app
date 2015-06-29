@@ -13,7 +13,6 @@ class FourthScreen extends Component {
   constructor(props) {
     super(props);
     this.proceed = this.proceed.bind(this);
-    this.skills = json[this.props.candidate.get('role')];
   }
 
   proceed() {
