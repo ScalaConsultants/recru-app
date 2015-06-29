@@ -18,9 +18,17 @@
     display table-cell
     vertical-align middle
 
-    > span
+    > div
       font-size 4em
 
     > p
       font-size 1.5em
       opacity 0.7
+
+@media screen and (max-width: 460px)
+  .thank-you
+    > div
+      > div
+        font-size 3em
+      > p
+        font-size 1em
