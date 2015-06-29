@@ -12,6 +12,12 @@ export const dispatchToken = register(({action, data}) => {
       });
       break;
 
+    case actions.saveEmail:
+      candidateCursor(candidate => {
+        return candidate.set('email', data);
+      });
+      break;
+
     case actions.saveRole:
       candidateCursor(candidate => {
         return candidate

@@ -7,6 +7,7 @@ export default {
   },
   candidate: {
     name: '',
+    email: '',
     role: null,
     skills: {},
     resume: null,

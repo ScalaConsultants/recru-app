@@ -5,6 +5,10 @@ export function saveName(name) {
   dispatch(saveName, name);
 }
 
+export function saveEmail(email) {
+  dispatch(saveEmail, email);
+}
+
 export function saveRole(role) {
   dispatch(saveRole, role);
 }
@@ -20,11 +24,12 @@ export function saveResume(file) {
 export function submit() {
   dispatch(submit);
   // After showing thank you screen, redirect to homepage
-  setTimeout(() => window.location = 'http://scalac.io', 5000);
+  //setTimeout(() => window.location = 'http://scalac.io', 5000);
 }
 
 setToString('candidate', {
   saveName,
+  saveEmail,
   saveRole,
   saveSkill,
   saveResume,
