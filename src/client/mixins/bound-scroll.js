@@ -18,7 +18,7 @@ export default {
   isScrollDeltaWithinBounds: function(delta) {
     const element = React.findDOMNode(this);
     const maxScrollPosition = element.scrollHeight - element.clientHeight;
-    return (element.scrollTop === 0 && delta < 0) || (element.scrollTop === maxScrollPosition && delta > 0);
+    return maxScrollPosition !== 0 && ((element.scrollTop === 0 && delta < 0) || (element.scrollTop === maxScrollPosition && delta > 0));
   },
 
   hasSwipeStartedAtBounds: function(delta) {
