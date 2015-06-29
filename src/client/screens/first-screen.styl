@@ -44,6 +44,7 @@
     .form-control
       position relative
       width 310px
+      max-width 90%
       margin 0 auto
 
       > span
@@ -93,3 +94,15 @@
     position absolute
     z-index 2
     bottom 0
+
+@media screen and (max-width: 460px)
+  .first-screen
+    .centering-wrapper
+      header
+        h1
+          font-size 28px
+        h2
+          font-size 20px
+      .form-control
+        > input
+          font-size 14px
