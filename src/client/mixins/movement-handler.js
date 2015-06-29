@@ -1,5 +1,6 @@
 import throttle from 'lodash.throttle';
 
+// TODO: shall be refactored into a higher order component
 export default {
   handleMouseWheel: function(e) {
     const delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));

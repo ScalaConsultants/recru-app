@@ -1,5 +1,6 @@
 import React from 'react';
 
+// TODO: shall be refactored into a higher order component
 export default {
   handleMouseWheel: function(e) {
     // Stop wheel event propagation if not at the topmost or bottommost part
