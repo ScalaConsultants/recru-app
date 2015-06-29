@@ -10,8 +10,9 @@ import FifthScreen from '../screens/fifth-screen.react';
 import MiniMap from '../components/minimap.react';
 import Hello from '../components/hello.react';
 import ThankYou from '../components/thank-you.react.js';
-import throttle from 'lodash.throttle';
 import classNames from 'classnames';
+import reactMixin from 'react-mixin';
+import movementHandlerMixin from '../mixins/movement-handler';
 import {previousScreen} from '../screens/actions';
 import {measureRender} from '../console';
 
@@ -26,11 +27,6 @@ class App extends Component {
     this.state = this.getState();
     this.getPageOffset = this.getPageOffset.bind(this);
     this.getRefNameFor = this.getRefNameFor.bind(this);
-    this.handleMouseWheel = this.handleMouseWheel.bind(this);
-    this.handleMouseWheel = throttle(this.handleMouseWheel, 1000, {
-      'leading': true,
-      'trailing': false
-    });
   }
 
   getState() {
@@ -50,11 +46,12 @@ class App extends Component {
     return this.state.screens.get('currentScreen') === screen ? 'currentScreen' : null;
   }
 
-  handleMouseWheel(e) {
-    const delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-    if (delta > 0)
-      previousScreen();
-    else if (delta < 0 && typeof this.refs.currentScreen.proceed === 'function')
+  handleMoveUp(e) {
+    previousScreen();
+  }
+
+  handleMoveDown(e) {
+    if (typeof this.refs.currentScreen.proceed === 'function')
       this.refs.currentScreen.proceed();
   }
 
@@ -65,16 +62,6 @@ class App extends Component {
     state.appState.on('change', () => {
       measureRender(done => this.setState(this.getState(), done));
     });
-  }
-
-  componentDidMount() {
-    window.addEventListener('mousewheel', this.handleMouseWheel, false);
-    window.addEventListener('DOMMouseScroll', this.handleMouseWheel, false);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('mousewheel', this.handleMouseWheel);
-    window.removeEventListener('DOMMouseScroll', this.handleMouseWheel);
   }
 
   render() {
@@ -106,7 +93,8 @@ class App extends Component {
       </div>
     );
   }
-
 }
+
+reactMixin(App.prototype, movementHandlerMixin);
 
 export default App;
