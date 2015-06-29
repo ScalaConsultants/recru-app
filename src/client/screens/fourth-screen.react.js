@@ -5,7 +5,7 @@ import * as actions from './actions';
 import immutable from 'immutable';
 import boundScrollMixin from '../mixins/bound-scroll';
 import reactMixin from 'react-mixin';
-import SkillItem from './skillItem.react';
+import SkillItem from '../components/skillItem.react';
 import json from '../data/technologies.json';
 import './fourth-screen.styl';
 
