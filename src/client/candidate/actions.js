@@ -24,7 +24,7 @@ export function saveResume(file) {
 export function submit() {
   dispatch(submit);
   // After showing thank you screen, redirect to homepage
-  //setTimeout(() => window.location = 'http://scalac.io', 5000);
+  setTimeout(() => window.location = 'http://scalac.io', 5000);
 }
 
 setToString('candidate', {
