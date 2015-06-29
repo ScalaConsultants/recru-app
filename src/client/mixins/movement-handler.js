@@ -17,6 +17,8 @@ export default {
 
   handleTouchStart: function(e) {
     this.swipeDetails.sY = e.touches[0].screenY;
+    // Reset end as well in case user only clicked without moving
+    this.swipeDetails.eY = this.swipeDetails.sY;
   },
 
   handleTouchMove: function(e) {
