@@ -24,6 +24,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = this.getState();
+    this.getPageOffset = this.getPageOffset.bind(this);
+    this.getRefNameFor = this.getRefNameFor.bind(this);
     this.handleMouseWheel = this.handleMouseWheel.bind(this);
     this.handleMouseWheel = throttle(this.handleMouseWheel, 1000, {
       'leading': true,
@@ -44,10 +46,16 @@ class App extends Component {
     return -(screens.get('currentScreen') * 100);
   }
 
+  getRefNameFor(screen) {
+    return this.state.screens.get('currentScreen') === screen ? 'currentScreen' : null;
+  }
+
   handleMouseWheel(e) {
     const delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
     if (delta > 0)
       previousScreen();
+    else if (delta < 0 && typeof this.refs.currentScreen.proceed === 'function')
+      this.refs.currentScreen.proceed();
   }
 
   // Why componentWillMount instead of componentDidMount.
@@ -86,11 +94,11 @@ class App extends Component {
     return (
       <div className="page">
         <div className="screen-list" style={listStyle}>
-          <FirstScreen/>
-          <SecondScreen/>
-          <ThirdScreen/>
-          <FourthScreen candidate={this.state.candidate}/>
-          <FifthScreen candidate={this.state.candidate}/>
+          <FirstScreen ref={this.getRefNameFor(0)}/>
+          <SecondScreen ref={this.getRefNameFor(1)}/>
+          <ThirdScreen ref={this.getRefNameFor(2)}/>
+          <FourthScreen {...this.state} ref={this.getRefNameFor(3)}/>
+          <FifthScreen {...this.state} ref={this.getRefNameFor(4)}/>
         </div>
         <Hello className={miniMapAndHelloClassName} message={message}/>
         <MiniMap className={miniMapAndHelloClassName} screens={this.state.screens}/>

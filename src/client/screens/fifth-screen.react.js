@@ -10,7 +10,7 @@ class FifthScreen extends Component {
   constructor(props) {
     super(props);
     this.state = this.getDefaultState();
-    this.proceed = this.proceed.bind(this);
+    this.submit = this.submit.bind(this);
     this.handleUrlChange = this.handleUrlChange.bind(this);
     this.handleDragOver = this.handleDragOver.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
@@ -24,7 +24,7 @@ class FifthScreen extends Component {
     };
   }
 
-  proceed() {
+  submit() {
     // TODO: make an XHR request which would send all the data and files to the backend
     //       to get the data use this.props.candidate immutable.js Map
     // TODO: if the XHR request is successful, display thank you overlay
@@ -92,7 +92,7 @@ class FifthScreen extends Component {
             { this.state.fileUploaded ? 'file(s) included' : 'drop or click to select resume'}
           </span>
         </div>
-        <button onClick={this.proceed}><i></i>Take me to ScalaC</button>
+        <button onClick={this.submit}><i></i>Take me to ScalaC</button>
       </section>
     );
   }

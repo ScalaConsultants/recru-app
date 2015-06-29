@@ -3,6 +3,7 @@ import React from 'react';
 import boundScrollMixin from '../mixins/bound-scroll';
 import reactMixin from 'react-mixin';
 import json from '../data/roles.json';
+import isNumeric from '../lib/isNumeric';
 import {saveRole} from '../candidate/actions';
 import {nextScreen} from './actions';
 import './third-screen.styl';
@@ -10,12 +11,27 @@ import './third-screen.styl';
 class ThirdScreen extends Component {
   constructor(props) {
     super(props);
+    this.state = this.getDefaultState();
     this.proceed = this.proceed.bind(this);
+    this.handleChooseRole = this.handleChooseRole.bind(this);
   }
 
-  proceed(role) {
-    saveRole(role);
+  getDefaultState() {
+    return {
+      role: null
+    };
+  }
+
+  proceed() {
+    if (!isNumeric(this.state.role))
+      return;
+
+    saveRole(this.state.role);
     nextScreen();
+  }
+
+  handleChooseRole(role) {
+    this.setState({role: role}, () => this.proceed());
   }
 
   render() {
@@ -24,7 +40,7 @@ class ThirdScreen extends Component {
         <ul>
           {json.map((role) => {
             return (
-              <li key={role.id} onClick={() => this.proceed(role.id)}>
+              <li key={role.id} onClick={() => this.handleChooseRole(role.id)}>
                 <p><strong>{role.name.split(' ')[0]}</strong> {role.name.split(' ')[1]}</p>
                 <div>
                   <img alt={`${role.name} path`} src={role.img} />
