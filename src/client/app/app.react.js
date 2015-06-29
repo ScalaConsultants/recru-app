@@ -43,7 +43,11 @@ class App extends Component {
   }
 
   getRefNameFor(screen) {
-    return this.state.screens.get('currentScreen') === screen ? 'currentScreen' : null;
+    return this.isCurrent(screen) ? 'currentScreen' : null;
+  }
+
+  isCurrent(screen) {
+    return this.state.screens.get('currentScreen') === screen;
   }
 
   handleMoveUp(e) {
@@ -81,11 +85,11 @@ class App extends Component {
     return (
       <div className="page">
         <div className="screen-list" style={listStyle}>
-          <FirstScreen ref={this.getRefNameFor(0)}/>
-          <SecondScreen ref={this.getRefNameFor(1)}/>
-          <ThirdScreen ref={this.getRefNameFor(2)}/>
-          <FourthScreen {...this.state} ref={this.getRefNameFor(3)}/>
-          <FifthScreen {...this.state} ref={this.getRefNameFor(4)}/>
+          <FirstScreen isCurrent={this.isCurrent(0)} ref={this.getRefNameFor(0)}/>
+          <SecondScreen isCurrent={this.isCurrent(1)} ref={this.getRefNameFor(1)}/>
+          <ThirdScreen isCurrent={this.isCurrent(2)} ref={this.getRefNameFor(2)}/>
+          <FourthScreen {...this.state} isCurrent={this.isCurrent(3)} ref={this.getRefNameFor(3)}/>
+          <FifthScreen {...this.state} isCurrent={this.isCurrent(4)} ref={this.getRefNameFor(4)}/>
         </div>
         <Hello className={miniMapAndHelloClassName} message={message}/>
         <MiniMap className={miniMapAndHelloClassName} screens={this.state.screens}/>

@@ -15,15 +15,21 @@ export default {
     return (element.scrollTop > 0 && element.scrollTop < maxScrollPosition);
   },
 
-  hasStartedAtBounds: function() {
+  isScrollDeltaWithinBounds: function(delta) {
+    const element = React.findDOMNode(this);
+    const maxScrollPosition = element.scrollHeight - element.clientHeight;
+    return (element.scrollTop === 0 && delta < 0) || (element.scrollTop === maxScrollPosition && delta > 0);
+  },
+
+  hasSwipeStartedAtBounds: function() {
     const element = React.findDOMNode(this);
     const maxScrollPosition = element.scrollHeight - element.clientHeight;
     return (this.swipeDetails.sScrollTop === 0 || this.swipeDetails.sScrollTop === maxScrollPosition);
   },
 
   handleMouseWheel: function(e) {
-    if (this.isWithinBounds())
-      e.stopPropagation();
+    if (this.isWithinBounds() || this.isScrollDeltaWithinBounds(e.wheelDelta || -e.detail))
+      e.stopImmediatePropagation();
   },
 
   handleTouchStart: function(e) {
@@ -36,7 +42,7 @@ export default {
   },
 
   handleTouchEnd: function(e) {
-    if (this.isWithinBounds() || !this.hasStartedAtBounds())
+    if (this.isWithinBounds() || !this.hasSwipeStartedAtBounds())
       e.stopPropagation();
   },
 
