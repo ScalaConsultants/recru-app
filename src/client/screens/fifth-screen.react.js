@@ -2,6 +2,8 @@ import Component from '../components/component.react';
 import {submit} from '../candidate/actions';
 import classNames from 'classnames';
 import immutable from 'immutable';
+import roles from '../data/roles.json';
+import technologies from '../data/technologies.json';
 import React from 'react';
 import './fifth-screen.styl';
 
@@ -20,15 +22,30 @@ class FifthScreen extends Component {
     return {
       dragOver: false,
       fileUploaded: false,
-      urlPassed: false
+      urlPassed: false,
+      emailPassed: false
     };
   }
 
+  isDataValid() {
+    if (!this.state.urlPassed || !this.state.fileUploaded || !this.emailPassed)
+      return false;
+    return true;
+  }
+
   submit() {
-    // TODO: make an XHR request which would send all the data and files to the backend
-    //       to get the data use this.props.candidate immutable.js Map
-    // TODO: if the XHR request is successful, display thank you overlay
-    submit();
+    if (!this.isDataValid())
+      return;
+
+    submit({
+      cvFile: this.cvFile,
+      jsonData: JSON.stringify({
+        name: this.props.candidate.get('name'),
+        role: this.props.candidate.get('role'), // TODO: here role is only id, fix
+        email: this.props.candidate.get('email'),
+        skills: [{name: '', level: 1}] // TODO: process skills based on ids
+      })
+    });
   }
 
   handleUrlChange(e) {
@@ -43,13 +60,16 @@ class FifthScreen extends Component {
   }
 
   handleDrop(e) {
+    const files = e.target.files || e.dataTransfer.files;
     this.handleDragOver(e);
+
+    if (files.length > 1) {
+      window.alert('You can only upload one file.'); // eslint-disable-line no-alert
+      return;
+    }
+
+    this.cvFile = files[0];
     this.setState({fileUploaded: true});
-
-    // fetch FileList object
-    // const files = e.target.files || e.dataTransfer.files;
-
-    // TODO: do something with files, store them somewhere temporarily
   }
 
   componentDidMount() {
@@ -84,12 +104,12 @@ class FifthScreen extends Component {
       <section className="fifth-screen screen">
         <header>One more thing...</header>
         <h2>Give us your linkedIn...</h2>
-        <input className={inputClassName} onChange={this.handleUrlChange} placeholder="Pass url here" type="text"/>
+        <input className={inputClassName} onChange={this.handleUrlChange} placeholder="Pass url here" ref="urlInput" type="text"/>
         <span>or</span>
         <input ref="fileInput" type="file" />
         <div className={dropAreaclassName} id="drop" onClick={() => React.findDOMNode(this.refs.fileInput).click()} ref="dropArea">
           <span>
-            { this.state.fileUploaded ? 'file(s) included' : 'drop or click to select resume'}
+            { this.state.fileUploaded ? 'resume uploaded' : 'drop or click to select resume'}
           </span>
         </div>
         <button onClick={this.submit}><i></i>Take me to ScalaC</button>
