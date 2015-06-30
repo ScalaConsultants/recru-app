@@ -26,7 +26,11 @@ class FourthScreen extends Component {
 
     return (
       <section className="fourth-screen screen">
-        <header>pack your bag</header>
+        <header>
+          pack your bag
+        </header>
+        <p>show us, which skills you have</p>
+        
         <ul>
         {arr.map(function(element) {
           return <SkillItem data={element} key={element.id}/>;
