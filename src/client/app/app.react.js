@@ -75,10 +75,10 @@ class App extends Component {
       WebkitTransform: translate
     };
     const miniMapAndHelloClassName = classNames({
-      '-visible': this.state.screens.get('currentScreen') > 0 && !this.state.candidate.get('hasSubmittedForm') && !this.state.candidate.get('isSubmittingForm')
+      '-visible': this.state.screens.get('currentScreen') > 0 && !this.state.candidate.get('hasSubmittedForm')
     });
     const thankYouClassName = classNames({
-      '-visible': this.state.candidate.get('isSubmittingForm') || this.state.candidate.get('hasSubmittedForm')
+      '-visible': this.state.candidate.get('hasSubmittedForm')
     });
     const message = `Hello, ${this.state.candidate.get('name')}.`;
 
