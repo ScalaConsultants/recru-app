@@ -1,4 +1,5 @@
 import setToString from '../lib/settostring';
+import multipartPostRequest from '../lib/multipartPostRequest';
 import {dispatch} from '../dispatcher';
 
 export function saveName(name) {
@@ -13,16 +14,29 @@ export function saveRole(role) {
   dispatch(saveRole, role);
 }
 
-export function saveSkill(id, level) {
-  dispatch(saveSkill, {id, level});
+export function saveSkill(skill, level) {
+  dispatch(saveSkill, {skill, level});
 }
 
-export function saveResume(file) {
-  dispatch(saveResume, file);
-}
-
-export function submit() {
+export function submit(parts) {
   dispatch(submit);
+  multipartPostRequest('http://localhost:8080/upload', parts)
+    .then(receiveSubmitResponse)
+    .catch(showDirtyError);
+}
+
+// This is ugly but working, we're short on time...
+function showDirtyError() {
+  window.alert('Something went wrong and we are very sorry about that. Try again in couple seconds or drop us a message at info@scalac.io, thanks!'); // eslint-disable-line no-alert
+}
+
+export function receiveSubmitResponse(response) {
+  if (response !== 'OK') {
+    showDirtyError();
+    return;
+  }
+
+  dispatch(receiveSubmitResponse, response);
   // After showing thank you screen, redirect to homepage
   setTimeout(() => window.location = 'http://scalac.io', 5000);
 }
@@ -32,6 +46,6 @@ setToString('candidate', {
   saveEmail,
   saveRole,
   saveSkill,
-  saveResume,
-  submit
+  submit,
+  receiveSubmitResponse
 });

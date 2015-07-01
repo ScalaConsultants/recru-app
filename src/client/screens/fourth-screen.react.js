@@ -6,7 +6,7 @@ import immutable from 'immutable';
 import boundScrollMixin from '../mixins/bound-scroll';
 import reactMixin from 'react-mixin';
 import SkillItem from '../components/skillItem.react';
-import json from '../data/technologies.json';
+import technologies from '../data/technologies.json';
 import './fourth-screen.styl';
 
 class FourthScreen extends Component {
@@ -20,9 +20,11 @@ class FourthScreen extends Component {
   }
 
   render() {
-    var skills = json[this.props.candidate.get('role')], arr = [];
+    const skills = technologies[this.props.candidate.getIn(['role', 'id'])];
+    let skillsForCurrentRole = [];
+
     if (typeof skills === 'object')
-      arr = Object.keys(skills).map(function(key) { return skills[key]; });
+      skillsForCurrentRole = Object.keys(skills).map(function(key) { return skills[key]; });
 
     return (
       <section className="fourth-screen screen">
@@ -32,8 +34,8 @@ class FourthScreen extends Component {
         <p>show us, which skills you have</p>
         
         <ul>
-        {arr.map(function(element) {
-          return <SkillItem data={element} key={element.id}/>;
+        {skillsForCurrentRole.map(function(skill) {
+          return <SkillItem data={skill} key={skill.id}/>;
         })}
         </ul>
 

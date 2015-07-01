@@ -48,6 +48,13 @@
     transition all .25s
     padding 20px 0px
 
+    &[disabled]
+      opacity 0.5
+      background #aaa
+
+    &:not([disabled]):hover
+      background #9f1313
+
     i
       width 50px
       height 50px
@@ -62,9 +69,6 @@
       margin 0px
       font-size 20px
       font-weight 400
-
-  button:hover
-    background #9f1313
 
   #drop
     border 2px dashed #fff

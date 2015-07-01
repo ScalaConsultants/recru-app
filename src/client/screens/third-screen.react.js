@@ -3,7 +3,6 @@ import React from 'react';
 import boundScrollMixin from '../mixins/bound-scroll';
 import reactMixin from 'react-mixin';
 import json from '../data/roles.json';
-import isNumeric from '../lib/isNumeric';
 import {saveRole} from '../candidate/actions';
 import {nextScreen} from './actions';
 import './third-screen.styl';
@@ -23,7 +22,7 @@ class ThirdScreen extends Component {
   }
 
   proceed() {
-    if (!isNumeric(this.state.role))
+    if (!this.state.role)
       return;
 
     saveRole(this.state.role);
@@ -40,7 +39,7 @@ class ThirdScreen extends Component {
         <ul>
           {json.map((role) => {
             return (
-              <li key={role.id} onClick={() => this.handleChooseRole(role.id)}>
+              <li key={role.id} onClick={() => this.handleChooseRole(role)}>
                 <p><strong>{role.name.split(' ')[0]}</strong> {role.name.split(' ')[1]}</p>
                 <div>
                   <img alt={`${role.name} path`} src={role.img} />
