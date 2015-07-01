@@ -10,7 +10,7 @@ export default {
     email: '',
     role: null,
     skills: {},
-    resume: null,
-    hasSubmittedForm: false
+    hasSubmittedForm: false,
+    isSubmittingForm: false
   }
 };

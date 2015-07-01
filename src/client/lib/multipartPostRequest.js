@@ -9,7 +9,8 @@ export default function multipartPostRequest(uri, parts) {
 
   const formData = new FormData();
 
-  Object.keys(parts).forEach((content, name) => {
+  Object.keys(parts).forEach((name) => {
+    const content = parts[name];
     formData.append(name, content);
   });
 
@@ -22,6 +23,9 @@ export default function multipartPostRequest(uri, parts) {
         resolve(xhr.responseText);
       else
         reject(xhr);
+    };
+    xhr.onerror = () => {
+      reject(xhr);
     };
     xhr.send(formData);
   });

@@ -14,12 +14,8 @@ export function saveRole(role) {
   dispatch(saveRole, role);
 }
 
-export function saveSkill(id, level) {
-  dispatch(saveSkill, {id, level});
-}
-
-export function saveResume(file) {
-  dispatch(saveResume, file);
+export function saveSkill(skill, level) {
+  dispatch(saveSkill, {skill, level});
 }
 
 export function submit(parts) {
@@ -50,7 +46,6 @@ setToString('candidate', {
   saveEmail,
   saveRole,
   saveSkill,
-  saveResume,
   submit,
   receiveSubmitResponse
 });

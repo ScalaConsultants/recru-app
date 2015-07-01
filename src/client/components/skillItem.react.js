@@ -8,7 +8,7 @@ class SkillItem extends Component {
   }
 
   handleChange(level, e) {
-    saveSkill(this.props.data.id, level);
+    saveSkill(this.props.data, level);
   }
 
   render() {

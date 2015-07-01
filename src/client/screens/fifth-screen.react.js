@@ -2,8 +2,6 @@ import Component from '../components/component.react';
 import {submit} from '../candidate/actions';
 import classNames from 'classnames';
 import immutable from 'immutable';
-import roles from '../data/roles.json';
-import technologies from '../data/technologies.json';
 import React from 'react';
 import './fifth-screen.styl';
 
@@ -28,7 +26,7 @@ class FifthScreen extends Component {
   }
 
   isDataValid() {
-    if (!this.state.urlPassed || !this.state.fileUploaded || !this.emailPassed)
+    if (!this.state.urlPassed || !this.state.fileUploaded/* || !this.emailPassed*/)
       return false;
     return true;
   }
@@ -37,15 +35,19 @@ class FifthScreen extends Component {
     if (!this.isDataValid())
       return;
 
-    submit({
+    const candidateData = {
+      name: this.props.candidate.get('name'),
+      role: this.props.candidate.getIn(['role', 'name']),
+      email: this.props.candidate.get('email'),
+      skills: this.props.candidate.get('skills').toList().toJS()
+    };
+
+    const parts = {
       cvFile: this.cvFile,
-      jsonData: JSON.stringify({
-        name: this.props.candidate.get('name'),
-        role: this.props.candidate.get('role'), // TODO: here role is only id, fix
-        email: this.props.candidate.get('email'),
-        skills: [{name: '', level: 1}] // TODO: process skills based on ids
-      })
-    });
+      jsonData: JSON.stringify(candidateData)
+    };
+
+    submit(parts);
   }
 
   handleUrlChange(e) {
@@ -112,7 +114,7 @@ class FifthScreen extends Component {
             { this.state.fileUploaded ? 'resume uploaded' : 'drop or click to select resume'}
           </span>
         </div>
-        <button onClick={this.submit}><i></i>Take me to ScalaC</button>
+        <button disabled={!this.isDataValid()} onClick={this.submit}><i></i>Take me to ScalaC</button>
       </section>
     );
   }
