@@ -20,13 +20,12 @@ class FifthScreen extends Component {
     return {
       dragOver: false,
       fileUploaded: false,
-      urlPassed: false,
-      emailPassed: false
+      urlPassed: false
     };
   }
 
   isDataValid() {
-    if (!this.state.urlPassed || !this.state.fileUploaded/* || !this.emailPassed*/)
+    if (!this.state.urlPassed || !this.state.fileUploaded)
       return false;
     return true;
   }
@@ -38,6 +37,7 @@ class FifthScreen extends Component {
     const candidateData = {
       name: this.props.candidate.get('name'),
       role: this.props.candidate.getIn(['role', 'name']),
+      linkedin: React.findDOMNode(this.refs.urlInput).value,
       email: this.props.candidate.get('email'),
       skills: this.props.candidate.get('skills').toList().toJS()
     };
