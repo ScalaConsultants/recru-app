@@ -105,7 +105,9 @@ class FifthScreen extends Component {
     return (
       <section className="fifth-screen screen">
         <header>One more thing...</header>
-        <h2>Give us your linkedIn...</h2>
+        <h2>Leave us contact to you</h2>
+        <input className="email" placeholder="email" ref="emailInput" type="text"/>
+        <h2>...and more info</h2>
         <input className={inputClassName} onChange={this.handleUrlChange} placeholder="Pass url here" ref="urlInput" type="text"/>
         <span>or</span>
         <input ref="fileInput" type="file" />
