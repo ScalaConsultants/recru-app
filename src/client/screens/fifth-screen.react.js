@@ -12,6 +12,7 @@ class FifthScreen extends Component {
     this.state = this.getDefaultState();
     this.submit = this.submit.bind(this);
     this.handleUrlChange = this.handleUrlChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleDragOver = this.handleDragOver.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
   }
@@ -20,12 +21,13 @@ class FifthScreen extends Component {
     return {
       dragOver: false,
       fileUploaded: false,
-      urlPassed: false
+      urlPassed: false,
+      emailPassed: false
     };
   }
 
   isDataValid() {
-    if (!this.state.urlPassed || !this.state.fileUploaded)
+    if ((!this.state.urlPassed || !this.state.fileUploaded) && !this.state.emailPassed)
       return false;
     return true;
   }
@@ -38,7 +40,7 @@ class FifthScreen extends Component {
       name: this.props.candidate.get('name'),
       role: this.props.candidate.getIn(['role', 'name']),
       linkedin: React.findDOMNode(this.refs.urlInput).value,
-      email: this.props.candidate.get('email'),
+      email: React.findDOMNode(this.refs.emailInput).value,
       skills: this.props.candidate.get('skills').toList().toJS()
     };
 
@@ -53,6 +55,14 @@ class FifthScreen extends Component {
   handleUrlChange(e) {
     const hasNoValue = !e.target.value || e.target.value.trim().length === 0;
     this.setState({urlPassed: !hasNoValue});
+  }
+  
+  handleEmailChange(e) {
+    const hasNoValue = !e.target.value || e.target.value.trim().length === 0;
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+    
+    this.setState({emailPassed: !hasNoValue && filter.test(e.target.value)});
   }
 
   handleDragOver(e) {
@@ -101,12 +111,16 @@ class FifthScreen extends Component {
     const inputClassName = classNames({
       active: this.state.urlPassed
     });
+    
+    const emailInputClassName = classNames({
+      active: this.state.emailPassed
+    });
 
     return (
       <section className="fifth-screen screen">
         <header>One more thing...</header>
         <h2>Leave us contact to you</h2>
-        <input className="email" placeholder="email" ref="emailInput" type="text"/>
+        <input className={emailInputClassName} placeholder="email" onChange={this.handleEmailChange} ref="emailInput" type="text"/>
         <h2>...and more info</h2>
         <input className={inputClassName} onChange={this.handleUrlChange} placeholder="Pass url here" ref="urlInput" type="text"/>
         <span>or</span>
