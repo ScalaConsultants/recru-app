@@ -121,11 +121,11 @@ class FifthScreen extends Component {
       <section className="fifth-screen screen dark">
         <header>One more thing...</header>
         <h2>Leave us your email</h2>
-        <input className={emailInputClassName} onChange={this.handleEmailChange} placeholder="email" ref="emailInput" type="text"/>
+        <input className={emailInputClassName} onChange={this.handleEmailChange} placeholder="email" ref="emailInput" tabIndex="-1" type="text"/>
         <h2>and optionally a linkedin profile uri</h2>
-        <input className={inputClassName} onChange={this.handleUrlChange} placeholder="linkedin.com/in/username" ref="urlInput" type="text"/>
+        <input className={inputClassName} onChange={this.handleUrlChange} placeholder="linkedin.com/in/username" ref="urlInput" tabIndex="-1" type="text"/>
         <span>or</span>
-        <input ref="fileInput" type="file" />
+        <input ref="fileInput" tabIndex="-1" type="file" />
         <div className={dropAreaclassName} id="drop" onClick={() => React.findDOMNode(this.refs.fileInput).click()} ref="dropArea">
           <span>
             { this.state.fileUploaded ? 'resume uploaded' : 'drop or click to select resume'}
