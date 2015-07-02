@@ -2,6 +2,8 @@ import Component from '../components/component.react';
 import {submit} from '../candidate/actions';
 import classNames from 'classnames';
 import immutable from 'immutable';
+import reactMixin from 'react-mixin';
+import boundScrollMixin from '../mixins/bound-scroll';
 import React from 'react';
 import './fifth-screen.styl';
 
@@ -27,9 +29,9 @@ class FifthScreen extends Component {
   }
 
   isDataValid() {
-    if ((!this.state.urlPassed || !this.state.fileUploaded) && !this.state.emailPassed)
-      return false;
-    return true;
+    if (this.state.emailPassed && (this.state.urlPassed || this.state.fileUploaded))
+      return true;
+    return false;
   }
 
   submit() {
@@ -56,12 +58,11 @@ class FifthScreen extends Component {
     const hasNoValue = !e.target.value || e.target.value.trim().length === 0;
     this.setState({urlPassed: !hasNoValue});
   }
-  
+
   handleEmailChange(e) {
     const hasNoValue = !e.target.value || e.target.value.trim().length === 0;
     var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-    
     this.setState({emailPassed: !hasNoValue && filter.test(e.target.value)});
   }
 
@@ -111,7 +112,7 @@ class FifthScreen extends Component {
     const inputClassName = classNames({
       active: this.state.urlPassed
     });
-    
+
     const emailInputClassName = classNames({
       active: this.state.emailPassed
     });
@@ -119,10 +120,10 @@ class FifthScreen extends Component {
     return (
       <section className="fifth-screen screen">
         <header>One more thing...</header>
-        <h2>Leave us contact to you</h2>
-        <input className={emailInputClassName} placeholder="email" onChange={this.handleEmailChange} ref="emailInput" type="text"/>
-        <h2>...and more info</h2>
-        <input className={inputClassName} onChange={this.handleUrlChange} placeholder="Pass url here" ref="urlInput" type="text"/>
+        <h2>Leave us your email</h2>
+        <input className={emailInputClassName} onChange={this.handleEmailChange} placeholder="email" ref="emailInput" type="text"/>
+        <h2>and optionally a linkedin profile uri</h2>
+        <input className={inputClassName} onChange={this.handleUrlChange} placeholder="linkedin.com/in/username" ref="urlInput" type="text"/>
         <span>or</span>
         <input ref="fileInput" type="file" />
         <div className={dropAreaclassName} id="drop" onClick={() => React.findDOMNode(this.refs.fileInput).click()} ref="dropArea">
@@ -139,5 +140,7 @@ class FifthScreen extends Component {
 FifthScreen.propTypes = {
   candidate: React.PropTypes.instanceOf(immutable.Map).isRequired
 };
+
+reactMixin(FifthScreen.prototype, boundScrollMixin);
 
 export default FifthScreen;
