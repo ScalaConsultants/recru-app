@@ -118,7 +118,7 @@ class FifthScreen extends Component {
     });
 
     return (
-      <section className="fifth-screen screen">
+      <section className="fifth-screen screen dark">
         <header>One more thing...</header>
         <h2>Leave us your email</h2>
         <input className={emailInputClassName} onChange={this.handleEmailChange} placeholder="email" ref="emailInput" type="text"/>
