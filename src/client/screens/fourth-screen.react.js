@@ -32,13 +32,11 @@ class FourthScreen extends Component {
           pack your bag
         </header>
         <p>show us, which skills you have</p>
-        
         <ul>
         {skillsForCurrentRole.map(function(skill) {
           return <SkillItem data={skill} key={skill.id}/>;
         })}
         </ul>
-
         <Chevron isAnimated={true} onClick={this.proceed}/>
       </section>
     );
