@@ -15,6 +15,7 @@ export default class Html extends Component {
       <html lang="en">
         <head>
           <meta charSet="utf-8" />
+          <meta content="IE=Edge" httpEquiv="X-UA-Compatible" />
           <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
           <title>{this.props.title}</title>
           {linkStyles}
