@@ -21,7 +21,7 @@ export function saveSkill(skill, level) {
 export function submit(parts) {
   dispatch(submit);
   // TODO: replace the api endpoint uri and ideally make it configurable per environment
-  multipartPostRequest('http://localhost:8080/upload', parts)
+  multipartPostRequest('http://144.76.238.49:20001/upload', parts)
     .then(receiveSubmitResponse)
     .catch(showDirtyError);
 }
