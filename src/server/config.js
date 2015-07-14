@@ -7,7 +7,7 @@ nconf.env('__');
 var config = {
   baseUri: '/',
   defaultTitle: 'Scalac - Best Scala hAkkers!',
-  appLocales: ['en', 'fr'],
+  appLocales: ['en'],
   defaultLocale: 'en',
   googleAnalyticsId: 'UA-XXXXXXX-X',
   isProduction: process.env.NODE_ENV === 'production',

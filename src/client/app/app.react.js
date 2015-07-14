@@ -1,5 +1,4 @@
 import './app.styl';
-import * as state from '../state';
 import Component from '../components/component.react';
 import React from 'react';
 import FirstScreen from '../screens/first-screen.react';
@@ -13,10 +12,11 @@ import ThankYou from '../components/thank-you.react.js';
 import classNames from 'classnames';
 import reactMixin from 'react-mixin';
 import movementHandlerMixin from '../mixins/movement-handler';
+import {appState} from '../state';
 import {previousScreen} from '../screens/actions';
 import {measureRender} from '../console';
 
-// Remember to import all app stores here.
+// All stores must be imported here.
 import '../screens/store';
 import '../candidate/store';
 
@@ -30,11 +30,9 @@ class App extends Component {
   }
 
   getState() {
-    return {
-      pendingActions: state.pendingActionsCursor(),
-      screens: state.screensCursor(),
-      candidate: state.candidateCursor()
-    };
+    return appState.get().merge({
+      // nothing else at the moment
+    }).toObject();
   }
 
   getPageOffset() {
@@ -60,10 +58,10 @@ class App extends Component {
   }
 
   // Why componentWillMount instead of componentDidMount.
-  // https://github.com/steida/este/issues/274
+  // https://github.com/este/este/issues/274
   componentWillMount() {
     if (!process.env.IS_BROWSER) return;
-    state.appState.on('change', () => {
+    appState.on('change', () => {
       measureRender(done => this.setState(this.getState(), done));
     });
   }
