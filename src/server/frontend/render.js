@@ -29,7 +29,7 @@ function loadAppStateThenRenderHtml(Handler, appState) {
 function getPageHtml(Handler, appState) {
   const appHtml = `<div id="app">${React.renderToString(<Handler />)}</div>`;
   const appScriptSrc = config.isProduction
-    ? 'build/app.js?v=' + config.version
+    ? 'build/app.js?v=' + config.app.version
     : '//localhost:8888/build/app.js';
 
   // Serialize app state for client.
@@ -57,11 +57,11 @@ function getPageHtml(Handler, appState) {
 
   return '<!DOCTYPE html>' + React.renderToStaticMarkup(
     <Html
-      baseUri={config.baseUri}
+      baseUri={config.app.baseUri}
       bodyHtml={appHtml + scriptHtml}
       isProduction={config.isProduction}
-      title={config.defaultTitle}
-      version={config.version}
+      title={config.app.defaultTitle}
+      version={config.app.version}
     />
   );
 }

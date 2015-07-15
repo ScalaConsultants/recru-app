@@ -13,7 +13,7 @@ const server = Server(app);
 app.use('/api/v1', api);
 
 // Load react-js frontend.
-const trimmedBaseUri = trimRight(config.baseUri, '/');
+const trimmedBaseUri = trimRight(config.app.baseUri, '/');
 app.use(trimmedBaseUri, frontend);
 
 // Error reporting

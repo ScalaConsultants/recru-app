@@ -22,7 +22,7 @@ app.use('/assets', express.static('assets'));
 // Load translations, fallback to defaultLocale if no
 // translations available.
 app.use(i18nLoader({
-  appLocales: config.appLocales,
+  appLocales: config.locales,
   defaultLocale: config.defaultLocale
 }));
 
@@ -30,7 +30,11 @@ app.use(i18nLoader({
 app.use(userState());
 
 app.get('/', (req, res, next) => {
-  render(req, res, req.userState, {i18n: req.i18n}).catch(next);
+  const customStates = {
+    i18n: req.i18n,
+    config: config.app
+  };
+  render(req, res, req.userState, customStates).catch(next);
 });
 
 app.on('mount', () => {

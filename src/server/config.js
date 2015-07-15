@@ -5,11 +5,16 @@ var nconf = require('nconf');
 nconf.env('__');
 
 var config = {
-  baseUri: '/',
-  defaultTitle: 'Scalac - Best Scala hAkkers!',
-  appLocales: ['en'],
-  defaultLocale: 'en',
+  app: {
+    // NOTE: Feel free to introduce new properties and read using configCursor.
+    baseUri: '/',
+    defaultTitle: 'Scalac - Best Scala hAkkers!',
+    apiEndpoint: 'http://localhost:8080',
+    version: require('../../package').version
+  },
   googleAnalyticsId: 'UA-XXXXXXX-X',
+  locales: ['en'],
+  defaultLocale: 'en',
   isProduction: process.env.NODE_ENV === 'production',
   piping: {
     // Ignore webpack custom loaders on server. TODO: Reuse index.js config.
@@ -18,7 +23,6 @@ var config = {
     hook: true
   },
   port: process.env.PORT || 8000,
-  version: require('../../package').version,
   webpackStylesExtensions: ['css', 'less', 'sass', 'scss', 'styl']
 };
 

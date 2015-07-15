@@ -1,5 +1,6 @@
 import setToString from '../lib/settostring';
 import multipartPostRequest from '../lib/multipartPostRequest';
+import {configCursor} from '../state';
 import {dispatch} from '../dispatcher';
 
 export function saveName(name) {
@@ -20,8 +21,7 @@ export function saveSkill(skill, level) {
 
 export function submit(parts) {
   dispatch(submit);
-  // TODO: replace the api endpoint uri and ideally make it configurable per environment
-  multipartPostRequest('http://144.76.238.49:20001/upload', parts)
+  multipartPostRequest(`${configCursor(['apiEndpoint']).replace(/\/?$/, '/')}upload`, parts)
     .then(receiveSubmitResponse)
     .catch(showDirtyError);
 }

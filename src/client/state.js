@@ -13,6 +13,7 @@ export const appState = new State(initialState, function(key, value) {
   }
 });
 
+export const configCursor = appState.cursor(['config']);
 export const pendingActionsCursor = appState.cursor(['pendingActions']);
 export const screensCursor = appState.cursor(['screens']);
 export const candidateCursor = appState.cursor(['candidate']);
