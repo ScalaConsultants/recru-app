@@ -39,7 +39,7 @@ Currently Este.js doesn't support [part-of-framework deployment](https://gist.gi
 
 - `gulp build -p` builds assets for production.
 - copy `build` and `assets` folders to the target location.
-- `NODE_ENV=production baseUri="/recru-app/" npm start` runs the app in production mode in a subfolder so you can copy&paste the contents of served index.html to a target location.
+- `NODE_ENV=production app__baseUri="/recruitment/" app__apiEndpoint="https://recru-app-backend.scalac.io" npm start` runs the app in production mode in a subfolder so you can copy&paste the contents of served index.html to a target location.
 
 
 
