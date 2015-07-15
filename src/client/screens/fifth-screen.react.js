@@ -46,10 +46,12 @@ class FifthScreen extends Component {
       skills: this.props.candidate.get('skills').toList().toJS()
     };
 
-    const parts = {
-      cvFile: this.cvFile,
+    let parts = {
       jsonData: JSON.stringify(candidateData)
     };
+
+    // Only add cvFile property if we really have cvFile here
+    if (this.cvFile) parts.cvFile = this.cvFile;
 
     submit(parts);
   }
