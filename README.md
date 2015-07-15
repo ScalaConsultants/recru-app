@@ -45,7 +45,7 @@ Currently Este.js doesn't support [part-of-framework deployment](https://gist.gi
 
 ### Why can't we hook this up to the CI server?
 
-Because este.js which was chosen as an underlying framework doesn't support this kind of deployment. Este application are usually deployed as node.js server side apps. We could add this kind of deployment to the build pipline but it would take some time.
+Because este.js which was chosen as an underlying framework doesn't support this kind of deployment. Este application are usually deployed as node.js server side apps. We could add this kind of deployment to the build pipeline but it would take some time.
 
 ### How to change the API endpoint?
 
