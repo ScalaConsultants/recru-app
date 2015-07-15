@@ -38,20 +38,22 @@ class FifthScreen extends Component {
     if (!this.isDataValid())
       return;
 
-    const candidateData = {
+    let candidateData = {
       name: this.props.candidate.get('name'),
       role: this.props.candidate.getIn(['role', 'name']),
-      linkedin: React.findDOMNode(this.refs.urlInput).value,
       email: React.findDOMNode(this.refs.emailInput).value,
       skills: this.props.candidate.get('skills').toList().toJS()
     };
+
+    // Only add linkedin property if we really have cvFile here
+    if (this.state.urlPassed) candidateData.linkedin = React.findDOMNode(this.refs.urlInput).value;
 
     let parts = {
       jsonData: JSON.stringify(candidateData)
     };
 
     // Only add cvFile property if we really have cvFile here
-    if (this.cvFile) parts.cvFile = this.cvFile;
+    if (this.state.fileUploaded) parts.cvFile = this.cvFile;
 
     submit(parts);
   }
