@@ -2,7 +2,7 @@
   "name": "recru-app",
   "description": "Awesome recruitment app for the IT folks",
   "author": "Marek Suscak",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "scripts": {
     "start": "node src/server",
