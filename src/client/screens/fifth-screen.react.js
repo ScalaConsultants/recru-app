@@ -126,7 +126,7 @@ class FifthScreen extends Component {
         <header>One more thing...</header>
         <h2>Leave us your email</h2>
         <input className={emailInputClassName} onChange={this.handleEmailChange} placeholder="email" ref="emailInput" tabIndex="-1" type="text"/>
-        <h2>and optionally a linkedin profile uri</h2>
+        <h2>and either a LinkedIn profile URI</h2>
         <input className={inputClassName} onChange={this.handleUrlChange} placeholder="linkedin.com/in/username" ref="urlInput" tabIndex="-1" type="text"/>
         <span>or</span>
         <input ref="fileInput" tabIndex="-1" type="file" />
