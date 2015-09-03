@@ -21,6 +21,17 @@ const runKarma = ({singleRun}, done) => {
   server.start();
 };
 
+const runEslint = () => {
+  return gulp.src([
+    'gulpfile.babel.js',
+    'src/**/*.js',
+    'webpack/*.js',
+    '!**/__tests__/*.*'
+  ])
+  .pipe(eslint())
+  .pipe(eslint.format());
+};
+
 gulp.task('env', () => {
   const env = args.production ? 'production' : 'development';
   process.env.NODE_ENV = env; // eslint-disable-line no-undef
@@ -35,40 +46,31 @@ gulp.task('build-webpack', [args.production
 gulp.task('build', ['build-webpack']);
 
 gulp.task('eslint', () => {
-  return gulp.src([
-    'gulpfile.babel.js',
-    'src/**/*.js',
-    'webpack/*.js',
-    '!**/__tests__/*.*'
-  ])
-  .pipe(eslint())
-  .pipe(eslint.format())
-  .pipe(eslint.failOnError());
+  return runEslint();
+});
+
+gulp.task('eslint-ci', () => {
+  // Exit process with an error code (1) on lint error for CI build.
+  return runEslint().pipe(eslint.failAfterError());
 });
 
 gulp.task('karma-ci', (done) => {
   runKarma({singleRun: true}, done);
 });
 
-gulp.task('karma-dev', (done) => {
+gulp.task('karma', (done) => {
   runKarma({singleRun: false}, done);
 });
 
 gulp.task('test', (done) => {
-  // Run test tasks serially, because it doesn't make sense to build when tests
-  // are not passing, and it doesn't make sense to run tests, if lint has failed.
-  // Gulp deps aren't helpful, because we want to run tasks without deps as well.
-  runSequence('eslint', 'karma-ci', 'build-webpack-production', done);
+  runSequence('eslint-ci', 'karma-ci', 'build-webpack-production', done);
 });
 
 gulp.task('server', ['env', 'build'], bg('node', 'src/server'));
 
-gulp.task('default', (done) => {
-  if (args.production)
-    runSequence('server', done);
-  else
-    runSequence('server', done);
-    // Karma disabled because https://github.com/este/este/issues/350.
-    // It will be replaced pretty soon anyway.
-    // runSequence('server', 'karma-dev', done);
+gulp.task('tdd', (done) => {
+  // Run karma configured for TDD.
+  runSequence('server', 'karma', done);
 });
+
+gulp.task('default', ['server']);

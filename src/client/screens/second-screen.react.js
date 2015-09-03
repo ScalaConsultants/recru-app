@@ -6,7 +6,7 @@ import './second-screen.styl';
 export default class SecondScreen extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired
-  };
+  }
 
   proceed() {
     const {actions: {screens}} = this.props;

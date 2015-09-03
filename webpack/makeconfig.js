@@ -19,7 +19,8 @@ var devtools = process.env.CONTINUOUS_INTEGRATION
 var loaders = {
   'css': '',
   'less': '!less-loader',
-  'scss|sass': '!sass-loader',
+  'scss': '!sass-loader',
+  'sass': '!sass-loader?indentedSyntax',
   'styl': '!stylus-loader'
 };
 
@@ -56,22 +57,23 @@ module.exports = function(isDevelopment) {
     },
     module: {
       loaders: [
-      {
-        loader: 'json',
-        test: /\.json$/
-      },
-      {
-        loader: 'url-loader?limit=100000',
-        test: /\.(gif|jpg|png|woff|woff2|eot|ttf|svg)$/
-      }, {
-        exclude: /node_modules/,
-        loaders: isDevelopment ? [
-          'react-hot', 'babel-loader'
-        ] : [
-          'babel-loader'
-        ],
-        test: /\.js$/
-      }].concat(stylesLoaders())
+        {
+          loader: 'json',
+          test: /\.json$/
+        },
+        {
+          loader: 'url-loader?limit=100000',
+          test: /\.(gif|jpg|png|woff|woff2|eot|ttf|svg)$/
+        }, {
+          exclude: /node_modules/,
+          loaders: isDevelopment ? [
+            'react-hot', 'babel-loader'
+          ] : [
+            'babel-loader'
+          ],
+          test: /\.js$/
+        }
+      ].concat(stylesLoaders())
     },
     output: isDevelopment ? {
       path: constants.BUILD_DIR,
@@ -92,30 +94,37 @@ module.exports = function(isDevelopment) {
           }
         })
       ];
-      if (isDevelopment)
-        plugins.push(
-          NotifyPlugin,
-          new webpack.HotModuleReplacementPlugin(),
-          // Tell reloader to not reload if there is an error.
-          new webpack.NoErrorsPlugin()
-        );
-      else
-        plugins.push(
-          // Render styles into separate cacheable file to prevent FOUC and
-          // optimize for critical rendering path.
-          new ExtractTextPlugin('app.css', {
-            allChunks: true
-          }),
-          new NyanProgressPlugin(),
-          new webpack.optimize.DedupePlugin(),
-          new webpack.optimize.OccurenceOrderPlugin(),
-          new webpack.optimize.UglifyJsPlugin({
-            compress: {
-              // Because uglify reports so many irrelevant warnings.
-              warnings: false
-            }
-          })
-        );
+      if (isDevelopment) plugins.push(
+        NotifyPlugin,
+        new webpack.HotModuleReplacementPlugin()
+      );
+      else plugins.push(
+        // Render styles into separate cacheable file to prevent FOUC and
+        // optimize for critical rendering path.
+        new ExtractTextPlugin('app.css', {
+          allChunks: true
+        }),
+        new NyanProgressPlugin(),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+          // keep_fnames prevents function name mangling.
+          // Function names are useful. Seeing a readable error stack while
+          // being able to programmatically analyse it is priceless. And yes,
+          // we don't need infamous FLUX_ACTION_CONSTANTS with function name.
+          // It's ES6 standard polyfilled by Babel.
+          /* eslint-disable camelcase */
+          compress: {
+            keep_fnames: true,
+            screw_ie8: true,
+            warnings: false // Because uglify reports irrelevant warnings.
+          },
+          mangle: {
+            keep_fnames: true
+          }
+          /* eslint-enable camelcase */
+        })
+      );
       return plugins;
     })(),
     resolve: {

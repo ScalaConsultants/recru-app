@@ -6,7 +6,7 @@ import './thank-you.styl';
 export default class ThankYou extends Component {
   static propTypes = {
     className: React.PropTypes.string
-  };
+  }
 
   render() {
     const className = classNames('thank-you', this.props.className);

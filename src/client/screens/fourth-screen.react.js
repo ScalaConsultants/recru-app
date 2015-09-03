@@ -11,7 +11,7 @@ export default class FourthScreen extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
     candidate: React.PropTypes.object.isRequired
-  };
+  }
 
   proceed() {
     const {actions: {screens}} = this.props;

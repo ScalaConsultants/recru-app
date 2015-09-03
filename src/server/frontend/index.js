@@ -9,15 +9,11 @@ import i18nLoader from '../lib/i18nmiddleware';
 
 const app = express();
 
-// Add Este.js headers for React related routes only.
-if (!config.isProduction)
-  app.use(esteHeaders());
-
+app.use(esteHeaders());
 app.use(compression());
 app.use(favicon('assets/img/favicon.ico'));
-// TODO: Move to CDN.
-app.use('/build', express.static('build'));
-app.use('/assets', express.static('assets'));
+app.use('/assets/img', express.static('assets/img', {maxAge: '200d'}));
+app.use('/_assets', express.static('build', {maxAge: '200d'}));
 
 // Load translations, fallback to defaultLocale if no
 // translations available.
@@ -34,7 +30,8 @@ app.get('/', (req, res, next) => {
     i18n: req.i18n,
     config: config.app
   };
-  render(req, res, req.userState, customStates).catch(next);
+  render(req, res, req.userState, customStates)
+    .catch(next);
 });
 
 app.on('mount', () => {

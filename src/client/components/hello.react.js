@@ -4,6 +4,11 @@ import React from 'react';
 import './hello.styl';
 
 export default class Hello extends Component {
+  static propTypes = {
+    className: React.PropTypes.string,
+    message: React.PropTypes.string
+  }
+
   render() {
     const className = classNames('hello', this.props.className);
     return (
@@ -11,8 +16,3 @@ export default class Hello extends Component {
     );
   }
 }
-
-Hello.propTypes = {
-  className: React.PropTypes.string,
-  message: React.PropTypes.string
-};

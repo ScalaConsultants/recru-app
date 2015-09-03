@@ -8,7 +8,7 @@ export default class MiniMap extends Component {
     actions: React.PropTypes.object.isRequired,
     className: React.PropTypes.string,
     screens: React.PropTypes.object.isRequired
-  };
+  }
 
   handleClick(event, id) {
     const {actions: {screens}} = this.props;

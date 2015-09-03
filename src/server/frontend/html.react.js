@@ -4,18 +4,19 @@ import React from 'react';
 export default class Html extends Component {
 
   static propTypes = {
+    appCssHash: React.PropTypes.string.isRequired,
     baseUri: React.PropTypes.string.isRequired,
     bodyHtml: React.PropTypes.string.isRequired,
     isProduction: React.PropTypes.bool.isRequired,
-    title: React.PropTypes.string.isRequired,
-    version: React.PropTypes.string.isRequired
+    title: React.PropTypes.string.isRequired
   }
 
   render() {
+    const {appCssHash, bodyHtml, isProduction, title, baseUri} = this.props;
     // Only for production. For dev, it's handled by webpack with livereload.
-    const linkStyles = this.props.isProduction &&
+    const linkStyles = isProduction &&
       <link
-        href={`build/app.css?v=${this.props.version}`}
+        href={`_assets/app.css?v=${appCssHash}`}
         rel="stylesheet"
       />;
 
@@ -25,12 +26,12 @@ export default class Html extends Component {
           <meta charSet="utf-8" />
           <meta content="IE=Edge" httpEquiv="X-UA-Compatible" />
           <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
-          <title>{this.props.title}</title>
+          <title>{title}</title>
           {linkStyles}
           <link href="assets/img/favicon.ico" rel="shortcut icon"/>
-          <base href={this.props.baseUri}/>
+          <base href={baseUri}/>
         </head>
-        <body dangerouslySetInnerHTML={{__html: this.props.bodyHtml}} />
+        <body dangerouslySetInnerHTML={{__html: bodyHtml}} />
       </html>
     );
   }

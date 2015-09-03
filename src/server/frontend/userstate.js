@@ -9,7 +9,6 @@ export default function userState() {
       next();
     });
   };
-
 }
 
 // Gracefully settle all promises, ignore failed.
@@ -18,6 +17,7 @@ function loadUserData(req) {
     // Add custom data sources here.
   ];
 
+  // Gracefully settle all promises, ignore failed.
   return Promise.settle(dataSources).then(receivedData =>
     receivedData
       .filter(promise => promise.isFulfilled())

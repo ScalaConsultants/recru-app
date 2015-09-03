@@ -7,11 +7,11 @@ export default class Chevron extends Component {
   static propTypes = {
     isAnimated: React.PropTypes.bool,
     onClick: React.PropTypes.func
-  };
+  }
 
   static defaultProps = {
     isAnimated: true
-  };
+  }
 
   render() {
     const className = classNames('chevron', {

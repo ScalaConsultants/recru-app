@@ -5,7 +5,7 @@ export default class SkillItem extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
     data: React.PropTypes.object.isRequired
-  };
+  }
 
   handleChange(level, e) {
     const {actions: {candidate}} = this.props;

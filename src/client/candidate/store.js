@@ -14,6 +14,8 @@ const initialState = new (Record({
 }));
 
 export default function(state = initialState, action, payload) {
+  if (!action) return state.toJS();
+
   switch (action) {
     case actions.saveName:
       return state.set('name', payload);

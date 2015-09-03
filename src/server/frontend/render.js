@@ -14,30 +14,26 @@ export default function render(req, res, ...customStates) {
 
 function renderPage(req, res, appState) {
   return new Promise((resolve, reject) => {
-    const html = getPageHtml(App, appState);
+    const html = getPageHtml(App, appState, {hostname: req.hostname});
     res.status(200).send(html);
     resolve();
   });
 }
 
-function getPageHtml(Handler, appState) {
+function getPageHtml(Handler, appState, {hostname}) {
   const appHtml = `<div id="app">${
     React.renderToString(<Handler initialState={appState} />)
   }</div>`;
   const appScriptSrc = config.isProduction
-    ? 'build/app.js?v=' + config.app.version
-    : '//localhost:8888/build/app.js';
+    ? '_assets/app.js?v=' + config.assetsHashes.appJs
+    : `//${hostname}:8888/build/app.js`;
 
   let scriptHtml = `
     <script>
-      (function() {
-        window._appState = ${JSON.stringify(appState)};
-        var app = document.createElement('script'); app.type = 'text/javascript'; app.async = true;
-        var src = '${appScriptSrc}';
-        app.src = src;
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(app, s);
-      })();
-    </script>`;
+      window._initialState = ${JSON.stringify(appState)};
+    </script>
+    <script src="${appScriptSrc}"></script>
+  `;
 
   if (config.isProduction && config.googleAnalyticsId !== 'UA-XXXXXXX-X')
     scriptHtml += `
@@ -52,6 +48,7 @@ function getPageHtml(Handler, appState) {
 
   return '<!DOCTYPE html>' + React.renderToStaticMarkup(
     <Html
+      appCssHash={config.assetsHashes.appCss}
       baseUri={config.app.baseUri}
       bodyHtml={appHtml + scriptHtml}
       isProduction={config.isProduction}

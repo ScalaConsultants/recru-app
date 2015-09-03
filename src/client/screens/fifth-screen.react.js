@@ -10,7 +10,7 @@ export default class FifthScreen extends Component {
     actions: React.PropTypes.object.isRequired,
     candidate: React.PropTypes.object.isRequired,
     config: React.PropTypes.object.isRequired
-  };
+  }
 
   constructor(props) {
     super(props);

@@ -1,6 +1,7 @@
 import './app.styl';
 import Component from '../components/component.react';
 import React from 'react';
+import fetch from 'isomorphic-fetch';
 import flux from '../lib/flux';
 import store from './store';
 import FirstScreen from '../screens/first-screen.react';
@@ -27,7 +28,7 @@ export default class App extends Component {
     candidate: React.PropTypes.object.isRequired,
     flux: React.PropTypes.object.isRequired,
     screens: React.PropTypes.object.isRequired
-  };
+  }
 
   componentWillMount() {
     this.createActions();
@@ -35,8 +36,16 @@ export default class App extends Component {
 
   createActions() {
     const {flux} = this.props;
-    this.actions = actions.reduce((actions, {feature, create}) =>
-      ({...actions, [feature]: create(::flux.dispatch)}), {});
+    const state = () => flux.state.toObject();
+
+    this.actions = actions.reduce((actions, {create, feature, inject}) => {
+      const dispatch = (action, payload) =>
+        flux.dispatch(action, payload, {feature});
+
+      const deps = [dispatch, fetch, state];
+      const args = inject ? inject(...deps) : deps;
+      return {...actions, [feature]: create(...args)};
+    }, {});
   }
 
   getPageOffset() {
@@ -82,6 +91,7 @@ export default class App extends Component {
 
     return (
       <div className="page">
+        {/* Pass only what is needed. The Law of Demeter ftw. */}
         <div className="screen-list" style={listStyle}>
           <FirstScreen {...props} isCurrent={this.isCurrent(0)} ref={this.getRefNameFor(0)}/>
           <SecondScreen {...props} isCurrent={this.isCurrent(1)} ref={this.getRefNameFor(1)}/>

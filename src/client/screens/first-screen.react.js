@@ -7,7 +7,7 @@ import './first-screen.styl';
 export default class FirstScreen extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired
-  };
+  }
 
   constructor(props) {
     super(props);

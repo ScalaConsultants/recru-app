@@ -8,7 +8,7 @@ import './third-screen.styl';
 export default class ThirdScreen extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired
-  };
+  }
 
   constructor(props) {
     super(props);
