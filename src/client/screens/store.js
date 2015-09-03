@@ -8,7 +8,7 @@ const initialState = new (Record({
 }));
 
 export default function(state = initialState, action, payload) {
-  if (!action) return state.toJS();
+  if (!action) return state;
 
   switch (action) {
   case actions.nextScreen: {
