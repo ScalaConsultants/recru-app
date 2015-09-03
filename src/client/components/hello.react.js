@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import React from 'react';
 import './hello.styl';
 
-class Hello extends Component {
+export default class Hello extends Component {
   render() {
     const className = classNames('hello', this.props.className);
     return (
@@ -16,5 +16,3 @@ Hello.propTypes = {
   className: React.PropTypes.string,
   message: React.PropTypes.string
 };
-
-export default Hello;

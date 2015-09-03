@@ -1,14 +1,15 @@
 import Component from '../components/component.react';
 import React from 'react';
-import {saveSkill} from '../candidate/actions';
 
-class SkillItem extends Component {
-  constructor(props) {
-    super(props);
-  }
+export default class SkillItem extends Component {
+  static propTypes = {
+    actions: React.PropTypes.object.isRequired,
+    data: React.PropTypes.object.isRequired
+  };
 
   handleChange(level, e) {
-    saveSkill(this.props.data, level);
+    const {actions: {candidate}} = this.props;
+    candidate.saveSkill(this.props.data, level);
   }
 
   render() {
@@ -34,12 +35,4 @@ class SkillItem extends Component {
       </li>
     );
   }
-
-
 }
-
-SkillItem.propTypes = {
-  data: React.PropTypes.object.isRequired
-};
-
-export default SkillItem;

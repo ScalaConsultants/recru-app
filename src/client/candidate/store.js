@@ -1,53 +1,44 @@
-import * as actions from './actions';
 import Role from './role';
 import Skill from './skill';
-import {Map} from 'immutable';
-import {register} from '../dispatcher';
-import {candidateCursor} from '../state';
+import {Record, Map} from 'immutable';
+import {actions} from './actions';
 
-export const dispatchToken = register(({action, data}) => {
+// We can use simple initialState if no data from server need to be revived.
+const initialState = new (Record({
+  name: '',
+  email: '',
+  role: new Role(null),
+  skills: {},
+  isSubmittingForm: false,
+  hasSubmittedForm: false
+}));
 
+export default function(state = initialState, action, payload) {
   switch (action) {
     case actions.saveName:
-      candidateCursor(candidate => {
-        return candidate.set('name', data);
-      });
-      break;
+      return state.set('name', payload);
 
     case actions.saveEmail:
-      candidateCursor(candidate => {
-        return candidate.set('email', data);
-      });
-      break;
+      return state.set('email', payload);
 
     case actions.saveRole:
-      candidateCursor(candidate => {
-        return candidate
-          .set('role', new Role(data))
-          .set('skills', Map());
-      });
-      break;
+      return state
+        .set('role', new Role(payload))
+        .set('skills', Map());
 
     case actions.saveSkill:
-      candidateCursor(candidate => {
-        return candidate
-          .setIn(['skills', data.skill.id], new Skill(data.skill))
-          .setIn(['skills', data.skill.id, 'level'], data.level);
-      });
-      break;
+      return state
+        .setIn(['skills', payload.skill.id], new Skill(payload.skill))
+        .setIn(['skills', payload.skill.id, 'level'], payload.level);
 
     case actions.submit:
-      candidateCursor(candidate => {
-        return candidate.set('isSubmittingForm', true);
-      });
-      break;
+      return state.set('isSubmittingForm', true);
 
     case actions.receiveSubmitResponse:
-      candidateCursor(candidate => {
-        return candidate
-          .set('isSubmittingForm', false)
-          .set('hasSubmittedForm', true);
-      });
-      break;
+      return state
+        .set('isSubmittingForm', false)
+        .set('hasSubmittedForm', true);
   }
-});
+
+  return state;
+}

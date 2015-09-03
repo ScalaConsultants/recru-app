@@ -1,20 +1,18 @@
-import setToString from '../lib/settostring';
-import {dispatch} from '../dispatcher';
+export const actions = create();
+export const feature = 'screens';
 
-export function nextScreen() {
-  dispatch(nextScreen);
+export function create(dispatch) {
+  return {
+    nextScreen() {
+      dispatch(actions.nextScreen);
+    },
+
+    previousScreen() {
+      dispatch(actions.previousScreen);
+    },
+
+    setScreen(id) {
+      dispatch(actions.previousScreen, id);
+    }
+  };
 }
-
-export function previousScreen() {
-  dispatch(previousScreen);
-}
-
-export function setScreen(id) {
-  dispatch(setScreen, id);
-}
-
-setToString('todos', {
-  nextScreen,
-  previousScreen,
-  setScreen
-});

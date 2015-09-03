@@ -2,16 +2,16 @@ import Component from '../components/component.react';
 import Chevron from '../components/chevron.react';
 import React from 'react';
 import classNames from 'classnames';
-import {nextScreen} from './actions';
-import {saveName} from '../candidate/actions';
 import './first-screen.styl';
 
 export default class FirstScreen extends Component {
+  static propTypes = {
+    actions: React.PropTypes.object.isRequired
+  };
+
   constructor(props) {
     super(props);
     this.state = this.getDefaultState();
-    this.proceed = this.proceed.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   getDefaultState() {
@@ -27,8 +27,10 @@ export default class FirstScreen extends Component {
     }
 
     this.setState(this.getDefaultState());
-    saveName(name);
-    nextScreen();
+
+    const {actions: {candidate, screens}} = this.props;
+    candidate.saveName(name);
+    screens.nextScreen();
   }
 
   handleKeyDown(e) {
@@ -50,15 +52,14 @@ export default class FirstScreen extends Component {
             <h1>Join our team</h1>
             <h2>we are looking for talented passionate people</h2>
             <div className={formControlClassName}>
-              <input autoComplete="off" onKeyDown={this.handleKeyDown} placeholder="type your name" ref="nameInput" tabIndex="-1" type="text"/>
+              <input autoComplete="off" onKeyDown={::this.handleKeyDown} placeholder="type your name" ref="nameInput" tabIndex="-1" type="text"/>
               <span>{this.state.error}</span>
             </div>
           </header>
         </div>
 
-        <Chevron isAnimated={true} onClick={this.proceed}/>
+        <Chevron isAnimated={true} onClick={::this.proceed}/>
       </section>
     );
   }
-
 }

@@ -3,7 +3,11 @@ import classNames from 'classnames';
 import React from 'react';
 import './thank-you.styl';
 
-class ThankYou extends Component {
+export default class ThankYou extends Component {
+  static propTypes = {
+    className: React.PropTypes.string
+  };
+
   render() {
     const className = classNames('thank-you', this.props.className);
     return (
@@ -16,9 +20,3 @@ class ThankYou extends Component {
     );
   }
 }
-
-ThankYou.propTypes = {
-  className: React.PropTypes.string
-};
-
-export default ThankYou;

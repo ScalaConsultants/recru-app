@@ -1,18 +1,16 @@
 import Component from '../components/component.react';
 import Chevron from '../components/chevron.react';
 import React from 'react';
-import {nextScreen} from './actions';
 import './second-screen.styl';
 
 export default class SecondScreen extends Component {
-
-  constructor(props) {
-    super(props);
-    this.proceed = this.proceed.bind(this);
-  }
+  static propTypes = {
+    actions: React.PropTypes.object.isRequired
+  };
 
   proceed() {
-    nextScreen();
+    const {actions: {screens}} = this.props;
+    screens.nextScreen();
   }
 
   render() {
@@ -24,12 +22,11 @@ export default class SecondScreen extends Component {
             <span><strong>several ways</strong></span>
             <span>to the <strong>top</strong></span>
             <button onClick={this.proceed} tabIndex="-1">choose your path</button>
-            <Chevron isAnimated={true} onClick={this.proceed}/>
+            <Chevron isAnimated={true} onClick={::this.proceed}/>
           </h1>
           <img src="assets/img/logo.svg" />
         </div>
       </section>
     );
   }
-
 }

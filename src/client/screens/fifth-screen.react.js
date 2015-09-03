@@ -1,13 +1,16 @@
 import Component from '../components/component.react';
-import {submit} from '../candidate/actions';
 import classNames from 'classnames';
-import immutable from 'immutable';
 import reactMixin from 'react-mixin';
 import boundScrollMixin from '../mixins/bound-scroll';
 import React from 'react';
 import './fifth-screen.styl';
 
-class FifthScreen extends Component {
+export default class FifthScreen extends Component {
+  static propTypes = {
+    actions: React.PropTypes.object.isRequired,
+    candidate: React.PropTypes.object.isRequired,
+    config: React.PropTypes.object.isRequired
+  };
 
   constructor(props) {
     super(props);
@@ -39,10 +42,10 @@ class FifthScreen extends Component {
       return;
 
     let candidateData = {
-      name: this.props.candidate.get('name'),
-      role: this.props.candidate.getIn(['role', 'name']),
+      name: this.props.candidate.name,
+      role: this.props.candidate.role.name,
       email: React.findDOMNode(this.refs.emailInput).value,
-      skills: this.props.candidate.get('skills').toList().toJS()
+      skills: this.props.candidate.skills
     };
 
     // Only add linkedin property if we really have cvFile here
@@ -55,7 +58,9 @@ class FifthScreen extends Component {
     // Only add cvFile property if we really have cvFile here
     if (this.state.fileUploaded) parts.cvFile = this.cvFile;
 
-    submit(parts);
+    const {actions: {candidate}} = this.props;
+    const apiEndpoint = `${this.props.config.apiEndpoint.replace(/\/?$/, '/')}upload`;
+    candidate.submit(apiEndpoint, parts);
   }
 
   handleUrlChange(e) {
@@ -141,10 +146,4 @@ class FifthScreen extends Component {
   }
 }
 
-FifthScreen.propTypes = {
-  candidate: React.PropTypes.instanceOf(immutable.Map).isRequired
-};
-
 reactMixin(FifthScreen.prototype, boundScrollMixin);
-
-export default FifthScreen;

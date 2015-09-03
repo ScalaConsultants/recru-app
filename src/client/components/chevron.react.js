@@ -3,7 +3,16 @@ import classNames from 'classnames';
 import React from 'react';
 import './chevron.styl';
 
-class Chevron extends Component {
+export default class Chevron extends Component {
+  static propTypes = {
+    isAnimated: React.PropTypes.bool,
+    onClick: React.PropTypes.func
+  };
+
+  static defaultProps = {
+    isAnimated: true
+  };
+
   render() {
     const className = classNames('chevron', {
       '-animated': !!this.props.isAnimated,
@@ -17,14 +26,3 @@ class Chevron extends Component {
     );
   }
 }
-
-Chevron.propTypes = {
-  isAnimated: React.PropTypes.bool,
-  onClick: React.PropTypes.func
-};
-
-Chevron.defaultProps = {
-  isAnimated: true
-};
-
-export default Chevron;

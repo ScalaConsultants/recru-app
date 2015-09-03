@@ -3,16 +3,16 @@ import React from 'react';
 import boundScrollMixin from '../mixins/bound-scroll';
 import reactMixin from 'react-mixin';
 import json from '../data/roles.json';
-import {saveRole} from '../candidate/actions';
-import {nextScreen} from './actions';
 import './third-screen.styl';
 
-class ThirdScreen extends Component {
+export default class ThirdScreen extends Component {
+  static propTypes = {
+    actions: React.PropTypes.object.isRequired
+  };
+
   constructor(props) {
     super(props);
     this.state = this.getDefaultState();
-    this.proceed = this.proceed.bind(this);
-    this.handleChooseRole = this.handleChooseRole.bind(this);
   }
 
   getDefaultState() {
@@ -25,8 +25,9 @@ class ThirdScreen extends Component {
     if (!this.state.role)
       return;
 
-    saveRole(this.state.role);
-    nextScreen();
+    const {actions: {screens, candidate}} = this.props;
+    candidate.saveRole(this.state.role);
+    screens.nextScreen();
   }
 
   handleChooseRole(role) {
@@ -55,5 +56,3 @@ class ThirdScreen extends Component {
 }
 
 reactMixin(ThirdScreen.prototype, boundScrollMixin);
-
-export default ThirdScreen;

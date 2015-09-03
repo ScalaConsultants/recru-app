@@ -1,6 +1,8 @@
 import './app.styl';
 import Component from '../components/component.react';
 import React from 'react';
+import flux from '../lib/flux';
+import store from './store';
 import FirstScreen from '../screens/first-screen.react';
 import SecondScreen from '../screens/second-screen.react';
 import ThirdScreen from '../screens/third-screen.react';
@@ -10,34 +12,36 @@ import MiniMap from '../components/minimap.react';
 import Hello from '../components/hello.react';
 import ThankYou from '../components/thank-you.react.js';
 import classNames from 'classnames';
-import reactMixin from 'react-mixin';
-import movementHandlerMixin from '../mixins/movement-handler';
-import {appState} from '../state';
-import {previousScreen} from '../screens/actions';
-import {measureRender} from '../console';
+import movementHandler from '../mixins/movement-handler';
 
-// All stores must be imported here.
-import '../screens/store';
-import '../candidate/store';
+import * as screensActions from '../screens/actions';
+import * as candidateActions from '../candidate/actions';
 
-class App extends Component {
+const actions = [screensActions, candidateActions];
 
-  constructor(props) {
-    super(props);
-    this.state = this.getState();
-    this.getPageOffset = this.getPageOffset.bind(this);
-    this.getRefNameFor = this.getRefNameFor.bind(this);
+@flux(store)
+@movementHandler
+export default class App extends Component {
+
+  static propTypes = {
+    candidate: React.PropTypes.object.isRequired,
+    flux: React.PropTypes.object.isRequired,
+    screens: React.PropTypes.object.isRequired
+  };
+
+  componentWillMount() {
+    this.createActions();
   }
 
-  getState() {
-    return appState.get().merge({
-      // nothing else at the moment
-    }).toObject();
+  createActions() {
+    const {flux} = this.props;
+    this.actions = actions.reduce((actions, {feature, create}) =>
+      ({...actions, [feature]: create(::flux.dispatch)}), {});
   }
 
   getPageOffset() {
-    const {screens} = this.state;
-    return -(screens.get('currentScreen') * 100);
+    const {currentScreen} = this.props.screens;
+    return -(currentScreen * 100);
   }
 
   getRefNameFor(screen) {
@@ -45,11 +49,11 @@ class App extends Component {
   }
 
   isCurrent(screen) {
-    return this.state.screens.get('currentScreen') === screen;
+    return this.props.screens.currentScreen === screen;
   }
 
   handleMoveUp(e) {
-    previousScreen();
+    this.actions.screensActions.previousScreen();
   }
 
   handleMoveDown(e) {
@@ -57,46 +61,36 @@ class App extends Component {
       this.refs.currentScreen.proceed();
   }
 
-  // Why componentWillMount instead of componentDidMount.
-  // https://github.com/este/este/issues/274
-  componentWillMount() {
-    if (!process.env.IS_BROWSER) return;
-    appState.on('change', () => {
-      measureRender(done => this.setState(this.getState(), done));
-    });
-  }
-
   render() {
+    const props = {...this.props, actions: this.actions};
+    const {screens: {currentScreen}, candidate} = props;
+
     const translate = `translate3d(0%, ${this.getPageOffset()}%, 0)`;
     const listStyle = {
       transform: translate,
       WebkitTransform: translate
     };
     const miniMapAndHelloClassName = classNames({
-      '-visible': this.state.screens.get('currentScreen') > 0 && !this.state.candidate.get('hasSubmittedForm')
+      '-visible': currentScreen > 0 && !candidate.hasSubmittedForm
     });
     const thankYouClassName = classNames({
-      '-visible': this.state.candidate.get('hasSubmittedForm')
+      '-visible': candidate.hasSubmittedForm
     });
-    const message = `Hello, ${this.state.candidate.get('name')}.`;
+    const message = `Hello, ${candidate.name}.`;
 
     return (
       <div className="page">
         <div className="screen-list" style={listStyle}>
-          <FirstScreen isCurrent={this.isCurrent(0)} ref={this.getRefNameFor(0)}/>
-          <SecondScreen isCurrent={this.isCurrent(1)} ref={this.getRefNameFor(1)}/>
-          <ThirdScreen isCurrent={this.isCurrent(2)} ref={this.getRefNameFor(2)}/>
-          <FourthScreen {...this.state} isCurrent={this.isCurrent(3)} ref={this.getRefNameFor(3)}/>
-          <FifthScreen {...this.state} isCurrent={this.isCurrent(4)} ref={this.getRefNameFor(4)}/>
+          <FirstScreen {...props} isCurrent={this.isCurrent(0)} ref={this.getRefNameFor(0)}/>
+          <SecondScreen {...props} isCurrent={this.isCurrent(1)} ref={this.getRefNameFor(1)}/>
+          <ThirdScreen {...props} isCurrent={this.isCurrent(2)} ref={this.getRefNameFor(2)}/>
+          <FourthScreen {...props} isCurrent={this.isCurrent(3)} ref={this.getRefNameFor(3)}/>
+          <FifthScreen {...props} isCurrent={this.isCurrent(4)} ref={this.getRefNameFor(4)}/>
         </div>
-        <Hello className={miniMapAndHelloClassName} message={message}/>
-        <MiniMap className={miniMapAndHelloClassName} screens={this.state.screens}/>
-        <ThankYou className={thankYouClassName}/>
+        <Hello {...props} className={miniMapAndHelloClassName} message={message}/>
+        <MiniMap {...props} className={miniMapAndHelloClassName}/>
+        <ThankYou {...props} className={thankYouClassName}/>
       </div>
     );
   }
 }
-
-reactMixin(App.prototype, movementHandlerMixin);
-
-export default App;

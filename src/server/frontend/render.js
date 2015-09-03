@@ -1,4 +1,3 @@
-import * as state from '../../client/state';
 import Html from './html.react';
 import Promise from 'bluebird';
 import React from 'react';
@@ -15,24 +14,20 @@ export default function render(req, res, ...customStates) {
 
 function renderPage(req, res, appState) {
   return new Promise((resolve, reject) => {
-    const html = loadAppStateThenRenderHtml(App, appState);
+    const html = getPageHtml(App, appState);
     res.status(200).send(html);
     resolve();
   });
 }
 
-function loadAppStateThenRenderHtml(Handler, appState) {
-  state.appState.load(appState);
-  return getPageHtml(Handler, appState);
-}
-
 function getPageHtml(Handler, appState) {
-  const appHtml = `<div id="app">${React.renderToString(<Handler />)}</div>`;
+  const appHtml = `<div id="app">${
+    React.renderToString(<Handler initialState={appState} />)
+  }</div>`;
   const appScriptSrc = config.isProduction
     ? 'build/app.js?v=' + config.app.version
     : '//localhost:8888/build/app.js';
 
-  // Serialize app state for client.
   let scriptHtml = `
     <script>
       (function() {

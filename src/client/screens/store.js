@@ -1,34 +1,31 @@
-import * as actions from './actions';
-import {register} from '../dispatcher';
-import {screensCursor} from '../state';
+import {Record} from 'immutable';
+import {actions} from './actions';
 
-export const dispatchToken = register(({action, data}) => {
+// We can use simple initialState if no data from server need to be revived.
+const initialState = new (Record({
+  currentScreen: 0,
+  lastScreen: 4
+}));
 
+export default function(state = initialState, action, payload) {
   switch (action) {
     case actions.nextScreen:
-      screensCursor(screens => {
-        let nextScreen = screens.get('currentScreen') + 1;
-        if (nextScreen > screens.get('lastScreen'))
-          nextScreen = screens.get('currentScreen');
-        return screens.set('currentScreen', nextScreen);
-      });
-      break;
+      let nextScreen = state.get('currentScreen') + 1;
+      if (nextScreen > state.get('lastScreen'))
+        nextScreen = state.get('currentScreen');
+      return state.set('currentScreen', nextScreen);
 
     case actions.previousScreen:
-      screensCursor(screens => {
-        let previousScreen = screens.get('currentScreen') - 1;
-        if (previousScreen < 0)
-          previousScreen = screens.get('currentScreen');
-        return screens.set('currentScreen', previousScreen);
-      });
-      break;
+      let previousScreen = state.get('currentScreen') - 1;
+      if (previousScreen < 0)
+        previousScreen = state.get('currentScreen');
+      return state.set('currentScreen', previousScreen);
 
     case actions.setScreen:
-      screensCursor(screens => {
-        if (data < 0 || data > screens.get('lastScreen'))
-          return screens.get('currentScreen');
-        return screens.set('currentScreen', data);
-      });
-      break;
+      if (payload < 0 || payload > state.get('lastScreen'))
+        return state.get('currentScreen');
+      return state.set('currentScreen', payload);
   }
-});
+
+  return state;
+}
