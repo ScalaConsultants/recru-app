@@ -1,12 +1,12 @@
 import Component from '../components/component.react';
 import Chevron from '../components/chevron.react';
 import React from 'react';
-import boundScrollMixin from '../mixins/bound-scroll';
-import reactMixin from 'react-mixin';
+import boundScroll from '../mixins/bound-scroll';
 import SkillItem from '../components/skillItem.react';
 import technologies from '../data/technologies.json';
 import './fourth-screen.styl';
 
+@boundScroll()
 export default class FourthScreen extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
@@ -40,7 +40,4 @@ export default class FourthScreen extends Component {
       </section>
     );
   }
-
 }
-
-reactMixin(FourthScreen.prototype, boundScrollMixin);

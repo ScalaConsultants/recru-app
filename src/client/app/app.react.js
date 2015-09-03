@@ -20,7 +20,7 @@ import * as candidateActions from '../candidate/actions';
 const actions = [screensActions, candidateActions];
 
 @flux(store)
-@movementHandler
+@movementHandler()
 export default class App extends Component {
 
   static propTypes = {
@@ -53,7 +53,8 @@ export default class App extends Component {
   }
 
   handleMoveUp(e) {
-    this.actions.screensActions.previousScreen();
+    const {screens} = this.actions;
+    screens.previousScreen();
   }
 
   handleMoveDown(e) {

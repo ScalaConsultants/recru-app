@@ -1,10 +1,10 @@
 import Component from '../components/component.react';
 import React from 'react';
-import boundScrollMixin from '../mixins/bound-scroll';
-import reactMixin from 'react-mixin';
+import boundScroll from '../mixins/bound-scroll';
 import json from '../data/roles.json';
 import './third-screen.styl';
 
+@boundScroll()
 export default class ThirdScreen extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired
@@ -54,5 +54,3 @@ export default class ThirdScreen extends Component {
     );
   }
 }
-
-reactMixin(ThirdScreen.prototype, boundScrollMixin);

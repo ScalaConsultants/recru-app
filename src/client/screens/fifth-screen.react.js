@@ -1,10 +1,10 @@
 import Component from '../components/component.react';
 import classNames from 'classnames';
-import reactMixin from 'react-mixin';
-import boundScrollMixin from '../mixins/bound-scroll';
+import boundScroll from '../mixins/bound-scroll';
 import React from 'react';
 import './fifth-screen.styl';
 
+@boundScroll()
 export default class FifthScreen extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
@@ -145,5 +145,3 @@ export default class FifthScreen extends Component {
     );
   }
 }
-
-reactMixin(FifthScreen.prototype, boundScrollMixin);
