@@ -12,6 +12,11 @@ export default function boundScroll() {
       };
     }
 
+    proceed() {
+      if (typeof this.refs.baseComponent.proceed === 'function')
+        this.refs.baseComponent.proceed();
+    }
+
     isWithinBounds() {
       // Stop wheel event propagation if not at the topmost or bottommost part
       const element = React.findDOMNode(this);
