@@ -8,7 +8,7 @@ const deviceInitialState = new (Record({
   isMobile: false
 }));
 
-function deviceStore(state = initialState, action, payload) {
+function deviceStore(state = deviceInitialState, action, payload) {
   if (!action) return state;
   return deviceInitialState.merge(state);
 }

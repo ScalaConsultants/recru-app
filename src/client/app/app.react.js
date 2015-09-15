@@ -21,6 +21,7 @@ import movementHandler from '../mixins/movement-handler';
 export default class App extends Component {
 
   static propTypes = {
+    actions: React.PropTypes.object.isRequired,
     candidate: React.PropTypes.object.isRequired,
     screens: React.PropTypes.object.isRequired
   }
