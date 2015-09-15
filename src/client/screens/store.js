@@ -7,7 +7,7 @@ const initialState = new (Record({
   lastScreen: 4
 }));
 
-export default function(state = initialState, action, payload) {
+export default function screensStore(state = initialState, action, payload) {
   if (!action) return state;
 
   switch (action) {

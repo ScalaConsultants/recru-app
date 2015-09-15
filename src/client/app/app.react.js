@@ -1,7 +1,7 @@
 import './app.styl';
 import Component from '../components/component.react';
 import React from 'react';
-import fetch from 'isomorphic-fetch';
+import createActions from './createactions';
 import flux from '../lib/flux';
 import store from './store';
 import FirstScreen from '../screens/first-screen.react';
@@ -15,37 +15,14 @@ import ThankYou from '../components/thank-you.react.js';
 import classNames from 'classnames';
 import movementHandler from '../mixins/movement-handler';
 
-import * as screensActions from '../screens/actions';
-import * as candidateActions from '../candidate/actions';
-
-const actions = [screensActions, candidateActions];
-
 @flux(store)
-@movementHandler()
+@createActions
+@movementHandler
 export default class App extends Component {
 
   static propTypes = {
     candidate: React.PropTypes.object.isRequired,
-    flux: React.PropTypes.object.isRequired,
     screens: React.PropTypes.object.isRequired
-  }
-
-  componentWillMount() {
-    this.createActions();
-  }
-
-  createActions() {
-    const {flux} = this.props;
-    const state = () => flux.state.toObject();
-
-    this.actions = actions.reduce((actions, {create, feature, inject}) => {
-      const dispatch = (action, payload) =>
-        flux.dispatch(action, payload, {feature});
-
-      const deps = [dispatch, fetch, state];
-      const args = inject ? inject(...deps) : deps;
-      return {...actions, [feature]: create(...args)};
-    }, {});
   }
 
   getPageOffset() {
@@ -62,7 +39,7 @@ export default class App extends Component {
   }
 
   handleMoveUp(e) {
-    const {screens} = this.actions;
+    const {actions: {screens}} = this.props;
     screens.previousScreen();
   }
 
@@ -72,8 +49,7 @@ export default class App extends Component {
   }
 
   render() {
-    const props = {...this.props, actions: this.actions};
-    const {screens: {currentScreen}, candidate} = props;
+    const {screens: {currentScreen}, candidate} = this.props;
 
     const translate = `translate3d(0%, ${this.getPageOffset()}%, 0)`;
     const listStyle = {
@@ -92,15 +68,15 @@ export default class App extends Component {
       <div className="page">
         {/* Pass only what is needed. The Law of Demeter ftw. */}
         <div className="screen-list" style={listStyle}>
-          <FirstScreen {...props} isCurrent={this.isCurrent(0)} ref={this.getRefNameFor(0)}/>
-          <SecondScreen {...props} isCurrent={this.isCurrent(1)} ref={this.getRefNameFor(1)}/>
-          <ThirdScreen {...props} isCurrent={this.isCurrent(2)} ref={this.getRefNameFor(2)}/>
-          <FourthScreen {...props} isCurrent={this.isCurrent(3)} ref={this.getRefNameFor(3)}/>
-          <FifthScreen {...props} isCurrent={this.isCurrent(4)} ref={this.getRefNameFor(4)}/>
+          <FirstScreen {...this.props} isCurrent={this.isCurrent(0)} ref={this.getRefNameFor(0)}/>
+          <SecondScreen {...this.props} isCurrent={this.isCurrent(1)} ref={this.getRefNameFor(1)}/>
+          <ThirdScreen {...this.props} isCurrent={this.isCurrent(2)} ref={this.getRefNameFor(2)}/>
+          <FourthScreen {...this.props} isCurrent={this.isCurrent(3)} ref={this.getRefNameFor(3)}/>
+          <FifthScreen {...this.props} isCurrent={this.isCurrent(4)} ref={this.getRefNameFor(4)}/>
         </div>
-        <Hello {...props} className={miniMapAndHelloClassName} message={message}/>
-        <MiniMap {...props} className={miniMapAndHelloClassName}/>
-        <ThankYou {...props} className={thankYouClassName}/>
+        <Hello {...this.props} className={miniMapAndHelloClassName} message={message}/>
+        <MiniMap {...this.props} className={miniMapAndHelloClassName}/>
+        <ThankYou {...this.props} className={thankYouClassName}/>
       </div>
     );
   }

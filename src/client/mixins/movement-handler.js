@@ -2,8 +2,9 @@ import React from 'react';
 import Component from '../components/component.react';
 import throttle from 'lodash.throttle';
 
-export default function movementHandler() {
-  return BaseComponent => class MovementHandlerDecorator extends Component {
+export default function movementHandler(BaseComponent) {
+
+  return class MovementHandlerDecorator extends Component {
     constructor(props) {
       super(props);
       this.swipeDetails = {

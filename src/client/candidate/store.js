@@ -13,7 +13,7 @@ const initialState = new (Record({
   hasSubmittedForm: false
 }));
 
-export default function(state = initialState, action, payload) {
+export default function candidateStore(state = initialState, action, payload) {
   if (!action) return state;
 
   switch (action) {

@@ -3,8 +3,8 @@ var nconf = require('nconf');
 
 var isProduction = process.env.NODE_ENV === 'production';
 
-// Specifying an env delimiter allows you to override below config when shipping to production server
-// by e.g. defining piping__ignore or version variables.
+// Specifying an env delimiter allows you to override below config when shipping
+// to production server.
 nconf.env('__');
 
 var config = {
@@ -33,9 +33,8 @@ var config = {
   webpackStylesExtensions: ['css', 'less', 'sass', 'scss', 'styl']
 };
 
-// Use above config as a default one
-// Multiple other providers are available like loading config from json and more
-// Check out nconf docs for fancier examples
+// Use above config as a default one. Multiple other providers are available
+// like loading config from json and more. Check out nconf docs.
 nconf.defaults(config);
 
 module.exports = nconf.get();

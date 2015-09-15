@@ -1,5 +1,6 @@
 import compression from 'compression';
 import config from '../config';
+import device from 'express-device';
 import esteHeaders from '../lib/estemiddleware';
 import express from 'express';
 import favicon from 'serve-favicon';
@@ -23,15 +24,18 @@ app.use(i18nLoader({
 }));
 
 // Load state extras for current user.
+app.use(device.capture());
 app.use(userState());
 
 app.get('/', (req, res, next) => {
-  const customStates = {
+  const userState = req.userState.merge({
+    device: {
+      isMobile: ['phone', 'tablet'].indexOf(req.device.type) > -1
+    },
     i18n: req.i18n,
     config: config.app
-  };
-  render(req, res, req.userState, customStates)
-    .catch(next);
+  });
+  render(req, res, userState).catch(next);
 });
 
 app.on('mount', () => {
