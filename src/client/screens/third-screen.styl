@@ -1,5 +1,6 @@
 .third-screen
   overflow-y hidden
+  font-size 12px
 
   ul
     display block
@@ -31,7 +32,7 @@
         padding 20px
         left 10%
         width 80%
-        font-size 36px
+        font-size 3em
         text-align left
         color #ffffff
         z-index 99
@@ -54,7 +55,11 @@
           box-sizing border-box
           padding 20px
           color #ffffff
+          font-size 1em
           text-align right
+          transition all 0.5s
+          -webkit-transition all 0.5s
+          -moz-transition all 0.5s
 
 
     li:first-child
@@ -68,21 +73,47 @@
       width 55%
 
 @media (max-width: 767px)
-    ul
+    .third-screen
+      font-size 12px
 
-      li
-        height auto
-        width 100%
-        float none
+      ul
 
-        div
+        li
+          height 25%
           width 100%
+          float none
 
-          p
-            width 60%
+          img
+            height auto
+            min-width 100%
 
-    ul:hover
-      li,li:hover
-        width: 100%
+          > p
+            font-size 2em
+            line-height 2em
+            left 0px
+            width 100%
+            margin 0px
+            top 0px
+
+          div
+            width 100%
+
+            p
+              top 25%
+              text-align left
+              opacity 0
+              right auto
+              width 100%
+
+      ul:hover
+        li,li:hover
+          width: 100%
+          height 15%
+        li:hover
+          height 75%
+          div
+            p
+              opacity 1
+
 
 
