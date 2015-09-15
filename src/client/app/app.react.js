@@ -67,7 +67,6 @@ export default class App extends Component {
   }
 
   handleMoveDown(e) {
-    console.log('movedown');
     if (typeof this.refs.currentScreen.proceed === 'function')
       this.refs.currentScreen.proceed();
   }
