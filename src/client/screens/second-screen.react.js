@@ -21,7 +21,7 @@ export default class SecondScreen extends Component {
             <span>There are</span>
             <span><strong>several ways</strong></span>
             <span>to the <strong>top</strong></span>
-            <button onClick={this.proceed} tabIndex="-1">choose your path</button>
+            <button onClick={::this.proceed} tabIndex="-1">choose your path</button>
             <Chevron isAnimated={true} onClick={::this.proceed}/>
           </h1>
           <img src="assets/img/logo.svg" />
