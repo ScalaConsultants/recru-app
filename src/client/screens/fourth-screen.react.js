@@ -36,7 +36,7 @@ export default class FourthScreen extends Component {
           <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
         )}
         </ul>
-        <Chevron isAnimated={true} onClick={::this.proceed}/>
+        <Chevron isAnimated onClick={::this.proceed}/>
       </section>
     );
   }
