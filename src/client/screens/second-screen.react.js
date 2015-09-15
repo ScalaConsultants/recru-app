@@ -24,7 +24,7 @@ export default class SecondScreen extends Component {
             <button onClick={::this.proceed} tabIndex="-1">choose your path</button>
             <Chevron isAnimated={true} onClick={::this.proceed}/>
           </h1>
-          <img src="assets/img/logo.svg" />
+          <img alt='Scalac Logo' src="assets/img/logo.svg"/>
         </div>
       </section>
     );

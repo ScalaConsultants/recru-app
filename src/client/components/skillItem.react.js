@@ -15,7 +15,7 @@ export default class SkillItem extends Component {
   render() {
     return (
       <li>
-        <img src={this.props.data.src} />
+        <img alt={this.props.data.name} src={this.props.data.src}/>
         <form action="">
           <input className="star star-5" id={`star5_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(5, e)} type="radio"/>
           <label className="star star-5" htmlFor={`star5_${this.props.data.id}`}></label>
