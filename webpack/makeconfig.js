@@ -1,23 +1,18 @@
-/* @flow weak */
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import autoprefixer from 'autoprefixer';
+import constants from './constants';
+import path from 'path';
+import webpack from 'webpack';
+import ip from 'ip';
 
-'use strict';
-
-var autoprefixer = require('autoprefixer');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var NyanProgressPlugin = require('nyan-progress-webpack-plugin');
-var NotifyPlugin = require('./notifyplugin');
-var constants = require('./constants');
-var path = require('path');
-var webpack = require('webpack');
-
-var devtools = process.env.CONTINUOUS_INTEGRATION
+const devtools = process.env.CONTINUOUS_INTEGRATION
   ? 'inline-source-map'
   // cheap-module-eval-source-map, because we want original source, but we don't
   // care about columns, which makes this devtool faster than eval-source-map.
   // http://webpack.github.io/docs/configuration.html#devtool
   : 'cheap-module-eval-source-map';
 
-var loaders = {
+const loaders = {
   'css': '',
   'less': '!less-loader',
   'scss': '!sass-loader',
@@ -25,69 +20,83 @@ var loaders = {
   'styl': '!stylus-loader'
 };
 
-module.exports = function(isDevelopment) {
+const serverIp = ip.address();
+
+export default function makeConfig(isDevelopment) {
 
   function stylesLoaders() {
-    return Object.keys(loaders).map(function(ext) {
-      var prefix = 'css-loader!postcss-loader';
-      var extLoaders = prefix + loaders[ext];
-      var loader = isDevelopment
-        ? 'style-loader!' + extLoaders
+    return Object.keys(loaders).map(ext => {
+      const prefix = 'css-loader!postcss-loader';
+      const extLoaders = prefix + loaders[ext];
+      const loader = isDevelopment
+        ? `style-loader!${extLoaders}`
         : ExtractTextPlugin.extract('style-loader', extLoaders);
       return {
         loader: loader,
-        test: new RegExp('\\.(' + ext + ')$')
+        test: new RegExp(`\\.(${ext})$`)
       };
     });
   }
 
-  var config = {
+  const config = {
+    hotPort: constants.HOT_RELOAD_PORT,
     cache: isDevelopment,
     debug: isDevelopment,
     devtool: isDevelopment ? devtools : '',
     entry: {
       app: isDevelopment ? [
-        'webpack-dev-server/client?http://localhost:8888',
-        // Why only-dev-server instead of dev-server:
-        // https://github.com/webpack/webpack/issues/418#issuecomment-54288041
-        'webpack/hot/only-dev-server',
+        `webpack-hot-middleware/client?path=http://${serverIp}:${constants.HOT_RELOAD_PORT}/__webpack_hmr`,
         path.join(constants.SRC_DIR, 'client/main.js')
       ] : [
         path.join(constants.SRC_DIR, 'client/main.js')
       ]
     },
     module: {
-      loaders: [
-        {
-          loader: 'json',
-          test: /\.json$/
+      loaders: [{
+        loader: 'json',
+        test: /\.json$/
+      }, {
+        loader: 'url-loader?limit=100000',
+        test: /\.(gif|jpg|png|woff|woff2|eot|ttf|svg)$/
+      }, {
+        exclude: /node_modules/,
+        loader: 'babel',
+        query: {
+          stage: 0,
+          env: {
+            development: {
+              // react-transform belongs to webpack config only, not to .babelrc
+              plugins: ['react-transform'],
+              extra: {
+                'react-transform': {
+                  transforms: [{
+                    transform: 'react-transform-hmr',
+                    imports: ['react'],
+                    locals: ['module']
+                  }, {
+                    transform: 'react-transform-catch-errors',
+                    imports: ['react', 'redbox-react']
+                  }]
+                }
+              }
+            }
+          }
         },
-        {
-          loader: 'url-loader?limit=100000',
-          test: /\.(gif|jpg|png|woff|woff2|eot|ttf|svg)$/
-        }, {
-          exclude: /node_modules/,
-          loaders: isDevelopment ? [
-            'react-hot', 'babel-loader'
-          ] : [
-            'babel-loader'
-          ],
-          test: /\.js$/
-        }
-      ].concat(stylesLoaders())
+        test: /\.js$/
+      }].concat(stylesLoaders())
     },
     output: isDevelopment ? {
       path: constants.BUILD_DIR,
       filename: '[name].js',
       chunkFilename: '[name]-[chunkhash].js',
-      publicPath: 'http://localhost:8888/build/'
+      publicPath: `http://${serverIp}:${constants.HOT_RELOAD_PORT}/build/`
     } : {
       path: constants.BUILD_DIR,
       filename: '[name].js',
       chunkFilename: '[name]-[chunkhash].js'
     },
-    plugins: (function() {
-      var plugins = [
+    plugins: (() => {
+      const plugins = [
         new webpack.DefinePlugin({
           'process.env': {
             NODE_ENV: JSON.stringify(isDevelopment ? 'development' : 'production'),
@@ -96,8 +105,9 @@ module.exports = function(isDevelopment) {
         })
       ];
       if (isDevelopment) plugins.push(
-        NotifyPlugin,
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
       );
       else plugins.push(
         // Render styles into separate cacheable file to prevent FOUC and
@@ -105,32 +115,18 @@ module.exports = function(isDevelopment) {
         new ExtractTextPlugin('app.css', {
           allChunks: true
         }),
-        new NyanProgressPlugin(),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin({
-          // keep_fnames prevents function name mangling.
-          // Function names are useful. Seeing a readable error stack while
-          // being able to programmatically analyse it is priceless. And yes,
-          // we don't need infamous FLUX_ACTION_CONSTANTS with function name.
-          // It's ES6 standard polyfilled by Babel.
-          /* eslint-disable camelcase */
           compress: {
-            keep_fnames: true,
-            screw_ie8: true,
+            screw_ie8: true, // eslint-disable-line camelcase
             warnings: false // Because uglify reports irrelevant warnings.
-          },
-          mangle: {
-            keep_fnames: true
           }
-          /* eslint-enable camelcase */
         })
       );
       return plugins;
     })(),
-    postcss: function() {
-      return [autoprefixer({browsers: 'last 2 version'})];
-    },
+    postcss: () => [autoprefixer({browsers: 'last 2 version'})],
     resolve: {
       extensions: ['', '.js', '.json'],
       modulesDirectories: ['src', 'node_modules'],

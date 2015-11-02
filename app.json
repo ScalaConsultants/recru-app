@@ -1,9 +1,0 @@
-{
-  "name": "recru-app",
-  "description": "Awesome recruitment app for the IT folks",
-  "env": {
-   "NODE_ENV": "production"
-  },
-  "repository": "https://github.com/ScalaConsultants/recru-app",
-  "keywords": ["este", "flux", "gulp", "immutable", "isomorphic", "node", "react", "webpack", "recruitment"]
-}

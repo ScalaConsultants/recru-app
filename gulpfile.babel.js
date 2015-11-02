@@ -1,48 +1,36 @@
+/* eslint-disable no-undef, no-console */
 import bg from 'gulp-bg';
 import eslint from 'gulp-eslint';
+import fs from 'fs';
 import gulp from 'gulp';
-import makeWebpackConfig from './webpack/makeconfig';
+import gutil from 'gulp-util';
+import mocha from 'gulp-mocha';
+import os from 'os';
 import path from 'path';
 import runSequence from 'run-sequence';
+import shell from 'gulp-shell';
 import webpackBuild from './webpack/build';
-import webpackDevServer from './webpack/devserver';
 import yargs from 'yargs';
-import {Server as KarmaServer} from 'karma';
 
 const args = yargs
   .alias('p', 'production')
   .argv;
 
-const runKarma = ({singleRun}, done) => {
-  const server = new KarmaServer({
-    configFile: path.join(__dirname, 'karma.conf.js'), // eslint-disable-line no-undef
-    singleRun: singleRun
-  }, done);
-  server.start();
-};
-
 const runEslint = () => {
   return gulp.src([
     'gulpfile.babel.js',
     'src/**/*.js',
-    'webpack/*.js',
-    '!**/__tests__/*.*'
+    'webpack/*.js'
   ])
   .pipe(eslint())
   .pipe(eslint.format());
 };
 
 gulp.task('env', () => {
-  const env = args.production ? 'production' : 'development';
-  process.env.NODE_ENV = env; // eslint-disable-line no-undef
+  process.env.NODE_ENV = args.production ? 'production' : 'development';
 });
 
-gulp.task('build-webpack-production', webpackBuild(makeWebpackConfig(false)));
-gulp.task('build-webpack-dev', webpackDevServer(makeWebpackConfig(true)));
-gulp.task('build-webpack', [args.production
-  ? 'build-webpack-production'
-  : 'build-webpack-dev'
-]);
+gulp.task('build-webpack', ['env'], webpackBuild);
 gulp.task('build', ['build-webpack']);
 
 gulp.task('eslint', () => {
@@ -54,23 +42,39 @@ gulp.task('eslint-ci', () => {
   return runEslint().pipe(eslint.failAfterError());
 });
 
-gulp.task('karma-ci', (done) => {
-  runKarma({singleRun: true}, done);
+gulp.task('mocha', () => {
+  // read: false, not to load file contents
+  gulp.src('src/**/__test__/**/*.js', {read: false})
+    .pipe(mocha({
+      require: ['./test/mochaSetup.js'],
+      reporter: 'spec'
+    }))
+    // .on('error', process.exit.bind(process, 1));
+    .on('error', gutil.log);
 });
 
-gulp.task('karma', (done) => {
-  runKarma({singleRun: false}, done);
+// Continuous test running
+gulp.task('mocha-watch', () => {
+  gulp.watch(['test/**/**', 'src/client/**', 'src/common/**'], ['mocha']);
 });
 
-gulp.task('test', (done) => {
-  runSequence('eslint-ci', 'karma-ci', 'build-webpack-production', done);
+gulp.task('test', done => {
+  runSequence('eslint-ci', 'mocha', 'build-webpack', done);
 });
 
-gulp.task('server', ['env', 'build'], bg('node', 'src/server'));
+gulp.task('server-node', bg('node', './src/server'));
+gulp.task('server-hot', bg('node', './webpack/server'));
+// Shell fixes Windows este/issues/522, bg is still needed for server-hot.
+gulp.task('server-nodemon', shell.task(
+  // Normalize makes path cross platform.
+  path.normalize('node_modules/.bin/nodemon src/server')
+));
 
-gulp.task('tdd', (done) => {
-  // Run karma configured for TDD.
-  runSequence('server', 'karma', done);
+gulp.task('server', ['env'], done => {
+  if (args.production)
+    runSequence('build', 'server-node', done);
+  else
+    runSequence('server-hot', 'server-nodemon', done);
 });
 
 gulp.task('default', ['server']);

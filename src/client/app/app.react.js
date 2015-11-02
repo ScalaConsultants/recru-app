@@ -1,84 +1,35 @@
-import './app.styl';
-import Component from '../components/component.react';
-import React from 'react';
-import createActions from './createactions';
-import flux from '../lib/flux';
-import store from './store';
-import FirstScreen from '../screens/first-screen.react';
-import SecondScreen from '../screens/second-screen.react';
-import ThirdScreen from '../screens/third-screen.react';
-import FourthScreen from '../screens/fourth-screen.react';
-import FifthScreen from '../screens/fifth-screen.react';
-import MiniMap from '../components/minimap.react';
-import Hello from '../components/hello.react';
-import ThankYou from '../components/thank-you.react.js';
-import classNames from 'classnames';
-import movementHandler from '../mixins/movement-handler';
+import Component from 'react-pure-render/component';
+import React, {PropTypes} from 'react';
+import RouterHandler from '../../common/components/RouterHandler.react';
+import mapDispatchToProps from '../../common/app/mapDispatchToProps';
+import mapStateToProps from '../../common/app/mapStateToProps';
+import {connect} from 'react-redux';
 
-@flux(store)
-@createActions
-@movementHandler
+if (process.env.IS_BROWSER)
+  require('./App.styl');
+
+// // logRenderTime is useful for app with huge UI to check render performance.
+// import logRenderTime from '../lib/logRenderTime';
+
+@connect(mapStateToProps, mapDispatchToProps)
+// @logRenderTime
 export default class App extends Component {
 
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    candidate: React.PropTypes.object.isRequired,
-    screens: React.PropTypes.object.isRequired
-  }
-
-  getPageOffset() {
-    const {currentScreen} = this.props.screens;
-    return -(currentScreen * 100);
-  }
-
-  getRefNameFor(screen) {
-    return this.isCurrent(screen) ? 'currentScreen' : null;
-  }
-
-  isCurrent(screen) {
-    return this.props.screens.currentScreen === screen;
-  }
-
-  handleMoveUp(e) {
-    const {actions: {screens}} = this.props;
-    screens.previousScreen();
-  }
-
-  handleMoveDown(e) {
-    if (typeof this.refs.currentScreen.proceed === 'function')
-      this.refs.currentScreen.proceed();
+    children: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired
   }
 
   render() {
-    const {screens: {currentScreen}, candidate} = this.props;
-
-    const translate = `translate3d(0%, ${this.getPageOffset()}%, 0)`;
-    const listStyle = {
-      transform: translate,
-      WebkitTransform: translate
-    };
-    const miniMapAndHelloClassName = classNames({
-      '-visible': currentScreen > 0 && !candidate.hasSubmittedForm
-    });
-    const thankYouClassName = classNames({
-      '-visible': candidate.hasSubmittedForm
-    });
-    const message = `Hello, ${candidate.name}.`;
+    const {location: {pathname}} = this.props;
 
     return (
-      <div className="page">
-        {/* Pass only what is needed. The Law of Demeter ftw. */}
-        <div className="screen-list" style={listStyle}>
-          <FirstScreen {...this.props} isCurrent={this.isCurrent(0)} ref={this.getRefNameFor(0)}/>
-          <SecondScreen {...this.props} isCurrent={this.isCurrent(1)} ref={this.getRefNameFor(1)}/>
-          <ThirdScreen {...this.props} isCurrent={this.isCurrent(2)} ref={this.getRefNameFor(2)}/>
-          <FourthScreen {...this.props} isCurrent={this.isCurrent(3)} ref={this.getRefNameFor(3)}/>
-          <FifthScreen {...this.props} isCurrent={this.isCurrent(4)} ref={this.getRefNameFor(4)}/>
-        </div>
-        <Hello {...this.props} className={miniMapAndHelloClassName} message={message}/>
-        <MiniMap {...this.props} className={miniMapAndHelloClassName}/>
-        <ThankYou {...this.props} className={thankYouClassName}/>
+      // Pass data-pathname to allow route specific styling.
+      <div className="page" data-pathname={pathname}>
+        {/* Pathname enforces rerender so activeClassName is updated. */}
+        <RouterHandler {...this.props} />
       </div>
     );
   }
+
 }

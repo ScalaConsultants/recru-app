@@ -1,4 +1,4 @@
-import Component from '../components/component.react';
+import Component from 'react-pure-render/component';
 import React from 'react';
 
 export default class SkillItem extends Component {

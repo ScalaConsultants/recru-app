@@ -1,7 +1,10 @@
-import Component from '../components/component.react';
+import Component from 'react-pure-render/component';
 import classNames from 'classnames';
 import React from 'react';
-import './hello.styl';
+
+if (process.env.IS_BROWSER) {
+  require('./Hello.styl');
+}
 
 export default class Hello extends Component {
   static propTypes = {

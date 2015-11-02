@@ -1,7 +1,10 @@
-import Component from '../components/component.react';
+import Component from 'react-pure-render/component';
 import classNames from 'classnames';
 import React from 'react';
-import './chevron.styl';
+
+if (process.env.IS_BROWSER) {
+  require('./Chevron.styl');
+}
 
 export default class Chevron extends Component {
   static propTypes = {

@@ -1,7 +1,10 @@
-import Component from '../components/component.react';
+import Component from 'react-pure-render/component';
 import classNames from 'classnames';
 import React from 'react';
-import './minimap.styl';
+
+if (process.env.IS_BROWSER) {
+  require('./Minimap.styl');
+}
 
 export default class MiniMap extends Component {
   static propTypes = {
@@ -25,7 +28,7 @@ export default class MiniMap extends Component {
     });
     const fx = (isInactive || isCurrent) ?
       ((e) => { e.preventDefault(); }) :
-      ((e) => ::this.handleClick(e, id));
+      ((e) => this.handleClick(e, id));
     return (
       <li key={id}>
         <a className={className} href="#" onClick={fx}></a>

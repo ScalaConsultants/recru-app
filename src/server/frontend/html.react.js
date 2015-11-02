@@ -1,15 +1,14 @@
-import Component from '../../client/components/component.react';
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 
 export default class Html extends Component {
 
   static propTypes = {
-    appCssHash: React.PropTypes.string.isRequired,
-    baseUri: React.PropTypes.string.isRequired,
-    bodyHtml: React.PropTypes.string.isRequired,
-    googleAnalyticsId: React.PropTypes.string.isRequired,
-    isProduction: React.PropTypes.bool.isRequired,
-    title: React.PropTypes.string.isRequired
+    appCssHash: PropTypes.string.isRequired,
+    baseUri: PropTypes.string.isRequired,
+    bodyHtml: PropTypes.string.isRequired,
+    googleAnalyticsId: PropTypes.string.isRequired,
+    isProduction: PropTypes.bool.isRequired,
+    title: PropTypes.string.isRequired
   }
 
   render() {
@@ -38,7 +37,7 @@ ga('create', '${googleAnalyticsId}', 'auto'); ga('send', 'pageview');`}}
         <head>
           <meta charSet="utf-8" />
           <meta content="IE=Edge" httpEquiv="X-UA-Compatible" />
-          <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+          <meta content="width=device-width, initial-scale=1" name="viewport" />
           <title>{title}</title>
           {linkStyles}
           {analytics}

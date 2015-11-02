@@ -1,8 +1,17 @@
 {
+  "globals": {
+    "describe"   : false,
+    "it"         : false,
+    "before"     : false,
+    "beforeEach" : false,
+    "after"      : false,
+    "afterEach"  : false,
+    "require"    : false
+  },
   "parser": "babel-eslint",
   "rules": {
     "array-bracket-spacing": 2,
-    "brace-style": [2, "1tbs", {"allowSingleLine": true}],
+    "brace-style": [2, "stroustrup", {"allowSingleLine": true}],
     "camelcase": 2,
     "comma-dangle": 0,
     "comma-spacing": [2, {"before": false, "after": true}],
@@ -13,7 +22,9 @@
     "eol-last": 2,
     "eqeqeq": [2, "allow-null"],
     "guard-for-in": 0,
-    "indent": [2, 2],
+    "indent": [2, 2, {
+      "SwitchCase": 1
+    }],
     "key-spacing": 0,
     "new-cap": [2, {"capIsNew": false, "newIsCap": true}],
     "new-parens": 0,
@@ -30,7 +41,7 @@
     "no-ex-assign": 2,
     "no-extend-native": 2,
     "no-extra-parens": 0,
-    "no-floating-decimal": 2,
+    "no-floating-decimal": 0,
     "no-func-assign": 2,
     "no-implied-eval": 2,
     "no-inner-declarations": 2,
@@ -66,6 +77,7 @@
     "no-unreachable": 2,
     "no-unused-vars": [2, {"vars": "all", "args": "none"}],
     "no-use-before-define": [2, "nofunc"],
+    "no-var": 2,
     "no-warning-comments": [0, {"terms": ["todo", "fixme"]}],
     "object-curly-spacing": 2,
     "quote-props": [0, "as-needed"],
@@ -93,7 +105,6 @@
     // React
     // Not needed. "react/display-name": 2,
     "react/jsx-boolean-value": 2,
-    "react/jsx-quotes": 2,
     "react/jsx-no-undef": 2,
     "react/jsx-sort-props": 2,
     "react/jsx-sort-prop-types": 2,

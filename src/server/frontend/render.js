@@ -1,51 +1,114 @@
-import Html from './html.react';
+import DocumentTitle from 'react-document-title';
+import Html from './Html.react';
 import Promise from 'bluebird';
 import React from 'react';
-import App from '../../client/app/app.react';
+import ReactDOMServer from 'react-dom/server';
 import config from '../config';
-import immutable from 'immutable';
-import initialState from '../initialstate';
-import stateMerger from '../lib/merger';
+import configureStore from '../../common/configureStore';
+import createRoutes from '../../client/createRoutes';
+import serialize from 'serialize-javascript';
+import {HOT_RELOAD_PORT} from '../../../webpack/constants';
+import {Provider} from 'react-redux';
+import {RoutingContext, match} from 'react-router';
+import {createMemoryHistory} from 'history';
 
-export default function render(req, res, ...customStates) {
-  const appState = immutable
-    .fromJS(initialState)
-    .mergeWith(stateMerger, ...customStates).toJS();
-  return renderPage(req, res, appState);
-}
+export default function render(req, res, next) {
+  const initialState = {
+    device: {
+      isMobile: ['phone', 'tablet'].indexOf(req.device.type) > -1
+    }
+  };
+  const store = configureStore({initialState});
 
-function renderPage(req, res, appState) {
-  return new Promise((resolve, reject) => {
-    const html = getPageHtml(App, appState, {hostname: req.hostname});
-    res.status(200).send(html);
-    resolve();
+  // Fetch logged in user here because routes may need it. Remember we can use
+  // store.dispatch method.
+
+  const routes = createRoutes(() => store.getState());
+  const location = createMemoryHistory().createLocation(req.url);
+
+  match({routes, location}, (error, redirectLocation, renderProps) => {
+
+    if (redirectLocation) {
+      res.redirect(301, redirectLocation.pathname + redirectLocation.search);
+      return;
+    }
+
+    if (error) {
+      next(error);
+      return;
+    }
+
+    // // Not possible with * route.
+    // if (renderProps == null) {
+    //   res.send(404, 'Not found');
+    //   return;
+    // }
+
+    fetchComponentData(store.dispatch, req, renderProps)
+      .then(() => renderPage(store, renderProps, req))
+      .then(html => res.send(html))
+      .catch(next);
   });
 }
 
-function getPageHtml(Handler, appState, {hostname}) {
-  const appHtml = `<div id="app">${
-    React.renderToString(<Handler initialState={appState} />)
-  }</div>`;
-  const appScriptSrc = config.isProduction
-    ? '_assets/app.js?v=' + config.assetsHashes.appJs
-    : `//${hostname}:8888/build/app.js`;
+function fetchComponentData(dispatch, req, {components, location, params}) {
+  const fetchActions = components.reduce((actions, component) => {
+    return actions.concat(component.fetchAction || []);
+  }, []);
+  const promises = fetchActions.map(action => dispatch(action(
+    {location, params}
+  )));
 
-  let scriptHtml = `
-    <script>
-      window._initialState = ${JSON.stringify(appState)};
-    </script>
-    <script src="${appScriptSrc}"></script>
-  `;
+  // Because redux-promise-middleware always returns fulfilled promise, we have
+  // to detect errors manually.
+  // https://github.com/pburtchaell/redux-promise-middleware#usage
+  return Promise.all(promises).then(results => {
+    results.forEach(result => {
+      if (result.error)
+        throw result.payload;
+    });
+  });
+}
 
-  return '<!DOCTYPE html>' + React.renderToStaticMarkup(
+function renderPage(store, renderProps, req) {
+  const clientState = store.getState();
+  const {headers, hostname} = req;
+  const appHtml = getAppHtml(store, renderProps);
+  const scriptHtml = getScriptHtml(clientState, headers, hostname);
+
+  return '<!DOCTYPE html>' + ReactDOMServer.renderToStaticMarkup(
     <Html
       appCssHash={config.assetsHashes.appCss}
       baseUri={config.app.baseUri}
-      bodyHtml={appHtml + scriptHtml}
+      bodyHtml={`<div id="app">${appHtml}</div>${scriptHtml}`}
       googleAnalyticsId={config.googleAnalyticsId}
       isProduction={config.isProduction}
-      title={config.app.defaultTitle}
-      version={config.app.version}
+      title={DocumentTitle.rewind()}
     />
   );
+}
+
+function getAppHtml(store, renderProps) {
+  return ReactDOMServer.renderToString(
+    <Provider store={store}>
+      <RoutingContext {...renderProps} />
+    </Provider>
+  );
+}
+
+function getScriptHtml(clientState, headers, hostname) {
+  let scriptHtml = '';
+
+  const appScriptSrc = config.isProduction
+    ? '/_assets/app.js?' + config.assetsHashes.appJs
+    : `//${hostname}:${HOT_RELOAD_PORT}/build/app.js`;
+
+  // Note how clientState is serialized. JSON.stringify is anti-pattern.
+  // https://github.com/yahoo/serialize-javascript#user-content-automatic-escaping-of-html-characters
+  return scriptHtml + `
+    <script>
+      window.__INITIAL_STATE__ = ${serialize(clientState)};
+    </script>
+    <script src="${appScriptSrc}"></script>
+  `;
 }
