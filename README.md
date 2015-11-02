@@ -1,6 +1,9 @@
 # Recruitment App
 
 Built on top of the awesome isomorphic [Este.js](https://github.com/steida/este) dev stack.
+The app is used for recruitment of talented developers here at [Scalac](https://scalac.io).
+
+We are currently [hiring](https://www.scalac.io/join_us) all kinds of talented remote developers.
 
 ## Prerequisites
 
