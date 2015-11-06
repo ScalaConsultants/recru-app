@@ -39,7 +39,7 @@ export default class FirstScreen extends Component {
 
   handleKeyDown(e) {
     if (e.keyCode === 13) {
-      ReactReactDOM.findDOMNode(this.refs.nameInput).blur();
+      ReactDOM.findDOMNode(this.refs.nameInput).blur();
       this.proceed();
     }
   }

@@ -17,29 +17,29 @@ export default function candidateStore(state = initialState, action, payload) {
   if (!action) return state;
 
   switch (action) {
-  case actions.saveName:
-    return state.set('name', payload);
+    case actions.saveName:
+      return state.set('name', payload);
 
-  case actions.saveEmail:
-    return state.set('email', payload);
+    case actions.saveEmail:
+      return state.set('email', payload);
 
-  case actions.saveRole:
-    return state
-      .set('role', new Role(payload))
-      .set('skills', Map());
+    case actions.saveRole:
+      return state
+        .set('role', new Role(payload))
+        .set('skills', Map());
 
-  case actions.saveSkill:
-    return state
-      .setIn(['skills', payload.skill.id], new Skill(payload.skill))
-      .setIn(['skills', payload.skill.id, 'level'], payload.level);
+    case actions.saveSkill:
+      return state
+        .setIn(['skills', payload.skill.id], new Skill(payload.skill))
+        .setIn(['skills', payload.skill.id, 'level'], payload.level);
 
-  case actions.submit:
-    return state.set('isSubmittingForm', true);
+    case actions.submit:
+      return state.set('isSubmittingForm', true);
 
-  case actions.receiveSubmitResponse:
-    return state
-      .set('isSubmittingForm', false)
-      .set('hasSubmittedForm', true);
+    case actions.receiveSubmitResponse:
+      return state
+        .set('isSubmittingForm', false)
+        .set('hasSubmittedForm', true);
   }
 
   return state;

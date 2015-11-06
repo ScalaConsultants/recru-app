@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import Component from 'react-pure-render/component';
-import DocumentTitle from 'react-document-title';
 import React, {PropTypes} from 'react';
 import FirstScreen from '../screens/First.react';
 import SecondScreen from '../screens/Second.react';
@@ -61,21 +60,17 @@ export default class Screens extends Component {
     const message = `Hello, ${candidate.name}.`;
 
     return (
-      // Pass data-pathname to allow route specific styling.
-      <DocumentTitle title='Recru app'>
-        <div>
-          <div className="screen-list" style={listStyle}>
-            <FirstScreen {...this.props} isCurrent={this.isCurrent(0)} ref={this.getRefNameFor(0)}/>
-            <SecondScreen {...this.props} isCurrent={this.isCurrent(1)} ref={this.getRefNameFor(1)}/>
-            <ThirdScreen {...this.props} isCurrent={this.isCurrent(2)} ref={this.getRefNameFor(2)}/>
-            <FourthScreen {...this.props} isCurrent={this.isCurrent(3)} ref={this.getRefNameFor(3)}/>
-            <FifthScreen {...this.props} isCurrent={this.isCurrent(4)} ref={this.getRefNameFor(4)}/>
-          </div>
-          <Hello {...this.props} className={miniMapAndHelloClassName} message={message}/>
-          <MiniMap {...this.props} className={miniMapAndHelloClassName}/>
-          <ThankYou {...this.props} className={thankYouClassName}/>
-        </div>
-      </DocumentTitle>
+      <div className="screen-list" style={listStyle}>
+        <FirstScreen {...this.props} isCurrent={this.isCurrent(0)} ref={this.getRefNameFor(0)}/>
+        <SecondScreen {...this.props} isCurrent={this.isCurrent(1)} ref={this.getRefNameFor(1)}/>
+        <ThirdScreen {...this.props} isCurrent={this.isCurrent(2)} ref={this.getRefNameFor(2)}/>
+        <FourthScreen {...this.props} isCurrent={this.isCurrent(3)} ref={this.getRefNameFor(3)}/>
+        <FifthScreen {...this.props} isCurrent={this.isCurrent(4)} ref={this.getRefNameFor(4)}/>
+
+        <Hello {...this.props} className={miniMapAndHelloClassName} message={message}/>
+        <MiniMap {...this.props} className={miniMapAndHelloClassName}/>
+        <ThankYou {...this.props} className={thankYouClassName}/>
+      </div>
     );
   }
 }
