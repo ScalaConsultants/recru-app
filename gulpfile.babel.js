@@ -3,6 +3,7 @@ import bg from 'gulp-bg';
 import eslint from 'gulp-eslint';
 import fs from 'fs';
 import gulp from 'gulp';
+import mochaRunCreator from './test/mochaRunCreator';
 import gutil from 'gulp-util';
 import mocha from 'gulp-mocha';
 import os from 'os';
@@ -43,19 +44,15 @@ gulp.task('eslint-ci', () => {
 });
 
 gulp.task('mocha', () => {
-  // read: false, not to load file contents
-  gulp.src('src/**/__test__/**/*.js', {read: false})
-    .pipe(mocha({
-      require: ['./test/mochaSetup.js'],
-      reporter: 'spec'
-    }))
-    // .on('error', process.exit.bind(process, 1));
-    .on('error', gutil.log);
+  mochaRunCreator('process')();
 });
 
 // Continuous test running
 gulp.task('mocha-watch', () => {
-  gulp.watch(['test/**/**', 'src/client/**', 'src/common/**'], ['mocha']);
+  gulp.watch(
+    ['test/**/**', 'src/client/**', 'src/common/**'],
+    mochaRunCreator('log')
+  );
 });
 
 gulp.task('test', done => {
