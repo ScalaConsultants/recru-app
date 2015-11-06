@@ -1,6 +1,7 @@
 import Component from 'react-pure-render/component';
 import Chevron from '../components/Chevron.react';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 
 if (process.env.IS_BROWSER) {
@@ -22,7 +23,7 @@ export default class FirstScreen extends Component {
   }
 
   proceed() {
-    const name = React.findDOMNode(this.refs.nameInput).value.trim();
+    const name = ReactDOM.findDOMNode(this.refs.nameInput).value.trim();
 
     if (!name) {
       this.setState({error: 'We really need your name.'});
@@ -38,7 +39,7 @@ export default class FirstScreen extends Component {
 
   handleKeyDown(e) {
     if (e.keyCode === 13) {
-      React.findDOMNode(this.refs.nameInput).blur();
+      ReactReactDOM.findDOMNode(this.refs.nameInput).blur();
       this.proceed();
     }
   }

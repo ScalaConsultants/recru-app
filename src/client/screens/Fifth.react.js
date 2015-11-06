@@ -2,6 +2,7 @@ import Component from 'react-pure-render/component';
 import classNames from 'classnames';
 import boundScroll from '../lib/boundScroll';
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 if (process.env.IS_BROWSER) {
   require('./Fifth.styl');
@@ -47,12 +48,12 @@ export default class FifthScreen extends Component {
     let candidateData = {
       name: this.props.candidate.name,
       role: this.props.candidate.role.name,
-      email: React.findDOMNode(this.refs.emailInput).value,
+      email: ReactDOM.findDOMNode(this.refs.emailInput).value,
       skills: this.props.candidate.skills
     };
 
     // Only add linkedin property if we really have cvFile here
-    if (this.state.urlPassed) candidateData.linkedin = React.findDOMNode(this.refs.urlInput).value;
+    if (this.state.urlPassed) candidateData.linkedin = ReactDOM.findDOMNode(this.refs.urlInput).value;
 
     let parts = {
       jsonData: JSON.stringify(candidateData)
@@ -98,8 +99,8 @@ export default class FifthScreen extends Component {
   }
 
   componentDidMount() {
-    const dropArea = React.findDOMNode(this.refs.dropArea);
-    const fileInput = React.findDOMNode(this.refs.fileInput);
+    const dropArea = ReactDOM.findDOMNode(this.refs.dropArea);
+    const fileInput = ReactDOM.findDOMNode(this.refs.fileInput);
     dropArea.addEventListener('dragover', this.handleDragOver, false);
     dropArea.addEventListener('dragleave', this.handleDragOver, false);
     dropArea.addEventListener('drop', this.handleDrop, false);
@@ -107,8 +108,8 @@ export default class FifthScreen extends Component {
   }
 
   componentWillUnmount() {
-    const dropArea = React.findDOMNode(this.refs.dropArea);
-    const fileInput = React.findDOMNode(this.refs.fileInput);
+    const dropArea = ReactDOM.findDOMNode(this.refs.dropArea);
+    const fileInput = ReactDOM.findDOMNode(this.refs.fileInput);
     dropArea.removeEventListener('dragover', this.handleDragOver);
     dropArea.removeEventListener('dragleave', this.handleDragOver);
     dropArea.removeEventListener('drop', this.handleDrop);
@@ -138,7 +139,7 @@ export default class FifthScreen extends Component {
         <input className={inputClassName} onChange={this.handleUrlChange} placeholder="linkedin.com/in/username" ref="urlInput" tabIndex="-1" type="text"/>
         <span>or</span>
         <input ref="fileInput" tabIndex="-1" type="file" />
-        <div className={dropAreaclassName} id="drop" onClick={() => React.findDOMNode(this.refs.fileInput).click()} ref="dropArea">
+        <div className={dropAreaclassName} id="drop" onClick={() => ReactDOM.findDOMNode(this.refs.fileInput).click()} ref="dropArea">
           <span>
             { this.state.fileUploaded ? 'resume uploaded' : 'drop or click to select resume'}
           </span>
