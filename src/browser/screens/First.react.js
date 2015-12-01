@@ -32,9 +32,9 @@ export default class FirstScreen extends Component {
 
     this.setState(this.getDefaultState());
 
-    const {actions: {candidate, screens}} = this.props;
-    candidate.saveName(name);
-    screens.nextScreen();
+    const {actions: {saveName, nextScreen}} = this.props;
+    saveName(name);
+    nextScreen();
   }
 
   handleKeyDown(e) {

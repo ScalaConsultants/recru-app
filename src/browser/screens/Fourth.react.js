@@ -17,8 +17,8 @@ export default class FourthScreen extends Component {
   }
 
   proceed() {
-    const {actions: {screens}} = this.props;
-    screens.nextScreen();
+    const {actions: {nextScreen}} = this.props;
+    nextScreen();
   }
 
   render() {

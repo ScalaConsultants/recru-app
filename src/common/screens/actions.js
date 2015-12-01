@@ -1,18 +1,22 @@
-export const actions = create();
-export const feature = 'screens';
+export const NEXT_SCREEN = 'NEXT_SCREEN';
+export const PREVIOUS_SCREEN = 'PREVIOUS_SCREEN';
+export const SET_SCREEN = 'SET_SCREEN';
 
-export function create(dispatch) {
+export function nextScreen() {
   return {
-    nextScreen() {
-      dispatch(actions.nextScreen);
-    },
+    type: NEXT_SCREEN
+  };
+}
 
-    previousScreen() {
-      dispatch(actions.previousScreen);
-    },
+export function previousScreen() {
+  return {
+    type: PREVIOUS_SCREEN
+  };
+}
 
-    setScreen(id) {
-      dispatch(actions.previousScreen, id);
-    }
+export function setScreen(id) {
+  return {
+    type: SET_SCREEN,
+    payload: {id}
   };
 }

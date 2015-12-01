@@ -1,5 +1,5 @@
 import Component from 'react-pure-render/component';
-import DocumentTitle from 'react-document-title';
+import Helmet from 'react-helmet';
 import React, {PropTypes} from 'react';
 import RouterHandler from '../../common/components/RouterHandler.react';
 import mapDispatchToProps from '../../common/app/mapDispatchToProps';
@@ -26,12 +26,16 @@ export default class App extends Component {
 
     return (
       // Pass data-pathname to allow route specific styling.
-      <DocumentTitle title="Scalac - Best Scala hAkkers!">
-        <div className="page" data-pathname={pathname}>
-          {/* Pathname enforces rerender so activeClassName is updated. */}
-          <RouterHandler {...this.props} />
-        </div>
-      </DocumentTitle>
+      <div className="page" data-pathname={pathname}>
+        <Helmet
+          meta={[{
+            name: 'description',
+            content: 'Best Scala hAkkers'
+          }]}
+          titleTemplate="%s - Scalac"/>
+        {/* Pathname enforces rerender so activeClassName is updated. */}
+        <RouterHandler {...this.props} />
+      </div>
     );
   }
 

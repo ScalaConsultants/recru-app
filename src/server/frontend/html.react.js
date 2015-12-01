@@ -3,22 +3,22 @@ import React, {Component, PropTypes} from 'react';
 export default class Html extends Component {
 
   static propTypes = {
-    appCssHash: PropTypes.string.isRequired,
+    appCssFilename: PropTypes.string.isRequired,
     baseUri: PropTypes.string.isRequired,
     bodyHtml: PropTypes.string.isRequired,
     googleAnalyticsId: PropTypes.string.isRequired,
-    isProduction: PropTypes.bool.isRequired,
-    title: PropTypes.string.isRequired
+    helmet: PropTypes.object.isRequired,
+    isProduction: PropTypes.bool.isRequired
   }
 
   render() {
     const {
-      appCssHash, bodyHtml, googleAnalyticsId, isProduction, title, baseUri
+      appCssFilename, bodyHtml, googleAnalyticsId, isProduction, helmet, baseUri
     } = this.props;
     // Only for production. For dev, it's handled by webpack with livereload.
     const linkStyles = isProduction &&
       <link
-        href={`_assets/app.css?v=${appCssHash}`}
+        href={`_assets/${appCssFilename}`}
         rel="stylesheet"
       />;
 
@@ -38,7 +38,11 @@ ga('create', '${googleAnalyticsId}', 'auto'); ga('send', 'pageview');`}}
           <meta charSet="utf-8" />
           <meta content="IE=Edge" httpEquiv="X-UA-Compatible" />
           <meta content="width=device-width, initial-scale=1" name="viewport" />
-          <title>{title}</title>
+          {helmet.title.toComponent()}
+          {helmet.base.toComponent()}
+          {helmet.meta.toComponent()}
+          {helmet.link.toComponent()}
+          {helmet.script.toComponent()}
           {linkStyles}
           {analytics}
           <link href="assets/img/favicon.ico" rel="shortcut icon"/>

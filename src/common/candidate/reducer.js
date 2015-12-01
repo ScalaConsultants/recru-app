@@ -1,45 +1,72 @@
+import * as actions from './actions';
+import map from 'lodash.map';
 import Role from './role';
 import Skill from './skill';
 import {Record, Map} from 'immutable';
-import {actions} from './actions';
 
-// We can use simple initialState if no data from server need to be revived.
-const initialState = new (Record({
+const InitialState = Record({
   name: '',
   email: '',
   role: new Role(null),
   skills: {},
   isSubmittingForm: false,
   hasSubmittedForm: false
-}));
+});
+const initialState = new InitialState;
 
-export default function candidateStore(state = initialState, action, payload) {
-  if (!action) return state;
+// Note how JSON from server is revived to immutable record.
+const revive = (candidate) => initialState.merge({
+  name: candidate.name,
+  email: candidate.email,
+  role: new Role(candidate.role),
+  skills: map(candidate.skills, (skill => new Skill(skill))),
+  isSubmittingForm: candidate.isSubmittingForm,
+  hasSubmittedForm: candidate.hasSubmittedForm
+});
 
-  switch (action) {
-    case actions.saveName:
-      return state.set('name', payload);
+export default function candidateReducer(state = initialState, action) {
+  if (!(state instanceof InitialState)) return revive(state);
 
-    case actions.saveEmail:
-      return state.set('email', payload);
+  switch (action.type) {
+    case actions.SAVE_NAME: {
+      const {name} = action.payload;
+      return state.set('name', name);
+    }
 
-    case actions.saveRole:
+    case actions.SAVE_EMAIL: {
+      const {email} = action.payload;
+      return state.set('email', email);
+    }
+
+    case actions.SAVE_ROLE: {
+      const {role} = action.payload;
       return state
-        .set('role', new Role(payload))
+        .set('role', new Role(role))
         .set('skills', Map());
+    }
 
-    case actions.saveSkill:
+    case actions.SAVE_SKILL: {
+      const {skill, level} = action.payload;
       return state
-        .setIn(['skills', payload.skill.id], new Skill(payload.skill))
-        .setIn(['skills', payload.skill.id, 'level'], payload.level);
+        .setIn(['skills', skill.id], new Skill(skill))
+        .setIn(['skills', skill.id, 'level'], level);
+    }
 
-    case actions.submit:
+    case actions.SUBMIT_START: {
       return state.set('isSubmittingForm', true);
+    }
 
-    case actions.receiveSubmitResponse:
+    case actions.SUBMIT_SUCCESS: {
       return state
         .set('isSubmittingForm', false)
         .set('hasSubmittedForm', true);
+    }
+
+    case actions.SUBMIT_ERROR: {
+      return state
+        .set('isSubmittingForm', false)
+        .set('hasSubmittedForm', false);
+    }
   }
 
   return state;

@@ -62,9 +62,9 @@ export default class FifthScreen extends Component {
     // Only add cvFile property if we really have cvFile here
     if (this.state.fileUploaded) parts.cvFile = this.cvFile;
 
-    const {actions: {candidate}} = this.props;
+    const {actions: {submit}} = this.props;
     const apiEndpoint = `${this.props.config.apiEndpoint.replace(/\/?$/, '/')}upload`;
-    candidate.submit(apiEndpoint, parts);
+    submit(apiEndpoint, parts);
   }
 
   handleUrlChange(e) {
@@ -74,7 +74,7 @@ export default class FifthScreen extends Component {
 
   handleEmailChange(e) {
     const hasNoValue = !e.target.value || e.target.value.trim().length === 0;
-    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    const filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
     this.setState({emailPassed: !hasNoValue && filter.test(e.target.value)});
   }

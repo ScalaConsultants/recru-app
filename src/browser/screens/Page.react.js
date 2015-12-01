@@ -10,6 +10,7 @@ import MiniMap from '../components/Minimap.react';
 import Hello from '../components/Hello.react';
 import ThankYou from '../components/ThankYou.react.js';
 import movementHandler from '../lib/movementHandler';
+import Helmet from 'react-helmet';
 
 @movementHandler
 export default class Screens extends Component {
@@ -34,8 +35,8 @@ export default class Screens extends Component {
   }
 
   handleMoveUp(e) {
-    const {actions: {screens}} = this.props;
-    screens.previousScreen();
+    const {actions: {previousScreen}} = this.props;
+    previousScreen();
   }
 
   handleMoveDown(e) {
@@ -61,6 +62,7 @@ export default class Screens extends Component {
 
     return (
       <div className="screen-list" style={listStyle}>
+        <Helmet title='Join Us'/>
         <FirstScreen {...this.props} isCurrent={this.isCurrent(0)} ref={this.getRefNameFor(0)}/>
         <SecondScreen {...this.props} isCurrent={this.isCurrent(1)} ref={this.getRefNameFor(1)}/>
         <ThirdScreen {...this.props} isCurrent={this.isCurrent(2)} ref={this.getRefNameFor(2)}/>

@@ -8,8 +8,8 @@ export default class SkillItem extends Component {
   }
 
   handleChange(level, e) {
-    const {actions: {candidate}} = this.props;
-    candidate.saveSkill(this.props.data, level);
+    const {actions: {saveSkill}} = this.props;
+    saveSkill(this.props.data, level);
   }
 
   render() {

@@ -6,11 +6,13 @@ import {combineReducers} from 'redux';
 import candidate from '../candidate/reducer';
 import screens from '../screens/reducer';
 import device from '../device/reducer';
+import config from '../config/reducer';
 
 const appReducer = combineReducers({
   candidate,
   screens,
-  device
+  device,
+  config,
 });
 
 export default appReducer;

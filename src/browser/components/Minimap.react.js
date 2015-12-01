@@ -14,9 +14,9 @@ export default class MiniMap extends Component {
   }
 
   handleClick(event, id) {
-    const {actions: {screens}} = this.props;
+    const {actions: {setScreen}} = this.props;
     event.preventDefault();
-    screens.setScreen(id);
+    setScreen(id);
   }
 
   renderPoint(id, currentScreen) {

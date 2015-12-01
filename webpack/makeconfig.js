@@ -46,9 +46,9 @@ export default function makeConfig(isDevelopment) {
     entry: {
       app: isDevelopment ? [
         `webpack-hot-middleware/client?path=http://${serverIp}:${constants.HOT_RELOAD_PORT}/__webpack_hmr`,
-        path.join(constants.SRC_DIR, 'client/main.js')
+        path.join(constants.SRC_DIR, 'browser/main.js')
       ] : [
-        path.join(constants.SRC_DIR, 'client/main.js')
+        path.join(constants.SRC_DIR, 'browser/main.js')
       ]
     },
     module: {
@@ -63,6 +63,9 @@ export default function makeConfig(isDevelopment) {
         loader: 'babel',
         query: {
           stage: 0,
+          // If cacheDirectory is enabled, it throws:
+          // Uncaught Error: locals[0] does not appear to be a `module` object with Hot Module replacement API enabled.
+          // cacheDirectory: true,
           env: {
             development: {
               // react-transform belongs to webpack config only, not to .babelrc
@@ -92,7 +95,7 @@ export default function makeConfig(isDevelopment) {
       publicPath: `http://${serverIp}:${constants.HOT_RELOAD_PORT}/build/`
     } : {
       path: constants.BUILD_DIR,
-      filename: '[name].js',
+      filename: '[name]-[hash].js',
       chunkFilename: '[name]-[chunkhash].js'
     },
     plugins: (() => {
@@ -112,7 +115,7 @@ export default function makeConfig(isDevelopment) {
       else plugins.push(
         // Render styles into separate cacheable file to prevent FOUC and
         // optimize for critical rendering path.
-        new ExtractTextPlugin('app.css', {
+        new ExtractTextPlugin('app-[hash].css', {
           allChunks: true
         }),
         new webpack.optimize.DedupePlugin(),

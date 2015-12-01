@@ -1,5 +1,5 @@
-const hashFile = require('hash-file');
-const nconf = require('nconf');
+import nconf from 'nconf';
+import {version} from '../../package';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -7,27 +7,13 @@ const isProduction = process.env.NODE_ENV === 'production';
 // to production server.
 nconf.env('__');
 
-function getAssetHash(filePath) {
-  if (!isProduction) return '';
-  try {
-    return hashFile.sync(filePath);
-  }
-  catch (e) {
-    return '';
-  }
-}
-
 // Remember, never put production secrets in config. Use nconf.
 const config = {
-  assetsHashes: {
-    appCss: getAssetHash('build/app.css'),
-    appJs: getAssetHash('build/app.js')
-  },
   app: {
     baseUri: '/',
     defaultTitle: 'Scalac - Best Scala hAkkers!',
     apiEndpoint: 'http://localhost:8080',
-    version: require('../../package').version
+    version: version
   },
   isProduction: isProduction,
   googleAnalyticsId: 'UA-XXXXXXX-X',
@@ -39,4 +25,4 @@ const config = {
 // like loading config from json and more. Check out nconf docs.
 nconf.defaults(config);
 
-module.exports = nconf.get();
+export default nconf.get();

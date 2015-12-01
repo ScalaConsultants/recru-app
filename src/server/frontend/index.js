@@ -10,7 +10,10 @@ const app = express();
 app.use(esteMiddleware());
 app.use(compression());
 app.use(favicon('assets/img/favicon.ico'));
-app.use('/assets/img', express.static('../assets/img', {maxAge: '200d'}));
+
+// Serve the static assets. We can cache them as they include hashes.
+// express.static is relative to the directory where you launch your node process
+app.use('/assets/img', express.static('assets/img', {maxAge: '200d'}));
 app.use('/_assets', express.static('build', {maxAge: '200d'}));
 
 // Load state extras for current user.

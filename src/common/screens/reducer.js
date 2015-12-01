@@ -1,34 +1,43 @@
+import * as actions from './actions';
 import {Record} from 'immutable';
-import {actions} from './actions';
 
 // We can use simple initialState if no data from server need to be revived.
-const initialState = new (Record({
+const InitialState = Record({
   currentScreen: 0,
   lastScreen: 4
-}));
+});
+const initialState = new InitialState;
+
+// Note how JSON from server is revived to immutable record.
+const revive = (screens) => initialState.merge({
+  currentScreen: screens.currentScreen,
+  lastScreen: screens.lastScreen
+});
 
 export default function screensStore(state = initialState, action, payload) {
-  if (!action) return state;
+  if (!(state instanceof InitialState)) return revive(state);
 
-  switch (action) {
-  case actions.nextScreen: {
-    let nextScreen = state.get('currentScreen') + 1;
-    if (nextScreen > state.get('lastScreen'))
-      nextScreen = state.get('currentScreen');
-    return state.set('currentScreen', nextScreen);
-  }
+  switch (action.type) {
+    case actions.NEXT_SCREEN: {
+      let nextScreen = state.get('currentScreen') + 1;
+      if (nextScreen > state.get('lastScreen'))
+        nextScreen = state.get('currentScreen');
+      return state.set('currentScreen', nextScreen);
+    }
 
-  case actions.previousScreen: {
-    let previousScreen = state.get('currentScreen') - 1;
-    if (previousScreen < 0)
-      previousScreen = state.get('currentScreen');
-    return state.set('currentScreen', previousScreen);
-  }
+    case actions.PREVIOUS_SCREEN: {
+      let previousScreen = state.get('currentScreen') - 1;
+      if (previousScreen < 0)
+        previousScreen = state.get('currentScreen');
+      return state.set('currentScreen', previousScreen);
+    }
 
-  case actions.setScreen:
-    if (payload < 0 || payload > state.get('lastScreen'))
-      return state.get('currentScreen');
-    return state.set('currentScreen', payload);
+    case actions.SET_SCREEN: {
+      const {id} = action.payload;
+      if (id < 0 || id > state.get('lastScreen'))
+        return state.get('currentScreen');
+      return state.set('currentScreen', id);
+    }
   }
 
   return state;
