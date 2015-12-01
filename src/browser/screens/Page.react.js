@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import Component from 'react-pure-render/component';
 import React, {PropTypes} from 'react';
 import FirstScreen from '../screens/First.react';
@@ -6,9 +5,6 @@ import SecondScreen from '../screens/Second.react';
 import ThirdScreen from '../screens/Third.react';
 import FourthScreen from '../screens/Fourth.react';
 import FifthScreen from '../screens/Fifth.react';
-import MiniMap from '../components/Minimap.react';
-import Hello from '../components/Hello.react';
-import ThankYou from '../components/ThankYou.react.js';
 import movementHandler from '../lib/movementHandler';
 import Helmet from 'react-helmet';
 
@@ -45,20 +41,11 @@ export default class Screens extends Component {
   }
 
   render() {
-    const {screens: {currentScreen}, candidate} = this.props;
-
     const translate = `translate3d(0%, ${this.getPageOffset()}%, 0)`;
     const listStyle = {
       transform: translate,
       WebkitTransform: translate
     };
-    const miniMapAndHelloClassName = classNames({
-      '-visible': currentScreen > 0 && !candidate.hasSubmittedForm
-    });
-    const thankYouClassName = classNames({
-      '-visible': candidate.hasSubmittedForm
-    });
-    const message = `Hello, ${candidate.name}.`;
 
     return (
       <div className="screen-list" style={listStyle}>
@@ -68,10 +55,6 @@ export default class Screens extends Component {
         <ThirdScreen {...this.props} isCurrent={this.isCurrent(2)} ref={this.getRefNameFor(2)}/>
         <FourthScreen {...this.props} isCurrent={this.isCurrent(3)} ref={this.getRefNameFor(3)}/>
         <FifthScreen {...this.props} isCurrent={this.isCurrent(4)} ref={this.getRefNameFor(4)}/>
-
-        <Hello {...this.props} className={miniMapAndHelloClassName} message={message}/>
-        <MiniMap {...this.props} className={miniMapAndHelloClassName}/>
-        <ThankYou {...this.props} className={thankYouClassName}/>
       </div>
     );
   }

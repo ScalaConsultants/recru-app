@@ -33,21 +33,21 @@ export function saveName(name) {
 
 export function saveEmail(email) {
   return {
-    type: SAVE_NAME,
+    type: SAVE_EMAIL,
     payload: {email}
   };
 }
 
 export function saveRole(role) {
   return {
-    type: SAVE_NAME,
+    type: SAVE_ROLE,
     payload: {role}
   };
 }
 
 export function saveSkill(skill, level) {
   return {
-    type: SAVE_NAME,
+    type: SAVE_SKILL,
     payload: {skill, level}
   };
 }
