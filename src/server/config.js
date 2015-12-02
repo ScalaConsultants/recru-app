@@ -12,7 +12,7 @@ const config = {
   app: {
     baseUri: '/',
     defaultTitle: 'Scalac - Best Scala hAkkers!',
-    apiEndpoint: 'http://localhost:8080',
+    apiEndpoint: '/api/v1/',
     version: version
   },
   isProduction: isProduction,
