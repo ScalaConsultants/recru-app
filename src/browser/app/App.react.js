@@ -47,7 +47,7 @@ export default class App extends Component {
             name: 'description',
             content: 'Best Scala hAkkers'
           }]}
-          titleTemplate="%s - Scalac"/>
+          titleTemplate="%s @ Scalac"/>
         {/* Pathname enforces rerender so activeClassName is updated. */}
         <RouterHandler {...this.props} />
 
