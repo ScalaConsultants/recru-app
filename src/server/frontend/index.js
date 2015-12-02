@@ -1,41 +1,24 @@
 import compression from 'compression';
-import config from '../config';
-import esteHeaders from '../lib/estemiddleware';
+import device from 'express-device';
+import esteMiddleware from '../lib/esteMiddleware';
 import express from 'express';
 import favicon from 'serve-favicon';
 import render from './render';
-import userState from './userstate';
-import i18nLoader from '../lib/i18nmiddleware';
 
 const app = express();
 
-// Add Este.js headers for React related routes only.
-if (!config.isProduction)
-  app.use(esteHeaders());
-
+app.use(esteMiddleware());
 app.use(compression());
 app.use(favicon('assets/img/favicon.ico'));
-// TODO: Move to CDN.
-app.use('/build', express.static('build'));
-app.use('/assets', express.static('assets'));
 
-// Load translations, fallback to defaultLocale if no
-// translations available.
-app.use(i18nLoader({
-  appLocales: config.locales,
-  defaultLocale: config.defaultLocale
-}));
+// Serve the static assets. We can cache them as they include hashes.
+// express.static is relative to the directory where you launch your node process
+app.use('/assets/img', express.static('assets/img', {maxAge: '200d'}));
+app.use('/_assets', express.static('build', {maxAge: '200d'}));
 
 // Load state extras for current user.
-app.use(userState());
-
-app.get('/', (req, res, next) => {
-  const customStates = {
-    i18n: req.i18n,
-    config: config.app
-  };
-  render(req, res, req.userState, customStates).catch(next);
-});
+app.use(device.capture());
+app.get('*', render);
 
 app.on('mount', () => {
   console.log('App is available at %s', app.mountpath);

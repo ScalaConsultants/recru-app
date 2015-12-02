@@ -1,8 +1,6 @@
 import config from '../config';
 
-// Four arguments need to be defined in order for the middleware to act
-// as an error handler.
-export default (err, req, res, next) => {
+export default function errorHandler(err, req, res, next) {
   const errorDetails = err.stack || err;
 
   console.error('Yay', errorDetails);

@@ -1,75 +1,90 @@
-/* @flow weak */
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import autoprefixer from 'autoprefixer';
+import constants from './constants';
+import path from 'path';
+import webpack from 'webpack';
+import ip from 'ip';
 
-'use strict';
-
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var NyanProgressPlugin = require('nyan-progress-webpack-plugin');
-var NotifyPlugin = require('./notifyplugin');
-var constants = require('./constants');
-var path = require('path');
-var webpack = require('webpack');
-
-var devtools = process.env.CONTINUOUS_INTEGRATION
+const devtools = process.env.CONTINUOUS_INTEGRATION
   ? 'inline-source-map'
   // cheap-module-eval-source-map, because we want original source, but we don't
   // care about columns, which makes this devtool faster than eval-source-map.
   // http://webpack.github.io/docs/configuration.html#devtool
   : 'cheap-module-eval-source-map';
 
-var loaders = {
+const loaders = {
   'css': '',
   'less': '!less-loader',
-  'scss|sass': '!sass-loader',
+  'scss': '!sass-loader',
+  'sass': '!sass-loader?indentedSyntax',
   'styl': '!stylus-loader'
 };
 
-module.exports = function(isDevelopment) {
+const serverIp = ip.address();
+
+export default function makeConfig(isDevelopment) {
 
   function stylesLoaders() {
-    return Object.keys(loaders).map(function(ext) {
-      var prefix = 'css-loader!autoprefixer-loader?browsers=last 2 version';
-      var extLoaders = prefix + loaders[ext];
-      var loader = isDevelopment
-        ? 'style-loader!' + extLoaders
+    return Object.keys(loaders).map(ext => {
+      const prefix = 'css-loader!postcss-loader';
+      const extLoaders = prefix + loaders[ext];
+      const loader = isDevelopment
+        ? `style-loader!${extLoaders}`
         : ExtractTextPlugin.extract('style-loader', extLoaders);
       return {
         loader: loader,
-        test: new RegExp('\\.(' + ext + ')$')
+        test: new RegExp(`\\.(${ext})$`)
       };
     });
   }
 
-  var config = {
+  const config = {
+    hotPort: constants.HOT_RELOAD_PORT,
     cache: isDevelopment,
     debug: isDevelopment,
     devtool: isDevelopment ? devtools : '',
     entry: {
       app: isDevelopment ? [
-        'webpack-dev-server/client?http://localhost:8888',
-        // Why only-dev-server instead of dev-server:
-        // https://github.com/webpack/webpack/issues/418#issuecomment-54288041
-        'webpack/hot/only-dev-server',
-        path.join(constants.SRC_DIR, 'client/main.js')
+        `webpack-hot-middleware/client?path=http://${serverIp}:${constants.HOT_RELOAD_PORT}/__webpack_hmr`,
+        path.join(constants.SRC_DIR, 'browser/main.js')
       ] : [
-        path.join(constants.SRC_DIR, 'client/main.js')
+        path.join(constants.SRC_DIR, 'browser/main.js')
       ]
     },
     module: {
-      loaders: [
-      {
+      loaders: [{
         loader: 'json',
         test: /\.json$/
-      },
-      {
+      }, {
         loader: 'url-loader?limit=100000',
         test: /\.(gif|jpg|png|woff|woff2|eot|ttf|svg)$/
       }, {
         exclude: /node_modules/,
-        loaders: isDevelopment ? [
-          'react-hot', 'babel-loader'
-        ] : [
-          'babel-loader'
-        ],
+        loader: 'babel',
+        query: {
+          stage: 0,
+          // If cacheDirectory is enabled, it throws:
+          // Uncaught Error: locals[0] does not appear to be a `module` object with Hot Module replacement API enabled.
+          // cacheDirectory: true,
+          env: {
+            development: {
+              // react-transform belongs to webpack config only, not to .babelrc
+              plugins: ['react-transform'],
+              extra: {
+                'react-transform': {
+                  transforms: [{
+                    transform: 'react-transform-hmr',
+                    imports: ['react'],
+                    locals: ['module']
+                  }, {
+                    transform: 'react-transform-catch-errors',
+                    imports: ['react', 'redbox-react']
+                  }]
+                }
+              }
+            }
+          }
+        },
         test: /\.js$/
       }].concat(stylesLoaders())
     },
@@ -77,14 +92,14 @@ module.exports = function(isDevelopment) {
       path: constants.BUILD_DIR,
       filename: '[name].js',
       chunkFilename: '[name]-[chunkhash].js',
-      publicPath: 'http://localhost:8888/build/'
+      publicPath: `http://${serverIp}:${constants.HOT_RELOAD_PORT}/build/`
     } : {
       path: constants.BUILD_DIR,
-      filename: '[name].js',
+      filename: '[name]-[hash].js',
       chunkFilename: '[name]-[chunkhash].js'
     },
-    plugins: (function() {
-      var plugins = [
+    plugins: (() => {
+      const plugins = [
         new webpack.DefinePlugin({
           'process.env': {
             NODE_ENV: JSON.stringify(isDevelopment ? 'development' : 'production'),
@@ -92,32 +107,29 @@ module.exports = function(isDevelopment) {
           }
         })
       ];
-      if (isDevelopment)
-        plugins.push(
-          NotifyPlugin,
-          new webpack.HotModuleReplacementPlugin(),
-          // Tell reloader to not reload if there is an error.
-          new webpack.NoErrorsPlugin()
-        );
-      else
-        plugins.push(
-          // Render styles into separate cacheable file to prevent FOUC and
-          // optimize for critical rendering path.
-          new ExtractTextPlugin('app.css', {
-            allChunks: true
-          }),
-          new NyanProgressPlugin(),
-          new webpack.optimize.DedupePlugin(),
-          new webpack.optimize.OccurenceOrderPlugin(),
-          new webpack.optimize.UglifyJsPlugin({
-            compress: {
-              // Because uglify reports so many irrelevant warnings.
-              warnings: false
-            }
-          })
-        );
+      if (isDevelopment) plugins.push(
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
+      );
+      else plugins.push(
+        // Render styles into separate cacheable file to prevent FOUC and
+        // optimize for critical rendering path.
+        new ExtractTextPlugin('app-[hash].css', {
+          allChunks: true
+        }),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+          compress: {
+            screw_ie8: true, // eslint-disable-line camelcase
+            warnings: false // Because uglify reports irrelevant warnings.
+          }
+        })
+      );
       return plugins;
     })(),
+    postcss: () => [autoprefixer({browsers: 'last 2 version'})],
     resolve: {
       extensions: ['', '.js', '.json'],
       modulesDirectories: ['src', 'node_modules'],
