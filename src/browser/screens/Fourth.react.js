@@ -2,7 +2,7 @@ import Component from 'react-pure-render/component';
 import Chevron from '../components/Chevron.react';
 import React from 'react';
 import boundScroll from '../lib/boundScroll';
-import SkillItem from '../components/skillItem.react';
+import SkillItem from '../components/SkillItem.react';
 import technologies from '../data/technologies.json';
 
 if (process.env.IS_BROWSER) {

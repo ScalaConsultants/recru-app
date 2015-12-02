@@ -1,3 +1,5 @@
+/* global FormData, XMLHttpRequest */
+
 import Promise from 'bluebird';
 
 export default function multipartPostRequest(uri, parts) {
