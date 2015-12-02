@@ -10,7 +10,8 @@ const InitialState = Record({
   role: new Role(null),
   skills: {},
   isSubmittingForm: false,
-  hasSubmittedForm: false
+  hasSubmittedForm: false,
+  hasSubmissionErroredOut: false
 });
 const initialState = new InitialState;
 
@@ -21,7 +22,8 @@ const revive = (candidate) => initialState.merge({
   role: new Role(candidate.role),
   skills: map(candidate.skills, (skill => new Skill(skill))),
   isSubmittingForm: candidate.isSubmittingForm,
-  hasSubmittedForm: candidate.hasSubmittedForm
+  hasSubmittedForm: candidate.hasSubmittedForm,
+  hasSubmissionErroredOut: candidate.hasSubmittedForm
 });
 
 export default function candidateReducer(state = initialState, action) {
@@ -65,7 +67,8 @@ export default function candidateReducer(state = initialState, action) {
     case actions.SUBMIT_ERROR: {
       return state
         .set('isSubmittingForm', false)
-        .set('hasSubmittedForm', false);
+        .set('hasSubmittedForm', true)
+        .set('hasSubmissionErroredOut', true);
     }
   }
 

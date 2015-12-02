@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import Component from 'react-pure-render/component';
 import MiniMap from '../components/Minimap.react';
 import Hello from '../components/Hello.react';
-import ThankYou from '../components/ThankYou.react.js';
+import MessageOverlay from '../components/MessageOverlay.react.js';
 import Helmet from 'react-helmet';
 import React, {PropTypes} from 'react';
 import RouterHandler from '../../common/components/RouterHandler.react';
@@ -34,9 +34,15 @@ export default class App extends Component {
     const miniMapAndHelloClassName = classNames({
       '-visible': currentScreen > 0 && !candidate.hasSubmittedForm
     });
-    const thankYouClassName = classNames({
-      '-visible': candidate.hasSubmittedForm
+    const messageOverlayClassName = classNames({
+      '-visible': candidate.hasSubmittedForm,
+      '-error': candidate.hasSubmissionErroredOut
     });
+    const messageOverlayTitle = candidate.hasSubmissionErroredOut ? 'Whoops' : 'Thank You';
+    const messageOverlayContent = candidate.hasSubmissionErroredOut
+      ? `Something went wrong and we are very sorry about that. Drop us a message at info@scalac.io, thanks!`
+      : `You'll hear from us very soon.`;
+
     const message = `Hello, ${candidate.name}.`;
 
     return (
@@ -53,7 +59,7 @@ export default class App extends Component {
 
         <Hello {...this.props} className={miniMapAndHelloClassName} message={message}/>
         <MiniMap {...this.props} className={miniMapAndHelloClassName}/>
-        <ThankYou {...this.props} className={thankYouClassName}/>
+        <MessageOverlay {...this.props} className={messageOverlayClassName} content={messageOverlayContent} title={messageOverlayTitle}/>
       </div>
     );
   }

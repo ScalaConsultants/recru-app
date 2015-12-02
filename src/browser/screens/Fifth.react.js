@@ -117,6 +117,8 @@ export default class FifthScreen extends Component {
   }
 
   render() {
+    const {candidate} = this.props;
+
     const dropAreaclassName = classNames('drop-area', {
       hover: this.state.dragOver,
       active: this.state.fileUploaded
@@ -129,6 +131,14 @@ export default class FifthScreen extends Component {
     const emailInputClassName = classNames({
       active: this.state.emailPassed
     });
+
+    const buttonInputClassName = classNames({
+      '-pending': candidate.isSubmittingForm
+    });
+
+    const buttonTitle = candidate.isSubmittingForm
+      ? 'Submitting, hold on...'
+      : 'Take me to ScalaC';
 
     return (
       <section className="fifth-screen screen dark">
@@ -144,7 +154,7 @@ export default class FifthScreen extends Component {
             { this.state.fileUploaded ? 'resume uploaded' : 'drop or click to select resume'}
           </span>
         </div>
-        <button disabled={!this.isDataValid()} onClick={this.submit}><i></i>Take me to ScalaC</button>
+        <button className={buttonInputClassName} disabled={!this.isDataValid() || candidate.isSubmittingForm} onClick={this.submit}><i></i>{buttonTitle}</button>
       </section>
     );
   }

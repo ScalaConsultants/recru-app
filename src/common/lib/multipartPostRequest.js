@@ -24,10 +24,10 @@ export default function multipartPostRequest(uri, parts) {
       if (xhr.status === 200)
         resolve(xhr.responseText);
       else
-        reject(xhr);
+        reject(new Error('Non OK status has been returned.'));
     };
-    xhr.onerror = () => {
-      reject(xhr);
+    xhr.onerror = (e) => {
+      reject(new Error(e.target.status));
     };
     xhr.send(formData);
   });

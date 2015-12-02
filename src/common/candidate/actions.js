@@ -10,15 +10,9 @@ export const SUBMIT_START = 'SUBMIT_START';
 export const SUBMIT_ERROR = 'SUBMIT_ERROR';
 export const SUBMIT_SUCCESS = 'SUBMIT_SUCCESS';
 
-// This is ugly but working, we're short on time...
-function showDirtyError() {
-  window.alert('Something went wrong and we are very sorry about that. Try again in couple seconds or drop us a message at info@scalac.io, thanks!'); // eslint-disable-line no-alert
-}
-
 function handleSubmitResponse(response) {
   if (response !== 'OK') {
-    showDirtyError();
-    return;
+    throw new Error('Non OK status has been returned.');
   }
   // After showing thank you screen, redirect to homepage
   window.setTimeout(() => window.location = 'http://scalac.io', 5000);
@@ -58,7 +52,6 @@ export function submit(apiEndpoint, parts) {
     payload: {
       promise: multipartPostRequest(apiEndpoint, parts)
         .then(handleSubmitResponse)
-        .catch(showDirtyError)
     }
   });
 }
