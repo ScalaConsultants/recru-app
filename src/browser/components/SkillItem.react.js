@@ -7,15 +7,38 @@ export default class SkillItem extends Component {
     data: React.PropTypes.object.isRequired
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {hintDisplayed: false};
+  }
+
   handleChange(level, e) {
     const {actions: {saveSkill}} = this.props;
     saveSkill(this.props.data, level);
   }
 
+  setHintVisibility(visible) {
+    this.setState({hintDisplayed: visible});
+  }
+
+  handleMouseEnter = () => this.setHintVisibility(true);
+  handleMouseLeave = () => this.setHintVisibility(false);
+
   render() {
+    let hint;
+    const cb = {
+      onMouseEnter: this.handleMouseEnter,
+      onMouseLeave: this.handleMouseLeave
+    };
+
+    if (this.state.hintDisplayed) {
+      hint = (<div {...cb} className="hint">{this.props.data.name}</div>);
+    }
+
     return (
       <li>
-        <img alt={this.props.data.name} src={this.props.data.src}/>
+        {hint}
+        <img {...cb} alt={this.props.data.name} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} src={this.props.data.src}/>
         <form action="">
           <input className="star star-5" id={`star5_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(5, e)} type="radio"/>
           <label className="star star-5" htmlFor={`star5_${this.props.data.id}`}></label>

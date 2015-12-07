@@ -36,6 +36,35 @@
       width 33.3333%
       display inline-block
       margin-bottom 40px
+      position relative
+
+      .hint
+        position absolute
+        bottom 90px
+        left 0
+        background #000
+        opacity 0.7
+        color #fff
+        text-align center
+        width 90px
+        padding 0 5px
+        margin 0 15px
+        font-size 14px
+        line-height 20px
+        border-radius 5px
+
+      .hint::after
+        content ''
+        position absolute
+        width 0
+        height 0
+        border-left 5px solid transparent
+        border-right 5px solid transparent
+        border-top 7px solid #000
+        bottom -7px
+        left 43px
+        margin 0 auto
+
       img
         max-width 80px
         vertical-align middle
