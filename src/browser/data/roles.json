@@ -7,18 +7,12 @@
   },
   {
     "id": 1,
-    "name": "Clojure Explorer",
-    "img": "assets/img/explorer.jpg",
-    "description": "Exploration this is the way you rock! Breaking all of the set patterns,  inspiring new solutions brings you a great satisfaction. When you travel,  you never stop. Boredom it’s not the destination located on your trip map. Travelling alone or in a team? That’s not the point because both of this options sound  cool for you."
-  },
-  {
-    "id": 2,
     "name": "Mobile Hiker",
     "img": "assets/img/hiker.jpg",
     "description": "Hiking is your lifestyle and you build this lifestyle among mobiles users. We can say you inititate an amazing hiking trips for mobile society. This is a long way trip related to permanent change. And you move this change forward. You hike alone or in a mobile team with one main purpose ahead – making this trip exciting, cool & as intuitive as possible."
   },
   {
-    "id": 3,
+    "id": 2,
     "name": "Frontend Observer",
     "img": "assets/img/observer.jpg",
     "description": "You are an exact observer hungry for wide views, who transfer it to the frontend world. You are a codding painter, who make user world of technology more unique, attractive and friendly. You  appreciate those precious moments of lonely journey of creativity as well as frontend team travelling."
