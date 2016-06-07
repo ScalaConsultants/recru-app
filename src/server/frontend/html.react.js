@@ -9,7 +9,7 @@ export default class Html extends Component {
     googleAnalyticsId: PropTypes.string.isRequired,
     helmet: PropTypes.object.isRequired,
     isProduction: PropTypes.bool.isRequired
-  }
+  };
 
   render() {
     const {
@@ -18,7 +18,7 @@ export default class Html extends Component {
     // Only for production. For dev, it's handled by webpack with livereload.
     const linkStyles = isProduction &&
       <link
-        href={`_assets/${appCssFilename}`}
+        href={`${isProduction ? '/_assets' : ''}/${appCssFilename}`} //href={`/_assets/${appCssFilename}`}
         rel="stylesheet"
       />;
 
@@ -38,11 +38,11 @@ ga('create', '${googleAnalyticsId}', 'auto'); ga('send', 'pageview');`}}
           <meta charSet="utf-8" />
           <meta content="IE=Edge" httpEquiv="X-UA-Compatible" />
           <meta content="width=device-width, initial-scale=1" name="viewport" />
-          {helmet.title.toComponent()}
-          {helmet.base.toComponent()}
-          {helmet.meta.toComponent()}
-          {helmet.link.toComponent()}
-          {helmet.script.toComponent()}
+          {helmet && helmet.title ? helmet.title.toComponent() : ''}
+          {helmet && helmet.base ? helmet.base.toComponent() : ''}
+          {helmet && helmet.meta ? helmet.meta.toComponent() : ''}
+          {helmet && helmet.link ? helmet.link.toComponent() : ''}
+          {helmet && helmet.script ? helmet.script.toComponent() : ''}
           {linkStyles}
           {analytics}
           <link href="assets/img/favicon.ico" rel="shortcut icon"/>

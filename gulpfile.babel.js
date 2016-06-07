@@ -9,6 +9,8 @@ import runSequence from 'run-sequence';
 import shell from 'gulp-shell';
 import webpackBuild from './webpack/build';
 import yargs from 'yargs';
+import imageMin from 'gulp-imagemin';
+import pngquant from 'imagemin-pngquant';
 
 const args = yargs
   .alias('p', 'production')
@@ -31,7 +33,23 @@ gulp.task('env', () => {
 gulp.task('clean', done => del('build/*', done));
 
 gulp.task('build-webpack', ['env'], webpackBuild);
-gulp.task('build', ['build-webpack']);
+gulp.task('build', ['build-webpack', 'copy-assets']);
+
+gulp.task('copy-assets', () => {
+  gulp.src(['assets/**/*'])
+    .pipe(imageMin({
+      progressive: true,
+      interlaced: true,
+      multipass: true,
+      optimizationLevel: 4,
+      svgoPlugins: [
+        {removeViewBox: false},
+        {cleanupIDs: false}
+      ],
+      use: [pngquant()]
+    }))
+    .pipe(gulp.dest('build/assets/'));
+});
 
 gulp.task('eslint', () => {
   return runEslint();
