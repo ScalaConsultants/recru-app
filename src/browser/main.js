@@ -19,9 +19,19 @@ const initialState = window.__INITIAL_STATE__;
 const store = configureStore({engine, initialState});
 const routes = createRoutes(store.getState);
 
+// fix for S3 redirect problem
+// http://stackoverflow.com/questions/16267339/s3-static-website-hosting-route-all-paths-to-index-html/34958026#34958026
+const history = createBrowserHistory();
+history.listen((location) => {
+  const path = (/#(\/.*)$/.exec(location.hash) || [])[1];
+  if (path) {
+    history.replace(path);
+  }
+});
+
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={createBrowserHistory()}>
+    <Router history={history}>
       {routes}
     </Router>
   </Provider>,
