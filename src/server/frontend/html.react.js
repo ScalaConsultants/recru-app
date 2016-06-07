@@ -8,21 +8,22 @@ export default class Html extends Component {
     bodyHtml: PropTypes.string.isRequired,
     googleAnalyticsId: PropTypes.string.isRequired,
     helmet: PropTypes.object.isRequired,
-    isProduction: PropTypes.bool.isRequired
+    isProduction: PropTypes.bool.isRequired,
+    isStatic: PropTypes.bool.isRequired
   };
 
   render() {
     const {
-      appCssFilename, bodyHtml, googleAnalyticsId, isProduction, helmet, baseUri
+      appCssFilename, bodyHtml, googleAnalyticsId, isProduction, isStatic, helmet, baseUri
     } = this.props;
     // Only for production. For dev, it's handled by webpack with livereload.
-    const linkStyles = isProduction &&
+    const linkStyles = (isProduction || isStatic) &&
       <link
         href={`${isProduction ? '/_assets' : ''}/${appCssFilename}`} //href={`/_assets/${appCssFilename}`}
         rel="stylesheet"
       />;
 
-    const analytics = isProduction && googleAnalyticsId !== 'UA-XXXXXXX-X' &&
+    const analytics = (isProduction || isStatic) && googleAnalyticsId !== 'UA-XXXXXXX-X' &&
       <script
         dangerouslySetInnerHTML={{__html: `
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
