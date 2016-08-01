@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Router from 'react-router';
 import configureStore from '../common/configureStore';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
-import createEngine from 'redux-storage/engines/localStorage';
+import createEngine from 'redux-storage-engine-localstorage';
 import createRoutes from './createRoutes';
 import {Provider} from 'react-redux';
 

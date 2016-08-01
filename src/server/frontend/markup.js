@@ -5,12 +5,12 @@ import config from '../config';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-redux';
-import { RoutingContext } from 'react-router';
+import { RouterContext } from 'react-router';
 
 export function getAppHtml(store, renderProps) {
   return ReactDOMServer.renderToString(
     <Provider store={store}>
-      <RoutingContext {...renderProps} />
+      <RouterContext {...renderProps} />
     </Provider>
   );
 }
