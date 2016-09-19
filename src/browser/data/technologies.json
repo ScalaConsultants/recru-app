@@ -28,23 +28,6 @@
   ],
   "1" : [
     {
-      "id" : 13,
-      "name" : "clojure",
-      "src" : "assets/img/clojure/clojure.png"
-    },
-    {
-      "id" : 14,
-      "name" : "clojure-script",
-      "src" : "assets/img/clojure/clojurescript.png"
-    },
-    {
-      "id" : 15,
-      "name" : "leiningen",
-      "src" : "assets/img/clojure/leiningen.png"
-    }
-  ],
-  "2" : [
-    {
       "id" : 16,
       "name" : "swift",
       "src" : "assets/img/mobile/swift.png"
@@ -65,7 +48,7 @@
       "src" : "assets/img/mobile/appcode.png"
     }
   ],
-  "3" : [
+  "2" : [
     {
       "id" : 1,
       "name" : "js",
