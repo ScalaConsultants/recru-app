@@ -17,7 +17,7 @@ export default class Html extends Component {
       appCssFilename, bodyHtml, googleAnalyticsId, isProduction, isStatic, helmet, baseUri
     } = this.props;
     // Only for production. For dev, it's handled by webpack with livereload.
-    const linkStyles = (isProduction || isStatic) &&
+    const linkStyles = isProduction &&
       <link
         href={`${isProduction ? '/_assets' : ''}/${appCssFilename}`} //href={`/_assets/${appCssFilename}`}
         rel="stylesheet"
@@ -36,6 +36,7 @@ ga('create', '${googleAnalyticsId}', 'auto'); ga('send', 'pageview');`}}
     return (
       <html lang="en">
         <head>
+          <base href={baseUri}/>
           <meta charSet="utf-8" />
           <meta content="IE=Edge" httpEquiv="X-UA-Compatible" />
           <meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -47,7 +48,6 @@ ga('create', '${googleAnalyticsId}', 'auto'); ga('send', 'pageview');`}}
           {linkStyles}
           {analytics}
           <link href="assets/img/favicon.ico" rel="shortcut icon"/>
-          <base href={baseUri}/>
         </head>
         <body dangerouslySetInnerHTML={{__html: bodyHtml}} />
       </html>

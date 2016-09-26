@@ -1,6 +1,6 @@
 # Recruitment App
 
-Built on top of the awesome isomorphic [Este.js](https://github.com/steida/este) dev stack.
+Built on top of the ~~awesome~~ isomorphic [Este.js](https://github.com/steida/este) dev stack.
 The app is used for recruitment of talented developers here at [Scalac](https://scalac.io).
 
 We are currently [hiring](https://www.scalac.io/join_us) all kinds of talented remote developers.
@@ -33,23 +33,24 @@ npm install -g gulp
 ## CI Tasks
 
 - `npm start` just run app, remember to set NODE_ENV=production and other environment variables.
-- `gulp build -p` builds for production.
+- `gulp build -p -b=[baseUri || '/'] -e=[apiEndpoint || '/api/v1/']` builds for production.
 - `npm test` just alias for `gulp test`
 
-### Note on production builds
+## Production build
 
-Currently Este.js doesn't support [part-of-framework deployment](https://gist.github.com/mareksuscak/49626aeee0363b5ab77d) and although I've done some changes so that it's possible to build & deploy to a server subfolder (by injecting baseUri env. variable when running `npm start`) [index.html is not being generated](https://github.com/ScalaConsultants/recru-app/issues/20) as part of the build therefore in order to perform a successfull deploy, three steps are required:
+In order to build production version of an application run:
 
-- `gulp build -p` builds assets for production.
-- copy `build` and `assets` folders to the target location.
-- `NODE_ENV=production app__baseUri="/join_us/" app__apiEndpoint="https://recru-app-backend.scalac.io:20080" npm start` runs the app in production mode in a subfolder so you can copy&paste the contents of served index.html to a target location.
+- `gulp build -p -b=[baseUri] -e=[apiEndpoint]`
+
+where
+
+- `-b` or `--baseUri` is a subdirectory where the app is being deployed, defaults to `/`
+- `-e` or `--apiEndpoint` is the recru-app-backend URL for form submssions, defaults to `/api/v1/`. Current recru-app-backend URL is `https://recru-app-backend.scalac.io`
+
+- copy all files from `build` directory to the target location.
 
 ## FAQ
 
 ### Why can't we hook this up to the CI server?
 
-Because este.js which was chosen as an underlying framework doesn't support this kind of deployment. Este application are usually deployed as node.js server side apps. We could add this kind of deployment to the build pipeline but it would take some time.
-
-### How to change the API endpoint?
-
-Open `index.html` file and look for the `script` section where `_appState` is stored. It should contain `apiEndpoint` property - this is what you need to modify.
+~~Because este.js which was chosen as an underlying framework doesn't support this kind of deployment. Este application are usually deployed as node.js server side apps. We could add this kind of deployment to the build pipeline but it would take some time.~~

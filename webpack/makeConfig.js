@@ -115,7 +115,8 @@ export default function makeConfig(isDevelopment) {
           new webpack.HotModuleReplacementPlugin(),
           new webpack.NoErrorsPlugin()
         );
-      } else {
+      }
+      else {
         plugins.push(
           // Render styles into separate cacheable file to prevent FOUC and
           // optimize for critical rendering path.

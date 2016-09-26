@@ -1,11 +1,11 @@
 import useragent from 'useragent';
-import { HOT_RELOAD_PORT } from '../../../webpack/constants';
+import {HOT_RELOAD_PORT} from '../../../webpack/constants';
 import serialize from 'serialize-javascript';
 import config from '../config';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { Provider } from 'react-redux';
-import { RouterContext } from 'react-router';
+import {Provider} from 'react-redux';
+import {RouterContext} from 'react-router';
 
 export function getAppHtml(store, renderProps) {
   return ReactDOMServer.renderToString(
@@ -39,4 +39,14 @@ export function getScriptHtml(clientState, headers, hostname, appJsFilename, isS
     </script>
     <script src="${appScriptSrc}"></script>
   `;
+}
+
+export function getStaticScriptHtml(appConfig = {}) {
+  const html = `
+    <script>
+      window.__INITIAL_STATE__ = ${serialize({config: config.app})};
+    </script>
+  `;
+
+  return html;
 }
