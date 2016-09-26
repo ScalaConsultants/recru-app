@@ -8,6 +8,15 @@ if (process.env.IS_BROWSER) {
   require('./Fifth.styl');
 }
 
+const VALID_MIME_TYPES = [
+  'application/pdf',
+  'application/msword',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  'application/vnd.oasis.opendocument.text'
+];
+
+const MAX_FILE_SIZE_MB = 10;
+
 @boundScroll()
 export default class FifthScreen extends Component {
   static propTypes = {
@@ -39,6 +48,10 @@ export default class FifthScreen extends Component {
     if (this.state.emailPassed && (this.state.urlPassed || this.state.fileUploaded))
       return true;
     return false;
+  }
+
+  bytesToMegaBytes(bytes) {
+    return (bytes / (1000 * 1000));
   }
 
   submit() {
@@ -87,6 +100,11 @@ export default class FifthScreen extends Component {
 
   handleDrop(e) {
     const files = e.target.files || e.dataTransfer.files;
+    const fileInput = ReactDOM.findDOMNode(this.refs.fileInput);
+    let validMimeType = false;
+    let fileMimeType = null;
+    let fileSize = 0;
+
     this.handleDragOver(e);
 
     if (files.length > 1) {
@@ -95,6 +113,19 @@ export default class FifthScreen extends Component {
     }
 
     this.cvFile = files[0];
+    fileMimeType = this.cvFile.type;
+    fileSize = this.bytesToMegaBytes(this.cvFile.size);
+
+    validMimeType = VALID_MIME_TYPES.some((mimeType) => {
+      return (fileMimeType === mimeType);
+    });
+
+    if (!validMimeType || fileSize > MAX_FILE_SIZE_MB) {
+      fileInput.value = '';
+      this.setState({fileUploaded: false});
+      return;
+    }
+
     this.setState({fileUploaded: true});
   }
 
@@ -132,6 +163,10 @@ export default class FifthScreen extends Component {
       active: this.state.emailPassed
     });
 
+    const inputText = this.state.fileUploaded
+      ? 'resume uploaded'
+      : 'drop or click to select resume';
+
     const buttonInputClassName = classNames({
       '-pending': candidate.isSubmittingForm
     });
@@ -148,11 +183,10 @@ export default class FifthScreen extends Component {
         <h2>and either a LinkedIn profile URI</h2>
         <input className={inputClassName} onChange={this.handleUrlChange} placeholder="linkedin.com/in/username" ref="urlInput" tabIndex="-1" type="url"/>
         <span>or</span>
-        <input ref="fileInput" tabIndex="-1" type="file" />
+        <input accept=".pdf,.doc,.docx,.odt" ref="fileInput" tabIndex="-1" type="file"/>
         <div className={dropAreaclassName} id="drop" onClick={() => ReactDOM.findDOMNode(this.refs.fileInput).click()} ref="dropArea">
-          <span>
-            { this.state.fileUploaded ? 'resume uploaded' : 'drop or click to select resume'}
-          </span>
+          <span className="text">{inputText}</span>
+          <span className="hint">(doc, docx, pdf, max. {MAX_FILE_SIZE_MB}MB)</span>
         </div>
         <button className={buttonInputClassName} disabled={!this.isDataValid() || candidate.isSubmittingForm} onClick={this.submit}><i></i>{buttonTitle}</button>
       </section>

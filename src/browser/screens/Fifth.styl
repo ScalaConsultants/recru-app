@@ -95,6 +95,7 @@
     padding 10px
     box-sizing border-box
     display flex
+    flex-direction column
     cursor pointer
 
 
@@ -105,6 +106,13 @@
     span
       vertical-align middle
       display table-cell
+
+      &.text
+        margin-bottom 0
+
+      &.hint
+        font-size 14px
+        margin-top 0
 
     &.active span
       color #FF0000
