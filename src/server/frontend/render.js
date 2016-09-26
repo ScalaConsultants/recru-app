@@ -93,14 +93,6 @@ async function renderPageAsync(store, renderProps, req) {
   );
 }
 
-// function getAppHtml(store, renderProps) {
-//   return ReactDOMServer.renderToString(
-//     <Provider store={store}>
-//       <RoutingContext {...renderProps} />
-//     </Provider>
-//   );
-// }
-
 let appAssetFilenameCache = null;
 
 async function getAppAssetFilenamesCachedAsync() {
@@ -110,21 +102,3 @@ async function getAppAssetFilenamesCachedAsync() {
 
   return appAssetFilenameCache;
 }
-
-
-// function getScriptHtml(clientState, headers, hostname, appJsFilename) {
-//   let scriptHtml = '';
-//
-//   const appScriptSrc = config.isProduction
-//     ? `/_assets/${appJsFilename}`
-//     : `//${hostname}:${HOT_RELOAD_PORT}/build/app.js`;
-//
-//   // Note how clientState is serialized. JSON.stringify is anti-pattern.
-//   // https://github.com/yahoo/serialize-javascript#user-content-automatic-escaping-of-html-characters
-//   return scriptHtml + `
-//     <script>
-//       window.__INITIAL_STATE__ = ${serialize(clientState)};
-//     </script>
-//     <script src="${appScriptSrc}"></script>
-//   `;
-// }
