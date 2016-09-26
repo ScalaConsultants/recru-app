@@ -1,7 +1,12 @@
 import nconf from 'nconf';
+import yargs from 'yargs';
 import {version} from '../../package';
 
 const isProduction = process.env.NODE_ENV === 'production';
+const args = yargs
+  .alias('b', 'baseUri')
+  .alias('e', 'apiEndpoint')
+  .argv;
 
 // Specifying an env delimiter allows you to override below config when shipping
 // to production server.
@@ -10,9 +15,9 @@ nconf.env('__');
 // Remember, never put production secrets in config. Use nconf.
 const config = {
   app: {
-    baseUri: '/',
+    baseUri: args.baseUri || '/',
     defaultTitle: 'Scalac - Best Scala hAkkers!',
-    apiEndpoint: '/api/v1/',
+    apiEndpoint: args.apiEndpoint || '/api/v1/',
     version: version
   },
   isProduction: isProduction,

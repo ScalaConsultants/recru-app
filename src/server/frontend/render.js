@@ -1,5 +1,6 @@
 import Helmet from 'react-helmet';
-import Html from './Html.react';
+import Html from './html.react';
+import {getAppHtml, getScriptHtml} from './markup';
 import Promise from 'bluebird';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
@@ -7,10 +8,7 @@ import config from '../config';
 import getAppAssetFilenamesAsync from './assets';
 import configureStore from '../../common/configureStore';
 import createRoutes from '../../browser/createRoutes';
-import serialize from 'serialize-javascript';
-import {HOT_RELOAD_PORT} from '../../../webpack/constants';
-import {Provider} from 'react-redux';
-import {RoutingContext, match} from 'react-router';
+import {match} from 'react-router';
 import {createMemoryHistory} from 'history';
 
 export default function render(req, res, next) {
@@ -90,15 +88,8 @@ async function renderPageAsync(store, renderProps, req) {
       googleAnalyticsId={config.googleAnalyticsId}
       helmet={Helmet.rewind()}
       isProduction={config.isProduction}
+      isStatic={false}
     />
-  );
-}
-
-function getAppHtml(store, renderProps) {
-  return ReactDOMServer.renderToString(
-    <Provider store={store}>
-      <RoutingContext {...renderProps} />
-    </Provider>
   );
 }
 
@@ -110,22 +101,4 @@ async function getAppAssetFilenamesCachedAsync() {
   appAssetFilenameCache = await getAppAssetFilenamesAsync();
 
   return appAssetFilenameCache;
-}
-
-
-function getScriptHtml(clientState, headers, hostname, appJsFilename) {
-  let scriptHtml = '';
-
-  const appScriptSrc = config.isProduction
-    ? `/_assets/${appJsFilename}`
-    : `//${hostname}:${HOT_RELOAD_PORT}/build/app.js`;
-
-  // Note how clientState is serialized. JSON.stringify is anti-pattern.
-  // https://github.com/yahoo/serialize-javascript#user-content-automatic-escaping-of-html-characters
-  return scriptHtml + `
-    <script>
-      window.__INITIAL_STATE__ = ${serialize(clientState)};
-    </script>
-    <script src="${appScriptSrc}"></script>
-  `;
 }

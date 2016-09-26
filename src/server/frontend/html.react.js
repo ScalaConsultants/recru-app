@@ -8,21 +8,22 @@ export default class Html extends Component {
     bodyHtml: PropTypes.string.isRequired,
     googleAnalyticsId: PropTypes.string.isRequired,
     helmet: PropTypes.object.isRequired,
-    isProduction: PropTypes.bool.isRequired
-  }
+    isProduction: PropTypes.bool.isRequired,
+    isStatic: PropTypes.bool.isRequired
+  };
 
   render() {
     const {
-      appCssFilename, bodyHtml, googleAnalyticsId, isProduction, helmet, baseUri
+      appCssFilename, bodyHtml, googleAnalyticsId, isProduction, isStatic, helmet, baseUri
     } = this.props;
     // Only for production. For dev, it's handled by webpack with livereload.
     const linkStyles = isProduction &&
       <link
-        href={`_assets/${appCssFilename}`}
+        href={`${isProduction ? '/_assets' : ''}/${appCssFilename}`} //href={`/_assets/${appCssFilename}`}
         rel="stylesheet"
       />;
 
-    const analytics = isProduction && googleAnalyticsId !== 'UA-XXXXXXX-X' &&
+    const analytics = (isProduction || isStatic) && googleAnalyticsId !== 'UA-XXXXXXX-X' &&
       <script
         dangerouslySetInnerHTML={{__html: `
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -35,18 +36,18 @@ ga('create', '${googleAnalyticsId}', 'auto'); ga('send', 'pageview');`}}
     return (
       <html lang="en">
         <head>
+          <base href={baseUri}/>
           <meta charSet="utf-8" />
           <meta content="IE=Edge" httpEquiv="X-UA-Compatible" />
           <meta content="width=device-width, initial-scale=1" name="viewport" />
-          {helmet.title.toComponent()}
-          {helmet.base.toComponent()}
-          {helmet.meta.toComponent()}
-          {helmet.link.toComponent()}
-          {helmet.script.toComponent()}
+          {helmet && helmet.title ? helmet.title.toComponent() : ''}
+          {helmet && helmet.base ? helmet.base.toComponent() : ''}
+          {helmet && helmet.meta ? helmet.meta.toComponent() : ''}
+          {helmet && helmet.link ? helmet.link.toComponent() : ''}
+          {helmet && helmet.script ? helmet.script.toComponent() : ''}
           {linkStyles}
           {analytics}
           <link href="assets/img/favicon.ico" rel="shortcut icon"/>
-          <base href={baseUri}/>
         </head>
         <body dangerouslySetInnerHTML={{__html: bodyHtml}} />
       </html>
