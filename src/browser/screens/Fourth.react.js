@@ -13,10 +13,27 @@ if (process.env.IS_BROWSER) {
 export default class FourthScreen extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
-    candidate: React.PropTypes.object.isRequired
+    candidate: React.PropTypes.object.isRequired,
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = this.getDefaultState();
+  }
+
+  getDefaultState() {
+    return {error: null};
   }
 
   proceed() {
+    if (this.props.candidate.skills.size<1) {
+      this.setState({error: 'You must be good at least at something :)'});
+      return;
+    }
+    else {
+      this.state = this.getDefaultState();
+    }
+
     const {actions: {nextScreen}} = this.props;
     nextScreen();
   }
@@ -25,8 +42,14 @@ export default class FourthScreen extends Component {
     const skills = technologies[this.props.candidate.role.id];
     let skillsForCurrentRole = [];
 
-    if (typeof skills === 'object')
+    if (typeof skills === 'object') {
       skillsForCurrentRole = Object.keys(skills).map((key) => skills[key]);
+    }
+
+    let errorBody;
+    if (this.props.candidate.skills.size<1) {
+      errorBody = <div id="error-text"><span>{this.state.error}</span></div>;
+    }
 
     return (
       <section className="fourth-screen screen">
@@ -39,6 +62,7 @@ export default class FourthScreen extends Component {
           <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
         )}
         </ul>
+        {errorBody}
         <Chevron isAnimated onClick={e => this.proceed(e)}/>
       </section>
     );
