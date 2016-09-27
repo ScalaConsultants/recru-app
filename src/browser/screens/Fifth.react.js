@@ -15,7 +15,7 @@ const VALID_MIME_TYPES = [
   'application/vnd.oasis.opendocument.text'
 ];
 
-const MAX_FILE_SIZE_MB = 10;
+const MAX_FILE_SIZE_MB = 20;
 
 @boundScroll()
 export default class FifthScreen extends Component {
@@ -40,7 +40,8 @@ export default class FifthScreen extends Component {
       dragOver: false,
       fileUploaded: false,
       urlPassed: false,
-      emailPassed: false
+      emailPassed: false,
+      fileInvalid: false
     };
   }
 
@@ -122,11 +123,11 @@ export default class FifthScreen extends Component {
 
     if (!validMimeType || fileSize > MAX_FILE_SIZE_MB) {
       fileInput.value = '';
-      this.setState({fileUploaded: false});
+      this.setState({fileUploaded: false, fileInvalid: true});
       return;
     }
 
-    this.setState({fileUploaded: true});
+    this.setState({fileUploaded: true, fileInvalid: false});
   }
 
   componentDidMount() {
@@ -167,6 +168,10 @@ export default class FifthScreen extends Component {
       ? 'resume uploaded'
       : 'drop or click to select resume';
 
+    const hintClassNames = classNames('hint', {
+      '-error': this.state.fileInvalid
+    });
+
     const buttonInputClassName = classNames({
       '-pending': candidate.isSubmittingForm
     });
@@ -186,7 +191,7 @@ export default class FifthScreen extends Component {
         <input accept=".pdf,.doc,.docx,.odt" ref="fileInput" tabIndex="-1" type="file"/>
         <div className={dropAreaclassName} id="drop" onClick={() => ReactDOM.findDOMNode(this.refs.fileInput).click()} ref="dropArea">
           <span className="text">{inputText}</span>
-          <span className="hint">(doc, docx, pdf, max. {MAX_FILE_SIZE_MB}MB)</span>
+          <span className={hintClassNames}>(doc, docx, pdf, max. {MAX_FILE_SIZE_MB}MB)</span>
         </div>
         <button className={buttonInputClassName} disabled={!this.isDataValid() || candidate.isSubmittingForm} onClick={this.submit}><i></i>{buttonTitle}</button>
       </section>
