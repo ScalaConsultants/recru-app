@@ -26,7 +26,7 @@ export default class FourthScreen extends Component {
   }
 
   proceed() {
-    if (this.props.candidate.skills.size<1) {
+    if (this.props.candidate.skills.size < 1) {
       this.setState({error: 'You must be good at least at something :)'});
       return;
     }
@@ -47,7 +47,7 @@ export default class FourthScreen extends Component {
     }
 
     let errorBody;
-    if (this.props.candidate.skills.size<1) {
+    if (this.props.candidate.skills.size < 1) {
       errorBody = <div id="error-text"><span>{this.state.error}</span></div>;
     }
 
@@ -58,9 +58,9 @@ export default class FourthScreen extends Component {
         </header>
         <p>show us, which skills you have</p>
         <ul>
-        {skillsForCurrentRole.map((skill) =>
-          <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
-        )}
+          {skillsForCurrentRole.map((skill) =>
+            <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
+          )}
         </ul>
         {errorBody}
         <Chevron isAnimated onClick={e => this.proceed(e)}/>
