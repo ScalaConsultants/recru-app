@@ -31,6 +31,10 @@ export default class Screens extends Component {
   }
 
   handleMoveUp(e) {
+    if (typeof this.refs.currentScreen.handleMoveUp === 'function') {
+      this.refs.currentScreen.handleMoveUp();
+    }
+
     const {actions: {previousScreen}} = this.props;
     previousScreen();
   }

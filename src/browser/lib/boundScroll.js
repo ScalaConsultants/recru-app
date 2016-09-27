@@ -53,6 +53,12 @@ export default function boundScroll() {
       this.swipeDetails.eY = e.touches[0].screenY;
     }
 
+    handleMoveUp() {
+      if (typeof this.refs.baseComponent.handleMoveUp === 'function') {
+        this.refs.baseComponent.handleMoveUp();
+      }
+    }
+
     handleTouchEnd(e) {
       const delta = (this.swipeDetails.eY - this.swipeDetails.sY);
       if (this.isWithinBounds() || !this.hasSwipeStartedAtBounds(delta))
