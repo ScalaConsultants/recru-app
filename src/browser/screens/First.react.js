@@ -24,13 +24,14 @@ export default class FirstScreen extends Component {
 
   proceed() {
     const name = ReactDOM.findDOMNode(this.refs.nameInput).value.trim();
-    const namePattern = /^[a-z\s]+$/i;
+    // const namePattern = /^[a-z\s]+$/i;
+    const namePattern = /[\d`~!@#$%^&*()_';,./<>?\\\|\-\+\=\[\]\{\}:"]/;
 
     if (!name) {
       this.setState({error: 'We really need your name.'});
       return;
     }
-    else if (!namePattern.test(name)) {
+    else if (namePattern.test(name)) {
       this.setState({error: 'Only characters are allowed.'});
       return;
     }
