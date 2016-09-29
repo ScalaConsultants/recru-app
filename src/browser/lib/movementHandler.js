@@ -39,11 +39,18 @@ export default function movementHandler(BaseComponent) {
         this.refs.baseComponent.handleMoveDown();
     }
 
+    handleKeyUp(e) {
+      if (e.keyCode === 13) {
+        this.refs.baseComponent.handleEnterKey();
+      }
+    }
+
     componentWillMount() {
       this.handleTouchStart = this.handleTouchStart.bind(this);
       this.handleTouchMove = this.handleTouchMove.bind(this);
       this.handleTouchEnd = this.handleTouchEnd.bind(this);
       this.handleMouseWheel = this.handleMouseWheel.bind(this);
+      this.handleKeyUp = this.handleKeyUp.bind(this);
       this.handleMouseWheel = throttle(this.handleMouseWheel, 1000, {
         'leading': true,
         'trailing': false
@@ -56,6 +63,7 @@ export default function movementHandler(BaseComponent) {
       window.addEventListener('touchstart', this.handleTouchStart, false);
       window.addEventListener('touchmove', this.handleTouchMove, false);
       window.addEventListener('touchend', this.handleTouchEnd, false);
+      window.addEventListener('keyup', this.handleKeyUp, false);
     }
 
     componentWillUnmount() {
@@ -64,6 +72,7 @@ export default function movementHandler(BaseComponent) {
       window.removeEventListener('touchstart', this.handleTouchStart);
       window.removeEventListener('touchmove', this.handleTouchMove);
       window.removeEventListener('touchend', this.handleTouchEnd);
+      window.removeEventListener('keyup', this.handleKeyUp);
     }
 
     render() {

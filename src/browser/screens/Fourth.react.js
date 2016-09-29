@@ -42,6 +42,10 @@ export default class FourthScreen extends Component {
     nextScreen();
   }
 
+  handleEnterKey() {
+    this.proceed();
+  }
+
   render() {
     const skills = technologies[this.props.candidate.role.id];
     let skillsForCurrentRole = [];

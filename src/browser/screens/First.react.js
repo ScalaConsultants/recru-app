@@ -43,11 +43,15 @@ export default class FirstScreen extends Component {
     nextScreen();
   }
 
-  handleKeyDown(e) {
-    if (e.keyCode === 13) {
-      ReactDOM.findDOMNode(this.refs.nameInput).blur();
-      this.proceed();
-    }
+  // handleKeyDown(e) {
+  //   if (e.keyCode === 13) {
+  //     ReactDOM.findDOMNode(this.refs.nameInput).blur();
+  //     this.proceed();
+  //   }
+  // }
+
+  handleEnterKey() {
+    this.proceed();
   }
 
   render() {
