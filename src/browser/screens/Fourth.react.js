@@ -30,6 +30,10 @@ export default class FourthScreen extends Component {
     this.setState(this.getDefaultState());
   }
 
+  handleEnterKey() {
+    this.proceed();
+  }
+
   proceed() {
     if (this.props.candidate.skills.size < 1) {
       this.setState({error: 'You must be good at least at something :)'});
@@ -40,10 +44,6 @@ export default class FourthScreen extends Component {
 
     const {actions: {nextScreen}} = this.props;
     nextScreen();
-  }
-
-  handleEnterKey() {
-    this.proceed();
   }
 
   render() {

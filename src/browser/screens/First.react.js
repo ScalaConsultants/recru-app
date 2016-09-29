@@ -43,13 +43,6 @@ export default class FirstScreen extends Component {
     nextScreen();
   }
 
-  // handleKeyDown(e) {
-  //   if (e.keyCode === 13) {
-  //     ReactDOM.findDOMNode(this.refs.nameInput).blur();
-  //     this.proceed();
-  //   }
-  // }
-
   handleEnterKey() {
     this.proceed();
   }
@@ -66,7 +59,7 @@ export default class FirstScreen extends Component {
             <h1>Join our team</h1>
             <h2>we are looking for talented passionate people</h2>
             <div className={formControlClassName}>
-              <input autoComplete="off" onKeyDown={e => this.handleKeyDown(e)} placeholder="type your name" ref="nameInput" tabIndex="-1" type="text"/>
+              <input autoComplete="off" placeholder="type your name" ref="nameInput" tabIndex="-1" type="text"/>
               <span>{this.state.error}</span>
             </div>
           </header>
