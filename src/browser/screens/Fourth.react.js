@@ -1,74 +1,59 @@
 import Component from 'react-pure-render/component';
 import Chevron from '../components/Chevron.react';
 import React from 'react';
-import boundScroll from '../lib/boundScroll';
-import SkillItem from '../components/SkillItem.react';
-import technologies from '../data/technologies.json';
 
 if (process.env.IS_BROWSER) {
   require('./Fourth.styl');
 }
 
-@boundScroll()
 export default class FourthScreen extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    candidate: React.PropTypes.object.isRequired,
-    isCurrent: React.PropTypes.bool
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = this.getDefaultState();
-  }
-
-  getDefaultState() {
-    return {error: null};
-  }
-
-  handleMoveUp() {
-    this.setState(this.getDefaultState());
+    actions: React.PropTypes.object.isRequired
   }
 
   proceed() {
-    if (this.props.candidate.skills.size < 1) {
-      this.setState({error: 'You must be good at least at something :)'});
-      return;
-    }
-
-    this.setState(this.getDefaultState());
-
     const {actions: {nextScreen}} = this.props;
     nextScreen();
   }
 
+  handleEnterKey() {
+    this.proceed();
+  }
+
   render() {
-    const skills = technologies[this.props.candidate.role.id];
-    let skillsForCurrentRole = [];
-
-    if (typeof skills === 'object') {
-      skillsForCurrentRole = Object.keys(skills).map((key) => skills[key]);
-    }
-
-    let errorBody;
-    if (this.state.error) {
-      errorBody = <div id="error-text"><span>{this.state.error}</span></div>;
-    }
-
     return (
-      <section className="fourth-screen screen">
-        <header>
-          pack your bag
-        </header>
-        <p>show us, which skills you have</p>
-        <ul>
-          {skillsForCurrentRole.map((skill) =>
-            <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
-          )}
-        </ul>
-        {errorBody}
-        <Chevron isAnimated onClick={e => this.proceed(e)}/>
-      </section>
+        <section className="fourth-screen screen">
+          <div className="screen-title">
+            <h1>
+              <span><strong>Pack Your bag</strong></span>
+            </h1>
+          </div>
+          <div className="screen-img">
+            <img alt='Scalac Logo' src="assets/img/logo.svg"/>
+          </div>
+          <div className="screen-list">
+            <ul>
+              <li>computer</li>
+              <li>headphones</li>
+              <li>pens</li>
+              <li>notebook</li>
+              <li>calendar</li>
+              <li>hoodie</li>
+              <li>t-shirt</li>
+              <li>socks</li>
+            </ul>
+            <ul>
+              <li>team working</li>
+              <li>best integration ever</li>
+              <li>friendliness</li>
+              <li>professional cooperation</li>
+              <li>proactive people</li>
+              <li>equality</li>
+            </ul>
+          </div>
+
+          <Chevron isAnimated onClick={e => this.proceed(e)}/>
+        </section>
     );
   }
 }

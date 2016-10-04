@@ -4,7 +4,8 @@ import FirstScreen from '../screens/First.react';
 import SecondScreen from '../screens/Second.react';
 import ThirdScreen from '../screens/Third.react';
 import FourthScreen from '../screens/Fourth.react';
-import FifthScreen from '../screens/Fifth.react';
+import FifthScreen from './Fifth.react';
+import SixthScreen from './Sixth.react';
 import movementHandler from '../lib/movementHandler';
 import Helmet from 'react-helmet';
 
@@ -59,6 +60,7 @@ export default class Screens extends Component {
         <ThirdScreen {...this.props} isCurrent={this.isCurrent(2)} ref={this.getRefNameFor(2)}/>
         <FourthScreen {...this.props} isCurrent={this.isCurrent(3)} ref={this.getRefNameFor(3)}/>
         <FifthScreen {...this.props} isCurrent={this.isCurrent(4)} ref={this.getRefNameFor(4)}/>
+        <SixthScreen {...this.props} isCurrent={this.isCurrent(5)} ref={this.getRefNameFor(5)}/>
       </div>
     );
   }
