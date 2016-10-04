@@ -72,7 +72,7 @@ export default function movementHandler(BaseComponent) {
       window.removeEventListener('touchstart', this.handleTouchStart);
       window.removeEventListener('touchmove', this.handleTouchMove);
       window.removeEventListener('touchend', this.handleTouchEnd);
-      // window.removeEventListener('keyup', this.handleKeyUp);
+      window.removeEventListener('keyup', this.handleKeyUp);
     }
 
     render() {

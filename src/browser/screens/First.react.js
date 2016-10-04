@@ -24,7 +24,6 @@ export default class FirstScreen extends Component {
 
   proceed() {
     const name = ReactDOM.findDOMNode(this.refs.nameInput).value.trim();
-    // const namePattern = /^[a-z\s]+$/i;
     const namePattern = /[\d`~!@#$%^&*()_';,./<>?\\\|\-\+\=\[\]\{\}:"]/;
 
     if (!name) {
