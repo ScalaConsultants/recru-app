@@ -2,11 +2,10 @@ import Component from 'react-pure-render/component';
 import Chevron from '../components/Chevron.react';
 import React from 'react';
 import BackpackList from '../components/BackpackList.react';
+import json from '../data/backpackListItems.json';
 
 if (process.env.IS_BROWSER) {
   require('./Fourth.styl');
-  // require('velocity-animate');
-  // require('velocity-animate/velocity.ui');
 }
 
 export default class FourthScreen extends Component {
@@ -60,8 +59,8 @@ export default class FourthScreen extends Component {
             <img alt='Scalac Logo' src="assets/img/plecak_1.png"/>
           </div>
           <div className="screen-list">
-            <BackpackList animate={this.state.animateFirst} items={['computer', 'headphones', 'pens', 'notebook', 'calendar', 'hoodie', 't-shirt', 'socks']} onAnimationFinished={this.onBackpackListAnimationFinished.bind(this)} />
-            <BackpackList animate={this.state.animateSecond} items={['team working', 'best integration ever', 'friendliness', 'professional cooperation', 'proactive people', 'equality']} />
+            <BackpackList animate={this.state.animateFirst} items={json['equipment']} onAnimationFinished={this.onBackpackListAnimationFinished.bind(this)} />
+            <BackpackList animate={this.state.animateSecond} items={json['benefits']} />
           </div>
 
           <Chevron isAnimated onClick={e => this.proceed(e)}/>
