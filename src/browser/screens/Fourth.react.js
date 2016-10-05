@@ -1,6 +1,7 @@
 import Component from 'react-pure-render/component';
 import Chevron from '../components/Chevron.react';
 import React from 'react';
+import BackpackList from '../components/BackpackList.react';
 
 if (process.env.IS_BROWSER) {
   require('./Fourth.styl');
@@ -8,7 +9,26 @@ if (process.env.IS_BROWSER) {
 
 export default class FourthScreen extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired
+    actions: React.PropTypes.object.isRequired,
+    isCurrent: React.PropTypes.bool,
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = this.getDefaultState();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      animateFirst: nextProps.isCurrent
+    });
+  }
+
+  getDefaultState() {
+    return {
+      animateFirst: false,
+      animateSecond: false
+    };
   }
 
   proceed() {
@@ -18,6 +38,12 @@ export default class FourthScreen extends Component {
 
   handleEnterKey() {
     this.proceed();
+  }
+
+  onBackpackListAnimationFinished() {
+    this.setState({
+      animateSecond: true
+    });
   }
 
   render() {
@@ -32,24 +58,8 @@ export default class FourthScreen extends Component {
             <img alt='Scalac Logo' src="assets/img/logo.svg"/>
           </div>
           <div className="screen-list">
-            <ul>
-              <li>computer</li>
-              <li>headphones</li>
-              <li>pens</li>
-              <li>notebook</li>
-              <li>calendar</li>
-              <li>hoodie</li>
-              <li>t-shirt</li>
-              <li>socks</li>
-            </ul>
-            <ul>
-              <li>team working</li>
-              <li>best integration ever</li>
-              <li>friendliness</li>
-              <li>professional cooperation</li>
-              <li>proactive people</li>
-              <li>equality</li>
-            </ul>
+            <BackpackList animate={this.state.animateFirst} items={['computer', 'headphones', 'pens', 'notebook', 'calendar', 'hoodie', 't-shirt', 'socks']} onAnimationFinished={this.onBackpackListAnimationFinished.bind(this)} />
+            <BackpackList animate={this.state.animateSecond} items={['team working', 'best integration ever', 'friendliness', 'professional cooperation', 'proactive people', 'equality']} />
           </div>
 
           <Chevron isAnimated onClick={e => this.proceed(e)}/>
