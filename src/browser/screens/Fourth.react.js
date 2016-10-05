@@ -5,6 +5,8 @@ import BackpackList from '../components/BackpackList.react';
 
 if (process.env.IS_BROWSER) {
   require('./Fourth.styl');
+  // require('velocity-animate');
+  // require('velocity-animate/velocity.ui');
 }
 
 export default class FourthScreen extends Component {
@@ -55,7 +57,7 @@ export default class FourthScreen extends Component {
             </h1>
           </div>
           <div className="screen-img">
-            <img alt='Scalac Logo' src="assets/img/logo.svg"/>
+            <img alt='Scalac Logo' src="assets/img/plecak_1.png"/>
           </div>
           <div className="screen-list">
             <BackpackList animate={this.state.animateFirst} items={['computer', 'headphones', 'pens', 'notebook', 'calendar', 'hoodie', 't-shirt', 'socks']} onAnimationFinished={this.onBackpackListAnimationFinished.bind(this)} />
