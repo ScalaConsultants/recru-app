@@ -1,8 +1,10 @@
 import Component from 'react-pure-render/component';
 import Chevron from '../components/Chevron.react';
 import React from 'react';
+import BagImg from '../components/BagImg.react';
+import SignpostImg from '../components/SignpostImg.react';
 import BackpackList from '../components/BackpackList.react';
-import json from '../data/backpackListItems.json';
+import backpackList from '../data/backpackListItems.json';
 
 if (process.env.IS_BROWSER) {
   require('./Fourth.styl');
@@ -55,14 +57,12 @@ export default class FourthScreen extends Component {
               <span><strong>Pack Your bag</strong></span>
             </h1>
           </div>
-          <div className="screen-img">
-            <img alt='Scalac Logo' src="assets/img/plecak_1.png"/>
-          </div>
+          <BagImg />
           <div className="screen-list">
-            <BackpackList animate={this.state.animateFirst} items={json['equipment']} onAnimationFinished={this.onBackpackListAnimationFinished.bind(this)} />
-            <BackpackList animate={this.state.animateSecond} items={json['benefits']} />
+            <BackpackList animate={this.state.animateFirst} items={backpackList['equipment']} onAnimationFinished={this.onBackpackListAnimationFinished.bind(this)} />
+            <BackpackList animate={this.state.animateSecond} items={backpackList['benefits']} />
           </div>
-
+          <SignpostImg />
           <Chevron isAnimated onClick={e => this.proceed(e)}/>
         </section>
     );

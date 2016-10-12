@@ -24,7 +24,7 @@
 
   .screen-img
     display inline-block
-    width 50%
+    width 40%
     text-align center
 
     > img
@@ -32,27 +32,43 @@
 
   .screen-list
     display inline-block
-    width 50%
+    width 30%
     vertical-align top
 
     > ul
       list-style-image url("../../../assets/img/scalac_logo_icon.png")
+      //list-style-image url("../../../assets/img/scalac_logo.png")
+
+  .screen-img2
+    display inline-block
+    width 30%
+    text-align center
+
+    > a > img
+      width 60%
 
 
 @media (max-width: 767px)
   .fourth-screen
 
     .screen-img
-      width 60%
+      width 50%
 
     .screen-list
-      width 40%
+      width 30%
+
+    .screen-img2
+      width 20%
 
 
 @media (max-width: 480px)
   .fourth-screen
 
     .screen-img
+      display block
+      width 100%
+
+    .screen-img2
       display block
       width 100%
 
