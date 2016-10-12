@@ -16,6 +16,10 @@ export default class SecondScreen extends Component {
     nextScreen();
   }
 
+  handleEnterKey() {
+    this.proceed();
+  }
+
   render() {
     return (
       <section className="second-screen screen">

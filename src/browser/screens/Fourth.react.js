@@ -30,6 +30,10 @@ export default class FourthScreen extends Component {
     this.setState(this.getDefaultState());
   }
 
+  handleEnterKey() {
+    this.proceed();
+  }
+
   proceed() {
     if (this.props.candidate.skills.size < 1) {
       this.setState({error: 'You must be good at least at something :)'});
@@ -66,7 +70,7 @@ export default class FourthScreen extends Component {
             <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
           )}
         </ul>
-        {errorBody}
+        {this.state.error ? errorBody : null}
         <Chevron isAnimated onClick={e => this.proceed(e)}/>
       </section>
     );
