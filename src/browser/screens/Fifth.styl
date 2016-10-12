@@ -1,137 +1,139 @@
 .fifth-screen
-  position relative
+  background-color #010101
   padding-top 30px
-
-  #error-text
-    margin 20px auto
-    text-align center
-
-    span
-      color #ffffff
-      font-size 1em
-      background-color #c01c1c
-      padding 5px 10px
-
-  > .chevron
-    width 100%
-    position absolute
-    z-index 2
-    bottom 0
-
-    > i
-      border-color black
-      opacity 0.2
+  text-align center
+  color #ffffff
+  font-size 23px
+  font-weight 300
+  position relative
 
   header
     font-size 36px
-    text-align center
+    margin-bottom 20px
+
+  h2
+    margin 0px auto 10px
     font-weight 300
-    color #010101
-    margin-bottom 10px
+    max-width 300px
+    font-size 18px
 
-  p
-    text-align center
-
-    margin 0px 0px 60px
-
-  ul
+  span
     display block
-    width 1000px
-    max-width 100%
-    margin auto auto 40px
-    list-style none
-    padding 0
+    font-size 18px
+    margin auto auto 30px
 
-    li
-      width 33.3333%
+  input[type=file]
+    visibility hidden
+    position absolute
+    z-index 0
+
+  input[type=text]
+  input[type=url]
+  input[type=email]
+    margin auto auto 20px
+    background none
+    padding 10px
+    width 300px
+    max-width 80%
+    border 1px solid #fff
+
+  input[type=text]:active
+  input[type=text]:focus
+  input[type=email]:active
+  input[type=email]:focus
+  input[type=url]:active
+  input[type=url]:focus
+  input.active
+    border-color #ff0000
+    color #ff0000
+
+  button
+    background #c01c1c
+    color #ffffff
+    border none
+    width 300px
+    max-width 80%
+    transition all .25s
+    padding 20px 0px
+    margin-bottom 15px
+
+    &[disabled]
+      opacity 0.5
+      background #aaa
+
+    &:not([disabled]):hover
+      background #9f1313
+
+    i
+      width 50px
+      height 50px
       display inline-block
-      margin-bottom 40px
-      position relative
+      background url('../../../assets/img/upload.png') no-repeat
+      background-size cover
+      vertical-align middle
+      margin-right 20px
 
-      .hint
-        position absolute
-        bottom 90px
-        left 0
-        background #000
-        opacity 0.7
-        color #fff
-        text-align center
-        width 90px
-        padding 0 5px
-        margin 0 15px
-        font-size 14px
-        line-height 20px
-        border-radius 5px
+    &.-pending
+      i
+        display none
 
-      .hint::after
-        content ''
-        position absolute
-        width 0
-        height 0
-        border-left 5px solid transparent
-        border-right 5px solid transparent
-        border-top 7px solid #000
-        bottom -7px
-        left 43px
-        margin 0 auto
+    span
+      display inline-block
+      margin 0px
+      font-size 20px
+      font-weight 400
 
-      img
-        max-width 80px
-        vertical-align middle
-        margin 0 20px 0 20px
+  #drop
+    border 2px dashed #fff
+    margin auto auto 70px
+    border-radius 0px
+    width 300px
+    height 200px
+    max-width 80%
+    color #aaa
+    text-align center
+    padding 10px
+    box-sizing border-box
+    display flex
+    cursor pointer
 
-      form
-        display inline-block
-        vertical-align middle
 
-        input
-          display none
+    &.hover
+    &.active
+      border-color #FF0000
 
-        label
-          float right
-          padding 0
-          font-size 36px
-          cursor pointer
+    span
+      vertical-align middle
+      display table-cell
 
-        label.star:before
-          content ''
-          width 32px
-          height 31px
-          opacity 0.8
-          display block
-          background url('../../../assets/img/rating-arrows.png') no-repeat
-          transition transform .25s
-
-        input:checked ~ label.star:before
-          background-position -64px 0 !important
-
-        label.star:hover:before
-          transform scale(1.1)
-
-        label.star:hover:before
-        label.star:hover ~ label.star:before
-          background-position -32px 0
-
-@media (max-width: 767px)
-  .fifth-screen
-
-    > .chevron
-      width 100%
-      position initial
-    ul
-      margin-bottom 20px
-      li
-        width: 50%
+    &.active span
+      color #FF0000
 
 @media (max-width: 480px)
   .fifth-screen
+    header
+      font-size 24px
+      margin-bottom 10px
 
-    > .chevron
-      position relative
+    span
+      margin-bottom 10px
+      font-size 16px
 
-    ul
 
-      li
-        width 90%
-        display block
-        margin 0 auto 20px
+    h2
+      font-size 16px
+
+    input[type=text]
+      font-size 14px
+      margin-bottom 10px
+
+    button
+      padding 10px 0px
+      span
+        font-size 16px
+
+    #drop
+      height auto
+      margin-bottom 30px
+      span
+        margin 0 auto

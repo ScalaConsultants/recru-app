@@ -1,19 +1,20 @@
 import Component from 'react-pure-render/component';
 import Chevron from '../components/Chevron.react';
 import React from 'react';
-import BagImg from '../components/BagImg.react';
-import SignpostImg from '../components/SignpostImg.react';
-import BackpackList from '../components/BackpackList.react';
-import backpackList from '../data/backpackListItems.json';
+import boundScroll from '../lib/boundScroll';
+import SkillItem from '../components/SkillItem.react';
+import technologies from '../data/technologies.json';
 
 if (process.env.IS_BROWSER) {
   require('./Fourth.styl');
 }
 
+@boundScroll()
 export default class FourthScreen extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
-    isCurrent: React.PropTypes.bool,
+    candidate: React.PropTypes.object.isRequired,
+    isCurrent: React.PropTypes.bool
   }
 
   constructor(props) {
@@ -21,50 +22,53 @@ export default class FourthScreen extends Component {
     this.state = this.getDefaultState();
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      animateFirst: nextProps.isCurrent
-    });
+  getDefaultState() {
+    return {error: null};
   }
 
-  getDefaultState() {
-    return {
-      animateFirst: false,
-      animateSecond: false
-    };
+  handleMoveUp() {
+    this.setState(this.getDefaultState());
   }
 
   proceed() {
+    if (this.props.candidate.skills.size < 1) {
+      this.setState({error: 'You must be good at least at something :)'});
+      return;
+    }
+
+    this.setState(this.getDefaultState());
+
     const {actions: {nextScreen}} = this.props;
     nextScreen();
   }
 
-  handleEnterKey() {
-    this.proceed();
-  }
-
-  onBackpackListAnimationFinished() {
-    this.setState({
-      animateSecond: true
-    });
-  }
-
   render() {
+    const skills = technologies[this.props.candidate.role.id];
+    let skillsForCurrentRole = [];
+
+    if (typeof skills === 'object') {
+      skillsForCurrentRole = Object.keys(skills).map((key) => skills[key]);
+    }
+
+    let errorBody;
+    if (this.state.error) {
+      errorBody = <div id="error-text"><span>{this.state.error}</span></div>;
+    }
+
     return (
-        <section className="fourth-screen screen">
-          <div className="screen-title">
-            <h1>
-              <span><strong>Pack Your bag</strong></span>
-            </h1>
-          </div>
-          <BagImg />
-          <div className="screen-list">
-            <BackpackList animate={this.state.animateFirst} items={backpackList['equipment']} onAnimationFinished={this.onBackpackListAnimationFinished.bind(this)} />
-            <BackpackList animate={this.state.animateSecond} items={backpackList['benefits']} />
-          </div>
-          <SignpostImg />
-          <Chevron isAnimated onClick={e => this.proceed(e)}/>
-        </section>
+      <section className="fourth-screen screen">
+        <header>
+          pack your bag
+        </header>
+        <p>show us, which skills you have</p>
+        <ul>
+          {skillsForCurrentRole.map((skill) =>
+            <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
+          )}
+        </ul>
+        {errorBody}
+        <Chevron isAnimated onClick={e => this.proceed(e)}/>
+      </section>
     );
   }
 }

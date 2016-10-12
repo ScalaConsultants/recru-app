@@ -1,0 +1,77 @@
+.third2-screen
+  position relative
+  //overflow-y hidden
+
+  .screen-title
+    width 100%
+    text-align center
+
+    > h1
+      font-size 4vw
+      font-weight 300
+      margin 2vw auto
+
+  > .chevron
+    width 100%
+    position absolute
+    z-index 2
+    bottom 0
+    margin-bottom 0
+
+    > i
+      border-color black
+      opacity 0.2
+
+  .screen-img
+    display inline-block
+    width 40%
+    text-align center
+
+    > img
+      width 60%
+
+  .screen-list
+    display inline-block
+    width 30%
+    vertical-align top
+
+    > ul
+      list-style-image url("../../../assets/img/scalac_logo_icon.png")
+      //list-style-image url("../../../assets/img/scalac_logo.png")
+
+  .screen-img2
+    display inline-block
+    width 30%
+    text-align center
+
+    > a > img
+      width 60%
+
+
+@media (max-width: 767px)
+  .third2-screen
+
+    .screen-img
+      width 50%
+
+    .screen-list
+      width 30%
+
+    .screen-img2
+      width 20%
+
+
+@media (max-width: 480px)
+  .third2-screen
+
+    .screen-img
+      display block
+      width 100%
+
+    .screen-img2
+      display block
+      width 100%
+
+    .screen-list
+      display block
+      width 100%
