@@ -59,6 +59,12 @@ export default function boundScroll() {
       }
     }
 
+    handleEnterKey() {
+      if (typeof this.refs.baseComponent.handleEnterKey === 'function') {
+        this.refs.baseComponent.handleEnterKey();
+      }
+    }
+
     handleTouchEnd(e) {
       const delta = (this.swipeDetails.eY - this.swipeDetails.sY);
       if (this.isWithinBounds() || !this.hasSwipeStartedAtBounds(delta))
