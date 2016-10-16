@@ -51,20 +51,21 @@ export default class Third2Screen extends Component {
 
   render() {
     return (
-        <section className="third2-screen screen">
-          <div className="screen-title">
-            <h1>
-              <span><strong>Pack Your bag</strong></span>
-            </h1>
-          </div>
-          <BagImg />
-          <div className="screen-list">
-            <BackpackList animate={this.state.animateFirst} items={backpackList['equipment']} onAnimationFinished={this.onBackpackListAnimationFinished.bind(this)} />
-            <BackpackList animate={this.state.animateSecond} items={backpackList['benefits']} />
-          </div>
-          <SignpostImg />
-          <Chevron isAnimated onClick={e => this.proceed(e)}/>
-        </section>
+      <section className="third2-screen screen">
+        <div className="screen-title">
+          <h1>
+            <span><strong>Pack Your bag</strong></span>
+          </h1>
+        </div>
+        <BagImg />
+        <div className="screen-list">
+          <BackpackList animate={this.state.animateFirst} items={backpackList['equipment']}
+                        onAnimationFinished={this.onBackpackListAnimationFinished.bind(this)}/>
+          <BackpackList animate={this.state.animateSecond} items={backpackList['benefits']}/>
+        </div>
+        <SignpostImg animate={this.state.animateFirst}/>
+        <Chevron isAnimated onClick={e => this.proceed(e)}/>
+      </section>
     );
   }
 }

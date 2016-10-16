@@ -19,7 +19,8 @@ export default class BackpackList extends Component {
     delayBetween: 200,
     delayStart: 0,
     items: [''],
-    onAnimationFinished: () => {}
+    onAnimationFinished: () => {
+    }
   }
 
   constructor(props) {
