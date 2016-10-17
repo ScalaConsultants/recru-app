@@ -6,11 +6,11 @@ if (process.env.IS_BROWSER) {
 }
 
 export default class BagImg extends Component {
-    render() {
-      return (
-          <div className="screen-img">
-              <img alt='Your Scalac Bag img' src="../../../assets/img/packYourBag/plecak_1.png" />
-          </div>
-        );
-    }
+  render() {
+    return (
+      <div className="bag-img">
+        <img alt='Your Scalac Bag img' src="../../../assets/img/packYourBag/plecak_1.png"/>
+      </div>
+    );
+  }
 }

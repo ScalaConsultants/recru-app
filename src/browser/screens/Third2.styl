@@ -4,12 +4,26 @@
 
   .screen-title
     width 100%
+    height 15%
     text-align center
+    position absolute
+    top 0
+    //background-color yellow
+    display table
 
     > h1
       font-size 4vw
       font-weight 300
-      margin 2vw auto
+      display table-cell
+      vertical-align middle
+
+  .screen-list
+    display block
+    width 100%
+    height 10%
+    position absolute
+    top 15%
+    //border 4px solid green
 
   > .chevron
     width 100%
@@ -22,51 +36,69 @@
       border-color black
       opacity 0.2
 
-  .screen-img
+  .bag-img
     display inline-block
-    width 40%
-    text-align center
+    width 50%
+    height 75%
+    position absolute
+    bottom 0
+    left 0
+    //border 4px solid blue
 
-    > img
-      width 60%
-
-  .screen-list
+  .sign-img
     display inline-block
-    width 30%
-    vertical-align top
+    width 50%
+    height 75%
+    position absolute
+    bottom 0
+    right 0
+    //border 4px solid black
 
-    > ul
-      list-style-image url("../../../assets/img/packYourBag/scalac_logo_icon.png")
-      //list-style-image url("../../../assets/img/scalac_logo.png")
-
-  .screen-img2
-    display inline-block
-    width 30%
 
 @media (max-width: 767px)
   .third2-screen
 
-    .screen-img
-      width 50%
+    .screen-title
+
+      > h1
+        font-size 6vw
 
     .screen-list
-      width 30%
+      height 15%
+      top 15%
 
-    .screen-img2
-      width 20%
+    .bag-img
+      height 50%
+      bottom 20%
 
+    .sign-img
+      height 50%
+      bottom 20%
 
 @media (max-width: 480px)
   .third2-screen
 
-    .screen-img
-      display block
-      width 100%
+    .screen-title
+      height 10%
 
-    .screen-img2
-      display block
-      width 100%
+      > h1
+        font-size 6vw
+        font-weight 300
 
     .screen-list
+      height 15%
+      top 10%
+
+    .bag-img
       display block
       width 100%
+      height 35%
+      top 25%
+
+    .sign-img
+      display block
+      width 100%
+      height 40%
+      top 60%
+
+

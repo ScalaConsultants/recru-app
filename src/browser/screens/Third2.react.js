@@ -57,12 +57,12 @@ export default class Third2Screen extends Component {
             <span><strong>Pack Your bag</strong></span>
           </h1>
         </div>
-        <BagImg />
         <div className="screen-list">
           <BackpackList animate={this.state.animateFirst} items={backpackList['equipment']}
                         onAnimationFinished={this.onBackpackListAnimationFinished.bind(this)}/>
-          <BackpackList animate={this.state.animateSecond} items={backpackList['benefits']}/>
+          {/*<BackpackList animate={this.state.animateSecond} items={backpackList['benefits']}/>*/}
         </div>
+        <BagImg />
         <SignpostImg animate={this.state.animateFirst}/>
         <Chevron isAnimated onClick={e => this.proceed(e)}/>
       </section>

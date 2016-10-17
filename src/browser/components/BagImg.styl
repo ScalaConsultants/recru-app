@@ -1,10 +1,28 @@
-.screen-img
-  img
-    transition all .3s ease-in-out
-    //animation bagBounce 2.5s infinite ease-in-out
-    //animation bagAppear 2.5s ease-in-out
+.bag-img
 
-  img:hover
-    transform scale(1.05)
-    //-ms-transform scale(1.05) /* IE 9 */
-    //-webkit-transform scale(1.05) /* Safari */
+  > img
+    height 98%
+    float right
+    transition all .3s ease-in-out
+
+  > img:hover
+    transform scale(1.03)
+    -ms-transform scale(1.03) /* IE 9 */
+    -webkit-transform scale(1.03) /* Safari */
+
+@media (max-width: 767px)
+  .bag-img
+
+    > img
+      display block
+      margin 0 auto
+      float none
+
+@media (max-width: 480px)
+  .bag-img
+
+    > img
+      height 95%
+      width auto
+      margin-top 2vw
+

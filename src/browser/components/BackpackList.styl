@@ -1,9 +1,35 @@
 .backpack-list
-  li
-    display list-item
-    animation-duration 1.2s
-    animation-name backpackListIn
-    transition all .3s ease-in-out;
+  list-style-type none
+  text-align center
+  padding 0
+  //list-style-image url("../../../assets/img/packYourBag/scalac_logo_icon.png")
 
-  li:hover
-    transform scale(1.1)
+  > li
+    font-size 1.5vw
+    font-weight 600
+    display inline
+    padding 0 1vw 1vw 1vw
+    //animation-duration 3s
+    //animation-name backpackListIn
+    //transition all .3s ease-in-out;
+
+  > li:before
+    content url('../../../assets/img/packYourBag/scalac_logo_icon.png')
+    padding-right 0.5vw
+
+  //> li:hover
+  //  transform scale(1.1)
+
+
+@media (max-width: 767px)
+  .backpack-list
+
+    > li
+      font-size 2.5vw
+
+
+@media (max-width: 480px)
+  .backpack-list
+
+    > li
+      font-size 3.0vw
