@@ -61,11 +61,29 @@ export default class BackpackList extends Component {
     });
   }
 
+  animateBackpack(e) {
+    const backpackImg = document.getElementById('bag-img');
+    backpackImg.classList.add('nowaKlasa');
+  }
+
+  animateBackpack2(e) {
+    const backpackImg = document.getElementById('bag-img');
+    backpackImg.classList.remove('nowaKlasa');
+  }
+
   render() {
+    // console.log(backpackList);
+    // console.log(backpackList.equipment);
+    // onMouseover
+
     return (
-      <ul className="backpack-list">
+      <ul className="backpack-list" >
         {this.state.items.map((item, idx) =>
-          <li key={idx}>{item}</li>
+          <li key={idx} onMouseEnter={e => this.animateBackpack(e)}
+              onMouseLeave={e => this.animateBackpack2(e)}
+          >
+            {item}
+          </li>
         )}
       </ul>
     );
