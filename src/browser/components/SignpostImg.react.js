@@ -7,6 +7,7 @@ if (process.env.IS_BROWSER) {
 
 export default class SignpostImg extends Component {
   static propTypes = {
+    actions: React.PropTypes.object.isRequired,
     animate: React.PropTypes.bool.isRequired
   }
 
@@ -20,6 +21,11 @@ export default class SignpostImg extends Component {
       animate: false,
       feet: []
     };
+  }
+
+  proceed() {
+    const {actions: {nextScreen}} = this.props;
+    nextScreen();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -56,40 +62,15 @@ export default class SignpostImg extends Component {
         {'bottom': 25, 'left': 88, 'rotation': 37, 'delay': 5.3},
         {'bottom': 47, 'left': 83, 'rotation': 0, 'delay': 5.6},
         {'bottom': 42, 'left': 91, 'rotation': 0, 'delay': 5.9}
-
-        // {'bottom': 15, 'left': 3, 'rotation': 90, 'delay': 0.5},
-        // {'bottom': 5, 'left': 8, 'rotation': 90, 'delay': 1.0},
-        // {'bottom': 15, 'left': 13, 'rotation': 90, 'delay': 1.5},
-        // {'bottom': 5, 'left': 18, 'rotation': 90, 'delay': 2.5},
-        // {'bottom': 15, 'left': 23, 'rotation': 90, 'delay': 3.0},
-        // {'bottom': 5, 'left': 28, 'rotation': 90, 'delay': 3.5},
-        // {'bottom': 15, 'left': 33, 'rotation': 90, 'delay': 4.0},
-        // {'bottom': 5, 'left': 38, 'rotation': 90, 'delay': 4.5},
-        // {'bottom': 15, 'left': 43, 'rotation': 90, 'delay': 5.0},
-        // {'bottom': 5, 'left': 48, 'rotation': 90, 'delay': 5.5},
-        // {'bottom': 15, 'left': 53, 'rotation': 90, 'delay': 6.0},
-        // {'bottom': 5, 'left': 58, 'rotation': 90, 'delay': 6.5},
-        // {'bottom': 15, 'left': 63, 'rotation': 90, 'delay': 7.0},
-        // {'bottom': 5, 'left': 68, 'rotation': 90, 'delay': 7.5},
-        // {'bottom': 19, 'left': 73, 'rotation': 66, 'delay': 8.0},
-        // {'bottom': 10, 'left': 80, 'rotation': 60, 'delay': 8.5},
-        // {'bottom': 31, 'left': 81, 'rotation': 27, 'delay': 9.0},
-        // {'bottom': 25, 'left': 88, 'rotation': 37, 'delay': 9.5},
-        // {'bottom': 47, 'left': 83, 'rotation': 0, 'delay': 10.0},
-        // {'bottom': 42, 'left': 91, 'rotation': 0, 'delay': 10.5},
       ]
     });
   }
 
   render() {
-
-
     return (
       <div className="sign-img">
         <div>
-          <a href='https://scalac.io/' target="_blank">
-            <img alt='Signpist to Scalac img' id='img1' src='../../../assets/img/packYourBag/recruapp_znak_1.png'/>
-          </a>
+          <img alt='Signpist to Scalac img' id='img1' onClick={e => this.proceed(e)} src='../../../assets/img/packYourBag/recruapp_znak_1.png' />
           {this.state.feet.map((foot, idx) => {
             const footSide = (idx % 2) ? 'right' : 'left';
             const imageSrc = '../../../assets/img/packYourBag/' + footSide + '_footprint.svg';

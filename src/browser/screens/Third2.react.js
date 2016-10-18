@@ -13,7 +13,7 @@ if (process.env.IS_BROWSER) {
 export default class Third2Screen extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
-    isCurrent: React.PropTypes.bool,
+    isCurrent: React.PropTypes.bool
   }
 
   constructor(props) {
@@ -63,8 +63,8 @@ export default class Third2Screen extends Component {
           {/*<BackpackList animate={this.state.animateSecond} items={backpackList['benefits']}/>*/}
         </div>
         <BagImg />
-        <SignpostImg animate={this.state.animateFirst}/>
-        <Chevron isAnimated onClick={e => this.proceed(e)}/>
+        <SignpostImg {...this.props} animate={this.state.animateFirst} />
+        <Chevron isAnimated onClick={e => this.proceed(e)} />
       </section>
     );
   }
