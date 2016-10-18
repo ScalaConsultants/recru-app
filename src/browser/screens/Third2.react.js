@@ -4,7 +4,6 @@ import React from 'react';
 import BagImg from '../components/BagImg.react';
 import SignpostImg from '../components/SignpostImg.react';
 import BackpackList from '../components/BackpackList.react';
-import backpackList from '../data/backpackListItems.json';
 
 if (process.env.IS_BROWSER) {
   require('./Third2.styl');
@@ -29,8 +28,7 @@ export default class Third2Screen extends Component {
 
   getDefaultState() {
     return {
-      animateFirst: false,
-      animateSecond: false
+      animateFirst: false
     };
   }
 
@@ -43,12 +41,6 @@ export default class Third2Screen extends Component {
     this.proceed();
   }
 
-  onBackpackListAnimationFinished() {
-    this.setState({
-      animateSecond: true
-    });
-  }
-
   render() {
     return (
       <section className="third2-screen screen">
@@ -57,11 +49,7 @@ export default class Third2Screen extends Component {
             <span><strong>Pack Your bag</strong></span>
           </h1>
         </div>
-        <div className="screen-list">
-          <BackpackList animate={this.state.animateFirst} items={backpackList['equipment']}
-                        onAnimationFinished={this.onBackpackListAnimationFinished.bind(this)} />
-          {/*<BackpackList animate={this.state.animateSecond} items={backpackList['benefits']}/>*/}
-        </div>
+        <BackpackList />
         <BagImg />
         <SignpostImg {...this.props} animate={this.state.animateFirst} />
         <Chevron isAnimated onClick={e => this.proceed(e)} />

@@ -1,91 +1,37 @@
 import Component from 'react-pure-render/component';
 import React from 'react';
+import backpackList from '../data/backpackListItems.json';
 
 if (process.env.IS_BROWSER) {
   require('./BackpackList.styl');
 }
 
 export default class BackpackList extends Component {
-  static propTypes = {
-    animate: React.PropTypes.bool.isRequired,
-    delayBetween: React.PropTypes.number,
-    delayStart: React.PropTypes.number,
-    items: React.PropTypes.array.isRequired,
-    onAnimationFinished: React.PropTypes.func
-  }
-
-  static defaultProps = {
-    animate: false,
-    delayBetween: 200,
-    delayStart: 0,
-    items: [''],
-    onAnimationFinished: () => {
-    }
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = this.getDefaultState();
-  }
-
-  getDefaultState() {
-    return {
-      items: []
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.animate === this.props.animate) {
-      return;
-    }
-
-    if (nextProps.animate) {
-      clearInterval(this.animationInterval);
-      this.animationInterval = setInterval(this.pushItems.bind(this), this.props.delayBetween);
-    }
-  }
-
-  pushItems() {
-    if (!this.itemsStack) {
-      this.itemsStack = [...this.props.items];
-    }
-
-    if (!this.itemsStack.length) {
-      clearInterval(this.animationInterval);
-      this.props.onAnimationFinished();
-      return;
-    }
-
-    this.setState({
-      items: [...this.state.items, this.itemsStack.shift()]
-    });
-  }
 
   animateBackpack(e) {
     const backpackImg = document.getElementById('bag-img');
-    backpackImg.classList.add('nowaKlasa');
-  }
-
-  animateBackpack2(e) {
-    const backpackImg = document.getElementById('bag-img');
-    backpackImg.classList.remove('nowaKlasa');
+    if (backpackImg.classList.contains('animateBackpackStyle')) {
+      backpackImg.classList.remove('animateBackpackStyle');
+    }
+    else {
+      backpackImg.classList.add('animateBackpackStyle');
+    }
   }
 
   render() {
-    // console.log(backpackList);
-    // console.log(backpackList.equipment);
-    // onMouseover
-
+    const backpackListItems = backpackList.equipment;
     return (
-      <ul className="backpack-list" >
-        {this.state.items.map((item, idx) =>
-          <li key={idx} onMouseEnter={e => this.animateBackpack(e)}
-              onMouseLeave={e => this.animateBackpack2(e)}
-          >
-            {item}
-          </li>
-        )}
-      </ul>
+      <div className="screen-list">
+        <ul className="backpack-list">
+          {backpackListItems.map((item, idx) =>
+            <li key={idx} onMouseEnter={e => this.animateBackpack(e)}
+                onMouseLeave={e => this.animateBackpack(e)}
+            >
+              {item}
+            </li>
+          )}
+        </ul>
+      </div>
     );
   }
 }
