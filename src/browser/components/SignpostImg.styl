@@ -1,12 +1,30 @@
 .sign-img
 
-  > div
+  div
     //border 1px solid red
     position relative
     height 100%
 
+    .benefits-list
+      position absolute
+      top 55%
+      left 10%
+      li
+        list-style-type none
+        font-size 1.5vw
+        font-weight 600
+        display list-item
+        animation-duration 1.2s
+        animation-name benefitsListIn
+
+      li:before
+        white-space nowrap
+        content url('../../../assets/img/packYourBag/scalac_logo_icon.png')
+        padding-right 0.5vw
+
     img
       //border 3px solid orange
+      margin-right 2vw
       width 25%
       float right
       cursor pointer
@@ -20,3 +38,21 @@
       position absolute
       opacity 0
       z-index 9999
+
+
+@media (max-width: 767px)
+  .sign-img
+    div
+      .benefits-list
+        li
+          font-size 2.5vw
+
+
+@media (max-width: 480px)
+  .sign-img
+    div
+      .benefits-list
+        li
+          font-size 3.0vw
+          margin 0 1vw 1vw 1vw
+          display inline

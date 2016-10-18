@@ -1,36 +1,35 @@
 .third2-screen
   position relative
-  //overflow-y hidden
 
   .screen-title
+    position absolute
     width 100%
     height 15%
-    text-align center
-    position absolute
     top 0
-    //background-color yellow
     display table
+    text-align center
+    //background-color yellow
 
-    > h1
-      font-size 4vw
-      font-weight 300
+    h1
       display table-cell
       vertical-align middle
+      font-size 4vw
+      font-weight 300
 
   .screen-list
     display block
+    position absolute
     width 100%
     height 10%
-    position absolute
     top 15%
     //border 4px solid green
 
   > .chevron
-    width 100%
     position absolute
-    z-index 2
+    width 100%
     bottom 0
     margin-bottom 0
+    z-index 2
 
     > i
       border-color black
@@ -38,18 +37,18 @@
 
   .bag-img
     display inline-block
+    position absolute
     width 50%
     height 75%
-    position absolute
     bottom 0
     left 0
     //border 4px solid blue
 
   .sign-img
     display inline-block
+    position absolute
     width 50%
     height 75%
-    position absolute
     bottom 0
     right 0
     //border 4px solid black
@@ -57,10 +56,8 @@
 
 @media (max-width: 767px)
   .third2-screen
-
     .screen-title
-
-      > h1
+      h1
         font-size 6vw
 
     .screen-list
@@ -75,13 +72,13 @@
       height 50%
       bottom 20%
 
+
 @media (max-width: 480px)
   .third2-screen
-
     .screen-title
       height 10%
 
-      > h1
+      h1
         font-size 6vw
         font-weight 300
 
@@ -100,5 +97,3 @@
       width 100%
       height 40%
       top 60%
-
-
