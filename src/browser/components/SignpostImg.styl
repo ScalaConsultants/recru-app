@@ -1,7 +1,6 @@
 .sign-img
 
   div
-    //border 1px solid red
     position relative
     height 100%
 
@@ -9,28 +8,30 @@
       position absolute
       top 55%
       left 10%
+      width 90%
       li
         list-style-type none
         font-size 1.5vw
         font-weight 600
-        display list-item
+        //display list-item
         animation-duration 1.2s
         animation-name benefitsListIn
 
       li:before
         white-space nowrap
-        content url('../../../assets/img/packYourBag/scalac_logo_icon.png')
+        content url('../../../assets/img/packYourBag/scalac_logo_icon2.png')
         padding-right 0.5vw
 
-    img
-      //border 3px solid orange
-      margin-right 2vw
-      width 25%
+    img#img1
+      position absolute
+      bottom 66%
+      right 15%
+      width 20%
       float right
       cursor pointer
       transition: opacity 0.4s easeOutCirc;
 
-    img:hover
+    img#img1:hover
       opacity 0.75
 
     .footPrint

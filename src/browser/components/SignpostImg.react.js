@@ -17,7 +17,7 @@ export default class SignpostImg extends Component {
 
   static defaultProps = {
     animate: false,
-    delayBetween: 800,
+    delayBetween: 500,
     delayStart: 1000,
     benefits: ['']
   }
@@ -71,24 +71,23 @@ export default class SignpostImg extends Component {
   pushItems() {
     this.setState({
       feet: [
-        {'bottom': 55, 'left': 3, 'rotation': 90, 'delay': 0.2, 'scale': 0.35},
-        {'bottom': 45, 'left': 8, 'rotation': 90, 'delay': 0.5, 'scale': 0.4},
-        {'bottom': 55, 'left': 13, 'rotation': 90, 'delay': 0.8, 'scale': 0.45},
-        {'bottom': 45, 'left': 18, 'rotation': 90, 'delay': 1.1, 'scale': 0.5},
-        {'bottom': 55, 'left': 23, 'rotation': 90, 'delay': 1.4, 'scale': 0.55},
-        {'bottom': 45, 'left': 28, 'rotation': 90, 'delay': 1.7, 'scale': 0.6},
-        {'bottom': 55, 'left': 33, 'rotation': 90, 'delay': 2.0, 'scale': 0.65},
-        {'bottom': 45, 'left': 38, 'rotation': 90, 'delay': 2.3, 'scale': 0.7},
-        {'bottom': 55, 'left': 43, 'rotation': 90, 'delay': 2.6, 'scale': 0.75},
-        {'bottom': 45, 'left': 48, 'rotation': 90, 'delay': 2.9, 'scale': 0.8},
-        {'bottom': 55, 'left': 53, 'rotation': 90, 'delay': 3.2, 'scale': 0.85},
-        {'bottom': 45, 'left': 58, 'rotation': 90, 'delay': 3.5, 'scale': 0.9},
-        {'bottom': 56, 'left': 65, 'rotation': 66, 'delay': 4.4, 'scale': 0.95},
-        {'bottom': 48, 'left': 70, 'rotation': 60, 'delay': 4.7, 'scale': 1.0}
-        // {'bottom': 31, 'left': 71, 'rotation': 27, 'delay': 5.0}
-        // {'bottom': 25, 'left': 78, 'rotation': 37, 'delay': 5.3}
-        // {'bottom': 47, 'left': 73, 'rotation': 0, 'delay': 5.6},
-        // {'bottom': 42, 'left': 81, 'rotation': 0, 'delay': 5.9}
+        {'bottom': 80, 'left': 27, 'rotation': -200, 'delay': 0.0, 'scale': 0.74},
+        {'bottom': 75, 'left': 23, 'rotation': -190, 'delay': 0.5, 'scale': 0.74},
+
+        {'bottom': 71, 'left': 30, 'rotation': -200, 'delay': 1.0, 'scale': 0.78},
+        {'bottom': 64, 'left': 26, 'rotation': -200, 'delay': 1.5, 'scale': 0.78},
+
+        {'bottom': 61, 'left': 34, 'rotation': -220, 'delay': 2.0, 'scale': 0.82},
+        {'bottom': 53, 'left': 32, 'rotation': -230, 'delay': 2.5, 'scale': 0.82},
+
+        {'bottom': 54, 'left': 41, 'rotation': -250, 'delay': 3.0, 'scale': 0.86},
+        {'bottom': 46, 'left': 44, 'rotation': -260, 'delay': 3.5, 'scale': 0.86},
+
+        {'bottom': 52, 'left': 51, 'rotation': -280, 'delay': 4.0, 'scale': 0.90},
+        {'bottom': 47, 'left': 57, 'rotation': -290, 'delay': 4.5, 'scale': 0.90},
+
+        {'bottom': 57, 'left': 60, 'rotation': -320, 'delay': 5.0, 'scale': 0.95},
+        {'bottom': 55, 'left': 67, 'rotation': -310, 'delay': 5.5, 'scale': 0.95}
       ]
     });
   }
