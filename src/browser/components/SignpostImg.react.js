@@ -71,20 +71,28 @@ export default class SignpostImg extends Component {
   pushItems() {
     this.setState({
       feet: [
-        {'bottom': 62, 'left': 27, 'rotation': -300, 'delay': 0.0, 'scale': 0.35},
-        {'bottom': 57, 'left': 26, 'rotation': -300, 'delay': 0.5, 'scale': 0.35},
+        {'bottom': 41, 'left': 17, 'rotation': -360, 'delay': 0.0, 'scale': 0.40},
+        {'bottom': 43, 'left': 21, 'rotation': -350, 'delay': 0.3, 'scale': 0.40},
 
-        {'bottom': 64, 'left': 35, 'rotation': -270, 'delay': 1.0, 'scale': 0.45},
-        {'bottom': 59, 'left': 33, 'rotation': -270, 'delay': 1.5, 'scale': 0.45},
+        {'bottom': 49, 'left': 18, 'rotation': -350, 'delay': 0.6, 'scale': 0.45},
+        {'bottom': 50, 'left': 22, 'rotation': -340, 'delay': 0.9, 'scale': 0.45},
 
-        {'bottom': 64, 'left': 45, 'rotation': -270, 'delay': 2.0, 'scale': 0.55},
-        {'bottom': 59, 'left': 43, 'rotation': -270, 'delay': 2.5, 'scale': 0.55},
+        {'bottom': 56, 'left': 21, 'rotation': -320, 'delay': 1.2, 'scale': 0.50},
+        {'bottom': 55, 'left': 26, 'rotation': -300, 'delay': 1.5, 'scale': 0.55},
 
-        {'bottom': 65, 'left': 55, 'rotation': -290, 'delay': 3.0, 'scale': 0.65},
-        {'bottom': 59, 'left': 53, 'rotation': -280, 'delay': 3.5, 'scale': 0.65},
+        {'bottom': 60, 'left': 27, 'rotation': -300, 'delay': 1.8, 'scale': 0.55},
+        {'bottom': 57, 'left': 33, 'rotation': -270, 'delay': 2.1, 'scale': 0.65},
 
-        {'bottom': 69, 'left': 63, 'rotation': -310, 'delay': 4.0, 'scale': 0.75},
-        {'bottom': 63, 'left': 64, 'rotation': -310, 'delay': 4.5, 'scale': 0.75}
+        {'bottom': 61, 'left': 35, 'rotation': -270, 'delay': 2.4, 'scale': 0.65},
+        {'bottom': 57, 'left': 41, 'rotation': -270, 'delay': 2.7, 'scale': 0.70},
+
+        {'bottom': 62, 'left': 45, 'rotation': -280, 'delay': 3.0, 'scale': 0.75},
+        {'bottom': 58, 'left': 51, 'rotation': -280, 'delay': 3.3, 'scale': 0.75},
+
+        {'bottom': 65, 'left': 55, 'rotation': -300, 'delay': 3.6, 'scale': 0.78},
+        {'bottom': 62, 'left': 61, 'rotation': -300, 'delay': 3.9, 'scale': 0.80},
+
+        // {'bottom': 67, 'left': 63, 'rotation': -310, 'delay': 7.0, 'scale': 0.75}
 
 
 
