@@ -142,19 +142,21 @@ export default class FifthScreen extends Component {
 
     return (
       <section className="fifth-screen screen dark">
-        <header>One more thing...</header>
-        <h2>Leave us your email</h2>
-        <input className={emailInputClassName} onChange={this.handleEmailChange} placeholder="email" ref="emailInput" tabIndex="-1" type="email"/>
-        <h2>and either a LinkedIn profile URI</h2>
-        <input className={inputClassName} onChange={this.handleUrlChange} placeholder="linkedin.com/in/username" ref="urlInput" tabIndex="-1" type="url"/>
-        <span>or</span>
-        <input ref="fileInput" tabIndex="-1" type="file" />
-        <div className={dropAreaclassName} id="drop" onClick={() => ReactDOM.findDOMNode(this.refs.fileInput).click()} ref="dropArea">
-          <span>
-            { this.state.fileUploaded ? 'resume uploaded' : 'drop or click to select resume'}
-          </span>
+        <header><span>One more thing...</span></header>
+        <div className="contactForm">
+          <h2>Leave us your email</h2>
+          <input className={emailInputClassName} onChange={this.handleEmailChange} placeholder="email" ref="emailInput" tabIndex="-1" type="email"/>
+          <h2>and either a LinkedIn profile URI</h2>
+          <input className={inputClassName} onChange={this.handleUrlChange} placeholder="linkedin.com/in/username" ref="urlInput" tabIndex="-1" type="url"/>
+          <h2>or</h2>
+          <input ref="fileInput" tabIndex="-1" type="file" />
+          <div className={dropAreaclassName} id="drop" onClick={() => ReactDOM.findDOMNode(this.refs.fileInput).click()} ref="dropArea">
+            <span>
+              { this.state.fileUploaded ? 'resume uploaded' : 'drop or click to select resume'}
+            </span>
+          </div>
+          <button className={buttonInputClassName} disabled={!this.isDataValid() || candidate.isSubmittingForm} onClick={this.submit}><i></i>{buttonTitle}</button>
         </div>
-        <button className={buttonInputClassName} disabled={!this.isDataValid() || candidate.isSubmittingForm} onClick={this.submit}><i></i>{buttonTitle}</button>
       </section>
     );
   }
