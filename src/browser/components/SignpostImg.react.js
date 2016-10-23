@@ -135,7 +135,7 @@ export default class SignpostImg extends Component {
             return <img className='footPrint' key={idx} src={imageSrc} style={imgStyle}/>;
           }
           )}
-          <ul className="benefits-list" >
+          <ul className="benefits-list" >Scalac&nbsp;vitamins:<br />
             {this.state.benefits.map((item, idx) =>
               <li key={idx}>{item}</li>
             )}
