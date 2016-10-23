@@ -28,13 +28,16 @@ export default class ThirdScreen extends Component {
     if (!this.state.role)
       return;
 
-    const {actions: {saveRole, nextScreen}} = this.props;
-    saveRole(this.state.role);
+    const {actions: {nextScreen}} = this.props;
     nextScreen();
   }
 
   handleChooseRole(role) {
-    this.setState({role: role}, () => this.proceed());
+    const {actions: {saveRole, nextScreen}} = this.props;
+    if (role !== this.state.role) {
+      this.setState({role: role}, () => saveRole(this.state.role));
+    }
+    nextScreen();
   }
 
   render() {
