@@ -21,9 +21,19 @@
       height 100vh
       background #010101
       float left
-      transition all 0.5s
-      -webkit-transition all 0.5s
-      -moz-transition all 0.5s
+      transition all 0.5s ease-in-out
+      -webkit-transition all 0.5s ease-in-out
+      -moz-transition all 0.5s ease-in-out
+
+      img
+        display block
+        height 100%
+        border-left 1px solid rgba(255,255,255,0.5)
+        opacity 0.75
+
+      :hover
+        img
+          opacity 1.0
 
       > p
         position absolute
@@ -36,15 +46,14 @@
         text-align left
         color #ffffff
         z-index 99
+        transition all 0.5s ease-in-out
+        -webkit-transition all 0.5s ease-in-out
+        -moz-transition all 0.5s ease-in-out
 
-      img
-        display block
-        height 100%
-        border-left 1px solid rgba(255,255,255,0.5)
-        opacity 0.75
-
-      img:hover
-        opacity 1.0
+      > p:hover
+        + div
+          img
+            opacity 1.0
 
       div
         height 100%
@@ -65,7 +74,6 @@
           -webkit-transition all 0.5s
           -moz-transition all 0.5s
 
-
     li:first-child
       img
         border-left none !important
@@ -76,52 +84,74 @@
     li:hover
       width 55%
 
+
+@media (max-width: 1080px)
+  .third-screen
+    ul
+      li
+        > p
+          padding 10px
+          width 85%
+          font-size 2.0em
+          color #ffffff
+
+        div
+          p
+            width 45%
+            padding 10px
+            color #ffffff
+            font-size 1em
+
+
 @media (max-width: 767px)
-    .third-screen
-      font-size 14px
+  .third-screen
+    font-size 14px
 
-      ul
+    ul
 
-        li
-          height 25%
+      li
+        height 25%
+        width 100%
+        float none
+
+        img
+          height auto
+          min-width 100%
+
+        > p
+          font-size 2em
+          line-height 2em
+          left 0px
           width 100%
-          float none
+          margin 0px
+          top 0px
 
-          img
-            height auto
-            min-width 100%
-            opacity 0.75
+        div
+          width 100%
 
-          img:hover
-            opacity 1.0
-
-          > p
-            font-size 2em
-            line-height 2em
-            left 0px
-            width 100%
-            margin 0px
-            top 0px
-
-          div
+          p
+            top 25%
+            text-align left
+            padding-right 7vw
+            opacity 0
+            right auto
             width 100%
 
-            p
-              top 25%
-              text-align left
-              opacity 0
-              right auto
-              width 100%
-
-      ul:hover
-        li,li:hover
-          width: 100%
-          height 15%
-        li:hover
-          height 55%
-          div
-            p
-              opacity 1
+    ul:hover
+      li,li:hover
+        width: 100%
+        height 15%
+      li:hover
+        height 55%
+        div
+          p
+            opacity 1
 
 
-
+@media (max-width: 480px)
+  .third-screen
+    ul
+      li
+        div
+          p
+            padding-right 10vw
