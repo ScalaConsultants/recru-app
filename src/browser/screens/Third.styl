@@ -25,6 +25,16 @@
       -webkit-transition all 0.5s
       -moz-transition all 0.5s
 
+      img
+        display block
+        height 100%
+        border-left 1px solid rgba(255,255,255,0.5)
+        opacity 0.75
+
+      :hover
+        img
+          opacity 1.0
+
       > p
         position absolute
         bottom 0px
@@ -37,14 +47,17 @@
         color #ffffff
         z-index 99
 
-      img
-        display block
-        height 100%
-        border-left 1px solid rgba(255,255,255,0.5)
-        opacity 0.75
+      > p:hover
+          + div
+            img
+              opacity 1.0
 
-      img:hover
-        opacity 1.0
+
+      //img:hover
+      //  opacity 1.0
+      //
+      //img sibling:hover
+      //  opacity 1.0
 
       div
         height 100%
