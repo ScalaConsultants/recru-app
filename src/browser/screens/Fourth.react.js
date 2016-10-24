@@ -26,6 +26,10 @@ export default class FourthScreen extends Component {
     return {error: null};
   }
 
+  resetErrorStatus() {
+    this.setState(this.getDefaultState());
+  }
+
   handleMoveUp() {
     this.setState(this.getDefaultState());
   }
@@ -40,7 +44,7 @@ export default class FourthScreen extends Component {
       return;
     }
 
-    this.setState(this.getDefaultState());
+    this.resetErrorStatus();
 
     const {actions: {nextScreen}} = this.props;
     nextScreen();
@@ -67,7 +71,7 @@ export default class FourthScreen extends Component {
         <p>show us, which skills you have</p>
         <ul>
           {skillsForCurrentRole.map((skill) =>
-            <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
+            <SkillItem actions={this.props.actions} data={skill} key={skill.id} resetErrorStatus={this.resetErrorStatus.bind(this)}/>
           )}
         </ul>
         {this.state.error ? errorBody : null}
