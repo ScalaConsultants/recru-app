@@ -90,30 +90,7 @@ export default class SignpostImg extends Component {
         {'bottom': 58, 'left': 51, 'rotation': -280, 'delay': 3.3, 'scale': 0.75},
 
         {'bottom': 65, 'left': 55, 'rotation': -300, 'delay': 3.6, 'scale': 0.78},
-        {'bottom': 62, 'left': 61, 'rotation': -300, 'delay': 3.9, 'scale': 0.80},
-
-        // {'bottom': 67, 'left': 63, 'rotation': -310, 'delay': 7.0, 'scale': 0.75}
-
-
-
-
-        // {'bottom': 80, 'left': 27, 'rotation': -200, 'delay': 0.0, 'scale': 0.74},
-        // {'bottom': 75, 'left': 23, 'rotation': -190, 'delay': 0.5, 'scale': 0.74},
-        //
-        // {'bottom': 71, 'left': 30, 'rotation': -200, 'delay': 1.0, 'scale': 0.78},
-        // {'bottom': 64, 'left': 26, 'rotation': -200, 'delay': 1.5, 'scale': 0.78},
-        //
-        // {'bottom': 61, 'left': 34, 'rotation': -220, 'delay': 2.0, 'scale': 0.82},
-        // {'bottom': 53, 'left': 32, 'rotation': -230, 'delay': 2.5, 'scale': 0.82},
-        //
-        // {'bottom': 54, 'left': 41, 'rotation': -250, 'delay': 3.0, 'scale': 0.86},
-        // {'bottom': 46, 'left': 44, 'rotation': -260, 'delay': 3.5, 'scale': 0.86},
-        //
-        // {'bottom': 52, 'left': 51, 'rotation': -280, 'delay': 4.0, 'scale': 0.90},
-        // {'bottom': 47, 'left': 57, 'rotation': -290, 'delay': 4.5, 'scale': 0.90},
-        //
-        // {'bottom': 57, 'left': 60, 'rotation': -320, 'delay': 5.0, 'scale': 0.95},
-        // {'bottom': 55, 'left': 67, 'rotation': -310, 'delay': 5.5, 'scale': 0.95}
+        {'bottom': 62, 'left': 61, 'rotation': -300, 'delay': 3.9, 'scale': 0.80}
       ]
     });
   }
