@@ -1,0 +1,95 @@
+.third2-screen
+  position relative
+
+  .screen-title
+    position absolute
+    width 100%
+    height 15%
+    top 0
+    display table
+    text-align center
+
+    h1
+      display table-cell
+      vertical-align middle
+      font-size 4vw
+      font-weight 300
+
+  .screen-list
+    display block
+    position absolute
+    width 100%
+    height 10%
+    top 15%
+
+  > .chevron
+    position absolute
+    width 100%
+    bottom 0
+    margin-bottom 0
+    z-index 2
+
+    > i
+      border-color black
+      opacity 0.2
+
+  .bag-img
+    display inline-block
+    position absolute
+    width 50%
+    height 75%
+    bottom 0
+    left 0
+
+  .sign-img
+    display inline-block
+    position absolute
+    width 50%
+    height 75%
+    bottom 0
+    right 0
+
+
+@media (max-width: 767px)
+  .third2-screen
+    .screen-title
+      h1
+        font-size 6vw
+
+    .screen-list
+      height 15%
+      top 15%
+
+    .bag-img
+      height 50%
+      bottom 20%
+
+    .sign-img
+      height 50%
+      bottom 20%
+
+
+@media (max-width: 480px)
+  .third2-screen
+    .screen-title
+      height 10%
+
+      h1
+        font-size 6vw
+        font-weight 300
+
+    .screen-list
+      height 10%
+      top 10%
+
+    .bag-img
+      display block
+      width 100%
+      height 35%
+      top 20%
+
+    .sign-img
+      display block
+      width 100%
+      height 40%
+      top 55%

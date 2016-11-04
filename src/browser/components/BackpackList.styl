@@ -1,0 +1,31 @@
+ul.backpack-list
+  list-style-type none
+  text-align center
+  padding 0
+
+  li
+    font-size 1.5vw
+    font-weight 600
+    display inline
+    margin 0 1vw 1vw 1vw
+    transition all .6s ease-in-out
+
+  li:hover
+    color rgb(230, 0, 0)
+
+  li:before
+    white-space nowrap
+    content url('../../../assets/img/packYourBag/scalac_logo_icon2.png')
+    padding-right 0.5vw
+
+
+@media (max-width: 767px)
+  ul.backpack-list
+    li
+      font-size 2.5vw
+
+
+@media (max-width: 480px)
+  ul.backpack-list
+    li
+      font-size 3.0vw
