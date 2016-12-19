@@ -65,11 +65,16 @@ export default class FourthScreen extends Component {
 
     return (
       <section className="fourth-screen screen">
-        <header>
-          pack your bag
-        </header>
-        <p>show us, which skills you have</p>
-        <ul>
+        <div className="screen-title">
+          <h1>
+            <strong>Show us Your skills</strong>
+          </h1>
+        </div>
+
+        <div className="screen-img">
+          <img alt="Geek" src="../../../assets/img/skills/geek.svg"/>
+        </div>
+        <ul className="skills-list">
           {skillsForCurrentRole.map((skill) =>
             <SkillItem actions={this.props.actions} data={skill} key={skill.id} resetErrorStatus={this.resetErrorStatus.bind(this)}/>
           )}

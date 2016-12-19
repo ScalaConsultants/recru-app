@@ -9,7 +9,7 @@ export default class BagImg extends Component {
   render() {
     return (
       <div className="bag-img">
-        <img alt='Your Scalac Bag img' id="bag-img" src="../../../assets/img/packYourBag/plecak_1.png"/>
+        <img alt='Your Scalac Bag img' id="bag-img" src="../../../assets/img/packYourBag/bag.png"/>
       </div>
     );
   }
