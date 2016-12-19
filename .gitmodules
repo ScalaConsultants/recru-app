@@ -1,0 +1,3 @@
+[submodule "recru-app-backend"]
+	path = recru-app-backend
+	url = git@github.com:ScalaConsultants/recru-app-backend.git
