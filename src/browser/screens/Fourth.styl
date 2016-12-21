@@ -1,25 +1,9 @@
 .fourth-screen
   position relative
-
-  .screen-title
-    position absolute
-    width 100%
-    height 15%
-    top 0
-    display table
-    text-align center
-
-    h1
-      display table-cell
-      vertical-align bottom
-      font-size 4vw
-      font-weight 300
+  padding-top 30px
 
   #error-text
-    position absolute
-    width 100%
-    bottom 80px
-    margin 0 auto
+    margin 20px auto
     text-align center
 
     span
@@ -38,39 +22,29 @@
       border-color black
       opacity 0.2
 
-  .screen-img
-    border 3px solid red
-    display inline-block
-    position absolute
-    width 40%
-    height 70%
-    top 15%
-    left 0
-    text-align right
-    img
-      height 80%
-      width auto
+  header
+    font-size 36px
+    text-align center
+    font-weight 300
+    color #010101
+    margin-bottom 10px
+
+  p
+    text-align center
+    margin 0px 0px 60px
 
   ul
-    border 3px solid blue
-    display inline-block
-    position absolute
-    width 60%
-    height 70%
-    top 15%
-    right 0
-    //display block
-    //width 1000px
-    //max-width 100%
-    //margin auto auto 40px
+    display block
+    width 1000px
+    max-width 100%
+    margin auto auto 40px
     list-style none
-    margin 0
     padding 0
 
     li
       width 33.3333%
       display inline-block
-      //margin-bottom 40px
+      margin-bottom 40px
       position relative
 
       .hint
@@ -101,11 +75,12 @@
         margin 0 auto
 
       img
-        max-width 70px
+        max-width 80px
         vertical-align middle
         margin 0 20px 0 20px
 
       form
+        //border 3px solid deeppink
         display inline-block
         vertical-align middle
 
@@ -113,6 +88,7 @@
           display none
 
         label
+          //border 2px solid green
           float right
           padding 0
           font-size 36px
@@ -139,34 +115,23 @@
 
 @media (max-width: 767px)
   .fourth-screen
-    .screen-title
-      h1
-        font-size 6vw
-
     > .chevron
       width 100%
-      //position initial
-
-    .screen-img
-      display none
-
+      position initial
     ul
-      width 100%
+      margin-bottom 20px
       li
-        //width: 50%
+        width: 50%
 
 @media (max-width: 480px)
   .fourth-screen
-    .screen-title
-      height 10%
 
-      h1
-        font-size 6vw
-        font-weight 300
     > .chevron
-      //position relative
+      position relative
 
     ul
+
       li
         width 90%
         display block
+        margin 0 auto 20px
