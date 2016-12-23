@@ -1,6 +1,6 @@
 .fourth-screen
   position relative
-  padding-top 30px
+  padding-bottom 30px
 
   #error-text
     margin 20px auto
@@ -22,116 +22,163 @@
       border-color black
       opacity 0.2
 
-  header
-    font-size 36px
+  .screen-title
+    width 100%
     text-align center
-    font-weight 300
-    color #010101
-    margin-bottom 10px
+    margin 2% auto 2% auto
+    h1
+      font-size 3.5vw
+      font-weight 300
 
-  p
-    text-align center
-    margin 0px 0px 60px
-
-  ul
-    display block
-    width 1000px
-    max-width 100%
-    margin auto auto 40px
-    list-style none
-    padding 0
-
-    li
-      width 33.3333%
+  .myDiv
+    border 1px solid blue
+    width 100%
+    padding 1% 4%
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    .geek-img
+      border 1px solid green
       display inline-block
-      margin-bottom 40px
+      width 30%
+      height 65vh
+      padding 0% 3% 0% 3%
+      text-align right
+      margin auto auto
+      img
+        height 100%
+        width auto
+
+    ul
+      border 1px solid orange
+      display inline-block
+      width 70%
+      list-style none
+      padding 0 0 0 3%
+      margin auto auto
+
+      li
+        border 1px solid blueviolet
+        display inline-block
+        position relative
+        text-align center
+
+        .hint
+          position absolute
+          bottom 90px
+          left 0
+          background #000
+          opacity 0.7
+          color #fff
+          text-align center
+          width 90px
+          padding 0 5px
+          margin 0 15px
+          font-size 14px
+          line-height 20px
+          border-radius 5px
+
+        .hint::after
+          content ''
+          position absolute
+          width 0
+          height 0gulp
+          border-left 5px solid transparent
+          border-right 5px solid transparent
+          border-top 7px solid #000
+          bottom -7px
+          left 43px
+          margin 0 auto
+
+        img
+          max-width 65px
+          vertical-align middle
+          margin 0 10px 0 0
+
+        form
+          border 2px solid deeppink
+          display inline-block
+          vertical-align middle
+
+          input
+            display none
+
+          label
+            border 2px solid green
+            float right
+            //padding 0
+            //font-size 36px
+            cursor pointer
+
+          label.star:before
+            content ''
+            width 32px
+            height 31px
+            opacity 0.8
+            display block
+            background url('../../../assets/img/rating-arrows.png') no-repeat
+            transition transform .25s
+
+          input:checked ~ label.star:before
+            background-position -64px 0 !important
+
+          label.star:hover:before
+            transform scale(1.1)
+
+          label.star:hover:before
+          label.star:hover ~ label.star:before
+            background-position -32px 0
+
+
+@media (max-width: 960px)
+  .fourth-screen
+
+    .screen-title
+      margin 5% auto 5% auto
+      h1
+        font-size 5vw
+
+    > .chevron
       position relative
 
-      .hint
-        position absolute
-        bottom 90px
-        left 0
-        background #000
-        opacity 0.7
-        color #fff
-        text-align center
-        width 90px
-        padding 0 5px
-        margin 0 15px
-        font-size 14px
-        line-height 20px
-        border-radius 5px
-
-      .hint::after
-        content ''
-        position absolute
+    .myDiv
+      display block
+      padding 1%
+      .geek-img
+        display none
         width 0
         height 0
-        border-left 5px solid transparent
-        border-right 5px solid transparent
-        border-top 7px solid #000
-        bottom -7px
-        left 43px
-        margin 0 auto
-
-      img
-        max-width 80px
-        vertical-align middle
-        margin 0 20px 0 20px
-
-      form
-        //border 3px solid deeppink
-        display inline-block
-        vertical-align middle
-
-        input
+        img
           display none
 
-        label
-          //border 2px solid green
-          float right
-          padding 0
-          font-size 36px
-          cursor pointer
+      ul
+        display block
+        padding 0
+        margin-bottom 20px
 
-        label.star:before
-          content ''
-          width 32px
-          height 31px
-          opacity 0.8
-          display block
-          background url('../../../assets/img/rating-arrows.png') no-repeat
-          transition transform .25s
-
-        input:checked ~ label.star:before
-          background-position -64px 0 !important
-
-        label.star:hover:before
-          transform scale(1.1)
-
-        label.star:hover:before
-        label.star:hover ~ label.star:before
-          background-position -32px 0
 
 @media (max-width: 767px)
   .fourth-screen
-    > .chevron
-      width 100%
-      position initial
-    ul
-      margin-bottom 20px
-      li
-        width: 50%
+
+    .screen-title
+      margin 5% auto 5% auto
+      h1
+        font-size 6vw
+
 
 @media (max-width: 480px)
   .fourth-screen
 
-    > .chevron
-      position relative
+    .screen-title
+      margin 8% auto 8% auto
+      h1
+        font-size 7vw
 
-    ul
+    .myDiv
+      ul
+        li
 
-      li
-        width 90%
-        display block
-        margin 0 auto 20px
+          display block
+          margin 6% auto
+          img
+            margin-left 0

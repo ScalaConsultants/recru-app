@@ -65,14 +65,21 @@ export default class FourthScreen extends Component {
 
     return (
       <section className="fourth-screen screen">
-        <header>
-          Show us Your skills
+        <header className="screen-title">
+          <h1>
+            <strong>Skills package</strong>
+          </h1>
         </header>
-        <ul>
-          {skillsForCurrentRole.map((skill) =>
-            <SkillItem actions={this.props.actions} data={skill} key={skill.id} resetErrorStatus={this.resetErrorStatus.bind(this)}/>
-          )}
-        </ul>
+        <div className="myDiv">
+          <div className="geek-img">
+            <img alt="Geek" src="../../../assets/img/skills/geek.svg"/>
+          </div>
+          <ul>
+            {skillsForCurrentRole.map((skill) =>
+              <SkillItem actions={this.props.actions} data={skill} key={skill.id} resetErrorStatus={this.resetErrorStatus.bind(this)}/>
+            )}
+          </ul>
+        </div>
         {this.state.error ? errorBody : null}
         <Chevron isAnimated onClick={e => this.proceed(e)}/>
       </section>
