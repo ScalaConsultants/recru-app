@@ -1,30 +1,17 @@
 version: '2'
 services:
-  backend:
-    image: scalac/activator:latest
-    expose:
-      - 8888
-    ports:
-      - "127.0.0.1:8888:8888"
-    volumes:
-      - ./recru-app-backend:/src
-      - ./tmp/.ivy2:/root/.ivy2
-    command: bash -c "cd /src && activator assembly && java -jar ./target/scala-2.10/recru-app-backend-assembly-1.0.jar"
   frontend:
-    image: node:4.7
+    image: node:4
     expose:
       - 8000
+      - 8080
     ports:
       - "127.0.0.1:8000:8000"
+      - "127.0.0.1:8080:8080"
     volumes:
       - .:/src
       - ./tmp/.npm:/root/.npm
     environment:
-      - "NODE_ENV=production"
-      - "app__baseUri=/join_us/"
-      - "app__apiEndpoint=http://backend:8888"
-    command: bash -c "cd /src && npm install && npm install -g gulp && gulp build -p && cp -R build _assets && npm start"
-    links:
-      - backend
-    depends_on:
-      - backend
+      - "PATH=$PATH:/src/node_modules/.bin"
+      - "DOCKERIZED_DEPLOYMENT=1"
+    command: bash -xe -c "cd /src && (([ -d node_modules ] && npm prune gulp && npm prune) || (npm install gulp && npm install)) && gulp"
