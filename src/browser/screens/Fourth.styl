@@ -31,14 +31,14 @@
       font-weight 300
 
   .myDiv
-    border 1px solid blue
+    //border 1px solid blue
     width 100%
     padding 1% 4%
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     .geek-img
-      border 1px solid green
+      //border 1px solid green
       display inline-block
       width 35%
       height 65vh
@@ -50,7 +50,7 @@
         width auto
 
     ul
-      border 1px solid orange
+      //border 1px solid orange
       display inline-block
       width 65%
       list-style none
@@ -59,7 +59,7 @@
       text-align left
 
       li
-        border 1px solid blueviolet
+        //border 1px solid blueviolet
         display inline-block
         position relative
         text-align center
@@ -98,7 +98,7 @@
           margin 0 10px 0 0
 
         form
-          border 2px solid deeppink
+          //border 2px solid deeppink
           display inline-block
           vertical-align middle
 
@@ -106,7 +106,7 @@
             display none
 
           label
-            border 2px solid green
+            //border 1px solid green
             float right
             //padding 0
             //font-size 36px
@@ -114,23 +114,27 @@
 
           label.star:before
             content ''
-            width 32px
-            height 31px
-            opacity 0.8
+            width 24px
+            height 30px
+            //opacity 0.8
             display block
             //background url('../../../assets/img/skills/arrows.png') no-repeat
-            background url('../../../assets/img/skills/rating-arrows2.png') no-repeat
+            //background-image url('../../../assets/img/skills/rating-arrows2.png')
+            background-image url('../../../assets/img/skills/rating-arrows.svg')
+            background-repeat no-repeat
+            background-size 78px 30px
+            background-position 0px
             transition transform .25s
 
           input:checked ~ label.star:before
-            background-position -64px 0 !important
+            background-position -56.4px 0 !important
 
           label.star:hover:before
             transform scale(1.1)
 
           label.star:hover:before
           label.star:hover ~ label.star:before
-            background-position -32px 0
+            background-position -28.2px 0
 
 
 @media (max-width: 960px)
