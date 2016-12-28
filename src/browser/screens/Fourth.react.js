@@ -1,6 +1,7 @@
 import Component from 'react-pure-render/component';
 import Chevron from '../components/Chevron.react';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import boundScroll from '../lib/boundScroll';
 import SkillItem from '../components/SkillItem.react';
 import technologies from '../data/technologies.json';
@@ -38,7 +39,22 @@ export default class FourthScreen extends Component {
     this.proceed();
   }
 
+  handleKeyUp(e) {
+    this.resetErrorStatus();
+    let otherSkill = e.target.value;
+    // let otherSkill = ReactDOM.findDOMNode(this.refs.otherSkill).value;
+    console.log("otherSkill");
+    console.log(otherSkill);
+    console.log('this.refs');
+    console.log(this.refs);
+    const {actions: {saveOtherSkill}} = this.props;
+    saveOtherSkill(otherSkill);
+    console.log('this.props.candidate.otherSkill');
+    console.log(this.props.candidate.otherSkill);
+  }
+
   proceed() {
+    //sprawdzic czy textarea pusta
     if (this.props.candidate.skills.size < 1) {
       this.setState({error: 'You must be good at least at something :)'});
       return;
@@ -51,6 +67,7 @@ export default class FourthScreen extends Component {
   }
 
   render() {
+
     const skills = technologies[this.props.candidate.role.id];
     let skillsForCurrentRole = [];
 
@@ -78,6 +95,7 @@ export default class FourthScreen extends Component {
             {skillsForCurrentRole.map((skill) =>
               <SkillItem actions={this.props.actions} data={skill} key={skill.id} resetErrorStatus={this.resetErrorStatus.bind(this)}/>
             )}
+            <li><textarea ref="otherSkill" onChange={e => this.handleKeyUp(e)} placeholder="Other skills" ></textarea></li>
           </ul>
         </div>
         {this.state.error ? errorBody : null}
