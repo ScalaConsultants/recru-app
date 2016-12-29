@@ -1,7 +1,7 @@
 import Component from 'react-pure-render/component';
 import Chevron from '../components/Chevron.react';
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import boundScroll from '../lib/boundScroll';
 import SkillItem from '../components/SkillItem.react';
 import technologies from '../data/technologies.json';
@@ -42,21 +42,22 @@ export default class FourthScreen extends Component {
   handleKeyUp(e) {
     this.resetErrorStatus();
     let otherSkill = e.target.value;
+    // console.log(e.target.value);
     // let otherSkill = ReactDOM.findDOMNode(this.refs.otherSkill).value;
-    console.log("otherSkill");
-    console.log(otherSkill);
-    console.log('this.refs');
-    console.log(this.refs);
+    // console.log("otherSkill");
+    // console.log(otherSkill);
+    // console.log('this.refs');
+    // console.log(this.refs);
     const {actions: {saveOtherSkill}} = this.props;
     saveOtherSkill(otherSkill);
-    console.log('this.props.candidate.otherSkill');
-    console.log(this.props.candidate.otherSkill);
+    // console.log('this.props.candidate.otherSkill');
+    // console.log(this.props.candidate.otherSkill);
+    // console.log(this.props.candidate.otherSkill.length);
   }
 
   proceed() {
-    //sprawdzic czy textarea pusta
-    if (this.props.candidate.skills.size < 1) {
-      this.setState({error: 'You must be good at least at something :)'});
+    if ((this.props.candidate.skills.size < 1) && ((this.props.candidate.otherSkill).trim() === '')) {
+      this.setState({error: 'Select Your skills / Write about Your skills :)'});
       return;
     }
 
@@ -95,7 +96,11 @@ export default class FourthScreen extends Component {
             {skillsForCurrentRole.map((skill) =>
               <SkillItem actions={this.props.actions} data={skill} key={skill.id} resetErrorStatus={this.resetErrorStatus.bind(this)}/>
             )}
-            <li><textarea ref="otherSkill" onChange={e => this.handleKeyUp(e)} placeholder="Other skills" ></textarea></li>
+            <li className="otherSkills">
+              <img alt="xxx" src="../../../assets/img/packYourBag/scalac_logo.png"/>
+              <span><strong>Do You have other skills?</strong></span>
+              <textarea cols="20" maxLength="500" onChange={e => this.handleKeyUp(e)} placeholder="Other skills..." ref="otherSkill" rows="2"></textarea>
+            </li>
           </ul>
         </div>
         {this.state.error ? errorBody : null}
