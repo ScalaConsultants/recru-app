@@ -98,17 +98,11 @@ export default class FourthScreen extends Component {
             )}
             <li className="otherSkills">
               <div className="otherSkills-img">
-                {/*<img alt="xxx" src="../../../assets/img/skills/skills_bulb.svg"/>*/}
                 <img alt="xxx" src="../../../assets/img/skills/skills_gears.svg"/>
               </div>
               <div className="otherSkills-text">
                 <textarea cols="18" maxLength="500" onChange={e => this.handleKeyUp(e)} placeholder="Do You have other skills?" ref="otherSkill" rows="2"></textarea>
               </div>
-              {/*<input/>*/}
-              {/*<form action="">*/}
-                {/*<textarea cols="10" maxLength="500" onChange={e => this.handleKeyUp(e)} placeholder="Do You have other skills?" ref="otherSkill" rows="2"></textarea>*/}
-                {/*<label></label>*/}
-              {/*</form>*/}
             </li>
           </ul>
         </div>
