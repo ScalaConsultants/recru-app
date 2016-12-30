@@ -46,8 +46,6 @@ export default class FifthScreen extends Component {
   }
 
   isDataValid() {
-    console.log(JSON.stringify(this.props.candidate));
-
     if (this.state.emailPassed && (this.state.urlPassed || this.state.fileUploaded))
       return true;
     return false;
@@ -65,7 +63,7 @@ export default class FifthScreen extends Component {
       name: this.props.candidate.name,
       role: this.props.candidate.role.name,
       email: ReactDOM.findDOMNode(this.refs.emailInput).value,
-      skills: this.props.candidate.skills,
+      skills: this.props.candidate.skills.toArray(),
       otherSkill: this.props.candidate.otherSkill
     };
 
