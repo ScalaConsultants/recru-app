@@ -1,7 +1,6 @@
 import Component from 'react-pure-render/component';
 import Chevron from '../components/Chevron.react';
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import boundScroll from '../lib/boundScroll';
 import SkillItem from '../components/SkillItem.react';
 import technologies from '../data/technologies.json';
@@ -21,6 +20,7 @@ export default class FourthScreen extends Component {
   constructor(props) {
     super(props);
     this.state = this.getDefaultState();
+    this.state = {hintDisplayed: false};
   }
 
   getDefaultState() {
@@ -42,17 +42,8 @@ export default class FourthScreen extends Component {
   handleKeyUp(e) {
     this.resetErrorStatus();
     let otherSkill = e.target.value;
-    // console.log(e.target.value);
-    // let otherSkill = ReactDOM.findDOMNode(this.refs.otherSkill).value;
-    // console.log("otherSkill");
-    // console.log(otherSkill);
-    // console.log('this.refs');
-    // console.log(this.refs);
     const {actions: {saveOtherSkill}} = this.props;
     saveOtherSkill(otherSkill);
-    // console.log('this.props.candidate.otherSkill');
-    // console.log(this.props.candidate.otherSkill);
-    // console.log(this.props.candidate.otherSkill.length);
   }
 
   proceed() {
@@ -67,8 +58,14 @@ export default class FourthScreen extends Component {
     nextScreen();
   }
 
-  render() {
+  setHintVisibility(visible) {
+    this.setState({hintDisplayed: visible});
+  }
 
+  handleMouseEnter = () => this.setHintVisibility(true);
+  handleMouseLeave = () => this.setHintVisibility(false);
+
+  render() {
     const skills = technologies[this.props.candidate.role.id];
     let skillsForCurrentRole = [];
 
@@ -79,6 +76,16 @@ export default class FourthScreen extends Component {
     let errorBody;
     if (this.state.error) {
       errorBody = <div id="error-text"><span>{this.state.error}</span></div>;
+    }
+
+    let hint;
+    const cb = {
+      onMouseEnter: this.handleMouseEnter,
+      onMouseLeave: this.handleMouseLeave
+    };
+
+    if (this.state.hintDisplayed) {
+      hint = (<div {...cb} className="hint">Other skills</div>);
     }
 
     return (
@@ -97,11 +104,12 @@ export default class FourthScreen extends Component {
               <SkillItem actions={this.props.actions} data={skill} key={skill.id} resetErrorStatus={this.resetErrorStatus.bind(this)}/>
             )}
             <li className="otherSkills">
+              {hint}
               <div className="otherSkills-img">
-                <img alt="xxx" src="../../../assets/img/skills/skills_gears.svg"/>
+                <img {...cb} alt="xxx" src="../../../assets/img/skills/skills_gears.svg"/>
               </div>
               <div className="otherSkills-text">
-                <textarea cols="18" maxLength="500" onChange={e => this.handleKeyUp(e)} placeholder="Do You have other skills?" ref="otherSkill" rows="2"></textarea>
+                <textarea cols="16" maxLength="500" onChange={e => this.handleKeyUp(e)} placeholder="Do You have other skills?" ref="otherSkill" rows="2"></textarea>
               </div>
             </li>
           </ul>

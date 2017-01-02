@@ -179,7 +179,7 @@ export default class FifthScreen extends Component {
 
     const buttonTitle = candidate.isSubmittingForm
       ? 'Submitting, hold on...'
-      : 'Take me to ScalaC';
+      : 'Take me to Scalac';
 
     return (
       <section className="fifth-screen screen dark">
