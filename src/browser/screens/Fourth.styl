@@ -31,19 +31,17 @@
       font-size 50px
       font-weight 300
 
-  .myDiv
-    //border 1px solid blue
+  .skills
     width 100%
     padding 1% 4%
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     .geek-img
-      //border 1px solid green
       display inline-block
       width 35%
       height 65vh
-      padding 0% 2% 0% 3%
+      padding 0 2% 0 3%
       text-align right
       margin auto auto
       img
@@ -51,7 +49,6 @@
         width auto
 
     ul
-      //border 1px solid orange
       display inline-block
       width 65%
       list-style none
@@ -60,7 +57,6 @@
       text-align left
 
       li
-        //border 1px solid blueviolet
         display inline-block
         position relative
         text-align center
@@ -99,7 +95,6 @@
           margin 0 20px 0 0
 
         form
-          //border 2px solid deeppink
           display inline-block
           vertical-align middle
 
@@ -107,7 +102,6 @@
             display none
 
           label
-            //border 1px solid green
             float right
             cursor pointer
 
@@ -119,7 +113,7 @@
             background-image url('../../../assets/img/skills/rating-arrows.svg')
             background-repeat no-repeat
             background-size 104px 40px
-            background-position 0px
+            background-position 0
             transition transform .25s
 
           input:checked ~ label.star:before
@@ -132,19 +126,18 @@
           label.star:hover ~ label.star:before
             background-position -37.6px 0
 
-      .otherSkills
-        //border 1px solid black
+      .otherSkill
         vertical-align top
         width 247px
         height 67px
-        .otherSkills-img
+        .otherSkill-img
           display inline-block
           img
             height 65px
             position absolute
             top 0
             left 0
-        .otherSkills-text
+        .otherSkill-text
           display inline-block
           position absolute
           left 75px
@@ -166,7 +159,7 @@
     > .chevron
       position relative
 
-    .myDiv
+    .skills
       display block
       padding 1%
       .geek-img
@@ -192,7 +185,7 @@
       h1
         font-size 7vw
 
-    .myDiv
+    .skills
       ul
         li
           margin 3% 2%
@@ -205,7 +198,7 @@
       h1
         font-size 8vw
 
-    .myDiv
+    .skills
       ul
         li
           width 100%
@@ -213,7 +206,7 @@
           img
             max-height 60px
 
-        .otherSkills
-          .otherSkills-img
+        .otherSkill
+          .otherSkill-img
             img
               height 55px

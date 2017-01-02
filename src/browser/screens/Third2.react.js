@@ -43,8 +43,8 @@ export default class Third2Screen extends Component {
 
   render() {
     return (
-      <section className="third2-screen screen">
-        <div className="screen-title">
+      <section className='third2-screen screen'>
+        <div className='screen-title'>
           <h1>
             <strong>Pack Your bag</strong>
           </h1>

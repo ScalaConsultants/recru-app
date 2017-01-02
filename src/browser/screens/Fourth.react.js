@@ -75,7 +75,7 @@ export default class FourthScreen extends Component {
 
     let errorBody;
     if (this.state.error) {
-      errorBody = <div id="error-text"><span>{this.state.error}</span></div>;
+      errorBody = <div id='error-text'><span>{this.state.error}</span></div>;
     }
 
     let hint;
@@ -85,7 +85,7 @@ export default class FourthScreen extends Component {
     };
 
     if (this.state.hintDisplayed) {
-      hint = (<div {...cb} className="hint">Other skills</div>);
+      hint = (<div {...cb} className='hint'>Other skills</div>);
     }
 
     return (
@@ -95,7 +95,7 @@ export default class FourthScreen extends Component {
             <strong>Skills package</strong>
           </h1>
         </header>
-        <div className="myDiv">
+        <div className="skills">
           <div className="geek-img">
             <img alt="Geek" src="../../../assets/img/skills/geek.svg"/>
           </div>
@@ -103,12 +103,12 @@ export default class FourthScreen extends Component {
             {skillsForCurrentRole.map((skill) =>
               <SkillItem actions={this.props.actions} data={skill} key={skill.id} resetErrorStatus={this.resetErrorStatus.bind(this)}/>
             )}
-            <li className="otherSkills">
+            <li className="otherSkill">
               {hint}
-              <div className="otherSkills-img">
-                <img {...cb} alt="xxx" src="../../../assets/img/skills/skills_gears.svg"/>
+              <div className="otherSkill-img">
+                <img {...cb} alt="Other skills" src="../../../assets/img/skills/skills_gears.svg"/>
               </div>
-              <div className="otherSkills-text">
+              <div className="otherSkill-text">
                 <textarea cols="16" maxLength="500" onChange={e => this.handleKeyUp(e)} placeholder="Do You have other skills?" ref="otherSkill" rows="2"></textarea>
               </div>
             </li>
