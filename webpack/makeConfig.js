@@ -22,11 +22,9 @@ const loaders = {
   'styl': '!stylus-loader'
 };
 
+const serverIp = ip.address();
 if (process.env.DOCKERIZED_DEPLOYMENT === "1") {
   const serverIp = "127.0.0.1";
-}
-else {
-  const serverIp = ip.address();
 }
 
 export default function makeConfig(isDevelopment) {
