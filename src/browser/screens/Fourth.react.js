@@ -20,6 +20,7 @@ export default class FourthScreen extends Component {
   constructor(props) {
     super(props);
     this.state = this.getDefaultState();
+    this.state = {hintDisplayed: false};
   }
 
   getDefaultState() {
@@ -38,9 +39,16 @@ export default class FourthScreen extends Component {
     this.proceed();
   }
 
+  handleKeyUp(e) {
+    this.resetErrorStatus();
+    let otherSkill = e.target.value;
+    const {actions: {saveOtherSkill}} = this.props;
+    saveOtherSkill(otherSkill);
+  }
+
   proceed() {
-    if (this.props.candidate.skills.size < 1) {
-      this.setState({error: 'You must be good at least at something :)'});
+    if ((this.props.candidate.skills.size < 1) && ((this.props.candidate.otherSkill).trim() === '')) {
+      this.setState({error: 'Select Your skills / Write about Your skills :)'});
       return;
     }
 
@@ -49,6 +57,13 @@ export default class FourthScreen extends Component {
     const {actions: {nextScreen}} = this.props;
     nextScreen();
   }
+
+  setHintVisibility(visible) {
+    this.setState({hintDisplayed: visible});
+  }
+
+  handleMouseEnter = () => this.setHintVisibility(true);
+  handleMouseLeave = () => this.setHintVisibility(false);
 
   render() {
     const skills = technologies[this.props.candidate.role.id];
@@ -60,20 +75,45 @@ export default class FourthScreen extends Component {
 
     let errorBody;
     if (this.state.error) {
-      errorBody = <div id="error-text"><span>{this.state.error}</span></div>;
+      errorBody = <div id='error-text'><span>{this.state.error}</span></div>;
+    }
+
+    let hint;
+    const cb = {
+      onMouseEnter: this.handleMouseEnter,
+      onMouseLeave: this.handleMouseLeave
+    };
+
+    if (this.state.hintDisplayed) {
+      hint = (<div {...cb} className='hint'>Other skills</div>);
     }
 
     return (
       <section className="fourth-screen screen">
-        <header>
-          pack your bag
+        <header className="screen-title">
+          <h1>
+            <strong>Skills package</strong>
+          </h1>
         </header>
-        <p>show us, which skills you have</p>
-        <ul>
-          {skillsForCurrentRole.map((skill) =>
-            <SkillItem actions={this.props.actions} data={skill} key={skill.id} resetErrorStatus={this.resetErrorStatus.bind(this)}/>
-          )}
-        </ul>
+        <div className="skills">
+          <div className="geek-img">
+            <img alt="Geek" src="../../../assets/img/skills/geek.svg"/>
+          </div>
+          <ul>
+            {skillsForCurrentRole.map((skill) =>
+              <SkillItem actions={this.props.actions} data={skill} key={skill.id} resetErrorStatus={this.resetErrorStatus.bind(this)}/>
+            )}
+            <li className="otherSkill">
+              {hint}
+              <div className="otherSkill-img">
+                <img {...cb} alt="Other skills" src="../../../assets/img/skills/skills_gears.svg"/>
+              </div>
+              <div className="otherSkill-text">
+                <textarea cols="16" maxLength="500" onChange={e => this.handleKeyUp(e)} placeholder="Do You have other skills?" ref="otherSkill" rows="2"></textarea>
+              </div>
+            </li>
+          </ul>
+        </div>
         {this.state.error ? errorBody : null}
         <Chevron isAnimated onClick={e => this.proceed(e)}/>
       </section>

@@ -1,6 +1,6 @@
 .fourth-screen
   position relative
-  padding-top 30px
+  padding-bottom 30px
 
   #error-text
     margin 20px auto
@@ -9,8 +9,9 @@
     span
       color #ffffff
       font-size 1em
-      background-color #c01c1c
-      padding 5px 10px
+      background-color #e42313
+      padding 8px 12px
+      border-radius 5px
 
   > .chevron
     width 100%
@@ -22,116 +23,190 @@
       border-color black
       opacity 0.2
 
-  header
-    font-size 36px
+  .screen-title
+    width 100%
     text-align center
-    font-weight 300
-    color #010101
-    margin-bottom 10px
+    margin 2% auto 1% auto
+    h1
+      font-size 50px
+      font-weight 300
 
-  p
-    text-align center
-
-    margin 0px 0px 60px
-
-  ul
-    display block
-    width 1000px
-    max-width 100%
-    margin auto auto 40px
-    list-style none
-    padding 0
-
-    li
-      width 33.3333%
+  .skills
+    width 100%
+    padding 1% 4%
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    .geek-img
       display inline-block
-      margin-bottom 40px
+      width 35%
+      height 65vh
+      padding 0 2% 0 3%
+      text-align right
+      margin auto auto
+      img
+        height 100%
+        width auto
+
+    ul
+      display inline-block
+      width 65%
+      list-style none
+      padding 0 0 0 3%
+      margin auto auto
+      text-align left
+
+      li
+        display inline-block
+        position relative
+        text-align center
+        margin 3% 2%
+
+        .hint
+          position absolute
+          bottom 75px
+          left 0
+          background #000
+          opacity 0.7
+          color #fff
+          text-align center
+          width 90px
+          padding 0 5px
+          margin 0 15px
+          font-size 14px
+          line-height 20px
+          border-radius 5px
+
+        .hint::after
+          content ''
+          position absolute
+          width 0
+          height 0gulp
+          border-left 5px solid transparent
+          border-right 5px solid transparent
+          border-top 7px solid #000
+          bottom -7px
+          left 43px
+          margin 0 auto
+
+        img
+          max-height 65px
+          vertical-align middle
+          margin 0 20px 0 0
+
+        form
+          display inline-block
+          vertical-align middle
+
+          input
+            display none
+
+          label
+            float right
+            cursor pointer
+
+          label.star:before
+            content ''
+            width 32px
+            height 40px
+            display block
+            background-image url('../../../assets/img/skills/rating-arrows.svg')
+            background-repeat no-repeat
+            background-size 104px 40px
+            background-position 0
+            transition transform .25s
+
+          input:checked ~ label.star:before
+            background-position -75.2px 0 !important
+
+          label.star:hover:before
+            transform scale(1.1)
+
+          label.star:hover:before
+          label.star:hover ~ label.star:before
+            background-position -37.6px 0
+
+      .otherSkill
+        vertical-align top
+        width 247px
+        height 67px
+        .otherSkill-img
+          display inline-block
+          img
+            height 65px
+            position absolute
+            top 0
+            left 0
+        .otherSkill-text
+          display inline-block
+          position absolute
+          left 75px
+          top 0
+          padding-top 5px
+          textarea
+            border 1px solid #e42313
+            border-radius 5px
+            padding 3px 3px 3px 5px
+
+
+@media (max-width: 960px)
+  .fourth-screen
+    .screen-title
+      margin 5% auto 5% auto
+      h1
+        font-size 6vw
+
+    > .chevron
       position relative
 
-      .hint
-        position absolute
-        bottom 90px
-        left 0
-        background #000
-        opacity 0.7
-        color #fff
-        text-align center
-        width 90px
-        padding 0 5px
-        margin 0 15px
-        font-size 14px
-        line-height 20px
-        border-radius 5px
-
-      .hint::after
-        content ''
-        position absolute
+    .skills
+      display block
+      padding 1%
+      .geek-img
+        display none
         width 0
         height 0
-        border-left 5px solid transparent
-        border-right 5px solid transparent
-        border-top 7px solid #000
-        bottom -7px
-        left 43px
-        margin 0 auto
-
-      img
-        max-width 80px
-        vertical-align middle
-        margin 0 20px 0 20px
-
-      form
-        display inline-block
-        vertical-align middle
-
-        input
+        img
           display none
 
-        label
-          float right
-          padding 0
-          font-size 36px
-          cursor pointer
+      ul
+        display block
+        padding 0
+        margin-bottom 20px
+        text-align center
+        li
+          margin 3% 2%
 
-        label.star:before
-          content ''
-          width 32px
-          height 31px
-          opacity 0.8
-          display block
-          background url('../../../assets/img/rating-arrows.png') no-repeat
-          transition transform .25s
-
-        input:checked ~ label.star:before
-          background-position -64px 0 !important
-
-        label.star:hover:before
-          transform scale(1.1)
-
-        label.star:hover:before
-        label.star:hover ~ label.star:before
-          background-position -32px 0
 
 @media (max-width: 767px)
   .fourth-screen
+    .screen-title
+      margin 7% auto 5% auto
+      h1
+        font-size 7vw
 
-    > .chevron
-      width 100%
-      position initial
-    ul
-      margin-bottom 20px
-      li
-        width: 50%
+    .skills
+      ul
+        li
+          margin 3% 2%
+
 
 @media (max-width: 480px)
   .fourth-screen
+    .screen-title
+      margin 10% auto 8% auto
+      h1
+        font-size 8vw
 
-    > .chevron
-      position relative
+    .skills
+      ul
+        li
+          width 100%
+          margin 5% auto
+          img
+            max-height 60px
 
-    ul
-
-      li
-        width 90%
-        display block
-        margin 0 auto 20px
+        .otherSkill
+          .otherSkill-img
+            img
+              height 55px

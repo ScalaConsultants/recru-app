@@ -51,7 +51,7 @@ export default class SkillItem extends Component {
           <input className="star star-3" id={`star3_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(3, e)} type="radio"/>
           <label className="star star-3" htmlFor={`star3_${this.props.data.id}`}></label>
 
-          <input className="star star-2" id={`star2_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(2, e)} type="radio" />
+          <input className="star star-2" id={`star2_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(2, e)} type="radio"/>
           <label className="star star-2" htmlFor={`star2_${this.props.data.id}`}></label>
 
           <input className="star star-1" id={`star1_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(1, e)} type="radio"/>
