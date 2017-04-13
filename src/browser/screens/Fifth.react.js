@@ -46,13 +46,7 @@ export default class FifthScreen extends Component {
   }
 
   isDataValid() {
-    if (this.state.emailPassed && (this.state.urlPassed || this.state.fileUploaded))
-      return true;
-    return false;
-  }
-
-  bytesToMegaBytes(bytes) {
-    return (bytes / (1000 * 1000));
+    return this.state.emailPassed && (this.state.urlPassed || this.state.fileUploaded);
   }
 
   submit() {
@@ -103,9 +97,6 @@ export default class FifthScreen extends Component {
   handleDrop(e) {
     const files = e.target.files || e.dataTransfer.files;
     const fileInput = ReactDOM.findDOMNode(this.refs.fileInput);
-    let validMimeType = false;
-    let fileMimeType = null;
-    let fileSize = 0;
 
     this.handleDragOver(e);
 
@@ -115,10 +106,9 @@ export default class FifthScreen extends Component {
     }
 
     this.cvFile = files[0];
-    fileMimeType = this.cvFile.type;
-    fileSize = this.bytesToMegaBytes(this.cvFile.size);
-
-    validMimeType = VALID_MIME_TYPES.some((mimeType) => {
+    let fileMimeType = this.cvFile.type;
+    let fileSize = this.cvFile.size / 1000000; //change bytes to megabytes
+    let validMimeType = VALID_MIME_TYPES.some((mimeType) => {
       return (fileMimeType === mimeType);
     });
 
