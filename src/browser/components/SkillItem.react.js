@@ -18,25 +18,20 @@ export default class SkillItem extends Component {
   }
 
   render() {
+    const starsLabels = [];
+    for (let i = 5; i >= 1; i--) {
+      starsLabels.push(
+          <input className={`star star-${i}`} id={`star${i}_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(i, e)} type="radio"/>,
+          <label className={`star star-${i}`} htmlFor={`star${i}_${this.props.data.id}`}/>
+      );
+    }
+
     return (
       <li>
         {this.state.hintDisplayed ? <div className="hint">{this.props.data.name}</div> : false}
         <img alt={this.props.data.name} onMouseEnter={() => this.setState({hintDisplayed: true})} onMouseLeave={() => this.setState({hintDisplayed: false})} src={this.props.data.src}/>
         <form action="">
-          <input className="star star-5" id={`star5_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(5, e)} type="radio"/>
-          <label className="star star-5" htmlFor={`star5_${this.props.data.id}`}/>
-
-          <input className="star star-4" id={`star4_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(4, e)} type="radio"/>
-          <label className="star star-4" htmlFor={`star4_${this.props.data.id}`}/>
-
-          <input className="star star-3" id={`star3_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(3, e)} type="radio"/>
-          <label className="star star-3" htmlFor={`star3_${this.props.data.id}`}/>
-
-          <input className="star star-2" id={`star2_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(2, e)} type="radio"/>
-          <label className="star star-2" htmlFor={`star2_${this.props.data.id}`}/>
-
-          <input className="star star-1" id={`star1_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(1, e)} type="radio"/>
-          <label className="star star-1" htmlFor={`star1_${this.props.data.id}`}/>
+          {starsLabels}
         </form>
       </li>
     );
