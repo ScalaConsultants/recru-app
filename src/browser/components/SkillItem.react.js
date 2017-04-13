@@ -17,28 +17,11 @@ export default class SkillItem extends Component {
     saveSkill(this.props.data, level);
   }
 
-  setHintVisibility(visible) {
-    this.setState({hintDisplayed: visible});
-  }
-
-  handleMouseEnter = () => this.setHintVisibility(true);
-  handleMouseLeave = () => this.setHintVisibility(false);
-
   render() {
-    let hint;
-    const cb = {
-      onMouseEnter: this.handleMouseEnter,
-      onMouseLeave: this.handleMouseLeave
-    };
-
-    if (this.state.hintDisplayed) {
-      hint = (<div {...cb} className="hint">{this.props.data.name}</div>);
-    }
-
     return (
       <li>
-        {hint}
-        <img {...cb} alt={this.props.data.name} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} src={this.props.data.src}/>
+        {this.state.hintDisplayed ? <div className="hint">{this.props.data.name}</div> : false}
+        <img alt={this.props.data.name} onMouseEnter={() => this.setState({hintDisplayed: true})} onMouseLeave={() => this.setState({hintDisplayed: false})} src={this.props.data.src}/>
         <form action="">
           <input className="star star-5" id={`star5_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(5, e)} type="radio"/>
           <label className="star star-5" htmlFor={`star5_${this.props.data.id}`}/>
