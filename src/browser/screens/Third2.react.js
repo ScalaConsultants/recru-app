@@ -15,23 +15,6 @@ export default class Third2Screen extends Component {
     isCurrent: React.PropTypes.bool
   }
 
-  constructor(props) {
-    super(props);
-    this.state = this.getDefaultState();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      animateFirst: nextProps.isCurrent
-    });
-  }
-
-  getDefaultState() {
-    return {
-      animateFirst: false
-    };
-  }
-
   proceed() {
     const {actions: {nextScreen}} = this.props;
     nextScreen();
@@ -51,7 +34,7 @@ export default class Third2Screen extends Component {
         </div>
         <BackpackList />
         <BagImg />
-        <SignpostImg {...this.props} animate={this.state.animateFirst} />
+        <SignpostImg {...this.props} animate={this.props.isCurrent} />
         <Chevron isAnimated onClick={e => this.proceed(e)} />
       </section>
     );
