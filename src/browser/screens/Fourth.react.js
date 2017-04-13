@@ -19,20 +19,14 @@ export default class FourthScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.state = this.getDefaultState();
-    this.state = {hintDisplayed: false};
-  }
-
-  getDefaultState() {
-    return {error: null};
-  }
-
-  resetErrorStatus() {
-    this.setState(this.getDefaultState());
+    this.state = {
+      error: null,
+      hintDisplayed: false
+    };
   }
 
   handleMoveUp() {
-    this.setState(this.getDefaultState());
+    this.setState({error: null});
   }
 
   handleEnterKey() {
@@ -40,7 +34,7 @@ export default class FourthScreen extends Component {
   }
 
   handleKeyUp(e) {
-    this.resetErrorStatus();
+    this.setState({error:null})
     let otherSkill = e.target.value;
     const {actions: {saveOtherSkill}} = this.props;
     saveOtherSkill(otherSkill);
@@ -52,7 +46,7 @@ export default class FourthScreen extends Component {
       return;
     }
 
-    this.resetErrorStatus();
+    this.setState({error: null});
 
     const {actions: {nextScreen}} = this.props;
     nextScreen();
@@ -101,7 +95,7 @@ export default class FourthScreen extends Component {
           </div>
           <ul>
             {skillsForCurrentRole.map((skill) =>
-              <SkillItem actions={this.props.actions} data={skill} key={skill.id} resetErrorStatus={this.resetErrorStatus.bind(this)}/>
+              <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
             )}
             <li className="otherSkill">
               {hint}

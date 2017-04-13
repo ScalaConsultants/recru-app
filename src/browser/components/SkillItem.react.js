@@ -5,7 +5,6 @@ export default class SkillItem extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
     data: React.PropTypes.object.isRequired,
-    resetErrorStatus: React.PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -16,7 +15,6 @@ export default class SkillItem extends Component {
   handleChange(level, e) {
     const {actions: {saveSkill}} = this.props;
     saveSkill(this.props.data, level);
-    this.props.resetErrorStatus();
   }
 
   setHintVisibility(visible) {
