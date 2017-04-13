@@ -52,13 +52,6 @@ export default class FourthScreen extends Component {
     nextScreen();
   }
 
-  setHintVisibility(visible) {
-    this.setState({hintDisplayed: visible});
-  }
-
-  handleMouseEnter = () => this.setHintVisibility(true);
-  handleMouseLeave = () => this.setHintVisibility(false);
-
   render() {
     const skills = technologies[this.props.candidate.role.id];
     let skillsForCurrentRole = [];
@@ -70,16 +63,6 @@ export default class FourthScreen extends Component {
     let errorBody;
     if (this.state.error) {
       errorBody = <div id='error-text'><span>{this.state.error}</span></div>;
-    }
-
-    let hint;
-    const cb = {
-      onMouseEnter: this.handleMouseEnter,
-      onMouseLeave: this.handleMouseLeave
-    };
-
-    if (this.state.hintDisplayed) {
-      hint = (<div {...cb} className='hint'>Other skills</div>);
     }
 
     return (
@@ -98,12 +81,15 @@ export default class FourthScreen extends Component {
               <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
             )}
             <li className="otherSkill">
-              {hint}
-              <div className="otherSkill-img">
-                <img {...cb} alt="Other skills" src="../../../assets/img/skills/skills_gears.svg"/>
+              {this.state.hintDisplayed ? <div className='hint'>Other skills</div> : false};
+              <div className="otherSkill-img"
+                   onMouseEnter={ (e) => this.setState({hintDisplayed:true})}
+                   onMouseLeave={ (e) => this.setState({hintDisplayed:false})}
+              >
+                <img alt="Other skills" src="../../../assets/img/skills/skills_gears.svg"/>
               </div>
               <div className="otherSkill-text">
-                <textarea cols="16" maxLength="500" onChange={e => this.handleKeyUp(e)} placeholder="Do You have other skills?" ref="otherSkill" rows="2"></textarea>
+                <textarea cols="16" maxLength="500" onChange={e => this.handleKeyUp(e)} placeholder="Do You have other skills?" ref="otherSkill" rows="2"/>
               </div>
             </li>
           </ul>
