@@ -31,7 +31,7 @@ export default class MiniMap extends Component {
       ((e) => this.handleClick(e, id));
     return (
       <li key={id}>
-        <a className={className} href="#" onClick={fx}></a>
+        <a className={className} href="#" onClick={fx}/>
       </li>
     );
   }

@@ -185,7 +185,7 @@ export default class FifthScreen extends Component {
             <span className="text">{inputText}</span>
             <span className={hintClassNames}>(doc, docx, pdf, max. {MAX_FILE_SIZE_MB}MB)</span>
           </div>
-          <button className={buttonInputClassName} disabled={!this.isDataValid() || candidate.isSubmittingForm} onClick={this.submit}><i></i>{buttonTitle}</button>
+          <button className={buttonInputClassName} disabled={!this.isDataValid() || candidate.isSubmittingForm} onClick={this.submit}><i/>{buttonTitle}</button>
         </div>
       </section>
     );
