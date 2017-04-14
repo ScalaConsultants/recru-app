@@ -16,6 +16,7 @@ const VALID_MIME_TYPES = [
 ];
 
 const MAX_FILE_SIZE_MB = 20;
+const BYTE_TO_MEGABYTE_RATIO = 1000000;
 
 @boundScroll()
 export default class FifthScreen extends Component {
@@ -46,7 +47,7 @@ export default class FifthScreen extends Component {
   }
 
   isDataValid() {
-    return this.state.emailPassed && (this.state.urlPassed || this.state.fileUploaded);
+    return !!(this.state.emailPassed && (this.state.urlPassed || this.state.fileUploaded));
   }
 
   submit() {
@@ -107,7 +108,7 @@ export default class FifthScreen extends Component {
 
     this.cvFile = files[0];
     let fileMimeType = this.cvFile.type;
-    let fileSize = this.cvFile.size / 1000000; //change bytes to megabytes
+    let fileSize = this.cvFile.size / BYTE_TO_MEGABYTE_RATIO;
     let validMimeType = VALID_MIME_TYPES.some((mimeType) => {
       return (fileMimeType === mimeType);
     });

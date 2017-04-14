@@ -19,10 +19,18 @@ export default class FourthScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = this.getDefaultState();
+  }
+
+  getDefaultState() {
+    return {
       error: null,
       hintDisplayed: false
     };
+  }
+
+  resetErrorStatus() {
+    this.setState({error: null});
   }
 
   handleMoveUp() {
@@ -34,7 +42,7 @@ export default class FourthScreen extends Component {
   }
 
   handleKeyUp(e) {
-    this.setState({error:null})
+    this.resetErrorStatus();
     let otherSkill = e.target.value;
     const {actions: {saveOtherSkill}} = this.props;
     saveOtherSkill(otherSkill);
@@ -46,7 +54,7 @@ export default class FourthScreen extends Component {
       return;
     }
 
-    this.setState({error: null});
+    this.resetErrorStatus();
 
     const {actions: {nextScreen}} = this.props;
     nextScreen();

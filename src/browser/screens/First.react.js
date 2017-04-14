@@ -15,9 +15,11 @@ export default class FirstScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      error: null
-    };
+    this.state = this.getDefaultState();
+  }
+
+  getDefaultState() {
+    return {error: null};
   }
 
   proceed() {
@@ -33,7 +35,7 @@ export default class FirstScreen extends Component {
       return;
     }
 
-    this.setState({error:null});
+    this.setState(this.getDefaultState());
 
     const {actions: {saveName, nextScreen}} = this.props;
     saveName(name);
