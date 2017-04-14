@@ -21,8 +21,8 @@ export default class SkillItem extends Component {
     const starsLabels = [];
     for (let i = 5; i >= 1; i--) {
       starsLabels.push(
-          <input className={`star star-${i}`} id={`star${i}_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(i, e)} type="radio"/>,
-          <label className={`star star-${i}`} htmlFor={`star${i}_${this.props.data.id}`}/>
+          <input className={`star star-${i}`} id={`star${i}_${this.props.data.id}`} key={i} name="star" onChange={(e) => this.handleChange(i, e)} type="radio"/>,
+          <label className={`star star-${i}`} htmlFor={`star${i}_${this.props.data.id}`} key={i + 5} />
       );
     }
 
