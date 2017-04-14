@@ -1,4 +1,3 @@
-import Component from 'react-pure-render/component';
 import Chevron from '../components/Chevron.react';
 import React from 'react';
 import BagImg from '../components/BagImg.react';
@@ -9,7 +8,7 @@ if (process.env.IS_BROWSER) {
   require('./Third2.styl');
 }
 
-export default class Third2Screen extends Component {
+export default class Third2Screen extends React.PureComponent {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
     isCurrent: React.PropTypes.bool

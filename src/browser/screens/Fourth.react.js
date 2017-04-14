@@ -1,4 +1,3 @@
-import Component from 'react-pure-render/component';
 import Chevron from '../components/Chevron.react';
 import React from 'react';
 import boundScroll from '../lib/boundScroll';
@@ -10,7 +9,7 @@ if (process.env.IS_BROWSER) {
 }
 
 @boundScroll()
-export default class FourthScreen extends Component {
+export default class FourthScreen extends React.PureComponent {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
     candidate: React.PropTypes.object.isRequired,

@@ -1,4 +1,3 @@
-import Component from 'react-pure-render/component';
 import classNames from 'classnames';
 import boundScroll from '../lib/boundScroll';
 import React from 'react';
@@ -19,7 +18,7 @@ const MAX_FILE_SIZE_MB = 20;
 const BYTE_TO_MEGABYTE_RATIO = 1000000;
 
 @boundScroll()
-export default class FifthScreen extends Component {
+export default class FifthScreen extends React.PureComponent {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
     candidate: React.PropTypes.object.isRequired,
