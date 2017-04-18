@@ -1,11 +1,12 @@
 import Component from 'react-pure-render/component';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class SkillItem extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    data: React.PropTypes.object.isRequired,
-    resetErrorStatus: React.PropTypes.func.isRequired
+    actions: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired,
+    resetErrorStatus: PropTypes.func.isRequired
   }
 
   constructor(props) {

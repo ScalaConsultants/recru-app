@@ -4,6 +4,7 @@ import React from 'react';
 import boundScroll from '../lib/boundScroll';
 import SkillItem from '../components/SkillItem.react';
 import technologies from '../data/technologies.json';
+import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
   require('./Fourth.styl');
@@ -12,9 +13,9 @@ if (process.env.IS_BROWSER) {
 @boundScroll()
 export default class FourthScreen extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    candidate: React.PropTypes.object.isRequired,
-    isCurrent: React.PropTypes.bool
+    actions: PropTypes.object.isRequired,
+    candidate: PropTypes.object.isRequired,
+    isCurrent: PropTypes.bool
   }
 
   constructor(props) {

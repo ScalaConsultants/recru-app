@@ -4,6 +4,7 @@ import React from 'react';
 import BagImg from '../components/BagImg.react';
 import SignpostImg from '../components/SignpostImg.react';
 import BackpackList from '../components/BackpackList.react';
+import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
   require('./Third2.styl');
@@ -11,8 +12,8 @@ if (process.env.IS_BROWSER) {
 
 export default class Third2Screen extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    isCurrent: React.PropTypes.bool
+    actions: PropTypes.object.isRequired,
+    isCurrent: PropTypes.bool
   }
 
   constructor(props) {

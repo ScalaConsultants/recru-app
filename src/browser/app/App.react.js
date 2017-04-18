@@ -4,11 +4,12 @@ import MiniMap from '../components/Minimap.react';
 import Hello from '../components/Hello.react';
 import MessageOverlay from '../components/MessageOverlay.react.js';
 import Helmet from 'react-helmet';
-import React, {PropTypes} from 'react';
+import React from 'react';
 import RouterHandler from '../../common/components/RouterHandler.react';
 import mapDispatchToProps from '../../common/app/mapDispatchToProps';
 import mapStateToProps from '../../common/app/mapStateToProps';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER)
   require('./App.styl');

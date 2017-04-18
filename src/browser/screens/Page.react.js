@@ -1,5 +1,5 @@
 import Component from 'react-pure-render/component';
-import React, {PropTypes} from 'react';
+import React from 'react';
 import FirstScreen from '../screens/First.react';
 import SecondScreen from '../screens/Second.react';
 import ThirdScreen from '../screens/Third.react';
@@ -8,10 +8,10 @@ import FourthScreen from './Fourth.react';
 import FifthScreen from './Fifth.react';
 import movementHandler from '../lib/movementHandler';
 import Helmet from 'react-helmet';
+import PropTypes from 'prop-types';
 
 @movementHandler
 export default class Screens extends Component {
-
   static propTypes = {
     actions: PropTypes.object.isRequired,
     candidate: PropTypes.object.isRequired,

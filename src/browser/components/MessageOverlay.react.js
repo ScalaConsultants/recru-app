@@ -1,6 +1,7 @@
 import Component from 'react-pure-render/component';
 import classNames from 'classnames';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
   require('./MessageOverlay.styl');
@@ -8,9 +9,9 @@ if (process.env.IS_BROWSER) {
 
 export default class MessageOverlay extends Component {
   static propTypes = {
-    className: React.PropTypes.string,
-    content: React.PropTypes.string,
-    title: React.PropTypes.string
+    className: PropTypes.string,
+    content: PropTypes.string,
+    title: PropTypes.string
   }
 
   render() {
