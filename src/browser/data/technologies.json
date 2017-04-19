@@ -1,105 +1,150 @@
 {
   "0":[
     {
-      "id" : 8,
-      "name" : "scala",
+      "id" : 1,
+      "name" : "Scala",
       "src" : "assets/img/backend/scala.png"
     },
     {
-      "id" : 9,
+      "id" : 2,
       "name" : "akka",
       "src" : "assets/img/backend/akka.png"
     },
     {
-      "id" : 10,
+      "id" : 3,
       "name" : "play",
       "src" : "assets/img/backend/play.png"
     },
     {
-      "id" : 11,
+      "id" : 4,
       "name" : "slick",
       "src" : "assets/img/backend/slick.png"
     },
     {
-      "id" : 12,
+      "id" : 5,
       "name" : "spray",
       "src" : "assets/img/backend/spray.png"
+    },
+    {
+      "id" : 6,
+      "name" : "git",
+      "src" : "assets/img/generic/git.png"
     }
   ],
   "1" : [
     {
+      "id" : 10,
+      "name" : "Swift",
+      "src" : "assets/img/ios/swift.png"
+    },
+    {
+      "id" : 11,
+      "name" : "Xcode",
+      "src" : "assets/img/ios/xcode.png"
+    },
+    {
+      "id" : 12,
+      "name" : "Objective-C",
+      "src" : "assets/img/ios/objective-c.png"
+    },
+    {
       "id" : 13,
-      "name" : "clojure",
-      "src" : "assets/img/clojure/clojure.png"
+      "name" : "Interface Builder",
+      "src" : "assets/img/ios/interface_builder.png"
     },
     {
       "id" : 14,
-      "name" : "clojure-script",
-      "src" : "assets/img/clojure/clojurescript.png"
-    },
-    {
-      "id" : 15,
-      "name" : "leiningen",
-      "src" : "assets/img/clojure/leiningen.png"
+      "name" : "git",
+      "src" : "assets/img/generic/git.png"
     }
   ],
   "2" : [
     {
-      "id" : 16,
-      "name" : "swift",
-      "src" : "assets/img/mobile/swift.png"
+      "id" : 20,
+      "name" : "Android SDK",
+      "src" : "assets/img/android/android.png"
     },
     {
-      "id" : 17,
-      "name" : "objective-c",
-      "src" : "assets/img/mobile/objective-c.png"
+      "id" : 21,
+      "name" : "Java",
+      "src" : "assets/img/android/java.png"
     },
     {
-      "id" : 18,
-      "name" : "xcode",
-      "src" : "assets/img/mobile/xcode.png"
+      "id" : 22,
+      "name" : "Gradle",
+      "src" : "assets/img/android/gradle.png"
     },
     {
-      "id" : 19,
-      "name" : "appcode",
-      "src" : "assets/img/mobile/appcode.png"
+      "id" : 23,
+      "name" : "JUnit",
+      "src" : "assets/img/android/junit.png"
+    },
+    {
+      "id" : 24,
+      "name" : "Mockito",
+      "src" : "assets/img/android/mockito.png"
+    },
+    {
+      "id" :25,
+      "name" : "RxJava",
+      "src" : "assets/img/android/rxjava.png"
+    },
+    {
+      "id" : 26,
+      "name" : "Espresso",
+      "src" : "assets/img/android/espresso.png"
+    },
+    {
+      "id" : 27,
+      "name" : "Dagger",
+      "src" : "assets/img/android/dagger.png"
+    },
+    {
+      "id" : 28,
+      "name" : "git",
+      "src" : "assets/img/generic/git.png"
     }
   ],
   "3" : [
     {
-      "id" : 1,
-      "name" : "js",
+      "id" : 40,
+      "name" : "Java Script",
       "src" : "assets/img/frontend/js.png"
     },
     {
-      "id" : 2,
-      "name" : "html5",
+      "id" : 41,
+      "name" : "HTML5",
       "src" : "assets/img/frontend/html5.png"
     },
     {
-      "id" : 3,
-      "name" : "css3",
+      "id" : 42,
+      "name" : "CSS3",
       "src" : "assets/img/frontend/css3.png"
     },
     {
-      "id" : 4,
-      "name" : "ember",
+      "id" : 43,
+      "name" : "Ember.js",
       "src" : "assets/img/frontend/ember.png"
     },
     {
-      "id" : 5,
-      "name" : "angular",
+      "id" : 44,
+      "name" : "Angular",
       "src" : "assets/img/frontend/angular.png"
     },
     {
-      "id" : 6,
-      "name" : "node",
+      "id" : 45,
+      "name" : "Node.js",
       "src" : "assets/img/frontend/node.png"
     },
     {
-      "id" : 7,
-      "name" : "react",
+      "id" : 46,
+      "name" : "React",
       "src" : "assets/img/frontend/react.png"
+    },
+    {
+      "id" : 47,
+      "name" : "git",
+      "src" : "assets/img/generic/git.png"
     }
   ]
 }
