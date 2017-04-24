@@ -33,7 +33,7 @@ export default class FourthScreen extends React.PureComponent {
   }
 
   handleMoveUp() {
-    this.setState({error: null});
+    this.resetErrorStatus();
   }
 
   handleEnterKey() {
@@ -71,6 +71,7 @@ export default class FourthScreen extends React.PureComponent {
     if (this.state.error) {
       errorBody = <div id='error-text'><span>{this.state.error}</span></div>;
     }
+    const otherSkillsHint = <div className='hint'>Other skills</div>;
 
     return (
       <section className="fourth-screen screen">
@@ -88,7 +89,7 @@ export default class FourthScreen extends React.PureComponent {
               <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
             )}
             <li className="otherSkill">
-              {this.state.hintDisplayed ? <div className='hint'>Other skills</div> : false};
+              {this.state.hintDisplayed ? otherSkillsHint : false};
               <div className="otherSkill-img"
                    onMouseEnter={ (e) => this.setState({hintDisplayed:true})}
                    onMouseLeave={ (e) => this.setState({hintDisplayed:false})}

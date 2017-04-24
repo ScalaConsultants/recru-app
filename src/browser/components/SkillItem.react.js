@@ -12,24 +12,33 @@ export default class SkillItem extends Component {
     this.state = {hintDisplayed: false};
   }
 
-  handleChange(level, e) {
+  handleStarChange(level, e) {
     const {actions: {saveSkill}} = this.props;
     saveSkill(this.props.data, level);
   }
 
+  showHint() {
+    this.setState({hintDisplayed: true});
+  }
+
+  hideHint() {
+    this.setState({hintDisplayed: false});
+  }
+
   render() {
     const starsLabels = [];
-    for (let i = 5; i >= 1; i--) {
+    const STARS_LENGTH = 5;
+    for (let i = STARS_LENGTH; i >= 1; i--) {
       starsLabels.push(
-          <input className={`star star-${i}`} id={`star${i}_${this.props.data.id}`} key={i} name="star" onChange={(e) => this.handleChange(i, e)} type="radio"/>,
-          <label className={`star star-${i}`} htmlFor={`star${i}_${this.props.data.id}`} key={i + 5} />
+          <input className={`star star-${i}`} id={`star${i}_${this.props.data.id}`} key={i} name="star" onChange={(e) => this.handleStarChange(i, e)} type="radio"/>,
+          <label className={`star star-${i}`} htmlFor={`star${i}_${this.props.data.id}`} key={i + STARS_LENGTH} />
       );
     }
 
     return (
       <li>
         {this.state.hintDisplayed ? <div className="hint">{this.props.data.name}</div> : false}
-        <img alt={this.props.data.name} onMouseEnter={() => this.setState({hintDisplayed: true})} onMouseLeave={() => this.setState({hintDisplayed: false})} src={this.props.data.src}/>
+        <img alt={this.props.data.name} onMouseEnter={()=>this.showHint()} onMouseLeave={()=>this.hideHint()} src={this.props.data.src}/>
         <form action="">
           {starsLabels}
         </form>

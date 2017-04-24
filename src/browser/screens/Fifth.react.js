@@ -106,9 +106,9 @@ export default class FifthScreen extends React.PureComponent {
     }
 
     this.cvFile = files[0];
-    let fileMimeType = this.cvFile.type;
-    let fileSize = this.cvFile.size / BYTE_TO_MEGABYTE_RATIO;
-    let validMimeType = VALID_MIME_TYPES.some((mimeType) => {
+    const fileMimeType = this.cvFile.type;
+    const fileSize = this.cvFile.size / BYTE_TO_MEGABYTE_RATIO;
+    const validMimeType = VALID_MIME_TYPES.some((mimeType) => {
       return (fileMimeType === mimeType);
     });
 
