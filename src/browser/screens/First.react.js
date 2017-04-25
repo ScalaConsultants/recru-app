@@ -42,7 +42,7 @@ export default class FirstScreen extends React.PureComponent {
     nextScreen();
   }
 
-  handleEnterKey() {
+  handleMoveDownKeys() {
     this.proceed();
   }
 

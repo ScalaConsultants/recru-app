@@ -37,7 +37,7 @@ export default class FourthScreen extends React.PureComponent {
     this.resetErrorStatus();
   }
 
-  handleEnterKey() {
+  handleMoveDownKeys() {
     this.proceed();
   }
 

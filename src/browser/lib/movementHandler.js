@@ -40,10 +40,15 @@ export default function movementHandler(BaseComponent) {
     }
 
     handleKeyUp(e) {
-      if (e.keyCode === 13 || e.keyCode === 9 || e.keyCode === 40) {
-        this.refs.baseComponent.handleEnterKey();
+      const ENTER_KEY = 13;
+      const TAB_KEY = 9;
+      const ARROW_UP_KEY = 38;
+      const ARROW_DOWN_KEY = 40;
+
+      if (e.keyCode === ENTER_KEY || e.keyCode === TAB_KEY || e.keyCode === ARROW_DOWN_KEY) {
+        this.refs.baseComponent.handleMoveDownKeys();
       }
-      if (e.keyCode === 38) {
+      if (e.keyCode === ARROW_UP_KEY) {
         this.refs.baseComponent.handleMoveUp();
       }
     }
