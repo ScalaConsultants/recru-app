@@ -1,4 +1,3 @@
-import Component from 'react-pure-render/component';
 import classNames from 'classnames';
 import boundScroll from '../lib/boundScroll';
 import React from 'react';
@@ -17,9 +16,10 @@ const VALID_MIME_TYPES = [
 ];
 
 const MAX_FILE_SIZE_MB = 20;
+const BYTE_TO_MEGABYTE_RATIO = 1000000;
 
 @boundScroll()
-export default class FifthScreen extends Component {
+export default class FifthScreen extends React.PureComponent {
   static propTypes = {
     actions: PropTypes.object.isRequired,
     candidate: PropTypes.object.isRequired,
@@ -47,13 +47,7 @@ export default class FifthScreen extends Component {
   }
 
   isDataValid() {
-    if (this.state.emailPassed && (this.state.urlPassed || this.state.fileUploaded))
-      return true;
-    return false;
-  }
-
-  bytesToMegaBytes(bytes) {
-    return (bytes / (1000 * 1000));
+    return !!(this.state.emailPassed && (this.state.urlPassed || this.state.fileUploaded));
   }
 
   submit() {
@@ -104,9 +98,6 @@ export default class FifthScreen extends Component {
   handleDrop(e) {
     const files = e.target.files || e.dataTransfer.files;
     const fileInput = ReactDOM.findDOMNode(this.refs.fileInput);
-    let validMimeType = false;
-    let fileMimeType = null;
-    let fileSize = 0;
 
     this.handleDragOver(e);
 
@@ -116,10 +107,9 @@ export default class FifthScreen extends Component {
     }
 
     this.cvFile = files[0];
-    fileMimeType = this.cvFile.type;
-    fileSize = this.bytesToMegaBytes(this.cvFile.size);
-
-    validMimeType = VALID_MIME_TYPES.some((mimeType) => {
+    const fileMimeType = this.cvFile.type;
+    const fileSize = this.cvFile.size / BYTE_TO_MEGABYTE_RATIO;
+    const validMimeType = VALID_MIME_TYPES.some((mimeType) => {
       return (fileMimeType === mimeType);
     });
 
@@ -158,25 +148,9 @@ export default class FifthScreen extends Component {
       active: this.state.fileUploaded
     });
 
-    const inputClassName = classNames({
-      active: this.state.urlPassed
-    });
-
-    const emailInputClassName = classNames({
-      active: this.state.emailPassed
-    });
-
     const inputText = this.state.fileUploaded
       ? 'resume uploaded'
       : 'drop or click to select resume';
-
-    const hintClassNames = classNames('hint', {
-      '-error': this.state.fileInvalid
-    });
-
-    const buttonInputClassName = classNames({
-      '-pending': candidate.isSubmittingForm
-    });
 
     const buttonTitle = candidate.isSubmittingForm
       ? 'Submitting, hold on...'
@@ -187,16 +161,16 @@ export default class FifthScreen extends Component {
         <header><span>One more thing...</span></header>
         <div className="contactForm">
           <h2>Leave us your email</h2>
-          <input className={emailInputClassName} onChange={this.handleEmailChange} placeholder="email" ref="emailInput" tabIndex="-1" type="email"/>
+          <input className={this.state.emailPassed ? 'active' : null} onChange={this.handleEmailChange} placeholder="email" ref="emailInput" tabIndex="-1" type="email"/>
           <h2>and either a LinkedIn profile URI</h2>
-          <input className={inputClassName} onChange={this.handleUrlChange} placeholder="linkedin.com/in/username" ref="urlInput" tabIndex="-1" type="url"/>
+          <input className={this.state.urlPassed ? 'active' : null} onChange={this.handleUrlChange} placeholder="linkedin.com/in/username" ref="urlInput" tabIndex="-1" type="url"/>
           <h2>or</h2>
           <input accept=".pdf,.doc,.docx,.odt" ref="fileInput" tabIndex="-1" type="file"/>
           <div className={dropAreaclassName} id="drop" onClick={() => ReactDOM.findDOMNode(this.refs.fileInput).click()} ref="dropArea">
             <span className="text">{inputText}</span>
-            <span className={hintClassNames}>(doc, docx, pdf, max. {MAX_FILE_SIZE_MB}MB)</span>
+            <span className={this.state.fileInvalid ? 'hint -error' : 'hint'}>(doc, docx, pdf, max. {MAX_FILE_SIZE_MB}MB)</span>
           </div>
-          <button className={buttonInputClassName} disabled={!this.isDataValid() || candidate.isSubmittingForm} onClick={this.submit}><i></i>{buttonTitle}</button>
+          <button className={candidate.isSubmittingForm ? '-pending' : null} disabled={!this.isDataValid() || candidate.isSubmittingForm} onClick={this.submit}><i/>{buttonTitle}</button>
         </div>
       </section>
     );

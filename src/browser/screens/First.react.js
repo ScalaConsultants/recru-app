@@ -1,4 +1,3 @@
-import Component from 'react-pure-render/component';
 import Chevron from '../components/Chevron.react';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -9,7 +8,7 @@ if (process.env.IS_BROWSER) {
   require('./First.styl');
 }
 
-export default class FirstScreen extends Component {
+export default class FirstScreen extends React.PureComponent {
   static propTypes = {
     actions: PropTypes.object.isRequired
   }
