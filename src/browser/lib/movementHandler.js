@@ -40,7 +40,7 @@ export default function movementHandler(BaseComponent) {
     }
 
     handleKeyUp(e) {
-      if (e.keyCode === 13) {
+      if (e.keyCode === 13 || e.keyCode === 9) {
         this.refs.baseComponent.handleEnterKey();
       }
     }
