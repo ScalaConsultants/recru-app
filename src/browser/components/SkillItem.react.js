@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 export default class SkillItem extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    data: React.PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired
   }
 
   constructor(props) {
