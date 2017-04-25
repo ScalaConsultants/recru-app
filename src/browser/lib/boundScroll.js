@@ -59,9 +59,9 @@ export default function boundScroll() {
       }
     }
 
-    handleEnterKey() {
-      if (typeof this.refs.baseComponent.handleEnterKey === 'function') {
-        this.refs.baseComponent.handleEnterKey();
+    handleMoveDownKeys() {
+      if (typeof this.refs.baseComponent.handleMoveDownKeys === 'function') {
+        this.refs.baseComponent.handleMoveDownKeys();
       }
     }
 

@@ -31,9 +31,9 @@ export default class Screens extends Component {
     return this.props.screens.currentScreen === screen;
   }
 
-  handleEnterKey(e) {
-    if (typeof this.refs.currentScreen.handleEnterKey === 'function') {
-      this.refs.currentScreen.handleEnterKey();
+  handleMoveDownKeys(e) {
+    if (typeof this.refs.currentScreen.handleMoveDownKeys === 'function') {
+      this.refs.currentScreen.handleMoveDownKeys();
     }
   }
 

@@ -37,7 +37,7 @@ export default class FourthScreen extends React.PureComponent {
     this.resetErrorStatus();
   }
 
-  handleEnterKey() {
+  handleMoveDownKeys() {
     this.proceed();
   }
 
@@ -98,7 +98,7 @@ export default class FourthScreen extends React.PureComponent {
                 <img alt="Other skills" src="../../../assets/img/skills/skills_gears.svg"/>
               </div>
               <div className="otherSkill-text">
-                <textarea cols="16" maxLength="500" onChange={e => this.handleKeyUp(e)} placeholder="Do You have other skills?" ref="otherSkill" rows="2"/>
+                <textarea cols="16" maxLength="500" onChange={e => this.handleKeyUp(e)} placeholder="Do You have other skills?" ref="otherSkill" rows="2" tabIndex="-1"/>
               </div>
             </li>
           </ul>

@@ -20,7 +20,7 @@ export default class Third2Screen extends React.PureComponent {
     nextScreen();
   }
 
-  handleEnterKey() {
+  handleMoveDownKeys() {
     this.proceed();
   }
 

@@ -16,7 +16,7 @@ export default class SecondScreen extends React.PureComponent {
     nextScreen();
   }
 
-  handleEnterKey() {
+  handleMoveDownKeys() {
     this.proceed();
   }
 
