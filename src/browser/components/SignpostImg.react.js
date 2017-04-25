@@ -1,6 +1,7 @@
 import Component from 'react-pure-render/component';
 import React from 'react';
 import backpackList from '../data/backpackListItems.json';
+import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
   require('./SignpostImg.styl');
@@ -8,11 +9,11 @@ if (process.env.IS_BROWSER) {
 
 export default class SignpostImg extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    animate: React.PropTypes.bool.isRequired,
-    benefits: React.PropTypes.array.isRequired,
-    delayBetween: React.PropTypes.number,
-    delayStart: React.PropTypes.number
+    actions: PropTypes.object.isRequired,
+    animate: PropTypes.bool.isRequired,
+    benefits: PropTypes.array.isRequired,
+    delayBetween: PropTypes.number,
+    delayStart: PropTypes.number
   }
 
   static defaultProps = {

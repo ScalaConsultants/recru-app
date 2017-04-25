@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export default function createFetch(React, Component) {
 
   return function fetch(...actions) {
@@ -5,9 +7,9 @@ export default function createFetch(React, Component) {
     return Wrapped => class Fetch extends Component {
 
       static propTypes = {
-        dispatch: React.PropTypes.func,
-        location: React.PropTypes.object,
-        params: React.PropTypes.object
+        dispatch: PropTypes.func,
+        location: PropTypes.object,
+        params: PropTypes.object
       }
 
       // This enables server side fetching.

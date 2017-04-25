@@ -1,5 +1,6 @@
 import Chevron from '../components/Chevron.react';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
   require('./Second.styl');
@@ -7,7 +8,7 @@ if (process.env.IS_BROWSER) {
 
 export default class SecondScreen extends React.PureComponent {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired
   }
 
   proceed() {

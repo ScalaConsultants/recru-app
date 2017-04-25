@@ -1,6 +1,7 @@
 import Component from 'react-pure-render/component';
 import classNames from 'classnames';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
   require('./Chevron.styl');
@@ -8,8 +9,8 @@ if (process.env.IS_BROWSER) {
 
 export default class Chevron extends Component {
   static propTypes = {
-    isAnimated: React.PropTypes.bool,
-    onClick: React.PropTypes.func
+    isAnimated: PropTypes.bool,
+    onClick: PropTypes.func
   }
 
   static defaultProps = {

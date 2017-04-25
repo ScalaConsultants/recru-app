@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import boundScroll from '../lib/boundScroll';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
   require('./Fifth.styl');
@@ -20,9 +21,9 @@ const BYTE_TO_MEGABYTE_RATIO = 1000000;
 @boundScroll()
 export default class FifthScreen extends React.PureComponent {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    candidate: React.PropTypes.object.isRequired,
-    config: React.PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    candidate: PropTypes.object.isRequired,
+    config: PropTypes.object.isRequired
   }
 
   constructor(props) {
