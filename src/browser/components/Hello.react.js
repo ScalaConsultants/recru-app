@@ -1,6 +1,7 @@
 import Component from 'react-pure-render/component';
 import classNames from 'classnames';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
   require('./Hello.styl');
@@ -8,8 +9,8 @@ if (process.env.IS_BROWSER) {
 
 export default class Hello extends Component {
   static propTypes = {
-    className: React.PropTypes.string,
-    message: React.PropTypes.string
+    className: PropTypes.string,
+    message: PropTypes.string
   }
 
   render() {

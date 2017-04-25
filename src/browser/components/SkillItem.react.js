@@ -1,11 +1,11 @@
 import Component from 'react-pure-render/component';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class SkillItem extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    data: React.PropTypes.object.isRequired,
-    resetErrorStatus: React.PropTypes.func.isRequired
+    actions: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired
   }
 
   constructor(props) {
@@ -13,49 +13,35 @@ export default class SkillItem extends Component {
     this.state = {hintDisplayed: false};
   }
 
-  handleChange(level, e) {
+  handleStarChange(level, e) {
     const {actions: {saveSkill}} = this.props;
     saveSkill(this.props.data, level);
-    this.props.resetErrorStatus();
   }
 
-  setHintVisibility(visible) {
-    this.setState({hintDisplayed: visible});
+  showHint() {
+    this.setState({hintDisplayed: true});
   }
 
-  handleMouseEnter = () => this.setHintVisibility(true);
-  handleMouseLeave = () => this.setHintVisibility(false);
+  hideHint() {
+    this.setState({hintDisplayed: false});
+  }
 
   render() {
-    let hint;
-    const cb = {
-      onMouseEnter: this.handleMouseEnter,
-      onMouseLeave: this.handleMouseLeave
-    };
-
-    if (this.state.hintDisplayed) {
-      hint = (<div {...cb} className="hint">{this.props.data.name}</div>);
+    const starsLabels = [];
+    const STARS_LENGTH = 5;
+    for (let i = STARS_LENGTH; i >= 1; i--) {
+      starsLabels.push(
+          <input className={`star star-${i}`} id={`star${i}_${this.props.data.id}`} key={i} name="star" onChange={(e) => this.handleStarChange(i, e)} type="radio"/>,
+          <label className={`star star-${i}`} htmlFor={`star${i}_${this.props.data.id}`} key={i + STARS_LENGTH} />
+      );
     }
 
     return (
       <li>
-        {hint}
-        <img {...cb} alt={this.props.data.name} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} src={this.props.data.src}/>
+        {this.state.hintDisplayed ? <div className="hint">{this.props.data.name}</div> : false}
+        <img alt={this.props.data.name} onMouseEnter={()=>this.showHint()} onMouseLeave={()=>this.hideHint()} src={this.props.data.src}/>
         <form action="">
-          <input className="star star-5" id={`star5_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(5, e)} type="radio"/>
-          <label className="star star-5" htmlFor={`star5_${this.props.data.id}`}></label>
-
-          <input className="star star-4" id={`star4_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(4, e)} type="radio"/>
-          <label className="star star-4" htmlFor={`star4_${this.props.data.id}`}></label>
-
-          <input className="star star-3" id={`star3_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(3, e)} type="radio"/>
-          <label className="star star-3" htmlFor={`star3_${this.props.data.id}`}></label>
-
-          <input className="star star-2" id={`star2_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(2, e)} type="radio"/>
-          <label className="star star-2" htmlFor={`star2_${this.props.data.id}`}></label>
-
-          <input className="star star-1" id={`star1_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(1, e)} type="radio"/>
-          <label className="star star-1" htmlFor={`star1_${this.props.data.id}`}></label>
+          {starsLabels}
         </form>
       </li>
     );

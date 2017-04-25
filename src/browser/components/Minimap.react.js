@@ -1,6 +1,7 @@
 import Component from 'react-pure-render/component';
 import classNames from 'classnames';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
   require('./Minimap.styl');
@@ -8,9 +9,9 @@ if (process.env.IS_BROWSER) {
 
 export default class MiniMap extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    className: React.PropTypes.string,
-    screens: React.PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    className: PropTypes.string,
+    screens: PropTypes.object.isRequired
   }
 
   handleClick(event, id) {
@@ -31,7 +32,7 @@ export default class MiniMap extends Component {
       ((e) => this.handleClick(e, id));
     return (
       <li key={id}>
-        <a className={className} href="#" onClick={fx}></a>
+        <a className={className} href="#" onClick={fx}/>
       </li>
     );
   }

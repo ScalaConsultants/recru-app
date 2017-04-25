@@ -1,16 +1,16 @@
-import Component from 'react-pure-render/component';
 import Chevron from '../components/Chevron.react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
   require('./First.styl');
 }
 
-export default class FirstScreen extends Component {
+export default class FirstScreen extends React.PureComponent {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired
   }
 
   constructor(props) {
