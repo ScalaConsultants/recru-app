@@ -6,7 +6,7 @@ import BackpackList from '../../components/BackpackList.react';
 import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
-  require('./backpackScreen.styl');
+  require('./BackpackScreen.styl');
 }
 
 export default class Third2Screen extends React.PureComponent {

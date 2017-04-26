@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
-  require('./submitScreen.styl');
+  require('./SubmitScreen.styl');
 }
 
 const VALID_MIME_TYPES = [

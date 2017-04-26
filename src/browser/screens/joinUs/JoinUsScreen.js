@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
-  require('./joinUsScreen.styl');
+  require('./JoinUsScreen.styl');
 }
 
 export default class FirstScreen extends React.PureComponent {

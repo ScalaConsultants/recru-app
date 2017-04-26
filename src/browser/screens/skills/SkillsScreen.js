@@ -6,7 +6,7 @@ import technologies from '../../data/technologies.json';
 import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
-  require('./skillsScreen.styl');
+  require('./SkillsScreen.styl');
 }
 
 @boundScroll()

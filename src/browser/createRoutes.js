@@ -1,6 +1,6 @@
 import App from './app/App.react';
 import React from 'react';
-import Screens from './screens/Page.react';
+import Screens from './screens/Page';
 import NotFound from './notfound/Page.react';
 import {IndexRoute, Route} from 'react-router';
 

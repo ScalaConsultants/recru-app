@@ -5,7 +5,7 @@ import json from '../../data/roles.json';
 import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
-  require('./choosePathScreen.styl');
+  require('./ChoosePathScreen.styl');
 }
 
 @boundScroll()

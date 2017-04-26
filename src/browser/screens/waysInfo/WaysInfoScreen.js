@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
-  require('./waysInfoScreen.styl');
+  require('./WaysInfoScreen.styl');
 }
 
 export default class SecondScreen extends React.PureComponent {
