@@ -1,11 +1,11 @@
-import Chevron from '../components/Chevron.react';
+import Chevron from '../../components/Chevron.react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
-  require('./First.styl');
+  require('./joinUsScreen.styl');
 }
 
 export default class FirstScreen extends React.PureComponent {

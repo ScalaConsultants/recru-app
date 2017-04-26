@@ -1,11 +1,11 @@
 import classNames from 'classnames';
-import boundScroll from '../lib/boundScroll';
+import boundScroll from '../../lib/boundScroll';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
-  require('./Fifth.styl');
+  require('./submitScreen.styl');
 }
 
 const VALID_MIME_TYPES = [

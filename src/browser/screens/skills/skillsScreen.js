@@ -1,12 +1,12 @@
-import Chevron from '../components/Chevron.react';
+import Chevron from '../../components/Chevron.react';
 import React from 'react';
-import boundScroll from '../lib/boundScroll';
-import SkillItem from '../components/SkillItem.react';
-import technologies from '../data/technologies.json';
+import boundScroll from '../../lib/boundScroll';
+import SkillItem from '../../components/SkillItem.react';
+import technologies from '../../data/technologies.json';
 import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
-  require('./Fourth.styl');
+  require('./skillsScreen.styl');
 }
 
 @boundScroll()

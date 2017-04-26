@@ -1,9 +1,9 @@
-import Chevron from '../components/Chevron.react';
+import Chevron from '../../components/Chevron.react';
 import React from 'react';
 import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
-  require('./Second.styl');
+  require('./waysInfoScreen.styl');
 }
 
 export default class SecondScreen extends React.PureComponent {

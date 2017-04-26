@@ -1,11 +1,11 @@
 import Component from 'react-pure-render/component';
 import React from 'react';
-import boundScroll from '../lib/boundScroll';
-import json from '../data/roles.json';
+import boundScroll from '../../lib/boundScroll';
+import json from '../../data/roles.json';
 import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
-  require('./Third.styl');
+  require('./choosePathScreen.styl');
 }
 
 @boundScroll()

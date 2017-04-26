@@ -1,12 +1,12 @@
-import Chevron from '../components/Chevron.react';
+import Chevron from '../../components/Chevron.react';
 import React from 'react';
-import BagImg from '../components/BagImg.react';
-import SignpostImg from '../components/SignpostImg.react';
-import BackpackList from '../components/BackpackList.react';
+import BagImg from '../../components/BagImg.react';
+import SignpostImg from '../../components/SignpostImg.react';
+import BackpackList from '../../components/BackpackList.react';
 import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
-  require('./Third2.styl');
+  require('./backpackScreen.styl');
 }
 
 export default class Third2Screen extends React.PureComponent {
