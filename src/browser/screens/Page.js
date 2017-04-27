@@ -28,13 +28,13 @@ export default class Screens extends Component {
     return this.props.screens.currentScreen === screen ? 'currentScreen' : null;
   }
 
-  handleMoveDownKeys(e) {
+  handleMoveDownKeys() {
     if (typeof this.refs.currentScreen.handleMoveDownKeys === 'function') {
       this.refs.currentScreen.handleMoveDownKeys();
     }
   }
 
-  handleMoveUp(e) {
+  handleMoveUp() {
     if (typeof this.refs.currentScreen.handleMoveUp === 'function') {
       this.refs.currentScreen.handleMoveUp();
     }
@@ -43,7 +43,7 @@ export default class Screens extends Component {
     previousScreen();
   }
 
-  handleMoveDown(e) {
+  handleMoveDown() {
     if (typeof this.refs.currentScreen.proceed === 'function')
       this.refs.currentScreen.proceed();
   }
