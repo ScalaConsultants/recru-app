@@ -24,11 +24,7 @@ export default class Screens extends Component {
   }
 
   getRefNameFor(screen) {
-    return this.isCurrent(screen) ? 'currentScreen' : null;
-  }
-
-  isCurrent(screen) {
-    return this.props.screens.currentScreen === screen;
+    return this.props.screens.currentScreen === screen ? 'currentScreen' : null;
   }
 
   handleMoveDownKeys(e) {
