@@ -61,12 +61,12 @@ export default class Screens extends Component {
     return (
       <div className="screen-list" style={listStyle}>
         <Helmet title='Join Us'/>
-        <FirstScreen {...this.props} isCurrent={this.isCurrent(0)} ref={this.getRefNameFor(0)}/>
-        <SecondScreen {...this.props} isCurrent={this.isCurrent(1)} ref={this.getRefNameFor(1)}/>
-        <ThirdScreen {...this.props} isCurrent={this.isCurrent(2)} ref={this.getRefNameFor(2)}/>
-        <Third2Screen {...this.props} isCurrent={this.isCurrent(3)} ref={this.getRefNameFor(3)}/>
-        <FourthScreen {...this.props} isCurrent={this.isCurrent(4)} ref={this.getRefNameFor(4)}/>
-        <FifthScreen {...this.props} isCurrent={this.isCurrent(5)} ref={this.getRefNameFor(5)}/>
+        <FirstScreen {...this.props} ref={this.getRefNameFor(0)}/>
+        <SecondScreen {...this.props} ref={this.getRefNameFor(1)}/>
+        <ThirdScreen {...this.props} ref={this.getRefNameFor(2)}/>
+        <Third2Screen {...this.props} ref={this.getRefNameFor(3)}/>
+        <FourthScreen {...this.props} ref={this.getRefNameFor(4)}/>
+        <FifthScreen {...this.props} ref={this.getRefNameFor(5)}/>
       </div>
     );
   }

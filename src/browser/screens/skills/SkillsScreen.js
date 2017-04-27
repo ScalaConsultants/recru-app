@@ -13,8 +13,7 @@ if (process.env.IS_BROWSER) {
 export default class FourthScreen extends React.PureComponent {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    candidate: PropTypes.object.isRequired,
-    isCurrent: PropTypes.bool
+    candidate: PropTypes.object.isRequired
   }
 
   constructor(props) {

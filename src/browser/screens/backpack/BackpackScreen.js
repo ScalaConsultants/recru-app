@@ -11,8 +11,7 @@ if (process.env.IS_BROWSER) {
 
 export default class Third2Screen extends React.PureComponent {
   static propTypes = {
-    actions: PropTypes.object.isRequired,
-    isCurrent: PropTypes.bool
+    actions: PropTypes.object.isRequired
   }
 
   proceed() {
@@ -34,7 +33,7 @@ export default class Third2Screen extends React.PureComponent {
         </div>
         <BackpackList />
         <BagImg />
-        <SignpostImg {...this.props} animate={this.props.isCurrent} />
+        <SignpostImg {...this.props} animate={this.props.screens.currentScreen === 3} />
         <Chevron isAnimated onClick={e => this.proceed(e)} />
       </section>
     );
