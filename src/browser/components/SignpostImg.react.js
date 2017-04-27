@@ -16,6 +16,13 @@ export default class SignpostImg extends Component {
     delayStart: PropTypes.number
   }
 
+  static defaultProps = {
+    animate: false,
+    delayBetween: 500,
+    delayStart: 1000,
+    benefits: ['']
+  }
+
   constructor(props) {
     super(props);
     this.state = this.getDefaultState();
@@ -105,7 +112,7 @@ export default class SignpostImg extends Component {
             };
             return <img className='footPrint' key={idx} src={imageSrc} style={imgStyle}/>;
           }
-          )}
+          )}{console.log(this.props.delayStart)}
           <ul className="benefits-list" >Scalac&nbsp;vitamins:<br />
             {this.state.benefits.map((item, idx) =>
               <li key={idx}>{item}</li>
