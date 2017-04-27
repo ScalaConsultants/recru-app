@@ -1,11 +1,11 @@
 import Component from 'react-pure-render/component';
 import React from 'react';
-import FirstScreen from './joinUs/JoinUsScreen';
-import SecondScreen from './waysInfo/WaysInfoScreen';
-import ThirdScreen from './choosePath/ChoosePathScreen';
-import Third2Screen from './backpack/BackpackScreen';
-import FourthScreen from './skills/SkillsScreen';
-import FifthScreen from './submit/SubmitScreen';
+import JoinUsScreen from './joinUs/JoinUsScreen';
+import WaysInfoScreen from './waysInfo/WaysInfoScreen';
+import ChoosePathScreen from './choosePath/ChoosePathScreen';
+import BackpackScreen from './backpack/BackpackScreen';
+import SkillsScreen from './skills/SkillsScreen';
+import SubmitScreen from './submit/SubmitScreen';
 import movementHandler from '../lib/movementHandler';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
@@ -61,12 +61,12 @@ export default class Screens extends Component {
     return (
       <div className="screen-list" style={listStyle}>
         <Helmet title='Join Us'/>
-        <FirstScreen {...this.props} ref={this.getRefNameFor(0)}/>
-        <SecondScreen {...this.props} ref={this.getRefNameFor(1)}/>
-        <ThirdScreen {...this.props} ref={this.getRefNameFor(2)}/>
-        <Third2Screen {...this.props} ref={this.getRefNameFor(3)}/>
-        <FourthScreen {...this.props} ref={this.getRefNameFor(4)}/>
-        <FifthScreen {...this.props} ref={this.getRefNameFor(5)}/>
+        <JoinUsScreen {...this.props} ref={this.getRefNameFor(0)}/>
+        <WaysInfoScreen {...this.props} ref={this.getRefNameFor(1)}/>
+        <ChoosePathScreen {...this.props} ref={this.getRefNameFor(2)}/>
+        <BackpackScreen {...this.props} ref={this.getRefNameFor(3)}/>
+        <SkillsScreen {...this.props} ref={this.getRefNameFor(4)}/>
+        <SubmitScreen {...this.props} ref={this.getRefNameFor(5)}/>
       </div>
     );
   }
