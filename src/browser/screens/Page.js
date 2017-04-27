@@ -15,6 +15,7 @@ export default class Screens extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
     candidate: PropTypes.object.isRequired,
+    config: PropTypes.object.isRequired,
     screens: PropTypes.object.isRequired
   }
 
@@ -57,12 +58,27 @@ export default class Screens extends Component {
     return (
       <div className="screen-list" style={listStyle}>
         <Helmet title='Join Us'/>
-        <JoinUsScreen {...this.props} ref={this.getRefNameFor(0)}/>
-        <WaysInfoScreen {...this.props} ref={this.getRefNameFor(1)}/>
-        <ChoosePathScreen {...this.props} ref={this.getRefNameFor(2)}/>
-        <BackpackScreen {...this.props} ref={this.getRefNameFor(3)}/>
-        <SkillsScreen {...this.props} ref={this.getRefNameFor(4)}/>
-        <SubmitScreen {...this.props} ref={this.getRefNameFor(5)}/>
+        <JoinUsScreen actions={this.props.actions}
+                      ref={this.getRefNameFor(0)}/>
+
+        <WaysInfoScreen actions={this.props.actions}
+                        ref={this.getRefNameFor(1)}/>
+
+        <ChoosePathScreen actions={this.props.actions}
+                          ref={this.getRefNameFor(2)}/>
+
+        <BackpackScreen actions={this.props.actions}
+                        ref={this.getRefNameFor(3)}
+                        screens={this.props.screens}/>
+
+        <SkillsScreen actions={this.props.actions}
+                      candidate={this.props.candidate}
+                      ref={this.getRefNameFor(4)}/>
+
+        <SubmitScreen actions={this.props.actions}
+                      candidate={this.props.candidate}
+                      config={this.props.config}
+                      ref={this.getRefNameFor(5)}/>
       </div>
     );
   }
