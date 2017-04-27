@@ -16,13 +16,6 @@ export default class SignpostImg extends Component {
     delayStart: PropTypes.number
   }
 
-  static defaultProps = {
-    animate: false,
-    delayBetween: 500,
-    delayStart: 1000,
-    benefits: ['']
-  }
-
   constructor(props) {
     super(props);
     this.state = this.getDefaultState();
