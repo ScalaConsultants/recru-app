@@ -158,19 +158,51 @@ export default class FifthScreen extends React.PureComponent {
 
     return (
       <section className="fifth-screen screen dark">
-        <header><span>One more thing...</span></header>
+        <header>
+          <span>One more thing...</span>
+        </header>
+
         <div className="contactForm">
           <h2>Leave us your email</h2>
-          <input className={this.state.emailPassed ? 'active' : null} onChange={this.handleEmailChange} placeholder="email" ref="emailInput" tabIndex="-1" type="email"/>
+
+          <input className={this.state.emailPassed ? 'active' : null}
+                 onChange={this.handleEmailChange}
+                 placeholder="email"
+                 ref="emailInput"
+                 tabIndex="-1"
+                 type="email"/>
+
           <h2>and either a LinkedIn profile URI</h2>
-          <input className={this.state.urlPassed ? 'active' : null} onChange={this.handleUrlChange} placeholder="linkedin.com/in/username" ref="urlInput" tabIndex="-1" type="url"/>
+
+          <input className={this.state.urlPassed ? 'active' : null}
+                 onChange={this.handleUrlChange}
+                 placeholder="linkedin.com/in/username"
+                 ref="urlInput"
+                 tabIndex="-1"
+                 type="url"/>
+
           <h2>or</h2>
-          <input accept=".pdf,.doc,.docx,.odt" ref="fileInput" tabIndex="-1" type="file"/>
-          <div className={dropAreaclassName} id="drop" onClick={() => ReactDOM.findDOMNode(this.refs.fileInput).click()} ref="dropArea">
+
+          <input accept=".pdf,.doc,.docx,.odt"
+                 ref="fileInput"
+                 tabIndex="-1"
+                 type="file"/>
+
+          <div className={dropAreaclassName}
+               id="drop"
+               onClick={() => ReactDOM.findDOMNode(this.refs.fileInput).click()}
+               ref="dropArea">
+
             <span className="text">{inputText}</span>
-            <span className={this.state.fileInvalid ? 'hint -error' : 'hint'}>(doc, docx, pdf, max. {MAX_FILE_SIZE_MB}MB)</span>
+            <span className={this.state.fileInvalid ? 'hint -error' : 'hint'}>
+              (doc, docx, pdf, max. {MAX_FILE_SIZE_MB}MB)
+            </span>
           </div>
-          <button className={candidate.isSubmittingForm ? '-pending' : null} disabled={!this.isDataValid() || candidate.isSubmittingForm} onClick={this.submit}><i/>{buttonTitle}</button>
+          <button className={candidate.isSubmittingForm ? '-pending' : null}
+                  disabled={!this.isDataValid() || candidate.isSubmittingForm}
+                  onClick={this.submit}>
+            <i/>{buttonTitle}
+          </button>
         </div>
       </section>
     );

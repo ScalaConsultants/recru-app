@@ -34,7 +34,8 @@ export default class Third2Screen extends React.PureComponent {
         <BackpackList />
         <BagImg />
         <SignpostImg {...this.props} animate={this.props.screens.currentScreen === 3} />
-        <Chevron isAnimated onClick={e => this.proceed(e)} />
+        <Chevron isAnimated
+                 onClick={e => this.proceed(e)} />
       </section>
     );
   }

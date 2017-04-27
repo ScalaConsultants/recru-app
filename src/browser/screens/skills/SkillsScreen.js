@@ -82,11 +82,14 @@ export default class FourthScreen extends React.PureComponent {
         </header>
         <div className="skills">
           <div className="geek-img">
-            <img alt="Geek" src="../../../assets/img/skills/geek.svg"/>
+            <img alt="Geek"
+                 src="../../../assets/img/skills/geek.svg"/>
           </div>
           <ul>
             {skillsForCurrentRole.map((skill) =>
-              <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
+              <SkillItem actions={this.props.actions}
+                         data={skill}
+                         key={skill.id}/>
             )}
             <li className="otherSkill">
               {this.state.hintDisplayed ? otherSkillsHint : false};
@@ -94,10 +97,17 @@ export default class FourthScreen extends React.PureComponent {
                    onMouseEnter={ (e) => this.setState({hintDisplayed:true})}
                    onMouseLeave={ (e) => this.setState({hintDisplayed:false})}
               >
-                <img alt="Other skills" src="../../../assets/img/skills/skills_gears.svg"/>
+                <img alt="Other skills"
+                     src="../../../assets/img/skills/skills_gears.svg"/>
               </div>
               <div className="otherSkill-text">
-                <textarea cols="16" maxLength="500" onChange={e => this.handleKeyUp(e)} placeholder="Do You have other skills?" ref="otherSkill" rows="2" tabIndex="-1"/>
+                <textarea cols="16"
+                          maxLength="500"
+                          onChange={e => this.handleKeyUp(e)}
+                          placeholder="Do You have other skills?"
+                          ref="otherSkill"
+                          rows="2"
+                          tabIndex="-1"/>
               </div>
             </li>
           </ul>

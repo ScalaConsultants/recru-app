@@ -55,10 +55,17 @@ export default class FirstScreen extends React.PureComponent {
       <section className="first-screen screen">
         <div className="centering-wrapper">
           <header>
+
             <h1>Join our team</h1>
             <h2>we are looking for talented passionate people</h2>
+
             <div className={formControlClassName}>
-              <input autoComplete="off" autoFocus placeholder="type your name" ref="nameInput" tabIndex="-1" type="text"/>
+              <input autoComplete="off"
+                     autoFocus
+                     placeholder="type your name"
+                     ref="nameInput"
+                     tabIndex="-1"
+                     type="text"/>
               <span>{this.state.error}</span>
             </div>
           </header>

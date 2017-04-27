@@ -47,10 +47,15 @@ export default class ThirdScreen extends Component {
         <ul>
           {json.map((role) => {
             return (
-              <li key={role.id} onClick={() => this.handleChooseRole(role)}>
-                <p><strong>{role.name.split(' ')[0]}</strong> {role.name.split(' ')[1]}</p>
+              <li key={role.id}
+                  onClick={() => this.handleChooseRole(role)}>
+                <p>
+                  <strong>{role.name.split(' ')[0]}</strong>
+                  {role.name.split(' ')[1]}
+                </p>
                 <div>
-                  <img alt={`${role.name} path`} src={role.img} />
+                  <img alt={`${role.name} path`}
+                       src={role.img} />
                   <p>{role.description}</p>
                 </div>
               </li>
