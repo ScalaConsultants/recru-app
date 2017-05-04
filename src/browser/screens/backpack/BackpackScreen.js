@@ -14,6 +14,11 @@ export default class Third2Screen extends React.PureComponent {
     actions: PropTypes.object.isRequired
   }
 
+  constructor() {
+    super();
+    this.proceed = this.proceed.bind(this);
+  }
+
   proceed() {
     const {actions: {nextScreen}} = this.props;
     nextScreen();
@@ -35,7 +40,7 @@ export default class Third2Screen extends React.PureComponent {
         <BagImg />
         <SignpostImg {...this.props} animate={this.props.screens.currentScreen === 3} />
         <Chevron isAnimated
-                 onClick={e => this.proceed(e)} />
+                 onClick={this.proceed} />
       </section>
     );
   }

@@ -19,6 +19,7 @@ export default class FourthScreen extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = this.getDefaultState();
+    this.handleKeyUp = this.handleKeyUp.bind(this);
   }
 
   getDefaultState() {
@@ -103,7 +104,7 @@ export default class FourthScreen extends React.PureComponent {
               <div className="otherSkill-text">
                 <textarea cols="16"
                           maxLength="500"
-                          onChange={e => this.handleKeyUp(e)}
+                          onChange={this.handleKeyUp}
                           placeholder="Do You have other skills?"
                           ref="otherSkill"
                           rows="2"

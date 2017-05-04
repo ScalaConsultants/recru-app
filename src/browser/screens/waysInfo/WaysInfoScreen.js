@@ -11,6 +11,11 @@ export default class SecondScreen extends React.PureComponent {
     actions: PropTypes.object.isRequired
   }
 
+  constructor() {
+    super();
+    this.proceed = this.proceed.bind(this);
+  }
+
   proceed() {
     const {actions: {nextScreen}} = this.props;
     nextScreen();
@@ -29,11 +34,11 @@ export default class SecondScreen extends React.PureComponent {
             <span><strong>several ways</strong></span>
             <span>to the <strong>top</strong></span>
 
-            <button onClick={e => this.proceed(e)}
+            <button onClick={this.proceed}
                     tabIndex="-1">choose your path</button>
 
             <Chevron isAnimated
-                     onClick={e => this.proceed(e)}/>
+                     onClick={this.proceed}/>
           </h1>
           <img alt="Scalac Logo"
                src="assets/img/logo.svg"/>

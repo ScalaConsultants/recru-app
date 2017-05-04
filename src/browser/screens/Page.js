@@ -20,8 +20,7 @@ export default class Screens extends Component {
   }
 
   getPageOffset() {
-    const {currentScreen} = this.props.screens;
-    return -(currentScreen * 100);
+    return -(this.props.screens.currentScreen * 100);
   }
 
   getRefNameFor(screen) {
