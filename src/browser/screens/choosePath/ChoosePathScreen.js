@@ -1,11 +1,11 @@
 import Component from 'react-pure-render/component';
 import React from 'react';
-import boundScroll from '../lib/boundScroll';
-import json from '../data/roles.json';
+import boundScroll from '../../lib/boundScroll';
+import json from '../../data/roles.json';
 import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
-  require('./Third.styl');
+  require('./ChoosePathScreen.styl');
 }
 
 @boundScroll()
@@ -47,10 +47,15 @@ export default class ThirdScreen extends Component {
         <ul>
           {json.map((role) => {
             return (
-              <li key={role.id} onClick={() => this.handleChooseRole(role)}>
-                <p><strong>{role.name.split(' ')[0]}</strong> {role.name.split(' ')[1]}</p>
+              <li key={role.id}
+                  onClick={() => this.handleChooseRole(role)}>
+                <p>
+                  <strong>{role.name.split(' ')[0]}</strong>
+                  {role.name.split(' ')[1]}
+                </p>
                 <div>
-                  <img alt={`${role.name} path`} src={role.img} />
+                  <img alt={`${role.name} path`}
+                       src={role.img} />
                   <p>{role.description}</p>
                 </div>
               </li>
