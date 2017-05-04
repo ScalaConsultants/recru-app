@@ -1,25 +1,25 @@
-import Chevron from '../components/Chevron.react';
+import Chevron from '../../components/Chevron.react';
 import React from 'react';
-import boundScroll from '../lib/boundScroll';
-import SkillItem from '../components/SkillItem.react';
-import technologies from '../data/technologies.json';
+import boundScroll from '../../lib/boundScroll';
+import SkillItem from '../../components/SkillItem.react';
+import technologies from '../../data/technologies.json';
 import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
-  require('./Fourth.styl');
+  require('./SkillsScreen.styl');
 }
 
 @boundScroll()
 export default class FourthScreen extends React.PureComponent {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    candidate: PropTypes.object.isRequired,
-    isCurrent: PropTypes.bool
+    candidate: PropTypes.object.isRequired
   }
 
   constructor(props) {
     super(props);
     this.state = this.getDefaultState();
+    this.handleKeyUp = this.handleKeyUp.bind(this);
   }
 
   getDefaultState() {
@@ -83,11 +83,14 @@ export default class FourthScreen extends React.PureComponent {
         </header>
         <div className="skills">
           <div className="geek-img">
-            <img alt="Geek" src="../../../assets/img/skills/geek.svg"/>
+            <img alt="Geek"
+                 src="../../../assets/img/skills/geek.svg"/>
           </div>
           <ul>
             {skillsForCurrentRole.map((skill) =>
-              <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
+              <SkillItem actions={this.props.actions}
+                         data={skill}
+                         key={skill.id}/>
             )}
             <li className="otherSkill">
               {this.state.hintDisplayed ? otherSkillsHint : false};
@@ -95,10 +98,17 @@ export default class FourthScreen extends React.PureComponent {
                    onMouseEnter={ (e) => this.setState({hintDisplayed:true})}
                    onMouseLeave={ (e) => this.setState({hintDisplayed:false})}
               >
-                <img alt="Other skills" src="../../../assets/img/skills/skills_gears.svg"/>
+                <img alt="Other skills"
+                     src="../../../assets/img/skills/skills_gears.svg"/>
               </div>
               <div className="otherSkill-text">
-                <textarea cols="16" maxLength="500" onChange={e => this.handleKeyUp(e)} placeholder="Do You have other skills?" ref="otherSkill" rows="2" tabIndex="-1"/>
+                <textarea cols="16"
+                          maxLength="500"
+                          onChange={this.handleKeyUp}
+                          placeholder="Do You have other skills?"
+                          ref="otherSkill"
+                          rows="2"
+                          tabIndex="-1"/>
               </div>
             </li>
           </ul>
