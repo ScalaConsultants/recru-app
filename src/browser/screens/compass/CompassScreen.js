@@ -24,6 +24,7 @@ export default class CompassScreen extends React.PureComponent {
     return (
       <section className="compass-screen screen">
         <h1>Compass</h1>
+        <h2>{this.props.candidate.role.id}</h2>
       </section>
     );
   }

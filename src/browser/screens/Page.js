@@ -78,12 +78,14 @@ export default class Screens extends Component {
                         screens={this.props.screens}/>
 
         <CompassScreen actions={this.props.actions}
-                        ref={this.getRefNameFor(5)}
-                        screens={this.props.screens}/>
+                       candidate={this.props.candidate}
+                       ref={this.getRefNameFor(5)}
+                       screens={this.props.screens}/>
 
         <EquipmentScreen actions={this.props.actions}
-                       ref={this.getRefNameFor(6)}
-                       screens={this.props.screens}/>
+                         candidate={this.props.candidate}
+                         ref={this.getRefNameFor(6)}
+                         screens={this.props.screens}/>
 
         <SkillsScreen actions={this.props.actions}
                       candidate={this.props.candidate}

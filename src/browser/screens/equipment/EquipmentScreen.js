@@ -24,6 +24,7 @@ export default class EquipmentScreen extends React.PureComponent {
     return (
       <section className="equipment-screen screen">
         <h1>Equipment</h1>
+        <h2>{this.props.candidate.role.id}</h2>
       </section>
     );
   }
