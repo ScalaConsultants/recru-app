@@ -34,26 +34,41 @@
   "1" : [
     {
       "id" : 10,
-      "name" : "Swift",
-      "src" : "assets/img/ios/swift.png"
+      "name" : "Java Script",
+      "src" : "assets/img/frontend/js.png"
     },
     {
       "id" : 11,
-      "name" : "Xcode",
-      "src" : "assets/img/ios/xcode.png"
+      "name" : "HTML5",
+      "src" : "assets/img/frontend/html5.png"
     },
     {
       "id" : 12,
-      "name" : "Objective-C",
-      "src" : "assets/img/ios/objective-c.png"
+      "name" : "CSS3",
+      "src" : "assets/img/frontend/css3.png"
     },
     {
       "id" : 13,
-      "name" : "Interface Builder",
-      "src" : "assets/img/ios/interface_builder.png"
+      "name" : "Ember.js",
+      "src" : "assets/img/frontend/ember.png"
     },
     {
       "id" : 14,
+      "name" : "Angular",
+      "src" : "assets/img/frontend/angular.png"
+    },
+    {
+      "id" : 15,
+      "name" : "Node.js",
+      "src" : "assets/img/frontend/node.png"
+    },
+    {
+      "id" : 16,
+      "name" : "React",
+      "src" : "assets/img/frontend/react.png"
+    },
+    {
+      "id" : 17,
       "name" : "git",
       "src" : "assets/img/generic/git.png"
     }
@@ -107,42 +122,27 @@
   ],
   "3" : [
     {
-      "id" : 40,
-      "name" : "Java Script",
-      "src" : "assets/img/frontend/js.png"
+      "id" : 30,
+      "name" : "Swift",
+      "src" : "assets/img/ios/swift.png"
     },
     {
-      "id" : 41,
-      "name" : "HTML5",
-      "src" : "assets/img/frontend/html5.png"
+      "id" : 31,
+      "name" : "Xcode",
+      "src" : "assets/img/ios/xcode.png"
     },
     {
-      "id" : 42,
-      "name" : "CSS3",
-      "src" : "assets/img/frontend/css3.png"
+      "id" : 32,
+      "name" : "Objective-C",
+      "src" : "assets/img/ios/objective-c.png"
     },
     {
-      "id" : 43,
-      "name" : "Ember.js",
-      "src" : "assets/img/frontend/ember.png"
+      "id" : 33,
+      "name" : "Interface Builder",
+      "src" : "assets/img/ios/interface_builder.png"
     },
     {
-      "id" : 44,
-      "name" : "Angular",
-      "src" : "assets/img/frontend/angular.png"
-    },
-    {
-      "id" : 45,
-      "name" : "Node.js",
-      "src" : "assets/img/frontend/node.png"
-    },
-    {
-      "id" : 46,
-      "name" : "React",
-      "src" : "assets/img/frontend/react.png"
-    },
-    {
-      "id" : 47,
+      "id" : 34,
       "name" : "git",
       "src" : "assets/img/generic/git.png"
     }
