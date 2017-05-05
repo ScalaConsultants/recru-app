@@ -5,6 +5,7 @@ import WaysInfoScreen from './waysInfo/WaysInfoScreen';
 import ChoosePathScreen from './choosePath/ChoosePathScreen';
 import BackpackScreen from './backpack/BackpackScreen';
 import VitaminsScreen from './vitamins/VitaminsScreen';
+import CompassScreen from './compass/CompassScreen';
 import SkillsScreen from './skills/SkillsScreen';
 import SubmitScreen from './submit/SubmitScreen';
 import movementHandler from '../lib/movementHandler';
@@ -75,14 +76,18 @@ export default class Screens extends Component {
                         ref={this.getRefNameFor(4)}
                         screens={this.props.screens}/>
 
+        <CompassScreen actions={this.props.actions}
+                        ref={this.getRefNameFor(5)}
+                        screens={this.props.screens}/>
+
         <SkillsScreen actions={this.props.actions}
                       candidate={this.props.candidate}
-                      ref={this.getRefNameFor(5)}/>
+                      ref={this.getRefNameFor(6)}/>
 
         <SubmitScreen actions={this.props.actions}
                       candidate={this.props.candidate}
                       config={this.props.config}
-                      ref={this.getRefNameFor(6)}/>
+                      ref={this.getRefNameFor(7)}/>
       </div>
     );
   }
