@@ -27,20 +27,17 @@ export default class SecondScreen extends React.PureComponent {
 
   render() {
     return (
-      <section className="second-screen screen">
-        <div>
-          <h1>
-            <span>There are</span>
-            <span><strong>several ways</strong></span>
-            <span>to <strong>explore</strong></span>
+      <section className="ways-info-screen screen">
+        <p>There are several ways</p>
+        <p>to explore</p>
 
-            <button onClick={this.proceed}
-                    tabIndex="-1">choose your own</button>
-            <Chevron isAnimated
-                     onClick={this.proceed}/>
-          </h1>
-          <img alt="Scalac Logo"
-               src="assets/img/mountains.svg"/>
+        <img alt="Scalac Logo"
+             src="assets/img/mountains.svg"/>
+        <div>
+          <button onClick={this.proceed}
+                  tabIndex="-1">choose your own</button>
+          <Chevron isAnimated
+                   onClick={this.proceed}/>
         </div>
       </section>
     );
