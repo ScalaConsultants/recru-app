@@ -36,9 +36,9 @@ export default class Third2Screen extends React.PureComponent {
             <strong>Pack Your bag</strong>
           </h1>
         </div>
-        <BackpackList />
+        {/*<BackpackList />*/}
         <BagImg />
-        <SignpostImg {...this.props} animate={this.props.screens.currentScreen === 3} />
+        {/*<SignpostImg {...this.props} animate={this.props.screens.currentScreen === 3} />*/}
         <Chevron isAnimated
                  onClick={this.proceed} />
       </section>

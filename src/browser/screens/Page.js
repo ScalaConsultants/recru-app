@@ -4,6 +4,9 @@ import JoinUsScreen from './joinUs/JoinUsScreen';
 import WaysInfoScreen from './waysInfo/WaysInfoScreen';
 import ChoosePathScreen from './choosePath/ChoosePathScreen';
 import BackpackScreen from './backpack/BackpackScreen';
+import VitaminsScreen from './vitamins/VitaminsScreen';
+import CompassScreen from './compass/CompassScreen';
+import EquipmentScreen from './equipment/EquipmentScreen';
 import SkillsScreen from './skills/SkillsScreen';
 import SubmitScreen from './submit/SubmitScreen';
 import movementHandler from '../lib/movementHandler';
@@ -70,14 +73,28 @@ export default class Screens extends Component {
                         ref={this.getRefNameFor(3)}
                         screens={this.props.screens}/>
 
+        <VitaminsScreen actions={this.props.actions}
+                        ref={this.getRefNameFor(4)}
+                        screens={this.props.screens}/>
+
+        <CompassScreen actions={this.props.actions}
+                       candidate={this.props.candidate}
+                       ref={this.getRefNameFor(5)}
+                       screens={this.props.screens}/>
+
+        <EquipmentScreen actions={this.props.actions}
+                         candidate={this.props.candidate}
+                         ref={this.getRefNameFor(6)}
+                         screens={this.props.screens}/>
+
         <SkillsScreen actions={this.props.actions}
                       candidate={this.props.candidate}
-                      ref={this.getRefNameFor(4)}/>
+                      ref={this.getRefNameFor(7)}/>
 
         <SubmitScreen actions={this.props.actions}
                       candidate={this.props.candidate}
                       config={this.props.config}
-                      ref={this.getRefNameFor(5)}/>
+                      ref={this.getRefNameFor(8)}/>
       </div>
     );
   }

@@ -100,7 +100,7 @@ export default class SignpostImg extends Component {
     return (
       <div className="sign-img">
         <div>
-          <img alt='Signpost to Scalac img' id='img1' onClick={e => this.proceed(e)} src='../../../assets/img/packYourBag/mountains.svg' />
+          <img alt='Signpost to Scalac img' id='img1' onClick={e => this.proceed(e)} src='../../../assets/img/mountains.svg' />
           {this.state.feet.map((foot, idx) => {
             const footSide = (idx % 2) ? 'right' : 'left';
             const imageSrc = '../../../assets/img/packYourBag/' + footSide + '_footprint.svg';

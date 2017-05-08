@@ -1,81 +1,71 @@
-.second-screen
+.ways-info-screen
   position relative
   overflow-y hidden
+  font-size 6%vw
+
+
+  > p
+    font-size 1em
+    font-weight 300
+    line-height 0.6
+    left 10%
+    position absolute
+
+  > p:nth-child(2)
+    left 50%
+    top 20%
+
+  > img
+    width 50%
+    max-width 1200px
+    max-height 60%
+    bottom 0
+    z-index -100
+    position absolute
 
   > div
     position absolute
-    bottom 0
-    right 0
-    width 60%
-    max-height 100%
+    left 66%
+    top 60%
 
-    > h1
-      font-size 4vw
+    > button
       font-weight 300
-      position absolute
-      left -100px
-      top 0
-      width 600px
+      font-size 0.5em
+      letter-spacing 1px
+      background none
+      border none
+      margin 0 auto
+      display block
 
-      > button
-        font-weight 300
-        font-size 14px
-        letter-spacing 1px
-        padding 0px
-        background none
-        border none
+    > .chevron
+      width 120px
+      margin 0 auto
 
-      > span
-        font-size 1em
-        display block
-        line-height 1.27em
+      > i
+        border-color black
+        opacity 0.2
 
-      > span:nth-child(2)
-        position relative
-        left: -178px
 
-      > span:nth-child(3)
-        position relative
-        left: -116px
 
-        span,strong
-          display inline
-
-      > .chevron
-        width 125px
-
-        > i
-          border-color black
-          opacity 0.2
+@media (max-width: 768px)
+  .ways-info-screen
+    > p
+      position static
+      font-size 1.5em
+      text-align center
 
     > img
-      width 100%
-      max-width 1200px
-      max-height 100%
       bottom 0
+      width 64%
 
-
-
-@media (max-width: 767px)
-  .second-screen
     > div
+      position static
+      margin 20vh auto 0
+
+      > button
+        font-size 1.1em
+
+@media (max-width: 425px)
+  .ways-info-screen
+    > img
       width 100%
-
-      > h1
-        position relative
-        width auto
-        font-size 12 vw
-        text-align center
-        left initial
-
-        span:nth-child(2)
-          left initial
-        span:nth-child(3)
-          left initial
-        .chevron
-          width initial
-
-
-
-
-
