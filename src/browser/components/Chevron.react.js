@@ -8,8 +8,9 @@ if (process.env.IS_BROWSER) {
 
 export default class Chevron extends Component {
   static propTypes = {
+    color: React.PropTypes.string,
     isAnimated: React.PropTypes.bool,
-    onClick: React.PropTypes.func
+    onClick: React.PropTypes.func,
   }
 
   static defaultProps = {
@@ -17,6 +18,10 @@ export default class Chevron extends Component {
   }
 
   render() {
+    const arrowColor = classNames({
+      '-red': this.props.color === 'red',
+    });
+
     const className = classNames('chevron', {
       '-animated': !!this.props.isAnimated,
       '-clickable': !!this.props.onClick
@@ -24,7 +29,7 @@ export default class Chevron extends Component {
 
     return (
       <div className={className} onClick={this.props.onClick}>
-        <i></i>
+        <i className={arrowColor}></i>
       </div>
     );
   }
