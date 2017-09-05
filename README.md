@@ -7,7 +7,7 @@ We are currently [hiring](https://www.scalac.io/join_us) all kinds of talented r
 
 ## Prerequisites
 
-Install [node.js](http://nodejs.org).
+Install [node.js](http://nodejs.org) v4.
 Then install [gulp.js](http://gulpjs.com/).
 ```shell
 npm install -g gulp
