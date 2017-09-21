@@ -15,33 +15,30 @@ export default class FirstScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.state = this.getDefaultState();
-  }
-
-  getDefaultState() {
-    return {error: null};
+    this.state = {name: ''};
   }
 
   proceed() {
-    const name = ReactDOM.findDOMNode(this.refs.nameInput).value.trim();
+    const name = this.state.name.trim();
+    const {actions: {saveName, nextScreen}} = this.props;
 
-    if (!name) {
-      this.setState({error: 'We really need your name.'});
-      return;
+    if (name) {
+      saveName(name);
     }
 
-    this.setState(this.getDefaultState());
-
-    const {actions: {saveName, nextScreen}} = this.props;
-    saveName(name);
+    this.blur();
     nextScreen();
   }
 
   handleKeyDown(e) {
     if (e.keyCode === 13) {
-      ReactDOM.findDOMNode(this.refs.nameInput).blur();
+      this.blur();
       this.proceed();
     }
+  }
+
+  blur() {
+    ReactDOM.findDOMNode(this.refs.nameInput).blur();
   }
 
   render() {
@@ -56,8 +53,16 @@ export default class FirstScreen extends Component {
             <h1>Join our team</h1>
             <h2>we are looking for talented passionate people</h2>
             <div className={formControlClassName}>
-              <input autoComplete="off" onKeyDown={e => this.handleKeyDown(e)} placeholder="type your name" ref="nameInput" tabIndex="-1" type="text"/>
-              <span>{this.state.error}</span>
+              <input
+                autoComplete="off"
+                autoFocus
+                onChange={e => this.setState({name: e.target.value})}
+                onKeyDown={e => this.handleKeyDown(e)}
+                placeholder="how should we call you?"
+                ref="nameInput"
+                tabIndex="-1"
+                type="text"
+              />
             </div>
           </header>
         </div>
