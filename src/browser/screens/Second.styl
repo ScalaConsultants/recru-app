@@ -1,3 +1,9 @@
+@keyframes pulse
+  100%
+    left 70%
+    opacity 0.3
+    transform scale(0.5)
+
 .second-screen
   position relative
   overflow-y hidden
@@ -6,76 +12,84 @@
     position absolute
     bottom 0
     right 0
-    width 60%
-    max-height 100%
+    height 100%
+    display flex
+    align-items stretch
+    width 100%
 
-    > h1
+    p
       font-size 4vw
       font-weight 300
-      position absolute
-      left -100px
-      top 0
-      width 600px
+      margin 0
 
-      > button
-        font-weight 300
-        font-size 14px
-        letter-spacing 1px
-        padding 0px
-        background none
-        border none
+    .left-side
+      background url('../../../assets/img/second/bg.svg') no-repeat
+      width 50%
+      background-size auto 100%
+      align-items stretch
+      position relative
 
-      > span
-        font-size 1em
-        display block
-        line-height 1.27em
+      .cloud
+        position absolute
+        animation pulse 15s infinite
 
-      > span:nth-child(2)
-        position relative
-        left: -178px
+      .c1
+        left 5%
+        top 25%
+        width 35%
+        animation-delay 5s
 
-      > span:nth-child(3)
-        position relative
-        left: -116px
+      .c2
+        top 5%
+        width 45%
+        left 30%
 
-        span,strong
-          display inline
+    .right-side
+      display flex
+      flex-flow column nowrap
+      justify-content center
+      width 35%
+      position relative
 
-      > .chevron
-        width 125px
+      .path
+        display flex
+        align-items center
+        margin-top 100px
+        cursor pointer
+        transition 1s
 
-        > i
-          border-color black
-          opacity 0.2
+        .scalac
+          width 40px
+          margin-right 15px
 
-    > img
-      width 100%
-      max-width 1200px
-      max-height 100%
-      bottom 0
+      .path:hover
+        font-size 120%
 
+        .scalac
+          width 50px
 
+      .arrow
+        position absolute
+        bottom 20px
+        width 70%
 
-@media (max-width: 767px)
-  .second-screen
-    > div
-      width 100%
+  @media (max-width: 767px)
+    .second-screen
+      > div
+        width 100%
 
-      > h1
-        position relative
-        width auto
-        font-size 12 vw
-        text-align center
-        left initial
-
-        span:nth-child(2)
+        > h1
+          position relative
+          width auto
+          font-size 12 vw
+          text-align center
           left initial
-        span:nth-child(3)
-          left initial
-        .chevron
-          width initial
 
+          span:nth-child(2)
+            left initial
 
+          span:nth-child(3)
+            left initial
 
-
-
+          .chevron
+            width initial

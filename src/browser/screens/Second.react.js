@@ -20,14 +20,24 @@ export default class SecondScreen extends Component {
     return (
       <section className="second-screen screen">
         <div>
-          <h1>
-            <span>There are</span>
-            <span><strong>several ways</strong></span>
-            <span>to the <strong>top</strong></span>
-            <button onClick={e => this.proceed(e)} tabIndex="-1">choose your path</button>
-            <Chevron isAnimated onClick={e => this.proceed(e)}/>
-          </h1>
-          <img alt='Scalac Logo' src="assets/img/logo.svg"/>
+          <div className="left-side">
+            <img className="cloud c1" src="../../../assets/img/second/cloud-1.svg" />
+            <img className="cloud c2" src="../../../assets/img/second/cloud-2.svg" />
+          </div>
+          <div className="right-side">
+            <div>
+              <p>There are</p>
+              <p>several ways</p>
+              <p>to explore</p>
+            </div>
+            <div className="path" onClick={() => this.proceed()}>
+              <img className="scalac" src="../../../assets/img/second/scalac-logo.svg" />
+              <h2>choose your path</h2>
+            </div>
+            <div className="arrow">
+              <Chevron color="red" isAnimated onClick={e => this.proceed(e)} />
+            </div>
+          </div>
         </div>
       </section>
     );
