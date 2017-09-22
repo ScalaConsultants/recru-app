@@ -1,71 +1,5 @@
 {
-  "0":[
-    {
-      "id" : 8,
-      "name" : "scala",
-      "src" : "assets/img/backend/scala.png"
-    },
-    {
-      "id" : 9,
-      "name" : "akka",
-      "src" : "assets/img/backend/akka.png"
-    },
-    {
-      "id" : 10,
-      "name" : "play",
-      "src" : "assets/img/backend/play.png"
-    },
-    {
-      "id" : 11,
-      "name" : "slick",
-      "src" : "assets/img/backend/slick.png"
-    },
-    {
-      "id" : 12,
-      "name" : "spray",
-      "src" : "assets/img/backend/spray.png"
-    }
-  ],
-  "1" : [
-    {
-      "id" : 13,
-      "name" : "clojure",
-      "src" : "assets/img/clojure/clojure.png"
-    },
-    {
-      "id" : 14,
-      "name" : "clojure-script",
-      "src" : "assets/img/clojure/clojurescript.png"
-    },
-    {
-      "id" : 15,
-      "name" : "leiningen",
-      "src" : "assets/img/clojure/leiningen.png"
-    }
-  ],
-  "2" : [
-    {
-      "id" : 16,
-      "name" : "swift",
-      "src" : "assets/img/mobile/swift.png"
-    },
-    {
-      "id" : 17,
-      "name" : "objective-c",
-      "src" : "assets/img/mobile/objective-c.png"
-    },
-    {
-      "id" : 18,
-      "name" : "xcode",
-      "src" : "assets/img/mobile/xcode.png"
-    },
-    {
-      "id" : 19,
-      "name" : "appcode",
-      "src" : "assets/img/mobile/appcode.png"
-    }
-  ],
-  "3" : [
+  "0" : [
     {
       "id" : 1,
       "name" : "js",
@@ -100,6 +34,55 @@
       "id" : 7,
       "name" : "react",
       "src" : "assets/img/frontend/react.png"
+    }
+  ],
+  "1":[
+    {
+      "id" : 8,
+      "name" : "scala",
+      "src" : "assets/img/backend/scala.png"
+    },
+    {
+      "id" : 9,
+      "name" : "akka",
+      "src" : "assets/img/backend/akka.png"
+    },
+    {
+      "id" : 10,
+      "name" : "play",
+      "src" : "assets/img/backend/play.png"
+    },
+    {
+      "id" : 11,
+      "name" : "slick",
+      "src" : "assets/img/backend/slick.png"
+    },
+    {
+      "id" : 12,
+      "name" : "spray",
+      "src" : "assets/img/backend/spray.png"
+    }
+  ],
+  "2" : [
+    {
+      "id" : 16,
+      "name" : "swift",
+      "src" : "assets/img/mobile/swift.png"
+    },
+    {
+      "id" : 17,
+      "name" : "objective-c",
+      "src" : "assets/img/mobile/objective-c.png"
+    },
+    {
+      "id" : 18,
+      "name" : "xcode",
+      "src" : "assets/img/mobile/xcode.png"
+    },
+    {
+      "id" : 19,
+      "name" : "appcode",
+      "src" : "assets/img/mobile/appcode.png"
     }
   ]
 }

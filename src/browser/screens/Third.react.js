@@ -40,14 +40,14 @@ export default class ThirdScreen extends Component {
   render() {
     return (
       <section className="third-screen screen">
+        <h1>Choose your role</h1>
         <ul>
           {json.map((role) => {
             return (
               <li key={role.id} onClick={() => this.handleChooseRole(role)}>
-                <p><strong>{role.name.split(' ')[0]}</strong> {role.name.split(' ')[1]}</p>
                 <div>
+                  <p><strong>{role.name.split(' ')[0]}</strong> {role.name.split(' ')[1]}</p>
                   <img alt={`${role.name} path`} src={role.img} />
-                  <p>{role.description}</p>
                 </div>
               </li>
             );

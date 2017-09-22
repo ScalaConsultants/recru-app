@@ -1,8 +1,10 @@
-import Component from 'react-pure-render/component';
-import Chevron from '../components/Chevron.react';
 import React from 'react';
+import Component from 'react-pure-render/component';
+
 import boundScroll from '../lib/boundScroll';
+import Chevron from '../components/Chevron.react';
 import SkillItem from '../components/SkillItem.react';
+import LeftItem from '../components/LeftItem.react';
 import technologies from '../data/technologies.json';
 
 if (process.env.IS_BROWSER) {
@@ -30,16 +32,21 @@ export default class FourthScreen extends Component {
 
     return (
       <section className="fourth-screen screen">
-        <header>
-          pack your bag
-        </header>
-        <p>show us, which skills you have</p>
-        <ul>
-        {skillsForCurrentRole.map((skill) =>
-          <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
-        )}
-        </ul>
-        <Chevron isAnimated onClick={e => this.proceed(e)}/>
+        <div className="container">
+          <LeftItem />
+          <div className="right">
+            <h1>
+              pack your bag
+            </h1>
+            <p>show us, which skills you have</p>
+            <ul>
+            {skillsForCurrentRole.map((skill) =>
+              <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
+            )}
+            </ul>
+            <Chevron isAnimated onClick={e => this.proceed(e)}/>
+          </div>
+        </div>
       </section>
     );
   }
