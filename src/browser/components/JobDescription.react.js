@@ -2,7 +2,7 @@ import Component from 'react-pure-render/component';
 import React from 'react';
 
 if (process.env.IS_BROWSER) {
-  require('./LeftItem.styl');
+  require('./JobDescription.styl');
 }
 
 export default class LeftItem extends Component {
@@ -14,8 +14,14 @@ export default class LeftItem extends Component {
     const data = this.props.data || '';
 
     return (
-      <div className="left">
-        <img src={data.img} />
+      <div className="content">
+        <h1>
+          {data.name}
+        </h1>
+        <h3>Position description</h3>
+        <p>
+          {data.description}
+        </p>
       </div>
     );
   }

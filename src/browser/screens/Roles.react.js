@@ -4,11 +4,11 @@ import boundScroll from '../lib/boundScroll';
 import json from '../data/roles.json';
 
 if (process.env.IS_BROWSER) {
-  require('./Third.styl');
+  require('./Roles.styl');
 }
 
 @boundScroll()
-export default class ThirdScreen extends Component {
+export default class Roles extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired
   }
@@ -46,8 +46,8 @@ export default class ThirdScreen extends Component {
             return (
               <li key={role.id} onClick={() => this.handleChooseRole(role)}>
                 <div>
-                  <p><strong>{role.name.split(' ')[0]}</strong> {role.name.split(' ')[1]}</p>
                   <img alt={`${role.name} path`} src={role.img} />
+                  <p><strong>{role.name.split(' ')[0]}</strong> {role.name.split(' ')[1]}</p>
                 </div>
               </li>
             );

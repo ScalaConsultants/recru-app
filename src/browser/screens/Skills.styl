@@ -1,5 +1,6 @@
 .fourth-screen
   position relative
+  display table
 
   .chevron
 
@@ -20,12 +21,16 @@
     margin 0px 0px 60px
 
   ul
-    background #f5f5f5
     display block
     max-width 100%
     margin 40px
     list-style none
     padding 20px
+
+    li:hover
+      img
+        filter grayscale(0)
+        transition .2s ease-in-out
 
     li
       width 33.3333%
@@ -61,6 +66,7 @@
         margin 0 auto
 
       img
+        filter grayscale(100%)
         max-width 80px
         vertical-align middle
         margin 0 20px 0 20px
@@ -99,7 +105,10 @@
 
 @media (max-width: 767px)
   .fourth-screen
+    h1
+      font-size 6.5vw
     ul
+      background transparent
       margin 0
 
     > .chevron
@@ -112,6 +121,8 @@
 
 @media (max-width: 480px)
   .fourth-screen
+    p
+      margin 0 0 30px
 
     > .chevron
       position relative

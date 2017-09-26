@@ -8,11 +8,11 @@ import LeftItem from '../components/LeftItem.react';
 import technologies from '../data/technologies.json';
 
 if (process.env.IS_BROWSER) {
-  require('./Fourth.styl');
+  require('./Skills.styl');
 }
 
 @boundScroll()
-export default class FourthScreen extends Component {
+export default class Skills extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
     candidate: React.PropTypes.object.isRequired
@@ -25,6 +25,10 @@ export default class FourthScreen extends Component {
 
   render() {
     const skills = technologies[this.props.candidate.role.id];
+    const backpackUrl = {
+      img: "../../../assets/img/plecak.svg"
+    };
+
     let skillsForCurrentRole = [];
 
     if (typeof skills === 'object')
@@ -33,7 +37,7 @@ export default class FourthScreen extends Component {
     return (
       <section className="fourth-screen screen">
         <div className="container">
-          <LeftItem />
+          <LeftItem data={backpackUrl} />
           <div className="right">
             <h1>
               pack your bag
