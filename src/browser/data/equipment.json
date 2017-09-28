@@ -1,0 +1,41 @@
+{
+  "desc" : "There are some tools we equip you with, and opportunities we want to give you, to make your way more exiciting.",
+  "options" : [
+    {
+      "id" : 0,
+      "title" : "Tools",
+      "img" : "assets/img/equipment/T-active.svg",
+      "active" : "assets/img/equipment/T.svg"
+    },
+    {
+      "id" : 1,
+      "title" : "Opportunities",
+      "img" : "assets/img/equipment/O-active.svg",
+      "active" : "assets/img/equipment/O.svg"
+    },
+    {
+      "id" : 2,
+      "title" : "Personal Development",
+      "img" : "assets/img/equipment/P-active.svg",
+      "active" : "assets/img/equipment/P.svg"
+    }
+  ],
+  "0": [
+    "Rope",
+    "Phone",
+    "Binoculars"
+  ],
+  "1" : [
+    "Being the part of Best Scala hAkkers Team!",
+    "Creating great software and solving deep technical problems",
+    "Great customers to work with",
+    "Delivering value to internal products and/or eternal projects",
+    "Extending and improving products used by people worldwide",
+    "Regular company-wide retreats - we meet in person to work and play together",
+    "Freedom to choose architecture, technologies, conventions and tools"
+  ],
+  "2" : [
+    "X-fit",
+    "English lessons"
+  ]
+}

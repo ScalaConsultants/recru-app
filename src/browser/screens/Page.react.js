@@ -8,6 +8,8 @@ import Roles from '../screens/Roles.react';
 import Skills from '../screens/Skills.react';
 import FifthScreen from '../screens/Fifth.react';
 import PositionScreen from '../screens/Position.react';
+import Compass from '../screens/Compass.react';
+import Equipment from '../screens/Equipment.react';
 import movementHandler from '../lib/movementHandler';
 
 @movementHandler
@@ -56,8 +58,10 @@ export default class Screens extends Component {
         <SecondScreen {...this.props} isCurrent={this.isCurrent(1)} ref={this.getRefNameFor(1)}/>
         <Roles {...this.props} isCurrent={this.isCurrent(2)} ref={this.getRefNameFor(2)}/>
         <PositionScreen {...this.props} isCurrent={this.isCurrent(3)} ref={this.getRefNameFor(3)}/>
-        <Skills {...this.props} isCurrent={this.isCurrent(4)} ref={this.getRefNameFor(4)}/>
-        <FifthScreen {...this.props} isCurrent={this.isCurrent(5)} ref={this.getRefNameFor(5)}/>
+        <Compass {...this.props} isCurrent={this.isCurrent(4)} ref={this.getRefNameFor(4)}/>
+        <Equipment {...this.props} isCurrent={this.isCurrent(5)} ref={this.getRefNameFor(5)}/>
+        <Skills {...this.props} isCurrent={this.isCurrent(6)} ref={this.getRefNameFor(6)}/>
+        <FifthScreen {...this.props} isCurrent={this.isCurrent(7)} ref={this.getRefNameFor(7)}/>
       </div>
     );
   }

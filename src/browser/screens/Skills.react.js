@@ -35,7 +35,7 @@ export default class Skills extends Component {
       skillsForCurrentRole = Object.keys(skills).map((key) => skills[key]);
 
     return (
-      <section className="fourth-screen screen">
+      <section className="skills-screen screen">
         <div className="container">
           <LeftItem data={backpackUrl} />
           <div className="right">

@@ -1,0 +1,46 @@
+{
+  "desc" : "In Scalac we are a team of people, who simply like each other. Our values are our compass - they show us which direction choose, to create a great company.",
+  "rules" : [
+    {
+      "title" : "Work hard",
+      "img" : "../../../assets/img/values/Hantel.svg"
+    },
+    {
+      "title" : "Do the right thing",
+      "img" : "../../../assets/img/values/Ptaszek.svg"
+    },
+    {
+      "title" : "Have fun",
+      "img" : "../../../assets/img/values/Balony.svg"
+    }
+  ],
+  "values" : [
+    {
+      "title" : "Friendliness",
+      "subtitle" : "help others, be nice",
+      "img" : "../../../assets/img/values/Balony.svg"
+    },
+    {
+      "title" : "Scalacracy",
+      "subtitle" : "mix of democracy and dictatorship",
+      "img" : "../../../assets/img/values/scalacracy.svg"
+    },
+    {
+      "title" : "Taking responsibility",
+      "subtitle" : "repair, if it's broken",
+      "img" : "../../../assets/img/values/responsibility.svg"
+    },
+    {
+      "title" : "Professionalism",
+      "img" : "../../../assets/img/values/professionalism.svg"
+    },
+    {
+      "title" : "Everyone is equal",
+      "img" : "../../../assets/img/values/equality.svg"
+    },
+    {
+      "title" : "Open communication",
+      "img" : "../../../assets/img/values/communication.svg"
+    }
+  ]
+}
