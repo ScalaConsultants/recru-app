@@ -14,7 +14,7 @@ export default class LeftItem extends Component {
     const data = this.props.data || '';
 
     return (
-      <div className="content">
+      <div className="content job">
         <h1>
           {data.name}
         </h1>

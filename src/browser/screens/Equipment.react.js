@@ -36,7 +36,7 @@ export default class Compass extends Component {
       dataSet.map(element => {
           return (
             <li key={element}>
-              {element}
+              <p>{element}</p>
             </li>
           );
         }
@@ -64,16 +64,16 @@ export default class Compass extends Component {
               <h1>
                 Check your equipment
               </h1>
-              <p>{data.desc}</p>
+              <p className="desc">{data.desc}</p>
               <div className="options list">
                 {data.options.map((element) =>
-                  <div className="option" key={element.title} onClick={() => this.toggleTab(element.id)}>
+                  <div className="option" key={element.id} onClick={() => this.toggleTab(element.id)}>
                     <img src={element.id === this.state.currentTab.id ? element.active : element.img} alt={element.title} />
                     <p>{element.title}</p>
                   </div>
                 )}
               </div>
-              <div>
+              <div className="content-list">
                 <ul>
                   {this.renderList()}
                 </ul>

@@ -46,8 +46,12 @@ export default class FirstScreen extends Component {
       '-error': !!this.state.error
     });
 
+    const background = {
+      backgroundImage: `url(../../../assets/img/bg.png)`
+    }
+
     return (
-      <section className="first-screen screen">
+      <section className="first-screen screen" style={background}>
         <div className="centering-wrapper">
           <header>
             <h1>Join our team</h1>

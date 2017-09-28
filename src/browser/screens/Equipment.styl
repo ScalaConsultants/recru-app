@@ -16,6 +16,29 @@
     width 100%
     max-width 700px
 
+    h1
+      font-size 2.5em
+      text-transform uppercase
+
+    ul
+      display flex
+      flex-direction column
+
+      li
+        display inline-flex
+        list-style none
+        line-height 40px
+
+        p
+          margin 0
+
+      li:before
+        transform: rotate(270deg);
+        content url('../../../assets/img/bullet.svg')
+        width 20px
+        display block
+        margin-right 5px
+
   .options
     display flex
 
@@ -25,6 +48,48 @@
       display flex
       flex 1
       flex-direction column
+      text-align center
+
+      p
+        font-weight 700
 
       img
         width 100px
+
+@media screen and (max-width: 767px)
+  .equipment-screen
+    .right
+      .chevron
+        position relative
+        width 100%
+        bottom 0px
+
+    .content
+      ul
+        li
+          line-height inherit
+          display list-item
+          list-style-type circle
+          list-style outside
+          color #f00
+
+          p
+            color #000
+        li:before
+          display none
+
+    .container
+      padding 0 40px
+
+      .desc
+        display none
+
+    .content-list
+      display flex
+
+    .options
+
+      .option
+
+        img
+          width 50px

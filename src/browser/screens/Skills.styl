@@ -8,7 +8,7 @@
       border-color #ff0204
 
   h1
-    font-size 3.5vw
+    font-size 2.5em
     text-align center
     font-weight 700
     color #010101
@@ -21,11 +21,12 @@
     margin 0px 0px 60px
 
   ul
-    display block
+    display flex
     max-width 100%
     margin 40px
     list-style none
     padding 20px
+    flex-wrap wrap
 
     li:hover
       img
@@ -33,10 +34,11 @@
         transition .2s ease-in-out
 
     li
-      width 33.3333%
-      display inline-block
       margin-bottom 40px
       position relative
+      display flex
+      justify-content center
+      align-items center
 
       .hint
         position absolute
@@ -103,10 +105,14 @@
         label.star:hover ~ label.star:before
           background-position -32px 0
 
+
+@media (max-width: 1024px)
+  .skills-screen
+    ul
+      justify-content space-around
+
 @media (max-width: 767px)
-  .fourth-screen
-    h1
-      font-size 6.5vw
+  .skills-screen
     ul
       background transparent
       margin 0
@@ -117,19 +123,20 @@
     ul
       margin-bottom 20px
       li
-        width: 50%
+        display flex
+        justify-content center
+        align-items center
+        width 100%
 
 @media (max-width: 480px)
-  .fourth-screen
+  .skills-screen
+    ul
+      li
+        img
+          max-width 50px
+
     p
       margin 0 0 30px
 
     > .chevron
       position relative
-
-    ul
-
-      li
-        width 90%
-        display block
-        margin 0 auto 20px

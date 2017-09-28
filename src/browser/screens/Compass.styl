@@ -2,12 +2,18 @@
   .right
     display flex
     align-items center
+    position relative
+
+  .chevron
+    position absolute
+    bottom 20px
+    width 70%
 
   .content
     width 700px
     max-width 100%
     h1
-      font-size 3vw
+      font-size 2.5em
       text-transform uppercase
 
     .list
@@ -31,3 +37,39 @@
           font-weight 700
         img
           height 50px
+
+@media screen and (max-width: 767px)
+  .compass-screen
+    .right
+      .chevron
+        position relative
+        width 100%
+        bottom 0px
+
+    .content
+      padding 0 40px
+      width 100%
+
+      .rules
+        img
+          height 70px
+
+      .values
+        background transparent
+        padding 0
+
+        img
+          height 35px
+
+@media screen and (max-width: 460px)
+  .compass-screen
+
+    .content
+      height 100%
+      display flex
+      flex-direction column
+      justify-content center
+
+      .values
+      h3
+        display none
