@@ -1,12 +1,10 @@
 .roles-screen
-  align-items: center;
+  align-items center
   background #fff url('../../../assets/img/positions/mountains.svg') no-repeat
   background-size cover
-  background-position 0 -25px
   display flex
-  flex-direction: column;
+  flex-direction column
   font-size 12px
-  height 100vh
   overflow-y hidden
 
   h1
@@ -18,8 +16,8 @@
     display flex
     justify-content center
     align-items flex-end
+    height 100%
     width 100%
-    height 100vh
     padding 0
     margin 0
 
@@ -28,15 +26,14 @@
       display flex
       flex-direction column
       width 25%
-      height 100%
+      justify-content flex-end
       position relative
+      height 100%
 
       div
         align-items center
         display flex
         flex-direction column
-        height 80vh
-        justify-content: flex-end;
 
         p
           bottom 0px
@@ -61,10 +58,9 @@
         p
           opacity 1
         img
-          transform: scale(1.1);
+          transform scale(1.1)
 
     li:nth-child(2)
-      img
         height 65%
       p
         order 1
@@ -73,28 +69,47 @@
   .roles-screen
     background transparent
 
+    h1
+      margin-bottom 0
+
     ul
       flex-direction column
-      margin 20px 0
+      justify-content flex-start
 
       li
         margin 20px 0
         width 100%
+        height 25%
 
         div
-
+          height fit-content
+          img
+            order 1
           p
             opacity 1
+            order 0
 
       li:nth-child(1)
         order 1
 
       li:nth-child(2)
         order 0
-        img
-          height 100%
+        height 25%
         p
           order 0
 
       li:nth-child(3)
         order 2
+
+
+@media (max-width: 480px),
+(max-height: 520px)
+  .roles-screen
+    ul
+      justify-content center
+      li
+        height auto
+        img
+          display none
+      li:nth-child(2)
+        height auto
