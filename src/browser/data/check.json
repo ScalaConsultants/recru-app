@@ -1,0 +1,32 @@
+{
+  "character" : [
+    {
+      "id" : "1",
+      "desc" : "Focus on software quality and good development practices"
+    },
+    {
+      "id" : "2",
+      "desc" : "Konwledge and commercial experience with webpage devlopment, covering element like: HTML, CSS and JavaScript"
+    },
+    {
+      "id" : "3",
+      "desc" : "Growth mindset and willingness to learn"
+    },
+    {
+      "id" : "4",
+      "desc" : "Proactive approach, Can do attitue"
+    },
+    {
+      "id" : "5",
+      "desc" : "Problem-solving skills"
+    },
+    {
+      "id" : "6",
+      "desc" : "Team player approach"
+    },
+    {
+      "id" : "7",
+      "desc" : "Excellent communication skills with fluent English so you can communicate with our clients freely and that we help with learning"
+    }
+  ]
+}

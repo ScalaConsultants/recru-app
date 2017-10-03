@@ -11,7 +11,6 @@ if (process.env.IS_BROWSER) {
   require('./Skills.styl');
 }
 
-@boundScroll()
 export default class Skills extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,

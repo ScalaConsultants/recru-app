@@ -2,15 +2,17 @@
   align-items center
   background #fff url('../../../assets/img/positions/mountains.svg') no-repeat
   background-size cover
+  background-position 0
   display flex
   flex-direction column
   font-size 12px
   overflow-y hidden
 
   h1
-    font-size 2.5em
+    font-size 3.5em
     font-weight 700
     text-transform uppercase
+    margin 10px 0 0
 
   ul
     display flex
@@ -25,7 +27,7 @@
       cursor pointer
       display flex
       flex-direction column
-      width 25%
+      width 17%
       justify-content flex-end
       position relative
       height 100%
@@ -34,6 +36,8 @@
         align-items center
         display flex
         flex-direction column
+        justify-content flex-end
+        height 100%
 
         p
           bottom 0px
@@ -41,7 +45,7 @@
           font-size 2em
           text-align center
           color #000
-          margin 0
+          margin 0 0 5px 0
           opacity .2
           transition opacity .3s ease-in-out
           -webkit-transition opacity .3s ease-in-out
@@ -49,7 +53,7 @@
 
         img
           bottom 0
-          height 100%
+          height 90%
           transition .5s linear
           -webkit-transition .5s linear
           -moz-transition .5s linear
@@ -71,6 +75,7 @@
 
     h1
       margin-bottom 0
+      font-size 2.5em
 
     ul
       flex-direction column
@@ -82,7 +87,7 @@
         height 25%
 
         div
-          height fit-content
+          height 100%
           img
             order 1
           p
@@ -103,7 +108,7 @@
 
 
 @media (max-width: 480px),
-(max-height: 520px)
+(max-height: 520px) and (max-width: 767px)
   .roles-screen
     ul
       justify-content center

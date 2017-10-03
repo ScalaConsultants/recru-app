@@ -37,5 +37,30 @@
   "2" : [
     "X-fit",
     "English lessons"
-  ]
+  ],
+  "experience": {
+    "subtitle" : "As we've said at the beginning, there are several ways to explore.",
+    "command": "Please choose advancement level of the trail most suitable for you.",
+    "arrow": "../../../assets/img/bullet.svg",
+    "levels": [
+      {
+        "id": "junior-level",
+        "position": "Junior Developer",
+        "desc": "(up to 5000 PLN)",
+        "stars": ["1"]
+      },
+      {
+        "id": "mid-level",
+        "position": "Developer",
+        "desc": "(5000-9000 PLN)",
+        "stars": ["1","2"]
+      },
+      {
+        "id": "expert-level",
+        "position": "Expert",
+        "desc": "(10000-15000 PLN)",
+        "stars": ["1","2","3"]
+      }
+    ]
+  }
 }
