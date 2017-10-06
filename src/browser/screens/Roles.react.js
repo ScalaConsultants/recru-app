@@ -40,7 +40,7 @@ export default class Roles extends Component {
   render() {
     return (
       <section className="roles-screen screen">
-        <h1>Choose your role</h1>
+        <h1>Who are you?</h1>
         <ul>
           {json.map((role) => {
             return (

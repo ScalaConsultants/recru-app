@@ -18,10 +18,20 @@ export default class LeftItem extends Component {
         <h1>
           {data.name}
         </h1>
-        <h3>Position description</h3>
+        <h3>Who are you?</h3>
         <p>
-          {data.description}
+          {data.who}
         </p>
+        <h3>What is your mission in Scalac?</h3>
+        <ul>
+          {
+            data.what ? data.what.map(item => {
+              return(
+                <li key={item.id}>{item.desc}</li>
+              );
+            }) : ''
+          }
+        </ul>
       </div>
     );
   }

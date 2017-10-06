@@ -24,6 +24,7 @@ export default class Check extends Component {
   }
 
   render() {
+    const specificData = data[this.props.candidate.role.id] || [""];
     const backpackUrl = {
       img: "../../../assets/img/plecak.svg"
     };
@@ -34,18 +35,20 @@ export default class Check extends Component {
           <LeftItem data={backpackUrl} />
           <div className="right">
             <div className="content">
-              <h1>Check, if you have it!</h1>
+              <h1>Check, if you have it:</h1>
               <div className="checkbox-list">
                 {
-                  data.character.map(feature =>
-                  <div key={feature.id}>
-                    <input type="checkbox" id={feature.id} name={feature.id} value={feature.desc} />
-                    <label htmlFor={feature.id}>
-                      {feature.desc}
-                    </label>
-                  </div>
-                    
-                  )
+                  specificData.skillset ?
+                  specificData.skillset.map(feature => {
+                    return (
+                      <div key={feature.id}>
+                        <input type="checkbox" id={feature.for} value={feature.desc} />
+                        <label htmlFor={feature.for}>
+                          {feature.desc}
+                        </label>
+                      </div>
+                    );
+                  }) : ""
                 }
               </div>
             </div>

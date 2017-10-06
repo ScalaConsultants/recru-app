@@ -25,6 +25,7 @@ export default class Position extends Component {
 
   render() {
     const role = roles[this.props.candidate.role.id];
+
     return (
       <section className="position-screen screen">
         <div className="container">

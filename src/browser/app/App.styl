@@ -50,7 +50,7 @@ strong
 
 .screen
   overflow-x hidden
-  overflow-y auto
+  overflow-y scroll
 
 ::-webkit-scrollbar
     width 5px
@@ -83,3 +83,16 @@ strong
 
   &::-webkit-scrollbar-thumb:window-inactive
     background rgba(255,255,255,0.05)
+
+.content
+  ul
+    li
+      display inline-flex
+      list-style none
+      line-height 40px
+    li:before
+        transform: rotate(270deg);
+        content url('../../../assets/img/bullet.svg')
+        width 20px
+        display block
+        margin-right 5px

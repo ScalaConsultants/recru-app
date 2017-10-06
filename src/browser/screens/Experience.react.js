@@ -18,16 +18,26 @@ export default class Experience extends Component {
     candidate: React.PropTypes.object.isRequired
   }
 
+  constructor(props) {
+    super(props);
+    this.state = { level: '' };
+  }
+
   proceed() {
     const {actions: {nextScreen}} = this.props;
     nextScreen();
+  }
+
+  selectLevel(id) {
+    this.setState({
+      level: {...this.state.level, id}
+    });
   }
 
   render() {
     const backpackUrl = {
       img: "../../../assets/img/mountain-w-flag.svg"
     };
-
     return (
       <section className="experience-screen screen">
         <div className="container">
@@ -42,7 +52,11 @@ export default class Experience extends Component {
                 <div className="experience-level">
                   {data.experience.levels.map(level => {
                     return (
-                        <div className="level" key={level.id}>
+                        <div
+                          key={level.id}
+                          onClick={() => this.selectLevel(level.id)}
+                          className={this.state.level.id === level.id ? 'active level' : 'level'}
+                        >
                           <div className="icons">
                             {level.stars.map(element => {
                                 return (

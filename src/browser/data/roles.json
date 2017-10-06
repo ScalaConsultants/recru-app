@@ -3,18 +3,72 @@
     "id": 0,
     "name": "Frontend Observer",
     "img": "assets/img/positions/Frontend.svg",
-    "description": "You are an exact observer hungry for wide views, who transfer it to the frontend world. You are a coding painter, who make user world of technology more unique, attractive and friendly. You  appreciate those precious moments of lonely journey of creativity as well as frontend team travelling."
+    "who": "You are an observer hungry for wide views, who transfers it into the frontend world. You are a coding-artist, who makes the  world of technology unique attractive and friendly.",
+    "what": [
+      {
+        "id": "01-0-what",
+        "desc": "You make sure human creativity and the power of machine meet to create excellency"
+      },
+      {
+        "id": "02-0-what",
+        "desc": "You make sure user experience is as unique and friendly as it can be"
+      },
+      {
+        "id": "03-0-what",
+        "desc": "You make sure the bridge between user and backend is solid reliable"
+      },
+      {
+        "id": "04-0-what",
+        "desc": "Your are not a robot who does what the client tells him to, but and advisor and partner: suggesting optimal solutions for given problems"
+      }
+    ]
   },
   {
     "id": 1,
     "name": "Backend Climber",
     "img": "assets/img/positions/Backend.svg",
-    "description": "You are the hard “code” passionate. You discover new territories, climbing individually or with your team. You packed your bag of the best dev tools to be a strong backend for your users, as well as for your team. Your way is a various combination of precision,  inventiveness, challenge, cooperation and open-minded approach."
+    "who": "You are a hard “code” passionate. You discover new territories, climbing individually or with your team. Your way is a combination of precision, inventiveness, challenge, cooperation & open-mindedness.",
+    "what": [
+      {
+        "id": "01-1-what",
+        "desc": "You bring the application and data  to life, using your ability to compile creativity & tech-skills"
+      },
+      {
+        "id": "02-1-what",
+        "desc": "You design and create from ground up: from DB, up to the protocols"
+      },
+      {
+        "id": "03-1-what",
+        "desc": "You squeeze the last bit of performance from your hardware"
+      },
+      {
+        "id": "04-1-what",
+        "desc": "You evaluate the path you’ve already climbed  - you use the retrospective to improve the future"
+      }
+    ]
   },
   {
     "id": 2,
     "name": "Mobile Hiker",
     "img": "assets/img/positions/Mobile.svg",
-    "description": "Hiking is your lifestyle and you build this lifestyle among mobiles users. We can say you inititate an amazing hiking trips for mobile society. This is a long way trip related to permanent change. And you move this change forward. You hike alone or in a mobile team with one main purpose ahead – making this trip exciting, cool & as intuitive as possible."
+    "who": "Hiking is your lifestyle & you build this lifestyle among mobile users. You hike alone or in a mobile team with one main purpose ahead - making this trip exiting, cool and as intuitive as possible",
+    "what": [
+      {
+        "id": "01-2-what",
+        "desc": "You create stable, tested and pleasant to use apps"
+      },
+      {
+        "id": "02-2-what",
+        "desc": "You stay up to date with trends in mobile world"
+      },
+      {
+        "id": "03-2-what",
+        "desc": "You aren’t afraid of new concepts and tools, but are able to distinguish real revolution from a dead end"
+      },
+      {
+        "id": "04-2-what",
+        "desc": "Your are not a robot who does what the client tells him to, but and advisor and partner: suggesting optimal solutions for given problems"
+      }
+    ]
   }
 ]
