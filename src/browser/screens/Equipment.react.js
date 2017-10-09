@@ -36,7 +36,7 @@ export default class Compass extends Component {
       dataSet.map(element => {
           return (
             <li key={element}>
-              <p>{element}</p>
+              {element}
             </li>
           );
         }

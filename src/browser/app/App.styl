@@ -87,7 +87,7 @@ strong
 .content
   ul
     li
-      display inline-flex
+      display flex
       list-style none
       line-height 40px
     li:before
@@ -95,4 +95,11 @@ strong
         content url('../../../assets/img/bullet.svg')
         width 20px
         display block
-        margin-right 5px
+        margin 2px 5px 0 -25px
+        position absolute
+
+@media (max-width: 767px)
+  .content
+    ul
+      li
+        line-height inherit

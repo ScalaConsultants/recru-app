@@ -41,7 +41,7 @@ export default class Check extends Component {
                   specificData.skillset ?
                   specificData.skillset.map(feature => {
                     return (
-                      <div key={feature.id}>
+                      <div className="list-item" key={feature.id}>
                         <input type="checkbox" id={feature.for} value={feature.desc} />
                         <label htmlFor={feature.for}>
                           {feature.desc}

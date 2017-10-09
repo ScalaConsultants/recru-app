@@ -20,15 +20,6 @@
       font-size 2.5em
       text-transform uppercase
 
-    ul
-      display flex
-      flex-direction column
-
-      li
-        display inline-flex
-        list-style none
-        line-height 40px
-
         p
           margin 0
 
@@ -60,19 +51,7 @@
     .content
       h1
         font-size 2em
-
-      ul
-        li
-          line-height inherit
-          display list-item
-          list-style-type circle
-          list-style outside
-          color #f00
-
-          p
-            color #000
-        li:before
-          display none
+        text-transform uppercase
 
     .container
       padding 0 40px
@@ -89,3 +68,22 @@
 
         img
           width 50px
+
+@media screen and (max-width: 520px)
+  .equipment-screen
+    .options
+      .option
+        p
+          font-size 12px
+
+@media screen and (max-width: 420px)
+  .equipment-screen
+    .content-list
+      margin-top 45px
+
+@media screen and (max-width: 360px)
+  .equipment-screen
+    .options
+      .option
+        p
+          display none

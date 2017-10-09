@@ -34,55 +34,90 @@
       "id" : 7,
       "name" : "react",
       "src" : "assets/img/frontend/react.png"
+    },
+    {
+      "id" : 8,
+      "name" : "git",
+      "src" : "assets/img/backend/git.png"
     }
   ],
   "1":[
     {
-      "id" : 8,
+      "id" : 9,
       "name" : "scala",
       "src" : "assets/img/backend/scala.png"
     },
     {
-      "id" : 9,
+      "id" : 10,
       "name" : "akka",
       "src" : "assets/img/backend/akka.png"
     },
     {
-      "id" : 10,
+      "id" : 11,
       "name" : "play",
       "src" : "assets/img/backend/play.png"
     },
     {
-      "id" : 11,
+      "id" : 12,
       "name" : "slick",
       "src" : "assets/img/backend/slick.png"
     },
     {
-      "id" : 12,
+      "id" : 13,
       "name" : "spray",
       "src" : "assets/img/backend/spray.png"
+    },
+    {
+      "id" : 14,
+      "name" : "git",
+      "src" : "assets/img/backend/git.png"
     }
   ],
   "2" : [
     {
-      "id" : 16,
-      "name" : "swift",
-      "src" : "assets/img/mobile/swift.png"
+      "id" : 15,
+      "name" : "AndroidSDK",
+      "src" : "assets/img/mobile/android.png"
     },
     {
-      "id" : 17,
-      "name" : "objective-c",
-      "src" : "assets/img/mobile/objective-c.png"
+      "id" : 16,
+      "name" : "Java",
+      "src" : "assets/img/mobile/java.png"
     },
     {
       "id" : 18,
-      "name" : "xcode",
-      "src" : "assets/img/mobile/xcode.png"
+      "name" : "Gradle",
+      "src" : "assets/img/mobile/gradle.png"
     },
     {
       "id" : 19,
-      "name" : "appcode",
-      "src" : "assets/img/mobile/appcode.png"
+      "name" : "JUnit",
+      "src" : "assets/img/mobile/junit.png"
+    },
+    {
+      "id" : 20,
+      "name" : "Mockito",
+      "src" : "assets/img/mobile/mockito.png"
+    },
+    {
+      "id" : 21,
+      "name" : "RxJava",
+      "src" : "assets/img/mobile/rxjava.png"
+    },
+    {
+      "id" : 22,
+      "name" : "Espresso",
+      "src" : "assets/img/mobile/espresso.png"
+    },
+    {
+      "id" : 23,
+      "name" : "Dagger",
+      "src" : "assets/img/mobile/dagger.png"
+    },
+    {
+      "id" : 24,
+      "name" : "git",
+      "src" : "assets/img/backend/git.png"
     }
   ]
 }
