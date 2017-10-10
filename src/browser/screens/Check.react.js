@@ -35,23 +35,25 @@ export default class Check extends Component {
           <LeftItem data={backpackUrl} />
           <div className="right">
             <div className="content">
-              <h1>Check, if you have it:</h1>
-              <div className="checkbox-list">
-                {
-                  specificData.skillset ?
-                  specificData.skillset.map(feature => {
-                    return (
-                      <div className="list-item" key={feature.id}>
-                        <input type="checkbox" id={feature.for} value={feature.desc} />
-                        <label htmlFor={feature.for}>
-                          {feature.desc}
-                        </label>
-                      </div>
-                    );
-                  }) : ""
-                }
+              <div className="screen-content">
+                <h1>Check, if you have it:</h1>
+                <div className="checkbox-list">
+                    {
+                      specificData.skillset ?
+                      specificData.skillset.map(feature => {
+                        return (
+                          <div className="list-item" key={feature.id}>
+                            <input type="checkbox" id={`for${feature.id}`} value={feature.desc} />
+                            <label htmlFor={`for${feature.id}`}>
+                              {feature.desc}
+                            </label>
+                          </div>
+                        );
+                      }) : ""
+                    }
+                  </div>
+                </div>
               </div>
-            </div>
             <Chevron isAnimated onClick={e => this.proceed(e)}/>
           </div>
         </div>

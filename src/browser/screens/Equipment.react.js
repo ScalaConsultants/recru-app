@@ -61,22 +61,24 @@ export default class Compass extends Component {
           <LeftItem data={equipmentUrl} />
           <div className="right">
             <div className="content">
-              <h1>
-                Check your equipment
-              </h1>
-              <p className="desc">{data.desc}</p>
-              <div className="options list">
-                {data.options.map((element) =>
-                  <div className="option" key={element.id} onClick={() => this.toggleTab(element.id)}>
-                    <img src={element.id === this.state.currentTab.id ? element.active : element.img} alt={element.title} />
-                    <p>{element.title}</p>
-                  </div>
-                )}
-              </div>
-              <div className="content-list">
-                <ul>
-                  {this.renderList()}
-                </ul>
+              <div className="screen-content">
+                <h1>
+                  Check your equipment
+                </h1>
+                <p className="desc">{data.desc}</p>
+                <div className="options list">
+                  {data.options.map((element) =>
+                    <div className="option" key={element.id} onClick={() => this.toggleTab(element.id)}>
+                      <img src={element.id === this.state.currentTab.id ? element.active : element.img} alt={element.title} />
+                      <p>{element.title}</p>
+                    </div>
+                  )}
+                </div>
+                <div className="content-list">
+                  <ul>
+                    {this.renderList()}
+                  </ul>
+                </div>
               </div>
               <Chevron isAnimated onClick={e => this.proceed(e)}/>
             </div>

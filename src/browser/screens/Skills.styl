@@ -1,5 +1,8 @@
 .skills-screen
 
+  .right
+    justify-content flex-start
+
   .chevron
 
     i
@@ -21,7 +24,6 @@
   ul
     display flex
     max-width 100%
-    margin 40px
     list-style none
     padding 20px
     flex-wrap wrap
@@ -131,9 +133,12 @@
 @media (max-width: 480px)
   .skills-screen
     ul
+      padding 0
       li
+        justify-content flex-start
         img
           max-width 50px
+          margin 0 5px 0 0
 
     p
       margin 0 0 30px

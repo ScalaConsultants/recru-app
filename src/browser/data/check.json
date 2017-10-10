@@ -5,37 +5,30 @@
      "skillset" : [
       {
         "id" : "0-1",
-        "for" : "0-1-1",
         "desc" : "Focus on software quality and good development practices"
       },
       {
         "id" : "0-2",
-        "for" : "0-1-2",
         "desc" : "Knowledge and commercial experience with web page development, covering elements like: HTML, CSS and JavaScript"
       },
       {
         "id" : "0-3",
-        "for" : "0-1-3",
         "desc" : "Growth mindset and willingness to learn"
       },
       {
         "id" : "0-4",
-        "for" : "0-1-4",
         "desc" : "Proactive approach, Can do attitude"
       },
       {
         "id" : "0-5",
-        "for" : "0-1-5",
         "desc" : "Problem-solving skills"
       },
       {
         "id" : "0-6",
-        "for" : "0-1-6",
         "desc" : "Team player approach"
       },
       {
         "id" : "0-7",
-        "for" : "0-1-7",
         "desc" : "Excellent communication skills with fluent English so you can communicate with our clients freely and that we help with learning"
       }
     ]
@@ -46,12 +39,10 @@
      "skillset" : [
       {
         "id" : "1-1",
-        "for" : "1-1-1",
         "desc" : "Focus on software quality and good development practices"
       },
       {
         "id" : "1-2",
-        "for" : "1-1-2",
         "desc" : "Experience with automated testing and continuous integration/delivery"
       },
       {
@@ -61,27 +52,22 @@
       },
       {
         "id" : "1-4",
-        "for" : "1-1-4",
         "desc" : "Commercial experience with any functional language or Java"
       },
       {
         "id" : "1-5",
-        "for" : "1-1-5",
         "desc" : "Proactive approach, can do attitude"
       },
       {
         "id" : "1-6",
-        "for" : "1-1-6",
         "desc" : "Problem-solving skills"
       },
       {
         "id" : "1-7",
-        "for" : "1-1-7",
         "desc" : "Team player approach"
       },
       {
         "id" : "1-8",
-        "for" : "1-1-8",
         "desc" : "Excellent communication skills with fluent English (we will help you with improving your language skills, so you can communicate with our clients freely)"
       }
     ]
@@ -92,42 +78,34 @@
      "skillset" : [
       {
         "id" : "2-1",
-        "for" : "2-1-1",
         "desc" : "Focus on software quality and good development practices"
       },
       {
         "id" : "2-2",
-        "for" : "2-1-2",
         "desc" : "Knowledge and experience in Android, Annotations, Gitflow"
       },
       {
         "id" : "2-3",
-        "for" : "2-1-3",
         "desc" : "Good understanding of Object Oriented Programming"
       },
       {
         "id" : "2-4",
-        "for" : "2-1-4",
         "desc" : "Growth mindset and willingness to learn"
       },
       {
         "id" : "2-5",
-        "for" : "2-1-5",
         "desc" : "Proactive approach, Can do attitude"
       },
       {
         "id" : "2-6",
-        "for" : "2-1-6",
         "desc" : "Problem-solving skills"
       },
       {
         "id" : "2-7",
-        "for" : "2-1-7",
         "desc" : "Team player approach"
       },
       {
         "id" : "2-8",
-        "for" : "2-1-8",
         "desc" : "Excellent communication skills with fluent English (we will help you with improving your language skills, so you can communicate with our clients freely)"
       }
     ]

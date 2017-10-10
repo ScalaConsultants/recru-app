@@ -1,21 +1,5 @@
 .equipment-screen
 
-  .right
-    display flex
-    align-items center
-    position relative
-
-    .chevron
-      position absolute
-      bottom 20px
-      width 70%
-
-  .content
-    display flex
-    flex-direction column
-    width 100%
-    max-width 700px
-
     h1
       font-size 2.5em
       text-transform uppercase
@@ -23,8 +7,12 @@
         p
           margin 0
 
+  .content-list
+    width 100%
+
   .options
     display flex
+    width 100%
 
     .option
       align-items center
@@ -33,12 +21,13 @@
       flex 1
       flex-direction column
       text-align center
+      margin 0 40px
 
       p
         font-weight 700
 
       img
-        width 100px
+        width 80px
 
 @media screen and (max-width: 767px)
   .equipment-screen
@@ -53,9 +42,6 @@
         font-size 2em
         text-transform uppercase
 
-    .container
-      padding 0 40px
-
       .desc
         display none
 
@@ -63,8 +49,12 @@
       display flex
 
     .options
+      align-items flex-start
+      justify-content space-between
+      width 100%
 
       .option
+        margin 0
 
         img
           width 50px

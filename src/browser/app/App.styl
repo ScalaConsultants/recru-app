@@ -103,3 +103,49 @@ strong
     ul
       li
         line-height inherit
+
+.screen
+
+  .right
+    display flex
+    align-items center
+    position relative
+
+    .chevron
+      position absolute
+      top 90%
+
+  .content
+    align-items center
+    display flex
+    flex-direction column
+    width 100%
+    position relative
+    max-width 90%
+    height 100%
+
+    .screen-content
+      display flex
+      flex-direction column
+      align-items flex-start
+
+    h1
+      font-size 2.5em
+      text-transform uppercase
+
+@media screen and (max-width: 1020px)
+  .screen
+    .content
+      max-width 100%
+
+    .container
+      margin 0 40px
+
+    .content
+      height inherit
+
+    .right
+      align-items flex-start
+
+      .chevron
+        display none

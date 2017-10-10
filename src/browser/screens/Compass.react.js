@@ -36,20 +36,22 @@ export default class Compass extends Component {
           <LeftItem data={compassUrl} />
           <div className="right">
             <div className="content">
-              <h1>
-                Use scalac compass
-              </h1>
-              <p>{data.desc}</p>
-              <div className="rules list">
-                {data.rules.map((element) =>
-                  <Item data={element} key={element.title}/>
-                )}
-              </div>
-              <h3>Our values:</h3>
-              <div className="values list">
-                {data.values.map((element) =>
-                  <Item data={element} key={element.title}/>
-                )}
+              <div className="screen-content">
+                <h1>
+                  Use scalac compass
+                </h1>
+                <p>{data.desc}</p>
+                <div className="rules list">
+                  {data.rules.map((element) =>
+                    <Item data={element} key={element.title}/>
+                  )}
+                </div>
+                <h3>Our values:</h3>
+                <div className="values list">
+                  {data.values.map((element) =>
+                    <Item data={element} key={element.title}/>
+                  )}
+                </div>
               </div>
               <Chevron isAnimated onClick={e => this.proceed(e)}/>
             </div>
