@@ -20,18 +20,26 @@ export default class Experience extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { level: '' };
+    this.state = this.getDefaultState();
+  }
+
+  getDefaultState() {
+    return {
+      exp: ''
+    };
   }
 
   proceed() {
-    const {actions: {nextScreen}} = this.props;
+    if (!this.state.exp)
+      return;
+
+    const {actions: {saveExp, nextScreen}} = this.props;
+    saveExp(this.state.exp);
     nextScreen();
   }
 
-  selectLevel(id) {
-    this.setState({
-      level: {...this.state.level, id}
-    });
+  selectLevel(exp) {
+    this.setState({exp: exp}, () => this.proceed());
   }
 
   render() {
@@ -55,8 +63,8 @@ export default class Experience extends Component {
                       return (
                           <div
                             key={level.id}
-                            onClick={() => this.selectLevel(level.id)}
-                            className={this.state.level.id === level.id ? 'active level' : 'level'}
+                            onClick={() => this.selectLevel(level)}
+                            className={this.state.exp.id === level.id ? 'active level' : 'level'}
                           >
                             <div className="icons">
                               {level.stars.map(element => {

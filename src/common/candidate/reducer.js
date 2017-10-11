@@ -2,6 +2,7 @@ import * as actions from './actions';
 import map from 'lodash.map';
 import Role from './role';
 import Skill from './skill';
+import Exp from './exp';
 import {Record, Map} from 'immutable';
 
 const InitialState = Record({
@@ -9,6 +10,7 @@ const InitialState = Record({
   email: '',
   role: new Role(null),
   skills: {},
+  exp: new Exp(null),
   isSubmittingForm: false,
   hasSubmittedForm: false,
   hasSubmissionErroredOut: false
@@ -21,6 +23,7 @@ const revive = (candidate) => initialState.merge({
   email: candidate.email,
   role: new Role(candidate.role),
   skills: map(candidate.skills, (skill => new Skill(skill))),
+  exp: new Exp(candidate.exp),
   isSubmittingForm: candidate.isSubmittingForm,
   hasSubmittedForm: candidate.hasSubmittedForm,
   hasSubmissionErroredOut: candidate.hasSubmittedForm
@@ -52,6 +55,12 @@ export default function candidateReducer(state = initialState, action) {
       return state
         .setIn(['skills', skill.id], new Skill(skill))
         .setIn(['skills', skill.id, 'level'], level);
+    }
+
+    case actions.SAVE_EXP: {
+      const {exp} = action.payload;
+      return state
+        .set('exp', new Exp(exp));
     }
 
     case actions.SUBMIT_START: {
