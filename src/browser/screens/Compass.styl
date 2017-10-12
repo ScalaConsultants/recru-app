@@ -12,16 +12,27 @@
       img
         height 100px
 
+    .item
+      margin 10px 0
+
+      span
+        font-weight 500
+        opacity 0
+        transition opacity .3s ease-in-out
+
+      p
+        font-weight 700
+
+    .item:hover
+      span
+        opacity 1
+
     .values
       flex-wrap wrap
 
       .item
-        margin 10px 0
-
-        p
-          font-weight 700
-        img
-          height 50px
+          img
+            height 50px
 
 @media screen and (max-width: 767px)
   .compass-screen

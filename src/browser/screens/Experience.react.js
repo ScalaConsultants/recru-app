@@ -53,7 +53,7 @@ export default class Experience extends Component {
           <div className="right">
             <div className="content">
               <div className="experience">
-                <h1>Choose your experience</h1>
+                <h1>CHOOSE THE TRAIL LEVEL</h1>
                 <div>
                   <p>{data.experience.subtitle}</p>
                   <p className="bold">{data.experience.command}</p>

@@ -38,15 +38,21 @@ export default class Skills extends Component {
         <div className="container">
           <LeftItem data={backpackUrl} />
           <div className="right">
-            <h1>
-              pack your bag
-            </h1>
-            <p>show us, which skills you have</p>
-            <ul>
-            {skillsForCurrentRole.map((skill) =>
-              <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
-            )}
-            </ul>
+            <div className="content-skills">
+              <div className="screen-title">
+                <h1>
+                  pack your bag
+                </h1>
+                <p className="screen-desc">
+                  {technologies.title}
+                </p>
+              </div>
+              <ul>
+              {skillsForCurrentRole.map((skill) =>
+                <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
+              )}
+              </ul>
+            </div>
             <Chevron isAnimated onClick={e => this.proceed(e)}/>
           </div>
         </div>

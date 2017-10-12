@@ -1,7 +1,18 @@
 .position-screen
   .content
+    max-width 100%
     ul
       width 100%
 
   .content.job
     align-items flex-start
+    .thin
+      max-width 70%
+      margin-left 60px
+
+@media (max-width: 1024px)
+  .position-screen
+    .content.job
+      .thin
+        max-width 100%
+        margin-left 0

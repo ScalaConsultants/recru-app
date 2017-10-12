@@ -65,7 +65,7 @@ export default class Compass extends Component {
                 <h1>
                   Check your equipment
                 </h1>
-                <p className="desc">{data.desc}</p>
+                <p className="desc screen-desc">{data.desc}</p>
                 <div className="options list">
                   {data.options.map((element) =>
                     <div className="option" key={element.id} onClick={() => this.toggleTab(element.id)}>

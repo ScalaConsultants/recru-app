@@ -40,7 +40,7 @@ export default class Compass extends Component {
                 <h1>
                   Use scalac compass
                 </h1>
-                <p>{data.desc}</p>
+                <p className="screen-desc">{data.desc}</p>
                 <div className="rules list">
                   {data.rules.map((element) =>
                     <Item data={element} key={element.title}/>
