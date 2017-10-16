@@ -6,6 +6,7 @@ export const SAVE_NAME = 'SAVE_NAME';
 export const SAVE_EMAIL = 'SAVE_EMAIL';
 export const SAVE_ROLE = 'SAVE_ROLE';
 export const SAVE_SKILL = 'SAVE_SKILL';
+export const SAVE_FEATURE = 'SAVE_FEATURE';
 export const SAVE_EXP = 'SAVE_EXP';
 export const SUBMIT_START = 'SUBMIT_START';
 export const SUBMIT_ERROR = 'SUBMIT_ERROR';
@@ -44,6 +45,13 @@ export function saveSkill(skill, level) {
   return {
     type: SAVE_SKILL,
     payload: {skill, level}
+  };
+}
+
+export function saveFeature(feature) {
+  return {
+    type: SAVE_FEATURE,
+    payload: {feature}
   };
 }
 

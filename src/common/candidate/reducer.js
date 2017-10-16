@@ -3,6 +3,7 @@ import map from 'lodash.map';
 import Role from './role';
 import Skill from './skill';
 import Exp from './exp';
+import Feature from './feature';
 import {Record, Map} from 'immutable';
 
 const InitialState = Record({
@@ -11,6 +12,7 @@ const InitialState = Record({
   role: new Role(null),
   skills: {},
   exp: new Exp(null),
+  features: {},
   isSubmittingForm: false,
   hasSubmittedForm: false,
   hasSubmissionErroredOut: false
@@ -24,6 +26,7 @@ const revive = (candidate) => initialState.merge({
   role: new Role(candidate.role),
   skills: map(candidate.skills, (skill => new Skill(skill))),
   exp: new Exp(candidate.exp),
+  features: map(candidate.features, (feature => new Skill(feature))),
   isSubmittingForm: candidate.isSubmittingForm,
   hasSubmittedForm: candidate.hasSubmittedForm,
   hasSubmissionErroredOut: candidate.hasSubmittedForm
@@ -47,7 +50,8 @@ export default function candidateReducer(state = initialState, action) {
       const {role} = action.payload;
       return state
         .set('role', new Role(role))
-        .set('skills', Map());
+        .set('skills', Map())
+        .set('features', Map());
     }
 
     case actions.SAVE_SKILL: {
@@ -55,6 +59,12 @@ export default function candidateReducer(state = initialState, action) {
       return state
         .setIn(['skills', skill.id], new Skill(skill))
         .setIn(['skills', skill.id, 'level'], level);
+    }
+
+    case actions.SAVE_FEATURE: {
+      const {feature} = action.payload;
+      return state
+        .setIn(['features', feature.id], new Feature(feature));
     }
 
     case actions.SAVE_EXP: {

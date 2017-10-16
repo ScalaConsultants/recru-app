@@ -23,8 +23,13 @@ export default class Check extends Component {
     nextScreen();
   }
 
+  handleChange(feature) {
+    const {actions: {saveFeature}} = this.props;
+    saveFeature(feature);
+  }
+
   render() {
-    const specificData = data[this.props.candidate.role.id] || [""];
+    const specificData = data[this.props.candidate.role.id] || [];
     const backpackUrl = {
       img: "../../../assets/img/plecak.svg"
     };
@@ -39,17 +44,22 @@ export default class Check extends Component {
                 <h1>Check, if you have it:</h1>
                 <div className="checkbox-list">
                     {
-                      specificData.skillset ?
+                      specificData.skillset &&
                       specificData.skillset.map(feature => {
                         return (
                           <div className="list-item" key={feature.id}>
-                            <input type="checkbox" id={`for${feature.id}`} value={feature.desc} />
+                            <input
+                              type="checkbox"
+                              id={`for${feature.id}`}
+                              value={feature.desc}
+                              onChange={(e) => this.handleChange(feature)}
+                            />
                             <label htmlFor={`for${feature.id}`}>
                               {feature.desc}
                             </label>
                           </div>
                         );
-                      }) : ""
+                      })
                     }
                   </div>
                 </div>
