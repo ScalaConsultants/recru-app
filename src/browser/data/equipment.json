@@ -4,20 +4,20 @@
     {
       "id" : 0,
       "title" : "Tools",
-      "img" : "assets/img/equipment/T-active.svg",
-      "active" : "assets/img/equipment/T.svg"
+      "img" : "assets/img/equipment/tools.svg",
+      "active" : "assets/img/equipment/tools-active.svg"
     },
     {
       "id" : 1,
       "title" : "Opportunities",
-      "img" : "assets/img/equipment/O-active.svg",
-      "active" : "assets/img/equipment/O.svg"
+      "img" : "assets/img/equipment/opportunities.svg",
+      "active" : "assets/img/equipment/opportunities-active.svg"
     },
     {
       "id" : 2,
       "title" : "Personal Development",
-      "img" : "assets/img/equipment/P-active.svg",
-      "active" : "assets/img/equipment/P.svg"
+      "img" : "assets/img/equipment/pdevelop.svg",
+      "active" : "assets/img/equipment/pdevelop-active.svg"
     }
   ],
   "0": [

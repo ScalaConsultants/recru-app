@@ -43,7 +43,7 @@ export default class App extends Component {
       ? `Something went wrong and we are very sorry about that. Drop us a message at info@scalac.io, thanks!`
       : `You'll hear from us very soon.`;
 
-    const message = `Hello, ${candidate.name}.`;
+    const message = candidate.name ? `Hello, ${candidate.name}.` : `Hello!`;
 
     return (
       // Pass data-pathname to allow route specific styling.

@@ -6,7 +6,7 @@ import FirstScreen from '../screens/First.react';
 import SecondScreen from '../screens/Second.react';
 import Roles from '../screens/Roles.react';
 import Skills from '../screens/Skills.react';
-import FifthScreen from '../screens/Fifth.react';
+import Submit from '../screens/Submit.react';
 import Position from '../screens/Position.react';
 import Compass from '../screens/Compass.react';
 import Equipment from '../screens/Equipment.react';
@@ -65,7 +65,7 @@ export default class Screens extends Component {
         <Skills {...this.props} isCurrent={this.isCurrent(6)} ref={this.getRefNameFor(6)}/>
         <Check {...this.props} isCurrent={this.isCurrent(7)} ref={this.getRefNameFor(7)}/>
         <Experience {...this.props} isCurrent={this.isCurrent(8)} ref={this.getRefNameFor(8)}/>
-        <FifthScreen {...this.props} isCurrent={this.isCurrent(9)} ref={this.getRefNameFor(9)}/>
+        <Submit {...this.props} isCurrent={this.isCurrent(9)} ref={this.getRefNameFor(9)}/>
       </div>
     );
   }

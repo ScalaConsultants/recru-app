@@ -26,8 +26,27 @@
       p
         font-weight 700
 
-      img
-        width 80px
+      .icon
+        width 60px
+        height 60px
+        border-radius 60px
+        border 2px solid red
+        display flex
+        padding 10px
+        flex-direction column
+        align-items center
+        justify-content center
+        transition .3s ease-in-out
+
+        img
+          height 100%
+          width 100%
+
+      .icon.active
+        background red
+
+      .icon:hover
+        background pink
 
 @media screen and (max-width: 767px)
   .equipment-screen

@@ -69,7 +69,12 @@ export default class Compass extends Component {
                 <div className="options list">
                   {data.options.map((element) =>
                     <div className="option" key={element.id} onClick={() => this.toggleTab(element.id)}>
-                      <img src={element.id === this.state.currentTab.id ? element.active : element.img} alt={element.title} />
+                      <div className={element.id === this.state.currentTab.id ? 'active icon' : 'icon'}>
+                        <img
+                          src={element.id === this.state.currentTab.id ? element.active : element.img}
+                          alt={element.title}
+                        />
+                      </div>
                       <p>{element.title}</p>
                     </div>
                   )}

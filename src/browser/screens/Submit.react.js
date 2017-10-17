@@ -5,11 +5,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 if (process.env.IS_BROWSER) {
-  require('./Fifth.styl');
+  require('./Submit.styl');
 }
 
 @boundScroll()
-export default class FifthScreen extends Component {
+export default class Submit extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
     candidate: React.PropTypes.object.isRequired,
@@ -49,7 +49,9 @@ export default class FifthScreen extends Component {
       name: this.props.candidate.name,
       role: this.props.candidate.role.name,
       email: ReactDOM.findDOMNode(this.refs.emailInput).value,
-      skills: this.props.candidate.skills
+      skills: this.props.candidate.skills,
+      features: this.props.candidate.features,
+      exp: this.props.candidate.exp
     };
 
     // Only add linkedin property if we really have cvFile here
@@ -141,7 +143,7 @@ export default class FifthScreen extends Component {
       : 'Take me to ScalaC';
 
     return (
-      <section className="fifth-screen screen dark">
+      <section className="submit screen dark">
         <header>One more thing...</header>
         <h2>Leave us your email</h2>
         <input className={emailInputClassName} onChange={this.handleEmailChange} placeholder="email" ref="emailInput" tabIndex="-1" type="email"/>
