@@ -21,6 +21,7 @@ export default class Submit extends Component {
     this.state = this.getDefaultState();
     this.submit = this.submit.bind(this);
     this.handleUrlChange = this.handleUrlChange.bind(this);
+    this.nameChange = this.nameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleDragOver = this.handleDragOver.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
@@ -31,14 +32,21 @@ export default class Submit extends Component {
       dragOver: false,
       fileUploaded: false,
       urlPassed: false,
-      emailPassed: false
+      emailPassed: false,
+      namePassed: false
     };
   }
 
   isDataValid() {
-    if (this.state.emailPassed && (this.state.urlPassed || this.state.fileUploaded))
-      return true;
-    return false;
+    if (this.props.candidate.name) {
+      if (this.state.emailPassed && (this.state.urlPassed || this.state.fileUploaded))
+        return true;
+      return false;
+    } else {
+      if (this.state.emailPassed && this.state.namePassed && (this.state.urlPassed || this.state.fileUploaded))
+        return true;
+      return false;
+    }
   }
 
   submit() {
@@ -46,7 +54,7 @@ export default class Submit extends Component {
       return;
 
     let candidateData = {
-      name: this.props.candidate.name,
+      name: this.props.candidate.name || ReactDOM.findDOMNode(this.refs.nameInput).value,
       role: this.props.candidate.role.name,
       email: ReactDOM.findDOMNode(this.refs.emailInput).value,
       skills: this.props.candidate.skills,
@@ -72,6 +80,11 @@ export default class Submit extends Component {
   handleUrlChange(e) {
     const hasNoValue = !e.target.value || e.target.value.trim().length === 0;
     this.setState({urlPassed: !hasNoValue});
+  }
+
+  nameChange(e) {
+    const hasNoValue = !e.target.value || e.target.value.trim().length === 0;
+    this.setState({namePassed: !hasNoValue});
   }
 
   handleEmailChange(e) {
@@ -130,6 +143,10 @@ export default class Submit extends Component {
       active: this.state.urlPassed
     });
 
+    const nameClassName = classNames({
+      active: this.state.namePassed
+    });
+
     const emailInputClassName = classNames({
       active: this.state.emailPassed
     });
@@ -147,6 +164,12 @@ export default class Submit extends Component {
         <header>One more thing...</header>
         <h2>Leave us your email</h2>
         <input className={emailInputClassName} onChange={this.handleEmailChange} placeholder="email" ref="emailInput" tabIndex="-1" type="email"/>
+        { !this.props.candidate.name &&
+          <div>
+            <h2>and name</h2>
+            <input className={nameClassName} onChange={this.nameChange} placeholder="name" ref="nameInput" tabIndex="-1" type="text"/>
+          </div>
+        }
         <h2>and either a LinkedIn profile URI</h2>
         <input className={inputClassName} onChange={this.handleUrlChange} placeholder="linkedin.com/in/username" ref="urlInput" tabIndex="-1" type="url"/>
         <span>or</span>
