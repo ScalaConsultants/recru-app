@@ -1,5 +1,5 @@
 import Helmet from 'react-helmet';
-import Html from './Html.react';
+import Html from './html.react';
 import Promise from 'bluebird';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
