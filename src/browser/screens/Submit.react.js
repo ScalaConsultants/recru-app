@@ -162,16 +162,20 @@ export default class Submit extends Component {
     return (
       <section className="submit screen dark">
         <header>One more thing...</header>
-        <h2>Leave us your email</h2>
-        <input className={emailInputClassName} onChange={this.handleEmailChange} placeholder="email" ref="emailInput" tabIndex="-1" type="email"/>
+        <div className="field">
+          <h2>Leave us your email</h2>
+          <input className={emailInputClassName} onChange={this.handleEmailChange} placeholder="email" ref="emailInput" tabIndex="-1" type="email"/>
+        </div>
         { !this.props.candidate.name &&
-          <div>
+          <div className="field">
             <h2>and name</h2>
             <input className={nameClassName} onChange={this.nameChange} placeholder="name" ref="nameInput" tabIndex="-1" type="text"/>
           </div>
         }
-        <h2>and either a LinkedIn profile URI</h2>
-        <input className={inputClassName} onChange={this.handleUrlChange} placeholder="linkedin.com/in/username" ref="urlInput" tabIndex="-1" type="url"/>
+        <div className="field">
+          <h2>and either a LinkedIn profile URI</h2>
+          <input className={inputClassName} onChange={this.handleUrlChange} placeholder="linkedin.com/in/username" ref="urlInput" tabIndex="-1" type="url"/>
+        </div>
         <span>or</span>
         <input ref="fileInput" tabIndex="-1" type="file" />
         <div className={dropAreaclassName} id="drop" onClick={() => ReactDOM.findDOMNode(this.refs.fileInput).click()} ref="dropArea">
