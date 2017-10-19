@@ -25,11 +25,11 @@ export default class LeftItem extends Component {
           <h3>What is your mission in Scalac?</h3>
           <ul>
             {
-              data.what ? data.what.map(item => {
+              data.what && data.what.map(item => {
                 return(
                   <li key={item.id}>{item.desc}</li>
                 );
-              }) : ''
+              })
             }
           </ul>
         </div>

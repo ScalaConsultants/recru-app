@@ -41,7 +41,7 @@ export default class Check extends Component {
           <div className="right">
             <div className="content">
               <div className="screen-content">
-                <h1>Check, if you have it:</h1>
+                <h1>check if we look in the same direction</h1>
                 <div className="checkbox-list">
                     {
                       specificData.skillset &&

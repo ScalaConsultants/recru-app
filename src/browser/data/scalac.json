@@ -21,26 +21,29 @@
       "img" : "../../../assets/img/values/fiendliness.svg"
     },
     {
+      "title" : "Open communication",
+      "subtitle" : "talk openly and listen to each other with respect",
+      "img" : "../../../assets/img/values/communication.svg"
+    },
+    {
       "title" : "Scalacracy",
-      "subtitle" : "mix of democracy and dictatorship",
+      "subtitle" : "be prepare for the mix of democracy and dictatorship",
       "img" : "../../../assets/img/values/scalacracy.svg"
     },
     {
-      "title" : "Taking responsibility",
-      "subtitle" : "repair, if it's broken",
-      "img" : "../../../assets/img/values/responsibility.svg"
-    },
-    {
       "title" : "Professionalism",
+      "subtitle" : "work hard and take responsibility for the result",
       "img" : "../../../assets/img/values/professionalism.svg"
     },
     {
-      "title" : "Everyone is equal",
-      "img" : "../../../assets/img/values/equality.svg"
+      "title" : "Taking responsibility",
+      "subtitle" : "fix it if it’s broken",
+      "img" : "../../../assets/img/values/responsibility.svg"
     },
     {
-      "title" : "Open communication",
-      "img" : "../../../assets/img/values/communication.svg"
+      "title" : "Everyone’s equal",
+      "subtitle" : "we all create Scalac and have the same rights & responsibilities",
+      "img" : "../../../assets/img/values/equality.svg"
     }
   ]
 }

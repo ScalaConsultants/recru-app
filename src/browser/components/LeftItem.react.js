@@ -7,9 +7,7 @@ if (process.env.IS_BROWSER) {
 export default function LeftItem(props) {
   return (
     <div className="left">
-      {
-        props.data ? <img src={props.data.img} /> : ''
-      }
+      { props.data && <img src={props.data.img} /> }
     </div>
   );
 }
