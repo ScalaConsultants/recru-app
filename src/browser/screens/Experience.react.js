@@ -53,36 +53,37 @@ export default class Experience extends Component {
           <div className="right">
             <div className="content">
               <div className="experience">
-                <h1>CHOOSE THE TRAIL LEVEL</h1>
                 <div>
+                  <h1>CHOOSE THE TRAIL LEVEL</h1>
                   <p>{data.experience.subtitle}</p>
                   <p className="bold">{data.experience.command}</p>
-
-                  <div className="experience-level">
-                    {data.experience.levels.map(level => {
-                      return (
-                          <div
-                            key={level.id}
-                            onClick={() => this.selectLevel(level)}
-                            className={this.state.exp.id === level.id ? 'active level' : 'level'}
-                          >
-                            <div className="icons">
-                              {level.stars.map(element => {
-                                  return (
-                                    <img key={element} src={data.experience.arrow} alt={element}/>
-                                  );
-                              })}
-                            </div>
-                            <div className="desc">
-                              <h4>{level.position}</h4>
-                              <h5>{level.desc}</h5>
-                            </div>
-                          </div>
-                      );
-                    })}
-                  </div>
-
                 </div>
+
+                <div className="experience-level">
+                  {data.experience.levels.map(level => {
+                    return (
+                        <div
+                          key={level.id}
+                          onClick={() => this.selectLevel(level)}
+                          className={this.state.exp.id === level.id ? 'active level' : 'level'}
+                        >
+                          <div className="icons">
+                            {level.stars.map(element => {
+                                return (
+                                  <img key={element} src={data.experience.arrow} alt={element}/>
+                                );
+                            })}
+                          </div>
+                          <div className="desc">
+                            <h4>{level.position}</h4>
+                            <h5>{level.desc}</h5>
+                          </div>
+                        </div>
+                    );
+                  })}
+                </div>
+
+                <div></div>
               </div>
             </div>
             <Chevron isAnimated onClick={e => this.proceed(e)}/>

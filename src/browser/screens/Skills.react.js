@@ -52,6 +52,7 @@ export default class Skills extends Component {
                 <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
               )}
               </ul>
+              <div></div>
             </div>
             <Chevron isAnimated onClick={e => this.proceed(e)}/>
           </div>

@@ -16,13 +16,13 @@
   ],
   "values" : [
     {
-      "title" : "Friendliness",
-      "subtitle" : "help others, be nice",
+      "title" : "Teamwork",
+      "subtitle" : "work together effectively, help each other",
       "img" : "../../../assets/img/values/fiendliness.svg"
     },
     {
-      "title" : "Open communication",
-      "subtitle" : "talk openly and listen to each other with respect",
+      "title" : "Openness",
+      "subtitle" : "talk openly, share your thoughts and listen others",
       "img" : "../../../assets/img/values/communication.svg"
     },
     {
@@ -31,18 +31,18 @@
       "img" : "../../../assets/img/values/scalacracy.svg"
     },
     {
-      "title" : "Professionalism",
-      "subtitle" : "work hard and take responsibility for the result",
+      "title" : "Proactivity",
+      "subtitle" : "be hungry for more, eager to learn, ready for the challenge",
       "img" : "../../../assets/img/values/professionalism.svg"
     },
     {
-      "title" : "Taking responsibility",
-      "subtitle" : "fix it if it’s broken",
+      "title" : "Accountability",
+      "subtitle" : "fix it if it’s broken, take up responsibility",
       "img" : "../../../assets/img/values/responsibility.svg"
     },
     {
-      "title" : "Everyone’s equal",
-      "subtitle" : "we all create Scalac and have the same rights & responsibilities",
+      "title" : "Respect",
+      "subtitle" : "treat others as you wish to be treated",
       "img" : "../../../assets/img/values/equality.svg"
     }
   ]
