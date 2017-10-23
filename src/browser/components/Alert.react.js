@@ -7,7 +7,7 @@ if (process.env.IS_BROWSER) {
 export default function Alert(props) {
   return (
     <div className="alert-message">
-      {props.desc}
+      Please choose your <strong>{props.desc}</strong>
     </div>
   );
 }

@@ -55,7 +55,7 @@ export default class Experience extends Component {
         <div className="container">
           <LeftItem data={backpackUrl} />
           <div className="right">
-            {this.state.select === "select" && <Alert desc={"You have to choose your LEVEL"}/> }
+            {this.state.select === "select" && <Alert desc={"level"}/> }
             <div className="content">
               <div className="experience">
                 <div>

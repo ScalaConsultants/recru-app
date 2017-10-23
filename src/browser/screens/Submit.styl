@@ -47,6 +47,7 @@
   input[type=url]:active
   input[type=url]:focus
   input.active
+  input.optional
     border 1px solid #fff
     color #fff
 
@@ -100,17 +101,9 @@
     display flex
     cursor pointer
 
-
-    &.hover
-    &.active
-      border-color #FF0000
-
     span
       vertical-align middle
       display table-cell
-
-    &.active span
-      color #FF0000
 
 @media (max-width: 480px)
   .submit

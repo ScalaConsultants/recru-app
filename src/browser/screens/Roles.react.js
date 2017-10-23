@@ -48,7 +48,7 @@ export default class Roles extends Component {
   render() {
     return (
       <section className="roles-screen screen">
-        {this.state.select === "select" && <Alert desc={"You have to choose your ROLE"}/> }
+        {this.state.select === "select" && <Alert desc={"role"}/> }
         <h1>Who are you?</h1>
         <ul>
           {json.map((role) => {

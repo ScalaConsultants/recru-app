@@ -39,11 +39,11 @@ export default class Submit extends Component {
 
   isDataValid() {
     if (this.props.candidate.name) {
-      if (this.state.emailPassed && (this.state.urlPassed || this.state.fileUploaded))
+      if (this.state.emailPassed)
         return true;
       return false;
     } else {
-      if (this.state.emailPassed && this.state.namePassed && (this.state.urlPassed || this.state.fileUploaded))
+      if (this.state.emailPassed && this.state.namePassed)
         return true;
       return false;
     }
@@ -61,6 +61,8 @@ export default class Submit extends Component {
       features: this.props.candidate.features,
       exp: this.props.candidate.exp
     };
+
+    console.log(candidateData);
 
     // Only add linkedin property if we really have cvFile here
     if (this.state.urlPassed) candidateData.linkedin = ReactDOM.findDOMNode(this.refs.urlInput).value;
@@ -139,10 +141,6 @@ export default class Submit extends Component {
       active: this.state.fileUploaded
     });
 
-    const inputClassName = classNames({
-      active: this.state.urlPassed
-    });
-
     const nameClassName = classNames({
       active: this.state.namePassed
     });
@@ -174,7 +172,7 @@ export default class Submit extends Component {
         }
         <div className="field">
           <h2>and either a LinkedIn profile URI</h2>
-          <input className={inputClassName} onChange={this.handleUrlChange} placeholder="linkedin.com/in/username" ref="urlInput" tabIndex="-1" type="url"/>
+          <input className="optional" onChange={this.handleUrlChange} placeholder="linkedin.com/in/username" ref="urlInput" tabIndex="-1" type="url"/>
         </div>
         <span>or</span>
         <input ref="fileInput" tabIndex="-1" type="file" />
