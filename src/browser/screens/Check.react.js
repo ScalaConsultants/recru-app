@@ -31,7 +31,7 @@ export default class Check extends Component {
   render() {
     const specificData = data[this.props.candidate.role.id] || [];
     const backpackUrl = {
-      img: "../../../assets/img/plecak.svg"
+      img: "../../../assets/img/checkifyouhaveit.svg"
     };
 
     return (

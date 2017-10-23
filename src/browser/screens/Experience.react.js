@@ -5,6 +5,7 @@ import LeftItem from '../components/LeftItem.react';
 import JobDescription from '../components/JobDescription.react';
 import boundScroll from '../lib/boundScroll';
 import Chevron from '../components/Chevron.react';
+import Alert from '../components/Alert.react';
 import data from '../data/equipment.json';
 
 if (process.env.IS_BROWSER) {
@@ -25,17 +26,20 @@ export default class Experience extends Component {
 
   getDefaultState() {
     return {
-      exp: ''
+      exp: '',
+      select: false
     };
   }
 
   proceed() {
-    if (!this.state.exp)
-      return;
-
-    const {actions: {saveExp, nextScreen}} = this.props;
-    saveExp(this.state.exp);
-    nextScreen();
+    if (!this.state.exp) {
+      this.setState({select: "select"});
+      setTimeout(() => { this.setState({select: false}); }, 5000);
+    } else {
+      const {actions: {saveExp, nextScreen}} = this.props;
+      saveExp(this.state.exp);
+      nextScreen();
+    }
   }
 
   selectLevel(exp) {
@@ -51,6 +55,7 @@ export default class Experience extends Component {
         <div className="container">
           <LeftItem data={backpackUrl} />
           <div className="right">
+            {this.state.select === "select" && <Alert desc={"You have to choose your LEVEL"}/> }
             <div className="content">
               <div className="experience">
                 <div>

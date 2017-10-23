@@ -1,6 +1,8 @@
 import Component from 'react-pure-render/component';
 import React from 'react';
+
 import boundScroll from '../lib/boundScroll';
+import Alert from '../components/Alert.react';
 import json from '../data/roles.json';
 
 if (process.env.IS_BROWSER) {
@@ -20,17 +22,23 @@ export default class Roles extends Component {
 
   getDefaultState() {
     return {
-      role: null
+      role: null,
+      select: false,
+      current: ''
     };
   }
 
   proceed() {
-    if (!this.state.role)
-      return;
-
-    const {actions: {saveRole, nextScreen}} = this.props;
-    saveRole(this.state.role);
-    nextScreen();
+    if (!this.state.role) {
+      this.setState({select: "select"});
+      setTimeout(() => { this.setState({select: false}); }, 5000);
+    } else {
+      const {actions: {saveRole, nextScreen}} = this.props;
+      saveRole(this.state.role);
+      this.setState({current: this.state.role.id});
+      this.setState({select: false});
+      nextScreen();
+    }
   }
 
   handleChooseRole(role) {
@@ -40,6 +48,7 @@ export default class Roles extends Component {
   render() {
     return (
       <section className="roles-screen screen">
+        {this.state.select === "select" && <Alert desc={"You have to choose your ROLE"}/> }
         <h1>Who are you?</h1>
         <ul>
           {json.map((role) => {
@@ -47,7 +56,10 @@ export default class Roles extends Component {
               <li key={role.id} onClick={() => this.handleChooseRole(role)}>
                 <div>
                   <img alt={`${role.name} path`} src={role.img} />
-                  <p><strong>{role.name.split(' ')[0]}</strong> {role.name.split(' ')[1]}</p>
+                  <p className={this.state.current === role.id && 'selected'}>
+                    <strong>{role.name.split(' ')[0]}</strong>
+                    {role.name.split(' ')[1]}
+                  </p>
                 </div>
               </li>
             );
