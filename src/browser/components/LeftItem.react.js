@@ -11,3 +11,7 @@ export default function LeftItem(props) {
     </div>
   );
 }
+
+LeftItem.propTypes = {
+  data: React.PropTypes.object.isRequired
+}

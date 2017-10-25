@@ -6,31 +6,29 @@ if (process.env.IS_BROWSER) {
   require('./Chevron.styl');
 }
 
-export default class Chevron extends Component {
-  static propTypes = {
-    color: React.PropTypes.string,
-    isAnimated: React.PropTypes.bool,
-    onClick: React.PropTypes.func,
-  }
+export default function Chevron(props) {
+  const arrowColor = classNames({
+    '-red': props.color === 'red',
+  });
 
-  static defaultProps = {
-    isAnimated: true
-  }
+  const className = classNames('chevron', {
+    '-animated': !!props.isAnimated,
+    '-clickable': !!props.onClick
+  });
 
-  render() {
-    const arrowColor = classNames({
-      '-red': this.props.color === 'red',
-    });
+  return (
+    <div className={className} onClick={props.onClick}>
+      <i className={arrowColor}></i>
+    </div>
+  );
+}
 
-    const className = classNames('chevron', {
-      '-animated': !!this.props.isAnimated,
-      '-clickable': !!this.props.onClick
-    });
+Chevron.propTypes = {
+  color: React.PropTypes.string,
+  isAnimated: React.PropTypes.bool,
+  onClick: React.PropTypes.func,
+}
 
-    return (
-      <div className={className} onClick={this.props.onClick}>
-        <i className={arrowColor}></i>
-      </div>
-    );
-  }
+Chevron.defaultProps = {
+  isAnimated: true
 }

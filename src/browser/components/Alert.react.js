@@ -11,3 +11,11 @@ export default function Alert(props) {
     </div>
   );
 }
+
+Alert.propTypes = {
+  desc: React.PropTypes.string
+}
+
+Alert.defaultProps = {
+  desc: ''
+};
