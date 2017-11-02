@@ -26,6 +26,7 @@ const revive = (candidate) => initialState.merge({
   email: candidate.email,
   role: new Role(candidate.role),
   skills: map(candidate.skills, (skill => new Skill(skill))),
+  extraSkills: candidate.extraSkills,
   exp: new Exp(candidate.exp),
   features: map(candidate.features, (feature => new Skill(feature))),
   isSubmittingForm: candidate.isSubmittingForm,

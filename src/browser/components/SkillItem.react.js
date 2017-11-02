@@ -39,13 +39,15 @@ export default class SkillItem extends Component {
     return (
       <li>
         {hint}
-        <img {...cb}
-          className={this.state.touched && "active"}
-          alt={this.props.data.name}
-          onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}
-          src={this.props.data.src}
-        />
+        <div>
+          <img {...cb}
+            className={this.state.touched && "active"}
+            alt={this.props.data.name}
+            onMouseEnter={this.handleMouseEnter}
+            onMouseLeave={this.handleMouseLeave}
+            src={this.props.data.src}
+          />
+        </div>
         <form action="">
           <input className="star star-5" id={`star5_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(5, e)} type="radio"/>
           <label className="star star-5" htmlFor={`star5_${this.props.data.id}`}></label>

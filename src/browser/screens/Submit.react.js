@@ -58,6 +58,7 @@ export default class Submit extends Component {
       role: this.props.candidate.role.name,
       email: ReactDOM.findDOMNode(this.refs.emailInput).value,
       skills: this.props.candidate.skills,
+      extraSkills: this.props.candidate.extraSkills,
       features: this.props.candidate.features,
       exp: this.props.candidate.exp
     };
