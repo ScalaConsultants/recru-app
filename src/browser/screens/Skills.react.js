@@ -52,7 +52,7 @@ export default class Skills extends Component {
     function defaultRenderInput (props) {
       let {placeholder, onChange, value, addTag, ...other} = props
       return (
-        <input type='text' placeholder="Skill name" onChange={onChange} value={value} {...other} />
+        <input type='text' tabIndex="-1" placeholder="Skill name" onChange={onChange} value={value} {...other} />
       )
     }
 
