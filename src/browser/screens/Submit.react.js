@@ -155,7 +155,7 @@ export default class Submit extends Component {
 
     const buttonTitle = candidate.isSubmittingForm
       ? 'Submitting, hold on...'
-      : 'Take me to ScalaC';
+      : 'Take me to Scalac';
 
     return (
       <section className="submit screen dark">
