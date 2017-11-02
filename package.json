@@ -66,6 +66,7 @@
     "react-pure-render": "^1.0.2",
     "react-redux": "^4.0.0",
     "react-router": "^1.0.0",
+    "react-tagsinput": "^3.19.0",
     "react-transform-catch-errors": "1.0.0",
     "react-transform-hmr": "1.0.1",
     "redbox-react": "1.1.1",

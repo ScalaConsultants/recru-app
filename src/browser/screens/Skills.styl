@@ -11,9 +11,6 @@
       justify-content space-between
 
     .screen-title
-      display flex
-      flex-direction column
-      align-items flex-start
       p
         font-size 18px
         text-align left
@@ -33,13 +30,33 @@
   p
     text-align center
 
+  .skills-block
+    margin-bottom 12vh
+
+    .tags-wrapper
+      width 50%
+      p
+        text-align left
+        font-weight 600
+
+  .react-tagsinput-tag
+    background-color red
+    border 1px solid red
+    color white
+    border-radius 5px
+
+  .react-tagsinput
+    border-radius 5px
+
+  .react-tagsinput--focused
+    border-color #fb5252
+
   ul
     display flex
     max-width 100%
     list-style none
-    padding 0
     flex-wrap wrap
-    margin 50px 0 10vw 0
+    padding 0
 
     li:hover
       img
@@ -50,8 +67,9 @@
       margin-bottom 40px
       position relative
       display flex
-      justify-content center
+      justify-content flex-start
       align-items center
+      width 33.3%
 
       img.active
         filter grayscale(0)
@@ -87,7 +105,8 @@
         filter grayscale(100%)
         max-width 65px
         vertical-align middle
-        margin 0 20px 0 20px
+        margin 0 20px 0 0
+        max-height 55px
 
       form
         display inline-block
@@ -121,10 +140,31 @@
         label.star:hover ~ label.star:before
           background-position -32px 0
 
+@media (max-width: 1275px)
+  .skills-screen
+    ul
+      justify-content space-around
+      li
+        width 50%
+
+
 @media (max-width: 1024px)
   .skills-screen
     ul
       justify-content space-around
+      li
+        width initial
+
+    .right
+      .content-skills
+        max-width 100%
+
+    .skills-block
+      margin 0
+
+      .tags-wrapper
+        margin-bottom 50px
+        width 100%
 
 @media (max-width: 767px)
   .skills-screen

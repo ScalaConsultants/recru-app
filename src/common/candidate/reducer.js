@@ -11,6 +11,7 @@ const InitialState = Record({
   email: '',
   role: new Role(null),
   skills: {},
+  extraSkills: [],
   exp: new Exp(null),
   features: {},
   isSubmittingForm: false,
@@ -52,6 +53,12 @@ export default function candidateReducer(state = initialState, action) {
         .set('role', new Role(role))
         .set('skills', Map())
         .set('features', Map());
+    }
+
+    case actions.SAVE_EXTRA_SKILL: {
+      const {skills} = action.payload;
+      return state
+       .set('extraSkills', skills);
     }
 
     case actions.SAVE_SKILL: {
