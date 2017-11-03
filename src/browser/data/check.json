@@ -108,5 +108,43 @@
         "desc" : "Excellent communication skills with fluent English (we will help you with improving your language skills, so you can communicate with our clients freely)"
       }
     ]
+  },
+  {
+     "id" : 3,
+     "role" : "Devops",
+     "skillset" : [
+      {
+        "id" : 16,
+        "desc" : "Focus on software quality and good development practices"
+      },
+      {
+        "id" : 17,
+        "desc" : "Deep understanding of the Linux operating system"
+      },
+      {
+        "id" : 18,
+        "desc" : "Understanding of the Continuous Delivery and Continuous Integration"
+      },
+      {
+        "id" : 19,
+        "desc" : "Java environment understanding"
+      },
+      {
+        "id" : 20,
+        "desc" : "Proactive approach, Can do attitude"
+      },
+      {
+        "id" : 21,
+        "desc" : "Problem-solving skills"
+      },
+      {
+        "id" : 22,
+        "desc" : "Team player approach"
+      },
+      {
+        "id" : 23,
+        "desc" : "Excellent communication skills with fluent English (we will help you with improving your language skills, so you can communicate with our clients freely)"
+      }
+    ]
   }
 ]

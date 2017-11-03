@@ -32,6 +32,7 @@ export default class Skills extends Component {
   }
 
   handleChange(skills) {
+    console.log(this.props.candidate);
     this.setState({skills})
     const {actions: {saveExtraSkill}} = this.props;
     saveExtraSkill(skills);
@@ -67,7 +68,7 @@ export default class Skills extends Component {
                   pack your bag
                 </h1>
                 <p className="screen-desc">
-                  {technologies.title}
+                  { this.props.candidate.name ? `${this.props.candidate.name}, ${technologies.title}` : `${technologies.title}` }
                 </p>
               </div>
               <div className="skills-block">

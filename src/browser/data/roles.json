@@ -70,5 +70,25 @@
         "desc": "Your are not a robot who does what the client tells him to, but and advisor and partner: suggesting optimal solutions for given problems"
       }
     ]
+  },
+  {
+    "id": 3,
+    "name": "Devops TrailSetter",
+    "img": "assets/img/positions/devops.svg",
+    "who": "You are always eager to check out new trails and get into exciting journey with your team. You are a discoverer and you like to share your finds with others, making sure that they are well equipped for the journey ahead.",
+    "what": [
+      {
+        "id": "01-3-what",
+        "desc": "You create and improve a delivery pipelines for various programming environments"
+      },
+      {
+        "id": "02-3-what",
+        "desc": "You solve technical problems"
+      },
+      {
+        "id": "03-3-what",
+        "desc": "You work with different types of customers in international teams, adding your own value to internal and external projects."
+      }
+    ]
   }
 ]

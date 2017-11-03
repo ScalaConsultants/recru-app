@@ -54,13 +54,13 @@
     "levels": [
       {
         "id": "junior-level",
-        "position": "Junior Developer",
+        "position": "Junior",
         "desc": "(up to 5000 PLN)",
         "stars": ["1"]
       },
       {
         "id": "mid-level",
-        "position": "Developer",
+        "position": "Mid",
         "desc": "(5000-9000 PLN)",
         "stars": ["1","2"]
       },

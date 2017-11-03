@@ -1,5 +1,5 @@
 {
-  "title": "We know you have some of the best dev tools, that support you along the way. Please let us know, which of them have you packed in your bag.",
+  "title": "we know you have some of the best dev tools, that support you along the way. Please let us know, which of them have you packed in your bag.",
   "0" : [
     {
       "id" : 1,
@@ -119,6 +119,38 @@
       "id" : 24,
       "name" : "git",
       "src" : "assets/img/backend/git.png"
+    }
+  ],
+  "3" : [
+    {
+      "id" : 25,
+      "name" : "AWS",
+      "src" : "assets/img/devops/aws.svg"
+    },
+    {
+      "id" : 26,
+      "name" : "Github",
+      "src" : "assets/img/devops/github.png"
+    },
+    {
+      "id" : 28,
+      "name" : "Azure",
+      "src" : "assets/img/devops/azure.png"
+    },
+    {
+      "id" : 29,
+      "name" : "Jenkins",
+      "src" : "assets/img/devops/jenkins.png"
+    },
+    {
+      "id" : 30,
+      "name" : "MongoDB",
+      "src" : "assets/img/devops/mongo.png"
+    },
+    {
+      "id" : 31,
+      "name" : "Docker",
+      "src" : "assets/img/devops/docker.png"
     }
   ]
 }

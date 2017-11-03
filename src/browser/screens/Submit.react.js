@@ -63,8 +63,6 @@ export default class Submit extends Component {
       exp: this.props.candidate.exp
     };
 
-    console.log(candidateData);
-
     // Only add linkedin property if we really have cvFile here
     if (this.state.urlPassed) candidateData.linkedin = ReactDOM.findDOMNode(this.refs.urlInput).value;
 

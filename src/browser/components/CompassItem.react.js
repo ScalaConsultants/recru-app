@@ -21,5 +21,5 @@ CompassItem.propTypes = {
 }
 
 CompassItem.defaultProps = {
-  data: ''
+  data: {}
 };
