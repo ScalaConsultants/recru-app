@@ -1,10 +1,10 @@
 import React from 'react';
 import Component from 'react-pure-render/component';
 
-import LeftItem from '../components/LeftItem.react';
+import ScreenImage from '../components/ScreenImage.react';
 import JobDescription from '../components/JobDescription.react';
 import boundScroll from '../lib/boundScroll';
-import Chevron from '../components/Chevron.react';
+import ChevronIcon from '../components/ChevronIcon.react';
 import Alert from '../components/Alert.react';
 import data from '../data/equipment.json';
 
@@ -21,19 +21,15 @@ export default class Experience extends Component {
 
   constructor(props) {
     super(props);
-    this.state = this.getDefaultState();
-  }
-
-  getDefaultState() {
-    return {
+    this.state = {
       exp: '',
       select: false
-    };
+    }
   }
 
   proceed() {
     if (!this.state.exp) {
-      this.setState({select: "select"});
+      this.setState({select: true});
       setTimeout(() => { this.setState({select: false}); }, 5000);
     } else {
       const {actions: {saveExp, nextScreen}} = this.props;
@@ -53,13 +49,13 @@ export default class Experience extends Component {
     return (
       <section className="experience-screen screen">
         <div className="container">
-          <LeftItem data={backpackUrl} />
+          <ScreenImage data={backpackUrl} />
           <div className="right">
-            {this.state.select === "select" && <Alert desc={"level"}/> }
+            {this.state.select === true && <Alert desc={"level"}/> }
             <div className="content">
               <div className="experience">
                 <div>
-                  <h1>CHOOSE THE TRAIL LEVEL</h1>
+                  <h1 className="heading-1">CHOOSE THE TRAIL LEVEL</h1>
                   <p>{data.experience.subtitle}</p>
                   <p className="bold">{data.experience.command}</p>
                 </div>
@@ -93,7 +89,7 @@ export default class Experience extends Component {
                 </div>
               </div>
             </div>
-            <Chevron isAnimated onClick={e => this.proceed(e)}/>
+            <ChevronIcon isAnimated onClick={e => this.proceed(e)}/>
           </div>
         </div>
       </section>

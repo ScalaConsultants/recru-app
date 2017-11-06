@@ -3,9 +3,9 @@ import Component from 'react-pure-render/component';
 import TagsInput from 'react-tagsinput';
 
 import boundScroll from '../lib/boundScroll';
-import Chevron from '../components/Chevron.react';
+import ChevronIcon from '../components/ChevronIcon.react';
 import SkillItem from '../components/SkillItem.react';
-import LeftItem from '../components/LeftItem.react';
+import ScreenImage from '../components/ScreenImage.react';
 import technologies from '../data/technologies.json';
 
 import 'react-tagsinput/react-tagsinput.css';
@@ -32,26 +32,21 @@ export default class Skills extends Component {
   }
 
   handleChange(skills) {
-    console.log(this.props.candidate);
     this.setState({skills})
     const {actions: {saveExtraSkill}} = this.props;
     saveExtraSkill(skills);
   }
 
   render() {
-    const skills = technologies[this.props.candidate.role.id];
+    const skills = technologies[this.props.candidate.role.id] || {};
     const backpackUrl = {
       img: "../../../assets/img/plecak.svg"
     };
 
-    let skillsForCurrentRole = [];
-
-    if (typeof skills === 'object') {
-      skillsForCurrentRole = Object.keys(skills).map((key) => skills[key]);
-    }
+    let skillsForCurrentRole = Object.keys(skills).map((key) => skills[key]);
 
     function defaultRenderInput (props) {
-      let {placeholder, onChange, value, addTag, ...other} = props
+      const {placeholder, onChange, value, addTag, ...other} = props
       return (
         <input type='text' tabIndex="-1" placeholder="Skill name" onChange={onChange} value={value} {...other} />
       )
@@ -60,13 +55,11 @@ export default class Skills extends Component {
     return (
       <section className="skills-screen screen">
         <div className="container">
-          <LeftItem data={backpackUrl} />
+          <ScreenImage data={backpackUrl} />
           <div className="right">
             <div className="content-skills">
               <div className="screen-title">
-                <h1>
-                  pack your bag
-                </h1>
+                <h1 className="heading-1">pack your bag</h1>
                 <p className="screen-desc">
                   { this.props.candidate.name ? `${this.props.candidate.name}, ${technologies.title}` : `${technologies.title}` }
                 </p>
@@ -88,7 +81,7 @@ export default class Skills extends Component {
               </div>
               <div></div>
             </div>
-            <Chevron isAnimated onClick={e => this.proceed(e)}/>
+            <ChevronIcon isAnimated onClick={e => this.proceed(e)}/>
           </div>
         </div>
       </section>

@@ -4,10 +4,10 @@ if (process.env.IS_BROWSER) {
   require('./Alert.styl');
 }
 
-export default function Alert(props) {
+const Alert = (props, {desc = ''}) => {
   return (
     <div className="alert-message">
-      Please choose your <strong>{props.desc}</strong>
+      Please choose your <span className="bold">{props.desc}</span>
     </div>
   );
 }
@@ -16,6 +16,4 @@ Alert.propTypes = {
   desc: React.PropTypes.string
 }
 
-Alert.defaultProps = {
-  desc: ''
-};
+export default Alert;

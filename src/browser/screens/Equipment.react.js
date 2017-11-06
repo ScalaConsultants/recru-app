@@ -1,11 +1,11 @@
 import React from 'react';
 import Component from 'react-pure-render/component';
 
-import LeftItem from '../components/LeftItem.react';
+import ScreenImage from '../components/ScreenImage.react';
 import Item from '../components/CompassItem.react';
 import JobDescription from '../components/JobDescription.react';
 import boundScroll from '../lib/boundScroll';
-import Chevron from '../components/Chevron.react';
+import ChevronIcon from '../components/ChevronIcon.react';
 
 import data from '../data/equipment.json'
 
@@ -31,20 +31,17 @@ export default class Compass extends Component {
   }
 
   renderList() {
-    let dataSet = data[this.state.currentTab.id];
+    let id = this.state.currentTab.id;
     return (
-      dataSet.map(element => {
-          return (
-            <li key={element}>
-              {element}
-            </li>
-          );
-        }
+      data[id].map(element =>
+        <li key={element}>
+          {element}
+        </li>
       )
     )
   }
 
-  toggleTab(id) {
+  selectTab(id) {
     this.setState({
       currentTab: {...this.state.currentTab, id}
     })
@@ -58,17 +55,15 @@ export default class Compass extends Component {
     return (
       <section className="equipment-screen screen">
         <div className="container">
-          <LeftItem data={equipmentUrl} />
+          <ScreenImage data={equipmentUrl} />
           <div className="right">
             <div className="content">
               <div className="screen-content">
-                <h1>
-                  Check your equipment
-                </h1>
+                <h1 className="heading-1">Check your equipment</h1>
                 <p className="desc screen-desc">{data.desc}</p>
                 <div className="options list">
                   {data.options.map((element) =>
-                    <div className="option" key={element.id} onClick={() => this.toggleTab(element.id)}>
+                    <div className="option" key={element.id} onClick={() => this.selectTab(element.id)}>
                       <div className={element.id === this.state.currentTab.id ? 'active icon' : 'icon'}>
                         <img
                           src={element.id === this.state.currentTab.id ? element.active : element.img}
@@ -85,7 +80,7 @@ export default class Compass extends Component {
                   </ul>
                 </div>
               </div>
-              <Chevron isAnimated onClick={e => this.proceed(e)}/>
+              <ChevronIcon isAnimated onClick={e => this.proceed(e)}/>
             </div>
           </div>
         </div>

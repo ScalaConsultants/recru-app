@@ -1,10 +1,10 @@
 import React from 'react';
 import Component from 'react-pure-render/component';
 
-import LeftItem from '../components/LeftItem.react';
+import ScreenImage from '../components/ScreenImage.react';
 import JobDescription from '../components/JobDescription.react';
 import boundScroll from '../lib/boundScroll';
-import Chevron from '../components/Chevron.react';
+import ChevronIcon from '../components/ChevronIcon.react';
 import roles from '../data/roles.json';
 
 if (process.env.IS_BROWSER) {
@@ -29,10 +29,10 @@ export default class Position extends Component {
     return (
       <section className="position-screen screen">
         <div className="container">
-          <LeftItem data={role} />
+          <ScreenImage data={role} />
           <div className="right">
             <JobDescription data={role} />
-            <Chevron isAnimated onClick={e => this.proceed(e)}/>
+            <ChevronIcon isAnimated onClick={e => this.proceed(e)}/>
           </div>
         </div>
       </section>

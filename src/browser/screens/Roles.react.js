@@ -1,6 +1,7 @@
 import Component from 'react-pure-render/component';
 import React from 'react';
 
+import classNames from 'classnames';
 import boundScroll from '../lib/boundScroll';
 import Alert from '../components/Alert.react';
 import json from '../data/roles.json';
@@ -17,15 +18,11 @@ export default class Roles extends Component {
 
   constructor(props) {
     super(props);
-    this.state = this.getDefaultState();
-  }
-
-  getDefaultState() {
-    return {
+    this.state = {
       role: null,
       select: false,
       current: ''
-    };
+    }
   }
 
   proceed() {
@@ -35,8 +32,7 @@ export default class Roles extends Component {
     } else {
       const {actions: {saveRole, nextScreen}} = this.props;
       saveRole(this.state.role);
-      this.setState({current: this.state.role.id});
-      this.setState({select: false});
+      this.setState({current: this.state.role.id, select: false});
       nextScreen();
     }
   }
@@ -46,19 +42,21 @@ export default class Roles extends Component {
   }
 
   render() {
+    const current = this.state.current;
+
     return (
       <section className="roles-screen screen">
         {this.state.select === "select" && <Alert desc={"role"}/> }
-        <h1>Who are you?</h1>
+        <h1 className="heading-1">Who are you?</h1>
         <ul>
           {json.map((role) => {
             return (
               <li key={role.id} onClick={() => this.handleChooseRole(role)}>
                 <div>
                   <img alt={`${role.name} path`} src={role.img} />
-                  <p className={this.state.current === role.id && 'selected'}>
-                    <strong>{role.name.split(' ')[0]}</strong>
-                    {role.name.split(' ')[1]}
+                  <p className={classNames({selected: current === role.id})}>
+                    <strong>{role.position}</strong>
+                    {role.title}
                   </p>
                 </div>
               </li>

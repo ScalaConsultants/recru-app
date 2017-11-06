@@ -15,7 +15,7 @@
       img
         height 100px
 
-    .item
+    .compass-container
 
       span
         font-weight 500
@@ -27,25 +27,19 @@
       p
         font-weight 700
 
-    .item:hover
+    .compass-container:hover
       span
         opacity 1
 
     .values
       flex-wrap wrap
 
-      .item
+      .compass-container
           img
             height 50px
 
 @media screen and (max-width: 767px)
   .compass-screen
-    .right
-      .chevron
-        position relative
-        width 100%
-        bottom 0px
-
     .content
       width 100%
 
@@ -71,13 +65,13 @@
       display flex
       flex-direction column
 
-      .item
+      .compass-container
         width 100%
         span
           display none
 
       .values
-        .item
+        .compass-container
           margin 10px 0
           background #f5f5f5
           img

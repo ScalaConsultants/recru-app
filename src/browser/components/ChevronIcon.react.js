@@ -1,12 +1,11 @@
-import Component from 'react-pure-render/component';
 import classNames from 'classnames';
 import React from 'react';
 
 if (process.env.IS_BROWSER) {
-  require('./Chevron.styl');
+  require('./ChevronIcon.styl');
 }
 
-export default function Chevron(props) {
+const ChevronIcon = (props, {isAnimated = true}) => {
   const arrowColor = classNames({
     '-red': props.color === 'red',
   });
@@ -23,12 +22,8 @@ export default function Chevron(props) {
   );
 }
 
-Chevron.propTypes = {
-  color: React.PropTypes.string,
-  isAnimated: React.PropTypes.bool,
+ChevronIcon.propTypes = {
   onClick: React.PropTypes.func,
 }
 
-Chevron.defaultProps = {
-  isAnimated: true
-}
+export default ChevronIcon;

@@ -1,5 +1,5 @@
 import Component from 'react-pure-render/component';
-import Chevron from '../components/Chevron.react';
+import ChevronIcon from '../components/ChevronIcon.react';
 import React from 'react';
 
 if (process.env.IS_BROWSER) {
@@ -37,7 +37,7 @@ export default class SecondScreen extends Component {
               </div>
             </div>
             <div className="arrow">
-              <Chevron color="red" isAnimated onClick={e => this.proceed(e)} />
+              <ChevronIcon color="red" isAnimated onClick={e => this.proceed(e)} />
             </div>
           </div>
         </div>

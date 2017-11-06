@@ -1,5 +1,6 @@
 import Component from 'react-pure-render/component';
 import React from 'react';
+import classNames from 'classnames';
 
 export default class SkillItem extends Component {
   static propTypes = {
@@ -36,12 +37,14 @@ export default class SkillItem extends Component {
       hint = (<div {...cb} className="hint">{this.props.data.name}</div>);
     }
 
+    const className = classNames({active: this.state.touched});
+
     return (
       <li>
         {hint}
         <div>
-          <img {...cb}
-            className={this.state.touched && "active"}
+          <img
+            className={className}
             alt={this.props.data.name}
             onMouseEnter={this.handleMouseEnter}
             onMouseLeave={this.handleMouseLeave}

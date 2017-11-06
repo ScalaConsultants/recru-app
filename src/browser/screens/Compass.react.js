@@ -1,11 +1,11 @@
 import React from 'react';
 import Component from 'react-pure-render/component';
 
-import LeftItem from '../components/LeftItem.react';
-import Item from '../components/CompassItem.react';
+import ScreenImage from '../components/ScreenImage.react';
+import ValueItem from '../components/CompassItem.react';
 import JobDescription from '../components/JobDescription.react';
 import boundScroll from '../lib/boundScroll';
-import Chevron from '../components/Chevron.react';
+import ChevronIcon from '../components/ChevronIcon.react';
 
 import data from '../data/scalac.json'
 
@@ -33,27 +33,25 @@ export default class Compass extends Component {
     return (
       <section className="compass-screen screen">
         <div className="container">
-          <LeftItem data={compassUrl} />
+          <ScreenImage data={compassUrl} />
           <div className="right">
             <div className="content">
               <div className="screen-content">
-                <h1>
-                  Use scalac compass
-                </h1>
+                <h1 className="heading-1">Use scalac compass</h1>
                 <p className="screen-desc">{data.desc}</p>
                 <div className="rules list">
                   {data.rules.map((element) =>
-                    <Item data={element} key={element.title}/>
+                    <ValueItem data={element} key={element.title}/>
                   )}
                 </div>
                 <h3>Our values:</h3>
                 <div className="values list">
                   {data.values.map((element) =>
-                    <Item data={element} key={element.title}/>
+                    <ValueItem data={element} key={element.title}/>
                   )}
                 </div>
               </div>
-              <Chevron isAnimated onClick={e => this.proceed(e)}/>
+              <ChevronIcon isAnimated onClick={e => this.proceed(e)}/>
             </div>
           </div>
         </div>

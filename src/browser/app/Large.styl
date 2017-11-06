@@ -22,6 +22,7 @@
         font-size 1.4vw
 
       h1
+      .heading-1
         font-size 2.5vw
         text-transform uppercase
 
@@ -73,25 +74,26 @@
   .screen.roles-screen
     h1
       font-size 2.5vw
-    ul
-      li
-        div
-          p
-            font-size 1.7vw
+    ul li div p
+      font-size 1.7vw
 
   // Position
 
   // Compass
   .screen.compass-screen
-    .values
-      .item
+    .compass-container
+      p
+        font-size 1.2vw
+    .content
+      .values
+        .compass-container
+          img
+            height 3.5vw
+          span
+            font-size 1vw
+      .rules
         img
-          height 3.5vw
-        span
-          font-size 1vw
-    .rules
-      img
-        height 4vw
+          height 4vw
 
   .job
     h3
@@ -119,7 +121,6 @@
           font-size 1.2vw
       .react-tagsinput-input
         font-size 1.1vw
-        width inherit
 
   // Check
   .screen.check-screen

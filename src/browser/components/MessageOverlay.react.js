@@ -6,7 +6,7 @@ if (process.env.IS_BROWSER) {
   require('./MessageOverlay.styl');
 }
 
-export default function MessageOverlay(props) {
+const MessageOverlay = props => {
   const className = classNames('message-overlay', props.className);
   return (
     <div className={className}>
@@ -23,3 +23,5 @@ MessageOverlay.propTypes = {
   content: React.PropTypes.string,
   title: React.PropTypes.string
 }
+
+export default MessageOverlay;

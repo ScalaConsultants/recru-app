@@ -53,7 +53,7 @@ export default class Submit extends Component {
     if (!this.isDataValid())
       return;
 
-    let candidateData = {
+    const candidateData = {
       name: this.props.candidate.name || ReactDOM.findDOMNode(this.refs.nameInput).value,
       role: this.props.candidate.role.name,
       email: ReactDOM.findDOMNode(this.refs.emailInput).value,
@@ -79,17 +79,17 @@ export default class Submit extends Component {
   }
 
   handleUrlChange(e) {
-    const hasNoValue = !e.target.value || e.target.value.trim().length === 0;
+    const hasNoValue = e.target.value.trim().length === 0;
     this.setState({urlPassed: !hasNoValue});
   }
 
   nameChange(e) {
-    const hasNoValue = !e.target.value || e.target.value.trim().length === 0;
+    const hasNoValue = e.target.value.trim().length === 0;
     this.setState({namePassed: !hasNoValue});
   }
 
   handleEmailChange(e) {
-    const hasNoValue = !e.target.value || e.target.value.trim().length === 0;
+    const hasNoValue = e.target.value.trim().length === 0;
     const filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
     this.setState({emailPassed: !hasNoValue && filter.test(e.target.value)});
@@ -161,26 +161,54 @@ export default class Submit extends Component {
         <header>One more thing...</header>
         <div className="field">
           <h2>Leave us your email</h2>
-          <input className={emailInputClassName} onChange={this.handleEmailChange} placeholder="email" ref="emailInput" tabIndex="-1" type="email"/>
+          <input className={emailInputClassName}
+                 onChange={this.handleEmailChange}
+                 placeholder="email"
+                 ref="emailInput"
+                 tabIndex="-1"
+                 type="email"/>
         </div>
         { !this.props.candidate.name &&
           <div className="field">
             <h2>and name</h2>
-            <input className={nameClassName} onChange={this.nameChange} placeholder="name" ref="nameInput" tabIndex="-1" type="text"/>
+            <input
+              className={nameClassName}
+              onChange={this.nameChange}
+              placeholder="name"
+              ref="nameInput"
+              tabIndex="-1"
+              type="text"/>
           </div>
         }
         <div className="field">
           <h2>and either a LinkedIn profile URI</h2>
-          <input className="optional" onChange={this.handleUrlChange} placeholder="linkedin.com/in/username" ref="urlInput" tabIndex="-1" type="url"/>
+          <input
+            className="optional"
+            onChange={this.handleUrlChange}
+            placeholder="linkedin.com/in/username"
+            ref="urlInput"
+            tabIndex="-1"
+            type="url"
+          />
         </div>
         <span>or</span>
         <input ref="fileInput" tabIndex="-1" type="file" />
-        <div className={dropAreaclassName} id="drop" onClick={() => ReactDOM.findDOMNode(this.refs.fileInput).click()} ref="dropArea">
+        <div
+          className={dropAreaclassName}
+          id="drop" onClick={() => ReactDOM.findDOMNode(this.refs.fileInput).click()}
+          ref="dropArea"
+        >
           <span>
             { this.state.fileUploaded ? 'resume uploaded' : 'drop or click to select resume'}
           </span>
         </div>
-        <button className={buttonInputClassName} disabled={!this.isDataValid() || candidate.isSubmittingForm} onClick={this.submit}><i></i>{buttonTitle}</button>
+        <button
+          className={buttonInputClassName}
+          disabled={!this.isDataValid() || candidate.isSubmittingForm}
+          onClick={this.submit}
+        >
+          <i></i>{buttonTitle}
+        </button>
       </section>
     );
   }

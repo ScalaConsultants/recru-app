@@ -1,4 +1,3 @@
-import Component from 'react-pure-render/component';
 import classNames from 'classnames';
 import React from 'react';
 
@@ -6,20 +5,14 @@ if (process.env.IS_BROWSER) {
   require('./Minimap.styl');
 }
 
-export default class MiniMap extends Component {
-  static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    className: React.PropTypes.string,
-    screens: React.PropTypes.object.isRequired
-  }
-
-  handleClick(event, id) {
-    const {actions: {setScreen}} = this.props;
+const MiniMap = props => {
+  function handleClick(event, id) {
+    const {actions: {setScreen}} = props;
     event.preventDefault();
     setScreen(id);
   }
 
-  renderPoint(id, currentScreen) {
+  function renderPoint(id, currentScreen) {
     const isCurrent = id === currentScreen;
     const isInactive = id > currentScreen;
     const className = classNames({
@@ -28,7 +21,7 @@ export default class MiniMap extends Component {
     });
     const fx = (isInactive || isCurrent) ?
       ((e) => { e.preventDefault(); }) :
-      ((e) => this.handleClick(e, id));
+      ((e) => handleClick(e, id));
     return (
       <li key={id}>
         <a className={className} href="#" onClick={fx}></a>
@@ -36,21 +29,28 @@ export default class MiniMap extends Component {
     );
   }
 
-  renderList() {
-    const {lastScreen, currentScreen} = this.props.screens;
+  function renderList() {
+    const {lastScreen, currentScreen} = props.screens;
     const list = [];
     for (let i = 0; i <= lastScreen; i++)
-      list.push(this.renderPoint(i, currentScreen));
+      list.push(renderPoint(i, currentScreen));
     return list;
   }
 
-  render() {
-    const list = this.renderList();
-    const className = classNames('minimap', this.props.className);
-    return (
-      <ul className={className}>
-        {list}
-      </ul>
-    );
-  }
+  const list = renderList();
+  const className = classNames('minimap', props.className);
+
+  return (
+    <ul className={className}>
+      {list}
+    </ul>
+  );
 }
+
+MiniMap.propTypes = {
+  actions: React.PropTypes.object.isRequired,
+  className: React.PropTypes.string,
+  screens: React.PropTypes.object.isRequired
+}
+
+export default MiniMap;

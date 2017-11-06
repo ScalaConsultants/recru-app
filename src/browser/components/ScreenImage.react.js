@@ -1,17 +1,19 @@
 import React from 'react';
 
 if (process.env.IS_BROWSER) {
-  require('./LeftItem.styl');
+  require('./ScreenImage.styl');
 }
 
-export default function LeftItem(props) {
+const ScreenImage = props => {
   return (
-    <div className="left">
+    <div className="screen-image">
       { props.data && <img src={props.data.img} /> }
     </div>
   );
 }
 
-LeftItem.propTypes = {
+ScreenImage.propTypes = {
   data: React.PropTypes.object.isRequired
 }
+
+export default ScreenImage;
