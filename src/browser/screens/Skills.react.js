@@ -40,7 +40,7 @@ export default class Skills extends Component {
   render() {
     const skills = technologies[this.props.candidate.role.id] || {};
     const backpackUrl = {
-      img: "../../../assets/img/plecak.svg"
+      img: "../../../assets/img/backpack.svg"
     };
 
     let skillsForCurrentRole = Object.keys(skills).map((key) => skills[key]);

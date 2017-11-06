@@ -1,5 +1,6 @@
 import React from 'react';
 import Component from 'react-pure-render/component';
+import classNames from 'classnames';
 
 import ScreenImage from '../components/ScreenImage.react';
 import Item from '../components/CompassItem.react';
@@ -22,7 +23,7 @@ export default class Compass extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {currentTab: {id: 0}};
+    this.state = {currentTab: {id: 'tools'}};
   }
 
   proceed() {
@@ -52,6 +53,12 @@ export default class Compass extends Component {
       img: "../../../assets/img/equipment.svg"
     };
 
+    const currentTab = this.state.currentTab.id;
+
+    const formControlClassName = classNames('form-control', {
+      '-error': !!this.state.error
+    });
+
     return (
       <section className="equipment-screen screen">
         <div className="container">
@@ -63,8 +70,11 @@ export default class Compass extends Component {
                 <p className="desc screen-desc">{data.desc}</p>
                 <div className="options list">
                   {data.options.map((element) =>
-                    <div className="option" key={element.id} onClick={() => this.selectTab(element.id)}>
-                      <div className={element.id === this.state.currentTab.id ? 'active icon' : 'icon'}>
+                    <div
+                      key={element.id} onClick={() => this.selectTab(element.id)}
+                      className={classNames('option', {'active' : element.id === currentTab})}
+                    >
+                      <div className="icon">
                         <img
                           src={element.id === this.state.currentTab.id ? element.active : element.img}
                           alt={element.title}

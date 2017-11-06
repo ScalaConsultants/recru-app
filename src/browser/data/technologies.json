@@ -64,11 +64,6 @@
       "src" : "assets/img/backend/slick.png"
     },
     {
-      "id" : 13,
-      "name" : "spray",
-      "src" : "assets/img/backend/spray.png"
-    },
-    {
       "id" : 14,
       "name" : "git",
       "src" : "assets/img/backend/git.png"

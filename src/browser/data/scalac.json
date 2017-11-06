@@ -3,15 +3,15 @@
   "rules" : [
     {
       "title" : "Work hard",
-      "img" : "../../../assets/img/values/Hantel.svg"
+      "img" : "../../../assets/img/values/dumbbell.svg"
     },
     {
       "title" : "Do the right thing",
-      "img" : "../../../assets/img/values/Ptaszek.svg"
+      "img" : "../../../assets/img/values/tick.svg"
     },
     {
       "title" : "Have fun",
-      "img" : "../../../assets/img/values/Balony.svg"
+      "img" : "../../../assets/img/values/balloons.svg"
     }
   ],
   "values" : [

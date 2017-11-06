@@ -2,25 +2,25 @@
   "desc" : "There are some tools we equip you with, and opportunities we want to give you, to make your way more exiciting.",
   "options" : [
     {
-      "id" : 0,
+      "id" : "tools",
       "title" : "Tools",
       "img" : "assets/img/equipment/tools.svg",
       "active" : "assets/img/equipment/tools-active.svg"
     },
     {
-      "id" : 1,
+      "id" : "opportunities",
       "title" : "Opportunities",
       "img" : "assets/img/equipment/opportunities.svg",
       "active" : "assets/img/equipment/opportunities-active.svg"
     },
     {
-      "id" : 2,
+      "id" : "development",
       "title" : "Personal Development",
       "img" : "assets/img/equipment/pdevelop.svg",
       "active" : "assets/img/equipment/pdevelop-active.svg"
     }
   ],
-  "0": [
+  "tools": [
     "Best work equipment (we are Apple crazy but you always have a choice if you are not)",
     "Talent Team takes care of delivering all important equipment",
     "We care about code quality and find the time for code reviews",
@@ -29,7 +29,7 @@
     "We use other communicators (Hangouts, Skype, Zoom.us) to organise calls, stand ups",
     "We have our Scalac Times newsletter, to keep us all well informed"
   ],
-  "1" : [
+  "opportunities" : [
     "Being the part of Best Scala hAkkers Team!",
     "Creating great software and solving deep technical problems",
     "Great customers to work with",
@@ -38,7 +38,7 @@
     "Regular company-wide retreats - we meet in person to work and play together",
     "Freedom to choose architecture, technologies, conventions and tools"
   ],
-  "2" : [
+  "development" : [
     "Educational offer - different workshops and trainings",
     "Meeting your buddy/mentor",
     "Dedicated budget for learning & development",
