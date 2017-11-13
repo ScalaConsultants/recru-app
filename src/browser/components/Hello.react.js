@@ -14,7 +14,7 @@ const Hello = props => {
 
 Hello.propTypes = {
   className: React.PropTypes.string,
-  message: React.PropTypes.string
+  message: React.PropTypes.string.isRequired
 }
 
 export default Hello;

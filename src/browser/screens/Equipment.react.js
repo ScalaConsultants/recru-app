@@ -23,7 +23,7 @@ export default class Compass extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {currentTab: {id: 'tools'}};
+    this.state = {currentTab: 'tools'};
   }
 
   proceed() {
@@ -32,7 +32,7 @@ export default class Compass extends Component {
   }
 
   renderList() {
-    let id = this.state.currentTab.id;
+    const id = this.state.currentTab;
     return (
       data[id].map(element =>
         <li key={element}>
@@ -44,7 +44,7 @@ export default class Compass extends Component {
 
   selectTab(id) {
     this.setState({
-      currentTab: {...this.state.currentTab, id}
+      currentTab: id
     })
   }
 
@@ -53,11 +53,7 @@ export default class Compass extends Component {
       img: "../../../assets/img/equipment.svg"
     };
 
-    const currentTab = this.state.currentTab.id;
-
-    const formControlClassName = classNames('form-control', {
-      '-error': !!this.state.error
-    });
+    const currentTab = this.state.currentTab;
 
     return (
       <section className="equipment-screen screen">
@@ -76,7 +72,7 @@ export default class Compass extends Component {
                     >
                       <div className="icon">
                         <img
-                          src={element.id === this.state.currentTab.id ? element.active : element.img}
+                          src={element.id === this.state.currentTab ? element.active : element.img}
                           alt={element.title}
                         />
                       </div>

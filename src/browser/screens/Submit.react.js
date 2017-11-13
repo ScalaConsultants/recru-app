@@ -19,10 +19,6 @@ export default class Submit extends Component {
   constructor(props) {
     super(props);
     this.state = this.getDefaultState();
-    this.submit = this.submit.bind(this);
-    this.handleUrlChange = this.handleUrlChange.bind(this);
-    this.nameChange = this.nameChange.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleDragOver = this.handleDragOver.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
   }
@@ -39,14 +35,9 @@ export default class Submit extends Component {
 
   isDataValid() {
     if (this.props.candidate.name) {
-      if (this.state.emailPassed)
-        return true;
-      return false;
-    } else {
-      if (this.state.emailPassed && this.state.namePassed)
-        return true;
-      return false;
+      return !!this.state.emailPassed;
     }
+    return this.state.emailPassed && this.state.namePassed;
   }
 
   submit() {
@@ -76,6 +67,7 @@ export default class Submit extends Component {
     const {actions: {submit}} = this.props;
     const apiEndpoint = `${this.props.config.apiEndpoint.replace(/\/?$/, '/')}upload`;
     submit(apiEndpoint, parts);
+    console.log(apiEndpoint, parts);
   }
 
   handleUrlChange(e) {
@@ -162,7 +154,7 @@ export default class Submit extends Component {
         <div className="field">
           <h2>Leave us your email</h2>
           <input className={emailInputClassName}
-                 onChange={this.handleEmailChange}
+                 onChange={(e) => this.handleEmailChange(e)}
                  placeholder="email"
                  ref="emailInput"
                  tabIndex="-1"
@@ -173,7 +165,7 @@ export default class Submit extends Component {
             <h2>and name</h2>
             <input
               className={nameClassName}
-              onChange={this.nameChange}
+              onChange={(e) => this.nameChange(e)}
               placeholder="name"
               ref="nameInput"
               tabIndex="-1"
@@ -184,7 +176,7 @@ export default class Submit extends Component {
           <h2>and either a LinkedIn profile URI</h2>
           <input
             className="optional"
-            onChange={this.handleUrlChange}
+            onChange={(e) => this.handleUrlChange(e)}
             placeholder="linkedin.com/in/username"
             ref="urlInput"
             tabIndex="-1"
@@ -205,7 +197,7 @@ export default class Submit extends Component {
         <button
           className={buttonInputClassName}
           disabled={!this.isDataValid() || candidate.isSubmittingForm}
-          onClick={this.submit}
+          onClick={() => this.submit()}
         >
           <i></i>{buttonTitle}
         </button>

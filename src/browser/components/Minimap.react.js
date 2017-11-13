@@ -6,13 +6,13 @@ if (process.env.IS_BROWSER) {
 }
 
 const MiniMap = props => {
-  function handleClick(event, id) {
+  handleClick = (event, id) => {
     const {actions: {setScreen}} = props;
     event.preventDefault();
     setScreen(id);
   }
 
-  function renderPoint(id, currentScreen) {
+  renderPoint = (id, currentScreen) => {
     const isCurrent = id === currentScreen;
     const isInactive = id > currentScreen;
     const className = classNames({
@@ -20,8 +20,8 @@ const MiniMap = props => {
       inactive: isInactive
     });
     const fx = (isInactive || isCurrent) ?
-      ((e) => { e.preventDefault(); }) :
-      ((e) => handleClick(e, id));
+      e => { e.preventDefault(); } :
+      e => handleClick(e, id);
     return (
       <li key={id}>
         <a className={className} href="#" onClick={fx}></a>
@@ -29,7 +29,7 @@ const MiniMap = props => {
     );
   }
 
-  function renderList() {
+  renderList = () => {
     const {lastScreen, currentScreen} = props.screens;
     const list = [];
     for (let i = 0; i <= lastScreen; i++)

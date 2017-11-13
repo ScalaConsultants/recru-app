@@ -39,7 +39,7 @@ export default class Experience extends Component {
   }
 
   selectLevel(exp) {
-    this.setState({exp: exp}, () => this.proceed());
+    this.setState({exp}, () => this.proceed());
   }
 
   render() {
@@ -69,11 +69,9 @@ export default class Experience extends Component {
                           className={this.state.exp.id === level.id ? 'active level' : 'level'}
                         >
                           <div className="icons">
-                            {level.stars.map(element => {
-                                return (
-                                  <img key={element} src={data.experience.arrow} alt={element}/>
-                                );
-                            })}
+                            {level.stars.map(element =>
+                              <img key={element} src={data.experience.arrow} alt={element}/>
+                            )}
                           </div>
                           <div className="desc">
                             <h4>{level.position}</h4>

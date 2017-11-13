@@ -23,7 +23,6 @@ export default class Skills extends Component {
   constructor() {
     super()
     this.state = {skills: []}
-    this.handleChange = this.handleChange.bind(this);
   }
 
   proceed() {
@@ -37,20 +36,27 @@ export default class Skills extends Component {
     saveExtraSkill(skills);
   }
 
+  defaultRenderInput (props) {
+    const {placeholder, onChange, value, addTag, ...other} = props
+    return (
+      <input
+        type='text'
+        tabIndex="-1"
+        placeholder="Skill name"
+        onChange={onChange}
+        value={value}
+        {...other}
+      />
+    )
+  }
+
+
   render() {
     const skills = technologies[this.props.candidate.role.id] || {};
+    const skillsForCurrentRole = Object.keys(skills).map((key) => skills[key]);
     const backpackUrl = {
       img: "../../../assets/img/backpack.svg"
     };
-
-    let skillsForCurrentRole = Object.keys(skills).map((key) => skills[key]);
-
-    function defaultRenderInput (props) {
-      const {placeholder, onChange, value, addTag, ...other} = props
-      return (
-        <input type='text' tabIndex="-1" placeholder="Skill name" onChange={onChange} value={value} {...other} />
-      )
-    }
 
     return (
       <section className="skills-screen screen">
@@ -61,7 +67,12 @@ export default class Skills extends Component {
               <div className="screen-title">
                 <h1 className="heading-1">pack your bag</h1>
                 <p className="screen-desc">
-                  { this.props.candidate.name ? `${this.props.candidate.name}, ${technologies.title}` : `${technologies.title}` }
+                  { this.props.candidate.name
+                    ?
+                      `${this.props.candidate.name}, ${technologies.title}`
+                    :
+                      `${technologies.title}`
+                  }
                 </p>
               </div>
               <div className="skills-block">
@@ -74,8 +85,8 @@ export default class Skills extends Component {
                   <p>Other skills:</p>
                   <TagsInput
                     value={this.state.skills}
-                    onChange={this.handleChange}
-                    renderInput={defaultRenderInput}
+                    onChange={e => this.handleChange(e)}
+                    renderInput={this.defaultRenderInput}
                   />
                 </div>
               </div>

@@ -13,13 +13,13 @@ export default class SkillItem extends Component {
     this.state = {hintDisplayed: false, touched: false};
   }
 
-  handleChange(level, e) {
+  handleChange = (level, e) => {
     const {actions: {saveSkill}} = this.props;
     saveSkill(this.props.data, level);
     this.setState({touched: true});
   }
 
-  setHintVisibility(visible) {
+  setHintVisibility = (visible) => {
     this.setState({hintDisplayed: visible});
   }
 
