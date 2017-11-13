@@ -51,7 +51,7 @@ export default class Experience extends Component {
         <div className="container">
           <ScreenImage data={backpackUrl} />
           <div className="right">
-            {this.state.select === true && <Alert desc={"level"}/> }
+            {<Alert select={this.state.select} desc={"level"}/>}
             <div className="content">
               <div className="experience">
                 <div>

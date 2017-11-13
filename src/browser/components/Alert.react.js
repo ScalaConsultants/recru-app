@@ -4,16 +4,21 @@ if (process.env.IS_BROWSER) {
   require('./Alert.styl');
 }
 
-const Alert = (props, {desc = ''}) => {
+const Alert = (props, {desc = '', select = false}) => {
   return (
-    <div className="alert-message">
-      Please choose your <span className="bold">{props.desc}</span>
+    <div>
+      { props.select &&
+        <div className="alert-message">
+          Please choose your <span className="bold">{props.select} {props.desc}</span>
+        </div>
+      }
     </div>
   );
 }
 
 Alert.propTypes = {
-  desc: React.PropTypes.string
+  desc: React.PropTypes.string.isRequired,
+  select: React.PropTypes.bool.isRequired,
 }
 
 export default Alert;

@@ -27,7 +27,7 @@ export default class Roles extends Component {
 
   proceed() {
     if (!this.state.role) {
-      this.setState({select: "select"});
+      this.setState({select: true});
       setTimeout(() => { this.setState({select: false}); }, 5000);
     } else {
       const {actions: {saveRole, nextScreen}} = this.props;
@@ -46,7 +46,7 @@ export default class Roles extends Component {
 
     return (
       <section className="roles-screen screen">
-        {this.state.select === "select" && <Alert desc={"role"}/> }
+        {<Alert select={this.state.select} desc={"role"}/>}
         <h1 className="heading-1">Who are you?</h1>
         <ul>
           {json.map((role) => {
