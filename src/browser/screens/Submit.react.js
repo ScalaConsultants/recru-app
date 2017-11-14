@@ -67,7 +67,6 @@ export default class Submit extends Component {
     const {actions: {submit}} = this.props;
     const apiEndpoint = `${this.props.config.apiEndpoint.replace(/\/?$/, '/')}upload`;
     submit(apiEndpoint, parts);
-    console.log(apiEndpoint, parts);
   }
 
   handleUrlChange(e) {
