@@ -1,0 +1,46 @@
+.check-screen
+
+  .checkbox-list
+      display flex
+      flex-direction column
+      align-items flex-start
+      margin-left 30px
+      margin-top 5vw
+
+    .list-item
+      margin 10px 0
+
+    input
+      display none
+
+    label
+      align-items flex-start
+      display flex
+      flex-direction row
+      padding 0
+      cursor pointer
+
+    label:before
+      position absolute
+      margin-left -35px
+      content ''
+      width 25px
+      height 25px
+      opacity 0.8
+      display block
+      background #d9d9d9 url('../../../assets/img/bullet.svg') no-repeat
+      background-position -100px 0
+      transition transform .25s
+      transform rotate(-90deg)
+
+    input:checked ~ label:before
+      background-position 0
+
+    label:hover:before
+    label:hover ~ label:before
+      background-position -32px 0
+
+@media screen and (max-width: 1120px)
+  .check-screen
+    .checkbox-list
+      margin-left 30px

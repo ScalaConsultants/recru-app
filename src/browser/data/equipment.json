@@ -1,0 +1,75 @@
+{
+  "desc" : "There are some tools we equip you with, and opportunities we want to give you, to make your way more exiciting.",
+  "options" : [
+    {
+      "id" : "tools",
+      "title" : "Tools",
+      "img" : "assets/img/equipment/tools.svg",
+      "active" : "assets/img/equipment/tools-active.svg"
+    },
+    {
+      "id" : "opportunities",
+      "title" : "Opportunities",
+      "img" : "assets/img/equipment/opportunities.svg",
+      "active" : "assets/img/equipment/opportunities-active.svg"
+    },
+    {
+      "id" : "development",
+      "title" : "Personal Development",
+      "img" : "assets/img/equipment/pdevelop.svg",
+      "active" : "assets/img/equipment/pdevelop-active.svg"
+    }
+  ],
+  "tools": [
+    "Best work equipment (we are Apple crazy but you always have a choice if you are not)",
+    "Talent Team takes care of delivering all important equipment",
+    "We care about code quality and find the time for code reviews",
+    "We deliver all “must have” licences and accesses",
+    "We use Slack to communicate daily :-) This is kind of our virtual office",
+    "We use other communicators (Hangouts, Skype, Zoom.us) to organise calls, stand ups",
+    "We have our Scalac Times newsletter, to keep us all well informed"
+  ],
+  "opportunities" : [
+    "Being the part of Best Scala hAkkers Team!",
+    "Creating great software and solving deep technical problems",
+    "Great customers to work with",
+    "Delivering value to internal products and/or external projects",
+    "Extending and improving products used by people worldwide",
+    "Regular company-wide retreats - we meet in person to work and play together",
+    "Freedom to choose architecture, technologies, conventions and tools"
+  ],
+  "development" : [
+    "Educational offer - different workshops and trainings",
+    "Meeting your buddy/mentor",
+    "Dedicated budget for learning & development",
+    "Possibility to join English lessons",
+    "Sharing knowledge with your colleagues in an international team",
+    "Regular employee evaluation",
+    "Possibility of choosing the project to work on and project change"
+  ],
+  "experience": {
+    "subtitle" : "As we've said at the beginning, there are several ways to explore.",
+    "command": "Please choose advancement level of the trail most suitable for you.",
+    "arrow": "../../../assets/img/bullet.svg",
+    "levels": [
+      {
+        "id": "junior-level",
+        "position": "Junior",
+        "desc": "(up to 5000 PLN)",
+        "stars": ["1"]
+      },
+      {
+        "id": "mid-level",
+        "position": "Mid",
+        "desc": "(5000-9000 PLN)",
+        "stars": ["1","2"]
+      },
+      {
+        "id": "expert-level",
+        "position": "Expert",
+        "desc": "(10000-15000 PLN)",
+        "stars": ["1","2","3"]
+      }
+    ]
+  }
+}

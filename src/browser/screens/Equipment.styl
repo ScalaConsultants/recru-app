@@ -1,0 +1,99 @@
+.equipment-screen
+
+    h1
+      text-transform uppercase
+
+        p
+          margin 0
+
+  .content-list
+    width 100%
+
+  .options
+    display flex
+    width 100%
+
+    .option
+      align-items center
+      cursor pointer
+      display flex
+      flex 1
+      flex-direction column
+      text-align center
+      margin 0 40px
+
+      p
+        font-weight 700
+
+      .icon
+        width 60px
+        height 60px
+        border-radius 60px
+        border 2px solid red
+        display flex
+        padding 10px
+        flex-direction column
+        align-items center
+        justify-content center
+        transition .3s ease-in-out
+
+        img
+          height 100%
+          width 100%
+
+      .icon:hover
+        background pink
+
+      .icon.active:hover
+        background red
+
+    .option.active
+      .icon
+        background red
+      p
+        color red
+
+
+@media screen and (max-width: 767px)
+  .equipment-screen
+
+    .content
+      h1
+        font-size 2em
+        text-transform uppercase
+
+      .desc
+        display none
+
+    .content-list
+      display flex
+
+    .options
+      align-items flex-start
+      justify-content space-between
+      width 100%
+
+      .option
+        margin 0
+
+        img
+          width 50px
+
+@media screen and (max-width: 520px)
+  .equipment-screen
+    .options
+      .option
+        p
+          font-size 12px
+
+@media screen and (max-width: 420px)
+  .equipment-screen
+    .content-list
+      margin-top 45px
+
+@media screen and (max-width: 360px)
+  .equipment-screen
+    .options
+      .option
+        p
+          display none

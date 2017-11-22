@@ -1,5 +1,5 @@
 import Component from 'react-pure-render/component';
-import Chevron from '../components/Chevron.react';
+import ChevronIcon from '../components/ChevronIcon.react';
 import React from 'react';
 
 if (process.env.IS_BROWSER) {
@@ -25,17 +25,19 @@ export default class SecondScreen extends Component {
             <img className="cloud c2" src="../../../assets/img/second/cloud-2.svg" />
           </div>
           <div className="right-side">
-            <div>
-              <p>There are</p>
-              <p>several ways</p>
-              <p>to explore</p>
-            </div>
-            <div className="path" onClick={() => this.proceed()}>
-              <img className="scalac" src="../../../assets/img/second/scalac-logo.svg" />
-              <h2>choose your path</h2>
+            <div className="content">
+              <div>
+                <p>There are</p>
+                <p>several ways</p>
+                <p>to explore</p>
+              </div>
+              <div className="path" onClick={() => this.proceed()}>
+                <img className="scalac" src="../../../assets/img/second/scalac-logo.svg" />
+                <h2>choose your path</h2>
+              </div>
             </div>
             <div className="arrow">
-              <Chevron color="red" isAnimated onClick={e => this.proceed(e)} />
+              <ChevronIcon color="red" isAnimated onClick={e => this.proceed(e)} />
             </div>
           </div>
         </div>

@@ -1,0 +1,201 @@
+.skills-screen
+
+  .right
+    justify-content flex-start
+
+    .content-skills
+      max-width 90%
+      height 100%
+      display flex
+      flex-direction column
+      justify-content space-between
+
+    .screen-title
+      p
+        font-size 18px
+        text-align left
+
+  h1
+    font-weight 700
+    color #010101
+    margin-bottom 10px
+    text-transform uppercase
+
+  p
+    text-align center
+
+  .skills-block
+    margin-bottom 12vh
+
+    .tags-wrapper
+      width 50%
+      p
+        text-align left
+        font-weight 600
+
+  .react-tagsinput-input
+    width 120px
+
+  .react-tagsinput-tag
+    background-color red
+    border 1px solid red
+    color white
+    border-radius 5px
+
+  .react-tagsinput
+    border-radius 5px
+
+  .react-tagsinput--focused
+    border-color #fb5252
+
+  ul
+    display flex
+    max-width 100%
+    list-style none
+    flex-wrap wrap
+    padding 0
+
+    li:hover
+      img
+        filter grayscale(0)
+        transition .2s ease-in-out
+
+    li
+      margin-bottom 20px
+      position relative
+      display flex
+      justify-content flex-start
+      align-items center
+      width 33.3%
+
+      img.active
+        filter grayscale(0)
+
+      .hint
+        position absolute
+        bottom 90px
+        left 0
+        background #000
+        opacity 0.7
+        color #fff
+        text-align center
+        width 90px
+        padding 0 5px
+        margin 0 15px
+        font-size 14px
+        line-height 20px
+        border-radius 5px
+
+      .hint::after
+        content ''
+        position absolute
+        width 0
+        height 0
+        border-left 5px solid transparent
+        border-right 5px solid transparent
+        border-top 7px solid #000
+        bottom -7px
+        left 43px
+        margin 0 auto
+
+      img
+        filter grayscale(100%)
+        max-width 70px
+        vertical-align middle
+        margin 0 20px 0 0
+        max-height 65px
+
+      form
+        display inline-block
+        vertical-align middle
+
+        input
+          display none
+
+        label
+          float right
+          padding 0
+          font-size 36px
+          cursor pointer
+
+        label.star:before
+          content ''
+          width 32px
+          height 31px
+          opacity 0.8
+          display block
+          background url('../../../assets/img/rating-arrows.png') no-repeat
+          transition transform .25s
+
+        input:checked ~ label.star:before
+          background-position -64px 0 !important
+
+        label.star:hover:before
+          transform scale(1.1)
+
+        label.star:hover:before
+        label.star:hover ~ label.star:before
+          background-position -32px 0
+
+@media (max-width: 1275px)
+  .skills-screen
+    ul
+      justify-content space-around
+      li
+        width 50%
+
+    .skills-block
+      margin-bottom 0
+
+@media (max-width: 1024px)
+  .skills-screen
+    ul
+      justify-content space-around
+      li
+        width initial
+
+    .right
+      .content-skills
+        max-width 100%
+
+    .skills-block
+      margin 0
+
+@media (max-width: 767px)
+  .skills-screen
+    .right
+      .content-skills
+        display block
+
+    ul
+      background transparent
+      margin 0
+
+    ul
+      margin-bottom 20px
+      li
+        display flex
+        justify-content center
+        align-items center
+        width 100%
+
+    .skills-block
+      .tags-wrapper
+        margin-bottom 50px
+        width 100%
+
+@media (max-width: 480px)
+  .skills-screen
+    ul
+      padding 0
+      li
+        img
+          max-width 50px
+          margin 0
+
+    p
+      margin 0 0 30px
+
+    .right
+      .screen-title
+        margin-left 0

@@ -1,26 +1,98 @@
 [
   {
     "id": 0,
-    "name": "Backend Climber",
-    "img": "assets/img/climber.jpg",
-    "description": "You are the hard “code” passionate. You discover new territories, climbing individually or with your team. You packed your bag of the best dev tools to be a strong backend for your users, as well as for your team. Your way is a various combination of precision,  inventiveness, challenge, cooperation and open-minded approach."
+    "position": "Frontend",
+    "title": "Observer",
+    "img": "assets/img/positions/Frontend.svg",
+    "desc": "You are an observer hungry for wide views, who transfers it into the frontend world. You are a coding-artist, who makes the  world of technology unique attractive and friendly.",
+    "mission": [
+      {
+        "id": "01-0-what",
+        "desc": "You make sure human creativity and the power of machine meet to create excellency"
+      },
+      {
+        "id": "02-0-what",
+        "desc": "You make sure user experience is as unique and friendly as it can be"
+      },
+      {
+        "id": "03-0-what",
+        "desc": "You make sure the bridge between user and backend is solid reliable"
+      },
+      {
+        "id": "04-0-what",
+        "desc": "Your are not a robot who does what the client tells him to, but and advisor and partner: suggesting optimal solutions for given problems"
+      }
+    ]
   },
   {
     "id": 1,
-    "name": "Clojure Explorer",
-    "img": "assets/img/explorer.jpg",
-    "description": "Exploration this is the way you rock! Breaking all of the set patterns,  inspiring new solutions brings you a great satisfaction. When you travel,  you never stop. Boredom it’s not the destination located on your trip map. Travelling alone or in a team? That’s not the point because both of this options sound  cool for you."
+    "position": "Backend",
+    "title": "Climber",
+    "img": "assets/img/positions/Backend.svg",
+    "desc": "You are a hard “code” passionate. You discover new territories, climbing individually or with your team. Your way is a combination of precision, inventiveness, challenge, cooperation & open-mindedness.",
+    "mission": [
+      {
+        "id": "01-1-what",
+        "desc": "You bring the application and data  to life, using your ability to compile creativity & tech-skills"
+      },
+      {
+        "id": "02-1-what",
+        "desc": "You design and create from ground up: from DB, up to the protocols"
+      },
+      {
+        "id": "03-1-what",
+        "desc": "You squeeze the last bit of performance from your hardware"
+      },
+      {
+        "id": "04-1-what",
+        "desc": "You evaluate the path you’ve already climbed  - you use the retrospective to improve the future"
+      }
+    ]
   },
   {
     "id": 2,
-    "name": "Mobile Hiker",
-    "img": "assets/img/hiker.jpg",
-    "description": "Hiking is your lifestyle and you build this lifestyle among mobiles users. We can say you inititate an amazing hiking trips for mobile society. This is a long way trip related to permanent change. And you move this change forward. You hike alone or in a mobile team with one main purpose ahead – making this trip exciting, cool & as intuitive as possible."
+    "position": "Mobile",
+    "title": "Hiker",
+    "img": "assets/img/positions/Mobile.svg",
+    "desc": "Hiking is your lifestyle & you build this lifestyle among mobile users. You hike alone or in a mobile team with one main purpose ahead - making this trip exciting, cool and as intuitive as possible",
+    "mission": [
+      {
+        "id": "01-2-what",
+        "desc": "You create stable, tested and pleasant to use apps"
+      },
+      {
+        "id": "02-2-what",
+        "desc": "You stay up to date with trends in mobile world"
+      },
+      {
+        "id": "03-2-what",
+        "desc": "You aren’t afraid of new concepts and tools, but are able to distinguish real revolution from a dead end"
+      },
+      {
+        "id": "04-2-what",
+        "desc": "Your are not a robot who does what the client tells him to, but and advisor and partner: suggesting optimal solutions for given problems"
+      }
+    ]
   },
   {
     "id": 3,
-    "name": "Frontend Observer",
-    "img": "assets/img/observer.jpg",
-    "description": "You are an exact observer hungry for wide views, who transfer it to the frontend world. You are a coding painter, who make user world of technology more unique, attractive and friendly. You  appreciate those precious moments of lonely journey of creativity as well as frontend team travelling."
+    "position": "Devops",
+    "title": "TrailSetter",
+    "img": "assets/img/positions/devops.svg",
+    "desc": "You are always eager to check out new trails and get into exciting journey with your team. You are a discoverer and you like to share your finds with others, making sure that they are well equipped for the journey ahead.",
+    "mission": [
+      {
+        "id": "01-3-what",
+        "desc": "You create and improve a delivery pipelines for various programming environments"
+      },
+      {
+        "id": "02-3-what",
+        "desc": "You solve technical problems"
+      },
+      {
+        "id": "03-3-what",
+        "desc": "You work with different types of customers in international teams, adding your own value to internal and external projects."
+      }
+    ]
   }
 ]

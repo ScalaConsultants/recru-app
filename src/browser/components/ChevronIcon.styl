@@ -1,0 +1,26 @@
+.chevron
+  margin-top 30px
+
+  i
+    display block
+    margin 0 auto
+    width 20px
+    height 20px
+    border-top 4px solid #fff
+    border-right 4px solid #fff
+    transform rotate(135deg)
+    opacity 0.9
+
+    &.-red
+      border-color #f00
+
+  &.-animated
+    animation arrowBounce 2.5s infinite
+
+  &.-clickable:hover
+    cursor pointer
+
+.right
+  .chevron
+    i
+      border-color #f00

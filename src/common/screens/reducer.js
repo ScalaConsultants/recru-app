@@ -4,7 +4,7 @@ import {Record} from 'immutable';
 // We can use simple initialState if no data from server need to be revived.
 const InitialState = Record({
   currentScreen: 0,
-  lastScreen: 4
+  lastScreen: 9
 });
 const initialState = new InitialState;
 

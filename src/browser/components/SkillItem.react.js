@@ -1,5 +1,6 @@
 import Component from 'react-pure-render/component';
 import React from 'react';
+import classNames from 'classnames';
 
 export default class SkillItem extends Component {
   static propTypes = {
@@ -9,15 +10,16 @@ export default class SkillItem extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {hintDisplayed: false};
+    this.state = {hintDisplayed: false, touched: false};
   }
 
-  handleChange(level, e) {
+  handleChange = (level, e) => {
     const {actions: {saveSkill}} = this.props;
     saveSkill(this.props.data, level);
+    this.setState({touched: true});
   }
 
-  setHintVisibility(visible) {
+  setHintVisibility = (visible) => {
     this.setState({hintDisplayed: visible});
   }
 
@@ -35,10 +37,20 @@ export default class SkillItem extends Component {
       hint = (<div {...cb} className="hint">{this.props.data.name}</div>);
     }
 
+    const className = classNames({active: this.state.touched});
+
     return (
       <li>
         {hint}
-        <img {...cb} alt={this.props.data.name} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} src={this.props.data.src}/>
+        <div>
+          <img
+            className={className}
+            alt={this.props.data.name}
+            onMouseEnter={this.handleMouseEnter}
+            onMouseLeave={this.handleMouseLeave}
+            src={this.props.data.src}
+          />
+        </div>
         <form action="">
           <input className="star star-5" id={`star5_${this.props.data.id}`} name="star" onChange={(e) => this.handleChange(5, e)} type="radio"/>
           <label className="star star-5" htmlFor={`star5_${this.props.data.id}`}></label>

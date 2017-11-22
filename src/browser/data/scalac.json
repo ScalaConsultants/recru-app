@@ -1,0 +1,49 @@
+{
+  "desc" : "In Scalac we are a team of people, who simply like each other. Our values are our compass - they show us which direction choose, to create a great company.",
+  "rules" : [
+    {
+      "title" : "Work hard",
+      "img" : "../../../assets/img/values/dumbbell.svg"
+    },
+    {
+      "title" : "Do the right thing",
+      "img" : "../../../assets/img/values/tick.svg"
+    },
+    {
+      "title" : "Have fun",
+      "img" : "../../../assets/img/values/balloons.svg"
+    }
+  ],
+  "values" : [
+    {
+      "title" : "Teamwork",
+      "subtitle" : "work together effectively, help each other",
+      "img" : "../../../assets/img/values/fiendliness.svg"
+    },
+    {
+      "title" : "Openness",
+      "subtitle" : "talk openly, share your thoughts and listen others",
+      "img" : "../../../assets/img/values/communication.svg"
+    },
+    {
+      "title" : "Scalacracy",
+      "subtitle" : "be prepared for the mix of democracy and dictatorship",
+      "img" : "../../../assets/img/values/scalacracy.svg"
+    },
+    {
+      "title" : "Proactivity",
+      "subtitle" : "be hungry for more, eager to learn, ready for the challenge",
+      "img" : "../../../assets/img/values/professionalism.svg"
+    },
+    {
+      "title" : "Accountability",
+      "subtitle" : "fix it if it’s broken, take up responsibility",
+      "img" : "../../../assets/img/values/responsibility.svg"
+    },
+    {
+      "title" : "Respect",
+      "subtitle" : "treat others as you wish to be treated",
+      "img" : "../../../assets/img/values/equality.svg"
+    }
+  ]
+}

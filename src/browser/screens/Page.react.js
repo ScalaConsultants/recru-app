@@ -1,12 +1,18 @@
-import Component from 'react-pure-render/component';
 import React, {PropTypes} from 'react';
+import Helmet from 'react-helmet';
+import Component from 'react-pure-render/component';
+
 import FirstScreen from '../screens/First.react';
 import SecondScreen from '../screens/Second.react';
-import ThirdScreen from '../screens/Third.react';
-import FourthScreen from '../screens/Fourth.react';
-import FifthScreen from '../screens/Fifth.react';
+import Roles from '../screens/Roles.react';
+import Skills from '../screens/Skills.react';
+import Submit from '../screens/Submit.react';
+import Position from '../screens/Position.react';
+import Compass from '../screens/Compass.react';
+import Equipment from '../screens/Equipment.react';
+import Check from '../screens/Check.react';
+import Experience from '../screens/Experience.react';
 import movementHandler from '../lib/movementHandler';
-import Helmet from 'react-helmet';
 
 @movementHandler
 export default class Screens extends Component {
@@ -52,9 +58,14 @@ export default class Screens extends Component {
         <Helmet title='Join Us'/>
         <FirstScreen {...this.props} isCurrent={this.isCurrent(0)} ref={this.getRefNameFor(0)}/>
         <SecondScreen {...this.props} isCurrent={this.isCurrent(1)} ref={this.getRefNameFor(1)}/>
-        <ThirdScreen {...this.props} isCurrent={this.isCurrent(2)} ref={this.getRefNameFor(2)}/>
-        <FourthScreen {...this.props} isCurrent={this.isCurrent(3)} ref={this.getRefNameFor(3)}/>
-        <FifthScreen {...this.props} isCurrent={this.isCurrent(4)} ref={this.getRefNameFor(4)}/>
+        <Roles {...this.props} isCurrent={this.isCurrent(2)} ref={this.getRefNameFor(2)}/>
+        <Position {...this.props} isCurrent={this.isCurrent(3)} ref={this.getRefNameFor(3)}/>
+        <Compass {...this.props} isCurrent={this.isCurrent(4)} ref={this.getRefNameFor(4)}/>
+        <Equipment {...this.props} isCurrent={this.isCurrent(5)} ref={this.getRefNameFor(5)}/>
+        <Skills {...this.props} isCurrent={this.isCurrent(6)} ref={this.getRefNameFor(6)}/>
+        <Check {...this.props} isCurrent={this.isCurrent(7)} ref={this.getRefNameFor(7)}/>
+        <Experience {...this.props} isCurrent={this.isCurrent(8)} ref={this.getRefNameFor(8)}/>
+        <Submit {...this.props} isCurrent={this.isCurrent(9)} ref={this.getRefNameFor(9)}/>
       </div>
     );
   }

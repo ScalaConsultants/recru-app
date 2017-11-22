@@ -1,5 +1,5 @@
 import Component from 'react-pure-render/component';
-import Chevron from '../components/Chevron.react';
+import ChevronIcon from '../components/ChevronIcon.react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
@@ -46,8 +46,12 @@ export default class FirstScreen extends Component {
       '-error': !!this.state.error
     });
 
+    const background = {
+      backgroundImage: `url(../../../assets/img/bg.png)`
+    }
+
     return (
-      <section className="first-screen screen">
+      <section className="first-screen screen" style={background}>
         <div className="centering-wrapper">
           <header>
             <h1>Join our team</h1>
@@ -66,8 +70,7 @@ export default class FirstScreen extends Component {
             </div>
           </header>
         </div>
-
-        <Chevron isAnimated onClick={e => this.proceed(e)}/>
+        <ChevronIcon isAnimated onClick={e => this.proceed(e)}/>
       </section>
     );
   }

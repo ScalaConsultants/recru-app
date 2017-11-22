@@ -1,71 +1,6 @@
 {
-  "0":[
-    {
-      "id" : 8,
-      "name" : "scala",
-      "src" : "assets/img/backend/scala.png"
-    },
-    {
-      "id" : 9,
-      "name" : "akka",
-      "src" : "assets/img/backend/akka.png"
-    },
-    {
-      "id" : 10,
-      "name" : "play",
-      "src" : "assets/img/backend/play.png"
-    },
-    {
-      "id" : 11,
-      "name" : "slick",
-      "src" : "assets/img/backend/slick.png"
-    },
-    {
-      "id" : 12,
-      "name" : "spray",
-      "src" : "assets/img/backend/spray.png"
-    }
-  ],
-  "1" : [
-    {
-      "id" : 13,
-      "name" : "clojure",
-      "src" : "assets/img/clojure/clojure.png"
-    },
-    {
-      "id" : 14,
-      "name" : "clojure-script",
-      "src" : "assets/img/clojure/clojurescript.png"
-    },
-    {
-      "id" : 15,
-      "name" : "leiningen",
-      "src" : "assets/img/clojure/leiningen.png"
-    }
-  ],
-  "2" : [
-    {
-      "id" : 16,
-      "name" : "swift",
-      "src" : "assets/img/mobile/swift.png"
-    },
-    {
-      "id" : 17,
-      "name" : "objective-c",
-      "src" : "assets/img/mobile/objective-c.png"
-    },
-    {
-      "id" : 18,
-      "name" : "xcode",
-      "src" : "assets/img/mobile/xcode.png"
-    },
-    {
-      "id" : 19,
-      "name" : "appcode",
-      "src" : "assets/img/mobile/appcode.png"
-    }
-  ],
-  "3" : [
+  "title": "we know you have some of the best dev tools, that support you along the way. Please let us know, which of them have you packed in your bag.",
+  "0" : [
     {
       "id" : 1,
       "name" : "js",
@@ -83,8 +18,8 @@
     },
     {
       "id" : 4,
-      "name" : "ember",
-      "src" : "assets/img/frontend/ember.png"
+      "name" : "Vue",
+      "src" : "assets/img/frontend/vue.png"
     },
     {
       "id" : 5,
@@ -100,6 +35,117 @@
       "id" : 7,
       "name" : "react",
       "src" : "assets/img/frontend/react.png"
+    },
+    {
+      "id" : 8,
+      "name" : "git",
+      "src" : "assets/img/backend/git.png"
+    }
+  ],
+  "1":[
+    {
+      "id" : 9,
+      "name" : "scala",
+      "src" : "assets/img/backend/scala.png"
+    },
+    {
+      "id" : 10,
+      "name" : "akka",
+      "src" : "assets/img/backend/akka.png"
+    },
+    {
+      "id" : 11,
+      "name" : "play",
+      "src" : "assets/img/backend/play.png"
+    },
+    {
+      "id" : 12,
+      "name" : "slick",
+      "src" : "assets/img/backend/slick.png"
+    },
+    {
+      "id" : 14,
+      "name" : "git",
+      "src" : "assets/img/backend/git.png"
+    }
+  ],
+  "2" : [
+    {
+      "id" : 15,
+      "name" : "AndroidSDK",
+      "src" : "assets/img/mobile/android.png"
+    },
+    {
+      "id" : 16,
+      "name" : "Java",
+      "src" : "assets/img/mobile/java.svg"
+    },
+    {
+      "id" : 18,
+      "name" : "Gradle",
+      "src" : "assets/img/mobile/gradle.png"
+    },
+    {
+      "id" : 19,
+      "name" : "JUnit",
+      "src" : "assets/img/mobile/junit.png"
+    },
+    {
+      "id" : 20,
+      "name" : "Mockito",
+      "src" : "assets/img/mobile/mockito.png"
+    },
+    {
+      "id" : 21,
+      "name" : "RxJava",
+      "src" : "assets/img/mobile/rxjava.png"
+    },
+    {
+      "id" : 22,
+      "name" : "Espresso",
+      "src" : "assets/img/mobile/espresso.png"
+    },
+    {
+      "id" : 23,
+      "name" : "Dagger",
+      "src" : "assets/img/mobile/dagger.png"
+    },
+    {
+      "id" : 24,
+      "name" : "git",
+      "src" : "assets/img/backend/git.png"
+    }
+  ],
+  "3" : [
+    {
+      "id" : 25,
+      "name" : "AWS",
+      "src" : "assets/img/devops/aws.svg"
+    },
+    {
+      "id" : 26,
+      "name" : "Github",
+      "src" : "assets/img/devops/github.png"
+    },
+    {
+      "id" : 28,
+      "name" : "Azure",
+      "src" : "assets/img/devops/azure.png"
+    },
+    {
+      "id" : 29,
+      "name" : "Jenkins",
+      "src" : "assets/img/devops/jenkins.png"
+    },
+    {
+      "id" : 30,
+      "name" : "MongoDB",
+      "src" : "assets/img/devops/mongo.png"
+    },
+    {
+      "id" : 31,
+      "name" : "Docker",
+      "src" : "assets/img/devops/docker.png"
     }
   ]
 }
