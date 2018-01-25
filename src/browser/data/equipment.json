@@ -55,19 +55,22 @@
       {
         "id": "junior-level",
         "position": "Junior",
-        "desc": "(up to 5000 PLN)",
+        "desc": "(2500 - 4000 PLN)",
+        "info": "net amount on labour contract",
         "stars": ["1"]
       },
       {
         "id": "mid-level",
         "position": "Mid",
-        "desc": "(5000-9000 PLN)",
+        "desc": "(6000 - 9500 PLN)",
+        "info": "net amout on B2B contract",
         "stars": ["1","2"]
       },
       {
         "id": "expert-level",
         "position": "Expert",
-        "desc": "(10000-15000 PLN)",
+        "desc": "(10 000 - 17 000 PLN)",
+        "info": "net amout on B2B contract",
         "stars": ["1","2","3"]
       }
     ]
