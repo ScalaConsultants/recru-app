@@ -75,7 +75,8 @@ export default class Experience extends Component {
                           </div>
                           <div className="desc">
                             <h4>{level.position}</h4>
-                            <h5>{level.desc}<span>*</span></h5>
+                            <h5>{level.desc}</h5>
+                            <span className="font-smaller">{level.info} <span>*</span></span>
                           </div>
                         </div>
                     );
@@ -83,7 +84,7 @@ export default class Experience extends Component {
                 </div>
 
                 <div className="note">
-                  <p>* invoice net amount on B2B contract (but contract of employment is  also possible)</p>
+                  <p>* different kinds of contract are also possible</p>
                 </div>
               </div>
             </div>

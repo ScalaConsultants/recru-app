@@ -44,14 +44,20 @@ export default class Submit extends Component {
     if (!this.isDataValid())
       return;
 
+    const rawCandidate = this.props.candidate.toObject();
+    const skills = Object.values(rawCandidate.skills.toObject()).map(item => item.toObject());
+    const features = Object.values(
+      this.props.candidate.features.toObject()).map(item => item.toObject().desc);
+    const exp = this.props.candidate.exp.toObject().position;
+
     const candidateData = {
       name: this.props.candidate.name || ReactDOM.findDOMNode(this.refs.nameInput).value,
-      role: this.props.candidate.role.name,
+      role: rawCandidate.role.position,
       email: ReactDOM.findDOMNode(this.refs.emailInput).value,
-      skills: this.props.candidate.skills,
+      skills: [...skills],
       extraSkills: this.props.candidate.extraSkills,
-      features: this.props.candidate.features,
-      exp: this.props.candidate.exp
+      features,
+      exp
     };
 
     // Only add linkedin property if we really have cvFile here
@@ -65,7 +71,9 @@ export default class Submit extends Component {
     if (this.state.fileUploaded) parts.cvFile = this.cvFile;
 
     const {actions: {submit}} = this.props;
-    const apiEndpoint = `${this.props.config.apiEndpoint.replace(/\/?$/, '/')}upload`;
+    const endpoint = this.props.config.apiEndpoint || 'https://recru-app-backend.scalac.io/';
+    const apiEndpoint = `${endpoint.replace(/\/?$/, '/')}upload`;
+
     submit(apiEndpoint, parts);
   }
 

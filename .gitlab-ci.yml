@@ -17,6 +17,8 @@ build:
     - node_modules/.bin/gulp build -p
     - mv build/app-*.css build/app.css
     - mv build/app-*.js build/app.js
+    - sed -i 's#../../../assets#./assets#g' build/app.js
+    - sed -i 's#recru-app-backend.scalac.io#recru-app-devel-backend.scalac.io#g' build/app.js
 
 deploy:
   stage: deploy
@@ -25,7 +27,7 @@ deploy:
     entrypoint: [""]
   script:
     - /home/aws/aws/env/bin/aws s3 rm s3://${S3_BUCKET}/join_us/ --recursive
-    - /home/aws/aws/env/bin/aws s3 cp assets/ s3://${S3_BUCKET}/join_us/ --recursive
+    - /home/aws/aws/env/bin/aws s3 cp assets s3://${S3_BUCKET}/join_us/assets --recursive
     - /home/aws/aws/env/bin/aws s3 cp build/ s3://${S3_BUCKET}/join_us/ --recursive
     - /home/aws/aws/env/bin/aws s3 cp index.html s3://${S3_BUCKET}/join_us/
 
