@@ -1,4 +1,5 @@
-
+variables:
+  PROD_BACKEND_URL: "recru-app-backend.scalac.io"
 cache:
   paths:
   - build/
@@ -27,9 +28,7 @@ deploy_devel:
     name: fstab/aws-cli:latest
     entrypoint: [""]
   script:
-    - id
-    - ls -haltr .
-    - sed -i 's#recru-app-backend.scalac.io#${BACKEND_URL}#g' build/app.js
+    - sed -i "s#${PROD_BACKEND_URL}#${BACKEND_URL}#g" build/app.js
     - /home/aws/aws/env/bin/aws s3 rm s3://${S3_BUCKET}/join_us/ --recursive
     - /home/aws/aws/env/bin/aws s3 cp assets s3://${S3_BUCKET}/join_us/assets --recursive
     - /home/aws/aws/env/bin/aws s3 cp build/ s3://${S3_BUCKET}/join_us/ --recursive
