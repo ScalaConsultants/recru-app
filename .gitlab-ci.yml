@@ -28,13 +28,10 @@ deploy_devel:
     name: fstab/aws-cli:latest
     entrypoint: [""]
   script:
+    - set -x 
     - sed -i "s#${PROD_BACKEND_URL}#${BACKEND_URL}#g" build/app.js
     - export EPOCH=$(date +%s)
-    - set -x 
     # retain last 5 backups
-    - /home/aws/aws/env/bin/aws s3 ls s3://${S3_BUCKET}/
-    - /home/aws/aws/env/bin/aws s3 ls s3://${S3_BUCKET}/ | egrep -o "join_us_[[:digit:]]+" | egrep -o '[[:digit:]]+$' 
-    - /home/aws/aws/env/bin/aws s3 ls s3://${S3_BUCKET}/ | egrep -o "join_us_[[:digit:]]+" | egrep -o '[[:digit:]]+$' | sort -r |  tail -n +5 
     - /home/aws/aws/env/bin/aws s3 ls s3://${S3_BUCKET}/ | egrep -o "join_us_[[:digit:]]+" | egrep -o '[[:digit:]]+$' | sort -r |  tail -n +5 | xargs -n 1 -I {} /home/aws/aws/env/bin/aws s3 rm s3://${S3_BUCKET}/join_us_{} --recursive
     - /home/aws/aws/env/bin/aws s3 cp s3://${S3_BUCKET}/join_us s3://${S3_BUCKET}/join_us_${EPOCH} --recursive
     - /home/aws/aws/env/bin/aws s3 rm s3://${S3_BUCKET}/join_us/ --recursive
