@@ -1,5 +1,10 @@
 variables:
   PROD_BACKEND_URL: "recru-app-backend.scalac.io"
+  DEVEL_BACKEND_URL: "recru-app-devel-backend.scalac.io"
+  PROD_S3_BUCKET: "new.scalac.io"
+  DEVEL_S3_BUCKET: "devel-new.scalac.io"
+  PROD_CLOUDFRONT_ID: "E39OM94WC3J4I3"
+  DEVEL_CLOUDFRONT_ID: "E3CQDMNIMIRHIN"
 cache:
   paths:
   - build/
@@ -22,8 +27,9 @@ build:
 deploy_devel:
   stage: deploy
   variables:
-    S3_BUCKET: "devel-new.scalac.io"
-    BACKEND_URL: "recru-app-devel-backend.scalac.io"
+    S3_BUCKET: $DEVEL_S3_BUCKET
+    CLOUDFRONT_ID: $DEVEL_CLOUDFRONT_ID
+    BACKEND_URL: $DEVEL_BACKEND_URL
   image:
     name: fstab/aws-cli:latest
     entrypoint: [""]
@@ -38,6 +44,7 @@ deploy_devel:
     - /home/aws/aws/env/bin/aws s3 cp assets s3://${S3_BUCKET}/join_us/assets --recursive
     - /home/aws/aws/env/bin/aws s3 cp build/ s3://${S3_BUCKET}/join_us/ --recursive
     - /home/aws/aws/env/bin/aws s3 cp index.html s3://${S3_BUCKET}/join_us/
+    - /home/aws/aws/env/bin/aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
   only:
     - devel
   environment:
@@ -46,7 +53,9 @@ deploy_devel:
 revert_devel:
   stage: deploy
   variables:
-    S3_BUCKET: "devel-new.scalac.io"
+    S3_BUCKET: $DEVEL_S3_BUCKET
+    CLOUDFRONT_ID: $DEVEL_CLOUDFRONT_ID
+    BACKEND_URL: $DEVEL_BACKEND_URL
   image:
     name: fstab/aws-cli:latest
     entrypoint: [""]
@@ -55,6 +64,7 @@ revert_devel:
     - /home/aws/aws/env/bin/aws s3 rm s3://${S3_BUCKET}/join_us/ --recursive
     - NEWEST_EPOCH=$(/home/aws/aws/env/bin/aws s3 ls s3://${S3_BUCKET}/ | egrep -o "join_us_[[:digit:]]+" | egrep -o '[[:digit:]]+$' | sort -r | head -1)
     - /home/aws/aws/env/bin/aws s3 cp s3://${S3_BUCKET}/join_us_${NEWEST_EPOCH} s3://${S3_BUCKET}/join_us --recursive
+    - /home/aws/aws/env/bin/aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
   only:
     - devel
   when: manual
@@ -65,7 +75,9 @@ revert_devel:
 deploy_production:
   stage: deploy
   variables:
-    S3_BUCKET: "new.scalac.io"
+    S3_BUCKET: $PROD_S3_BUCKET
+    CLOUDFRONT_ID: $PROD_CLOUDFRONT_ID
+    BACKEND_URL: $PROD_BACKEND_URL
   image:
     name: fstab/aws-cli:latest
     entrypoint: [""]
@@ -79,6 +91,7 @@ deploy_production:
     - /home/aws/aws/env/bin/aws s3 cp assets s3://${S3_BUCKET}/join_us/assets --recursive
     - /home/aws/aws/env/bin/aws s3 cp build/ s3://${S3_BUCKET}/join_us/ --recursive
     - /home/aws/aws/env/bin/aws s3 cp index.html s3://${S3_BUCKET}/join_us/
+    - /home/aws/aws/env/bin/aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
   only:
     - master
   when: manual
@@ -88,7 +101,9 @@ deploy_production:
 revert_production:
   stage: deploy
   variables:
-    S3_BUCKET: "new.scalac.io"
+    S3_BUCKET: $PROD_S3_BUCKET
+    CLOUDFRONT_ID: $PROD_CLOUDFRONT_ID
+    BACKEND_URL: $PROD_BACKEND_URL
   image:
     name: fstab/aws-cli:latest
     entrypoint: [""]
@@ -97,6 +112,7 @@ revert_production:
     - /home/aws/aws/env/bin/aws s3 rm s3://${S3_BUCKET}/join_us/ --recursive
     - NEWEST_EPOCH=$(/home/aws/aws/env/bin/aws s3 ls s3://${S3_BUCKET}/ | egrep -o "join_us_[[:digit:]]+" | egrep -o '[[:digit:]]+$' | sort -r | head -1)
     - /home/aws/aws/env/bin/aws s3 cp s3://${S3_BUCKET}/join_us_${NEWEST_EPOCH} s3://${S3_BUCKET}/join_us --recursive
+    - /home/aws/aws/env/bin/aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
   only:
     - master
   when: manual
