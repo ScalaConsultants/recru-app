@@ -31,20 +31,20 @@ deploy_devel:
     CLOUDFRONT_ID: $DEVEL_CLOUDFRONT_ID
     BACKEND_URL: $DEVEL_BACKEND_URL
   image:
-    name: fstab/aws-cli:latest
+    name: mesosphere/aws-cli:latest
     entrypoint: [""]
   script:
     - set -x 
     - sed -i "s#${PROD_BACKEND_URL}#${BACKEND_URL}#g" build/app.js
     - export EPOCH=$(date +%s)
     # retain last 5 backups
-    - /home/aws/aws/env/bin/aws s3 ls s3://${S3_BUCKET}/ | egrep -o "join_us_[[:digit:]]+" | egrep -o '[[:digit:]]+$' | sort -r |  tail -n +5 | xargs -n 1 -I {} /home/aws/aws/env/bin/aws s3 rm s3://${S3_BUCKET}/join_us_{} --recursive
-    - /home/aws/aws/env/bin/aws s3 cp s3://${S3_BUCKET}/join_us s3://${S3_BUCKET}/join_us_${EPOCH} --recursive
-    - /home/aws/aws/env/bin/aws s3 rm s3://${S3_BUCKET}/join_us/ --recursive
-    - /home/aws/aws/env/bin/aws s3 cp assets s3://${S3_BUCKET}/join_us/assets --recursive
-    - /home/aws/aws/env/bin/aws s3 cp build/ s3://${S3_BUCKET}/join_us/ --recursive
-    - /home/aws/aws/env/bin/aws s3 cp index.html s3://${S3_BUCKET}/join_us/
-    - /home/aws/aws/env/bin/aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
+    - ./aws.sh s3 ls s3://${S3_BUCKET}/ | egrep -o "join_us_[[:digit:]]+" | egrep -o '[[:digit:]]+$' | sort -r |  tail -n +5 | xargs -n 1 -I {} ./aws.sh s3 rm s3://${S3_BUCKET}/join_us_{} --recursive
+    - ./aws.sh s3 cp s3://${S3_BUCKET}/join_us s3://${S3_BUCKET}/join_us_${EPOCH} --recursive
+    - ./aws.sh s3 rm s3://${S3_BUCKET}/join_us/ --recursive
+    - ./aws.sh s3 cp assets s3://${S3_BUCKET}/join_us/assets --recursive
+    - ./aws.sh s3 cp build/ s3://${S3_BUCKET}/join_us/ --recursive
+    - ./aws.sh s3 cp index.html s3://${S3_BUCKET}/join_us/
+    - ./aws.sh cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
   only:
     - devel
   environment:
@@ -57,14 +57,14 @@ revert_devel:
     CLOUDFRONT_ID: $DEVEL_CLOUDFRONT_ID
     BACKEND_URL: $DEVEL_BACKEND_URL
   image:
-    name: fstab/aws-cli:latest
+    name: mesosphere/aws-cli:latest
     entrypoint: [""]
   script:
     - set -x 
-    - /home/aws/aws/env/bin/aws s3 rm s3://${S3_BUCKET}/join_us/ --recursive
-    - NEWEST_EPOCH=$(/home/aws/aws/env/bin/aws s3 ls s3://${S3_BUCKET}/ | egrep -o "join_us_[[:digit:]]+" | egrep -o '[[:digit:]]+$' | sort -r | head -1)
-    - /home/aws/aws/env/bin/aws s3 cp s3://${S3_BUCKET}/join_us_${NEWEST_EPOCH} s3://${S3_BUCKET}/join_us --recursive
-    - /home/aws/aws/env/bin/aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
+    - ./aws.sh s3 rm s3://${S3_BUCKET}/join_us/ --recursive
+    - NEWEST_EPOCH=$(./aws.sh s3 ls s3://${S3_BUCKET}/ | egrep -o "join_us_[[:digit:]]+" | egrep -o '[[:digit:]]+$' | sort -r | head -1)
+    - ./aws.sh s3 cp s3://${S3_BUCKET}/join_us_${NEWEST_EPOCH} s3://${S3_BUCKET}/join_us --recursive
+    - ./aws.sh cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
   only:
     - devel
   when: manual
@@ -79,19 +79,19 @@ deploy_production:
     CLOUDFRONT_ID: $PROD_CLOUDFRONT_ID
     BACKEND_URL: $PROD_BACKEND_URL
   image:
-    name: fstab/aws-cli:latest
+    name: mesosphere/aws-cli:latest
     entrypoint: [""]
   script:
     - set -x 
     - export EPOCH=$(date +%s)
     # retain last 5 backups
-    - /home/aws/aws/env/bin/aws s3 ls s3://${S3_BUCKET}/ | egrep -o "join_us_[[:digit:]]+" | egrep -o '[[:digit:]]+$' | sort -r |  tail -n +5 | xargs -n 1 -I {} /home/aws/aws/env/bin/aws s3 rm s3://${S3_BUCKET}/join_us_{} --recursive
-    - /home/aws/aws/env/bin/aws s3 cp s3://${S3_BUCKET}/join_us s3://${S3_BUCKET}/join_us_${EPOCH} --recursive
-    - /home/aws/aws/env/bin/aws s3 rm s3://${S3_BUCKET}/join_us/ --recursive
-    - /home/aws/aws/env/bin/aws s3 cp assets s3://${S3_BUCKET}/join_us/assets --recursive
-    - /home/aws/aws/env/bin/aws s3 cp build/ s3://${S3_BUCKET}/join_us/ --recursive
-    - /home/aws/aws/env/bin/aws s3 cp index.html s3://${S3_BUCKET}/join_us/
-    - /home/aws/aws/env/bin/aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
+    - ./aws.sh s3 ls s3://${S3_BUCKET}/ | egrep -o "join_us_[[:digit:]]+" | egrep -o '[[:digit:]]+$' | sort -r |  tail -n +5 | xargs -n 1 -I {} ./aws.sh s3 rm s3://${S3_BUCKET}/join_us_{} --recursive
+    - ./aws.sh s3 cp s3://${S3_BUCKET}/join_us s3://${S3_BUCKET}/join_us_${EPOCH} --recursive
+    - ./aws.sh s3 rm s3://${S3_BUCKET}/join_us/ --recursive
+    - ./aws.sh s3 cp assets s3://${S3_BUCKET}/join_us/assets --recursive
+    - ./aws.sh s3 cp build/ s3://${S3_BUCKET}/join_us/ --recursive
+    - ./aws.sh s3 cp index.html s3://${S3_BUCKET}/join_us/
+    - ./aws.sh cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
   only:
     - master
   when: manual
@@ -105,14 +105,14 @@ revert_production:
     CLOUDFRONT_ID: $PROD_CLOUDFRONT_ID
     BACKEND_URL: $PROD_BACKEND_URL
   image:
-    name: fstab/aws-cli:latest
+    name: mesosphere/aws-cli:latest
     entrypoint: [""]
   script:
     - set -x 
-    - /home/aws/aws/env/bin/aws s3 rm s3://${S3_BUCKET}/join_us/ --recursive
-    - NEWEST_EPOCH=$(/home/aws/aws/env/bin/aws s3 ls s3://${S3_BUCKET}/ | egrep -o "join_us_[[:digit:]]+" | egrep -o '[[:digit:]]+$' | sort -r | head -1)
-    - /home/aws/aws/env/bin/aws s3 cp s3://${S3_BUCKET}/join_us_${NEWEST_EPOCH} s3://${S3_BUCKET}/join_us --recursive
-    - /home/aws/aws/env/bin/aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
+    - ./aws.sh s3 rm s3://${S3_BUCKET}/join_us/ --recursive
+    - NEWEST_EPOCH=$(./aws.sh s3 ls s3://${S3_BUCKET}/ | egrep -o "join_us_[[:digit:]]+" | egrep -o '[[:digit:]]+$' | sort -r | head -1)
+    - ./aws.sh s3 cp s3://${S3_BUCKET}/join_us_${NEWEST_EPOCH} s3://${S3_BUCKET}/join_us --recursive
+    - ./aws.sh cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
   only:
     - master
   when: manual
