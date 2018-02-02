@@ -31,7 +31,7 @@ deploy_devel:
     CLOUDFRONT_ID: $DEVEL_CLOUDFRONT_ID
     BACKEND_URL: $DEVEL_BACKEND_URL
   image:
-    name: napp/docker-aws-cli:latest
+    name: garland/aws-cli-docker:latest
     #entrypoint: [""]
   script:
     - set -x 
@@ -57,7 +57,7 @@ revert_devel:
     CLOUDFRONT_ID: $DEVEL_CLOUDFRONT_ID
     BACKEND_URL: $DEVEL_BACKEND_URL
   image:
-    name: napp/docker-aws-cli:latest
+    name: garland/aws-cli-docker:latest
     #entrypoint: [""]
   script:
     - set -x 
@@ -79,7 +79,7 @@ deploy_production:
     CLOUDFRONT_ID: $PROD_CLOUDFRONT_ID
     BACKEND_URL: $PROD_BACKEND_URL
   image:
-    name: napp/docker-aws-cli:latest
+    name: garland/aws-cli-docker:latest
     entrypoint: [""]
   script:
     - set -x 
@@ -105,7 +105,7 @@ revert_production:
     CLOUDFRONT_ID: $PROD_CLOUDFRONT_ID
     BACKEND_URL: $PROD_BACKEND_URL
   image:
-    name: napp/docker-aws-cli:latest
+    name: garland/aws-cli-docker:latest
     entrypoint: [""]
   script:
     - set -x 
