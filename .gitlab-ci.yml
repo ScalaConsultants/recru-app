@@ -28,7 +28,7 @@ deploy_devel:
   stage: deploy
   variables:
     S3_BUCKET: $DEVEL_S3_BUCKET
-    aws cloudFRONT_ID: $DEVEL_CLOUDFRONT_ID
+    CLOUDFRONT_ID: $DEVEL_CLOUDFRONT_ID
     BACKEND_URL: $DEVEL_BACKEND_URL
   image:
     name: napp/docker-aws-cli:latest
@@ -54,7 +54,7 @@ revert_devel:
   stage: deploy
   variables:
     S3_BUCKET: $DEVEL_S3_BUCKET
-    aws cloudFRONT_ID: $DEVEL_CLOUDFRONT_ID
+    CLOUDFRONT_ID: $DEVEL_CLOUDFRONT_ID
     BACKEND_URL: $DEVEL_BACKEND_URL
   image:
     name: napp/docker-aws-cli:latest
@@ -76,7 +76,7 @@ deploy_production:
   stage: deploy
   variables:
     S3_BUCKET: $PROD_S3_BUCKET
-    aws cloudFRONT_ID: $PROD_CLOUDFRONT_ID
+    CLOUDFRONT_ID: $PROD_CLOUDFRONT_ID
     BACKEND_URL: $PROD_BACKEND_URL
   image:
     name: napp/docker-aws-cli:latest
@@ -102,7 +102,7 @@ revert_production:
   stage: deploy
   variables:
     S3_BUCKET: $PROD_S3_BUCKET
-    aws cloudFRONT_ID: $PROD_CLOUDFRONT_ID
+    CLOUDFRONT_ID: $PROD_CLOUDFRONT_ID
     BACKEND_URL: $PROD_BACKEND_URL
   image:
     name: napp/docker-aws-cli:latest
