@@ -41,4 +41,20 @@ deploy_devel:
   only:
     - devel
 
+revert_devel:
+  stage: deploy
+  variables:
+    S3_BUCKET: "devel-new.scalac.io"
+  image:
+    name: fstab/aws-cli:latest
+    entrypoint: [""]
+  when: manual
+  script:
+    - set -x 
+    - /home/aws/aws/env/bin/aws s3 rm s3://${S3_BUCKET}/join_us/ --recursive
+    - NEWEST_EPOCH=$(/home/aws/aws/env/bin/aws s3 ls s3://${S3_BUCKET}/ | egrep -o "join_us_[[:digit:]]+" | egrep -o '[[:digit:]]+$' | sort -r | head -1)
+    - /home/aws/aws/env/bin/aws s3 cp s3://${S3_BUCKET}/join_us_${NEWEST_EPOCH} s3://${S3_BUCKET}/join_us --recursive
+  only:
+    - devel
+
 
