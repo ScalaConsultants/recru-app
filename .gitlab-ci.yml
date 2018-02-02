@@ -32,7 +32,7 @@ deploy_devel:
     BACKEND_URL: $DEVEL_BACKEND_URL
   image:
     name: mesosphere/aws-cli:latest
-    entrypoint: [""]
+    #entrypoint: [""]
   script:
     - set -x 
     - sed -i "s#${PROD_BACKEND_URL}#${BACKEND_URL}#g" build/app.js
@@ -58,7 +58,7 @@ revert_devel:
     BACKEND_URL: $DEVEL_BACKEND_URL
   image:
     name: mesosphere/aws-cli:latest
-    entrypoint: [""]
+    #entrypoint: [""]
   script:
     - set -x 
     - s3 rm s3://${S3_BUCKET}/join_us/ --recursive
