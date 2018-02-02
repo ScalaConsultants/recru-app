@@ -44,6 +44,7 @@ deploy_devel:
     - aws s3 cp assets s3://${S3_BUCKET}/join_us/assets --recursive
     - aws s3 cp build/ s3://${S3_BUCKET}/join_us/ --recursive
     - aws s3 cp index.html s3://${S3_BUCKET}/join_us/
+    - aws configure set preview.cloudfront true
     - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
   only:
     - devel
@@ -64,6 +65,7 @@ revert_devel:
     - aws s3 rm s3://${S3_BUCKET}/join_us/ --recursive
     - NEWEST_EPOCH=$(s3 ls s3://${S3_BUCKET}/ | egrep -o "join_us_[[:digit:]]+" | egrep -o '[[:digit:]]+$' | sort -r | head -1)
     - aws s3 cp s3://${S3_BUCKET}/join_us_${NEWEST_EPOCH} s3://${S3_BUCKET}/join_us --recursive
+    - aws configure set preview.cloudfront true
     - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
   only:
     - devel
@@ -91,6 +93,7 @@ deploy_production:
     - aws s3 cp assets s3://${S3_BUCKET}/join_us/assets --recursive
     - aws s3 cp build/ s3://${S3_BUCKET}/join_us/ --recursive
     - aws s3 cp index.html s3://${S3_BUCKET}/join_us/
+    - aws configure set preview.cloudfront true
     - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
   only:
     - master
@@ -112,6 +115,7 @@ revert_production:
     - aws s3 rm s3://${S3_BUCKET}/join_us/ --recursive
     - NEWEST_EPOCH=$(s3 ls s3://${S3_BUCKET}/ | egrep -o "join_us_[[:digit:]]+" | egrep -o '[[:digit:]]+$' | sort -r | head -1)
     - aws s3 cp s3://${S3_BUCKET}/join_us_${NEWEST_EPOCH} s3://${S3_BUCKET}/join_us --recursive
+    - aws configure set preview.cloudfront true
     - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
   only:
     - master
