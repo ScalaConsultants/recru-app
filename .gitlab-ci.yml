@@ -37,9 +37,9 @@ deploy_devel:
     - set -x 
     - sed -i "s#${PROD_BACKEND_URL}#${BACKEND_URL}#g" build/app.js
     - export EPOCH=$(date +%s)
+    - aws s3 cp s3://${S3_BUCKET}/join_us s3://${S3_BUCKET}/join_us_${EPOCH} --recursive
     # retain last 5 backups
     - aws s3 ls s3://${S3_BUCKET}/ | egrep -o "join_us_[[:digit:]]+" | egrep -o '[[:digit:]]+$' | sort -r |  tail -n +5 | xargs -n 1 -I {} aws s3 rm s3://${S3_BUCKET}/join_us_{} --recursive
-    - aws s3 cp s3://${S3_BUCKET}/join_us s3://${S3_BUCKET}/join_us_${EPOCH} --recursive
     - aws s3 rm s3://${S3_BUCKET}/join_us/ --recursive
     - aws s3 cp assets s3://${S3_BUCKET}/join_us/assets --recursive
     - aws s3 cp build/ s3://${S3_BUCKET}/join_us/ --recursive
@@ -86,9 +86,9 @@ deploy_production:
   script:
     - set -x 
     - export EPOCH=$(date +%s)
+    - aws s3 cp s3://${S3_BUCKET}/join_us s3://${S3_BUCKET}/join_us_${EPOCH} --recursive
     # retain last 5 backups
     - aws s3 ls s3://${S3_BUCKET}/ | egrep -o "join_us_[[:digit:]]+" | egrep -o '[[:digit:]]+$' | sort -r |  tail -n +5 | xargs -n 1 -I {} aws s3 rm s3://${S3_BUCKET}/join_us_{} --recursive
-    - aws s3 cp s3://${S3_BUCKET}/join_us s3://${S3_BUCKET}/join_us_${EPOCH} --recursive
     - aws s3 rm s3://${S3_BUCKET}/join_us/ --recursive
     - aws s3 cp assets s3://${S3_BUCKET}/join_us/assets --recursive
     - aws s3 cp build/ s3://${S3_BUCKET}/join_us/ --recursive
