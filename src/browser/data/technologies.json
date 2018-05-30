@@ -72,48 +72,53 @@
   "2" : [
     {
       "id" : 15,
-      "name" : "AndroidSDK",
-      "src" : "assets/img/mobile/android.png"
+      "name" : "AWS",
+      "src" : "assets/img/devops/aws.svg"
     },
     {
       "id" : 16,
-      "name" : "Java",
-      "src" : "assets/img/mobile/java.svg"
+      "name" : "Azure",
+      "src" : "assets/img/data/azure2.png"
+    },
+    {
+      "id" : 17,
+      "name" : "Docker",
+      "src" : "assets/img/devops/docker.png"
     },
     {
       "id" : 18,
-      "name" : "Gradle",
-      "src" : "assets/img/mobile/gradle.png"
+      "name" : "Google Cloud",
+      "src" : "assets/img/data/googlecloud.png"
     },
     {
       "id" : 19,
-      "name" : "JUnit",
-      "src" : "assets/img/mobile/junit.png"
+      "name" : "Hadoop",
+      "src" : "assets/img/data/hadoop.png"
     },
     {
       "id" : 20,
-      "name" : "Mockito",
-      "src" : "assets/img/mobile/mockito.png"
+      "name" : "Kafka",
+      "src" : "assets/img/data/kafka.png"
     },
     {
       "id" : 21,
-      "name" : "RxJava",
-      "src" : "assets/img/mobile/rxjava.png"
+      "name" : "Python",
+      "src" : "assets/img/data/python.png"
     },
     {
       "id" : 22,
-      "name" : "Espresso",
-      "src" : "assets/img/mobile/espresso.png"
+      "name" : "Scala",
+      "src" : "assets/img/data/scala.png"
     },
     {
       "id" : 23,
-      "name" : "Dagger",
-      "src" : "assets/img/mobile/dagger.png"
+      "name" : "Spark",
+      "src" : "assets/img/data/spark.png"
     },
     {
       "id" : 24,
-      "name" : "git",
-      "src" : "assets/img/backend/git.png"
+      "name" : "SQL",
+      "src" : "assets/img/data/sql.png"
     }
   ],
   "3" : [
