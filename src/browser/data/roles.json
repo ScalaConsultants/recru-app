@@ -51,26 +51,22 @@
   },
   {
     "id": 2,
-    "position": "Mobile",
-    "title": "Hiker",
-    "img": "assets/img/positions/Mobile.svg",
-    "desc": "Hiking is your lifestyle & you build this lifestyle among mobile users. You hike alone or in a mobile team with one main purpose ahead - making this trip exciting, cool and as intuitive as possible",
+    "position": "Data",
+    "title": "Rescuer",
+    "img": "assets/img/positions/Data_engineer.svg",
+    "desc": "You are an explorer, happy to analyse and check out new trails for yourself and for your Team. You make sure that no matter how long your journey is going to be, it will be exciting, cool and well prepared.",
     "mission": [
       {
         "id": "01-2-what",
-        "desc": "You create stable, tested and pleasant to use apps"
+        "desc": "You are our Data Engineer and support our projects with your expertise."
       },
       {
         "id": "02-2-what",
-        "desc": "You stay up to date with trends in mobile world"
+        "desc": "You take care of architectures, databases and large-scale data processing systems, making sure about their quality."
       },
       {
         "id": "03-2-what",
-        "desc": "You aren’t afraid of new concepts and tools, but are able to distinguish real revolution from a dead end"
-      },
-      {
-        "id": "04-2-what",
-        "desc": "Your are not a robot who does what the client tells him to, but and advisor and partner: suggesting optimal solutions for given problems"
+        "desc": "You work with different types of customers in international teams, adding your own value to internal and external projects."
       }
     ]
   },
