@@ -9,6 +9,7 @@ export const SAVE_SKILL = 'SAVE_SKILL';
 export const SAVE_EXTRA_SKILL = 'SAVE_EXTRA_SKILL';
 export const SAVE_FEATURE = 'SAVE_FEATURE';
 export const SAVE_EXP = 'SAVE_EXP';
+export const SAVE_RODO = 'SAVE_RODO';
 export const SUBMIT_START = 'SUBMIT_START';
 export const SUBMIT_ERROR = 'SUBMIT_ERROR';
 export const SUBMIT_SUCCESS = 'SUBMIT_SUCCESS';
@@ -67,6 +68,13 @@ export function saveExp(exp) {
   return {
     type: SAVE_EXP,
     payload: {exp}
+  };
+}
+
+export function saveRodo(rodo) {
+  return {
+    type: SAVE_RODO,
+    payload: {rodo}
   };
 }
 

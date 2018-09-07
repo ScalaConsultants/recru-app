@@ -12,6 +12,7 @@ import Compass from '../screens/Compass.react';
 import Equipment from '../screens/Equipment.react';
 import Check from '../screens/Check.react';
 import Experience from '../screens/Experience.react';
+import Rodo from '../screens/Rodo.react';
 import movementHandler from '../lib/movementHandler';
 
 @movementHandler
@@ -65,7 +66,8 @@ export default class Screens extends Component {
         <Skills {...this.props} isCurrent={this.isCurrent(6)} ref={this.getRefNameFor(6)}/>
         <Check {...this.props} isCurrent={this.isCurrent(7)} ref={this.getRefNameFor(7)}/>
         <Experience {...this.props} isCurrent={this.isCurrent(8)} ref={this.getRefNameFor(8)}/>
-        <Submit {...this.props} isCurrent={this.isCurrent(9)} ref={this.getRefNameFor(9)}/>
+        <Rodo {...this.props} isCurrent={this.isCurrent(9)} ref={this.getRefNameFor(9)}/>
+        <Submit {...this.props} isCurrent={this.isCurrent(10)} ref={this.getRefNameFor(10)}/>
       </div>
     );
   }

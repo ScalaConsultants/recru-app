@@ -1,0 +1,17 @@
+{
+  "title": "Statement on consent granting",
+  "header": "According to art. 7 item 1 Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation), I hereby grant my consent for processing by Scalac Spółka z ograniczoną odpowiedzialnością, with its registered office: Czesława Miłosza Str. 9/9, 80-126 Gdańsk, Poland, e-mail: gdpr@scalac.io",
+  "footer": "I further declare, to have made myself familiar with the merits of Information Clause and raise no remarks or objections to its merits. The consent above has been granted voluntary according to GDPR art. 4 point  11.",
+  "permissions": [
+    {
+      "id": 1,
+      "title": "personal data is provided in the form above for the purpose and in the scope necessary to properly conduct recruitment process for the position I am applying to",
+      "desc": "Permission 1 full message"
+    },
+    {
+      "id": 2,
+      "title": "personal data is provided in the form above for the purpose and in the scope necessary to participate in recruitment proceedings conducted by the company above",
+      "desc": "Permission 2 full message"
+    }
+  ]
+}

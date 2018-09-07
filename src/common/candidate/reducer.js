@@ -14,6 +14,7 @@ const InitialState = Record({
   extraSkills: [],
   exp: new Exp(null),
   features: {},
+  rodoPermissions: false,
   isSubmittingForm: false,
   hasSubmittedForm: false,
   hasSubmissionErroredOut: false
@@ -29,6 +30,7 @@ const revive = (candidate) => initialState.merge({
   extraSkills: candidate.extraSkills,
   exp: new Exp(candidate.exp),
   features: map(candidate.features, (feature => new Skill(feature))),
+  rodoPermissions: candidate.rodo,
   isSubmittingForm: candidate.isSubmittingForm,
   hasSubmittedForm: candidate.hasSubmittedForm,
   hasSubmissionErroredOut: candidate.hasSubmittedForm
@@ -73,6 +75,12 @@ export default function candidateReducer(state = initialState, action) {
       const {feature} = action.payload;
       return state
         .setIn(['features', feature.id], new Feature(feature));
+    }
+
+    case actions.SAVE_RODO: {
+      const {rodo} = action.payload;
+      return state
+        .set('rodoPermissions', rodo);
     }
 
     case actions.SAVE_EXP: {
