@@ -3,7 +3,7 @@ pipeline {
     label 'recruapp'
   }
 
-  options { 
+  options {
     skipDefaultCheckout()
     disableConcurrentBuilds()
   }
@@ -20,16 +20,16 @@ pipeline {
   stages {
     stage('first stage') {
       steps {
-        checkout scm   
+        checkout scm
       }
     }
 
     stage('build') {
       agent {
         docker {
-          image 'node:4.8.7'
+          image 'node:7.4'
           reuseNode true
-          args "-v \$PWD:/src" 
+          args "-v \$PWD:/src"
         }
       }
       environment {
