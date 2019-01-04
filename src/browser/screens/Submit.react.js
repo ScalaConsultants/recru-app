@@ -38,10 +38,11 @@ export default class Submit extends Component {
   }
 
   isDataValid() {
+    const {emailPassed, policyKeyPassed, namePassed} = this.state;
     if (this.props.candidate.name) {
-      return !!this.state.emailPassed;
+      return !!emailPassed && policyKeyPassed;
     }
-    return this.state.emailPassed && this.state.namePassed && this.state.policyKeyPassed;
+    return emailPassed && namePassed && policyKeyPassed;
   }
 
   submit() {
