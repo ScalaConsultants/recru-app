@@ -63,9 +63,7 @@ export default class Submit extends Component {
       skills: [...skills],
       extraSkills: this.props.candidate.extraSkills,
       features,
-      exp,
-      consentRecruitment: rawCandidate.rodoPermissions,
-      consentInformationClause: rawCandidate.rodoPermissions
+      exp
     };
 
     // Only add linkedin property if we really have cvFile here
