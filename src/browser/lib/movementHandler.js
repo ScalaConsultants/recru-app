@@ -15,6 +15,7 @@ export default function movementHandler(BaseComponent) {
 
     handleMouseWheel(e) {
       const delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+      if (this.props.location.hash.length) return null;
       if (delta > 0)
         this.refs.baseComponent.handleMoveUp();
       else if (delta < 0)

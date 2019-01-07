@@ -20,6 +20,7 @@ pipeline {
   stages {
     stage('first stage') {
       steps {
+        cleanWs()
         checkout scm   
       }
     }
@@ -27,7 +28,7 @@ pipeline {
     stage('build') {
       agent {
         docker {
-          image 'node:4.8.7'
+          image 'node:7.10'
           reuseNode true
           args "-v \$PWD:/src" 
         }
