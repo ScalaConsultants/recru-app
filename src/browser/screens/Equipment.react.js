@@ -3,12 +3,10 @@ import Component from 'react-pure-render/component';
 import classNames from 'classnames';
 
 import ScreenImage from '../components/ScreenImage.react';
-import Item from '../components/CompassItem.react';
-import JobDescription from '../components/JobDescription.react';
 import boundScroll from '../lib/boundScroll';
 import ChevronIcon from '../components/ChevronIcon.react';
 
-import data from '../data/equipment.json'
+import data from '../data/equipment.json';
 
 if (process.env.IS_BROWSER) {
   require('./Equipment.styl');
@@ -39,18 +37,18 @@ export default class Compass extends Component {
           {element}
         </li>
       )
-    )
+    );
   }
 
   selectTab(id) {
     this.setState({
       currentTab: id
-    })
+    });
   }
 
   render() {
     const equipmentUrl = {
-      img: "../../../assets/img/equipment.svg"
+      img: '../../../assets/img/equipment.svg'
     };
 
     const currentTab = this.state.currentTab;
@@ -67,13 +65,13 @@ export default class Compass extends Component {
                 <div className="options list">
                   {data.options.map((element) =>
                     <div
-                      key={element.id} onClick={() => this.selectTab(element.id)}
                       className={classNames('option', {'active' : element.id === currentTab})}
+                      key={element.id} onClick={() => this.selectTab(element.id)}
                     >
                       <div className="icon">
                         <img
-                          src={element.id === this.state.currentTab ? element.active : element.img}
                           alt={element.title}
+                          src={element.id === this.state.currentTab ? element.active : element.img}
                         />
                       </div>
                       <p>{element.title}</p>

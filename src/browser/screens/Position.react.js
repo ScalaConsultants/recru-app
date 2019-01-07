@@ -24,7 +24,7 @@ export default class Position extends Component {
   }
 
   render() {
-    const role = roles[this.props.candidate.role.id] || {"img":""};
+    const role = roles[this.props.candidate.role.id] || {'img':''};
 
     return (
       <section className="position-screen screen">

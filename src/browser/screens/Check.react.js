@@ -2,7 +2,6 @@ import React from 'react';
 import Component from 'react-pure-render/component';
 
 import ScreenImage from '../components/ScreenImage.react';
-import JobDescription from '../components/JobDescription.react';
 import boundScroll from '../lib/boundScroll';
 import ChevronIcon from '../components/ChevronIcon.react';
 import data from '../data/check.json';
@@ -31,7 +30,7 @@ export default class Check extends Component {
   render() {
     const specificData = data[this.props.candidate.role.id] || [];
     const backpackUrl = {
-      img: "../../../assets/img/checkifyouhaveit.svg"
+      img: '../../../assets/img/checkifyouhaveit.svg'
     };
 
     return (
@@ -48,10 +47,10 @@ export default class Check extends Component {
                       specificData.skillset.map(feature =>
                         <div className="list-item" key={feature.id}>
                           <input
-                            type="checkbox"
                             id={`for${feature.id}`}
-                            value={feature.desc}
                             onChange={(e) => this.handleChange(feature)}
+                            type="checkbox"
+                            value={feature.desc}
                           />
                           <label htmlFor={`for${feature.id}`}>
                             {feature.desc}

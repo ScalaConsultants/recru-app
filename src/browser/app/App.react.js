@@ -12,7 +12,7 @@ import {connect} from 'react-redux';
 
 if (process.env.IS_BROWSER)
   require('./App.styl');
-  require('./Large.styl');
+require('./Large.styl');
 
 // // logRenderTime is useful for app with huge UI to check render performance.
 // import logRenderTime from '../lib/logRenderTime';

@@ -2,7 +2,6 @@ import React from 'react';
 import Component from 'react-pure-render/component';
 
 import ScreenImage from '../components/ScreenImage.react';
-import JobDescription from '../components/JobDescription.react';
 import boundScroll from '../lib/boundScroll';
 import ChevronIcon from '../components/ChevronIcon.react';
 import Alert from '../components/Alert.react';
@@ -24,14 +23,15 @@ export default class Experience extends Component {
     this.state = {
       exp: '',
       select: false
-    }
+    };
   }
 
   proceed() {
     if (!this.state.exp) {
       this.setState({select: true});
       setTimeout(() => { this.setState({select: false}); }, 5000);
-    } else {
+    }
+    else {
       const {actions: {saveExp, nextScreen}} = this.props;
       saveExp(this.state.exp);
       nextScreen();
@@ -44,14 +44,14 @@ export default class Experience extends Component {
 
   render() {
     const backpackUrl = {
-      img: "../../../assets/img/mountain-w-flag.svg"
+      img: '../../../assets/img/mountain-w-flag.svg'
     };
     return (
       <section className="experience-screen screen">
         <div className="container">
           <ScreenImage data={backpackUrl} />
           <div className="right">
-            {<Alert select={this.state.select} desc={"level"}/>}
+            {<Alert desc={"level"} select={this.state.select}/>}
             <div className="content">
               <div className="experience">
                 <div>
@@ -64,13 +64,13 @@ export default class Experience extends Component {
                   {data.experience.levels.map(level => {
                     return (
                         <div
+                          className={this.state.exp.id === level.id ? 'active level' : 'level'}
                           key={level.id}
                           onClick={() => this.selectLevel(level)}
-                          className={this.state.exp.id === level.id ? 'active level' : 'level'}
                         >
                           <div className="icons">
                             {level.stars.map(element =>
-                              <img key={element} src={data.experience.arrow} alt={element}/>
+                              <img alt={element} key={element} src={data.experience.arrow} />
                             )}
                           </div>
                           <div className="desc">

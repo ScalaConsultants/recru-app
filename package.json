@@ -5,7 +5,7 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "start": "node src/server",
+    "start": "gulp",
     "test": "gulp test"
   },
   "engines": {
@@ -54,7 +54,7 @@
     "lodash.trimright": "^3.0.2",
     "nconf": "^0.8.2",
     "node-sass": "^3.4.0-beta.2",
-    "nodemon": "^1.8.1",
+    "nodemon": "^1.18.9",
     "normalize.css": "^3.0.3",
     "postcss-loader": "^0.7.0",
     "prop-types": "^15.6.0",
@@ -78,7 +78,7 @@
     "regenerator": "^0.8.42",
     "run-sequence": "^1.1.4",
     "sass-loader": "^3.0.0",
-    "serialize-javascript": "^1.1.2",
+    "serialize-javascript": "^1.6.1",
     "serve-favicon": "^2.3.0",
     "sinon": "^1.17.2",
     "sinon-as-promised": "^4.0.0",

@@ -48,7 +48,7 @@ export default class FirstScreen extends Component {
 
     const background = {
       backgroundImage: `url(../../../assets/img/bg.png)`
-    }
+    };
 
     return (
       <section className="first-screen screen" style={background}>

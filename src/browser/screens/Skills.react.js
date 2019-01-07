@@ -2,7 +2,6 @@ import React from 'react';
 import Component from 'react-pure-render/component';
 import TagsInput from 'react-tagsinput';
 
-import boundScroll from '../lib/boundScroll';
 import ChevronIcon from '../components/ChevronIcon.react';
 import SkillItem from '../components/SkillItem.react';
 import ScreenImage from '../components/ScreenImage.react';
@@ -21,8 +20,8 @@ export default class Skills extends Component {
   }
 
   constructor() {
-    super()
-    this.state = {skills: []}
+    super();
+    this.state = {skills: []};
   }
 
   proceed() {
@@ -31,23 +30,23 @@ export default class Skills extends Component {
   }
 
   handleChange(skills) {
-    this.setState({skills})
+    this.setState({skills});
     const {actions: {saveExtraSkill}} = this.props;
     saveExtraSkill(skills);
   }
 
-  defaultRenderInput (props) {
-    const {placeholder, onChange, value, addTag, ...other} = props
+  defaultRenderInput(props) {
+    const {placeholder, onChange, value, addTag, ...other} = props;
     return (
       <input
-        type='text'
-        tabIndex="-1"
-        placeholder="Skill name"
         onChange={onChange}
+        placeholder="Skill name"
+        tabIndex="-1"
+        type='text'
         value={value}
         {...other}
       />
-    )
+    );
   }
 
 
@@ -55,7 +54,7 @@ export default class Skills extends Component {
     const skills = technologies[this.props.candidate.role.id] || {};
     const skillsForCurrentRole = Object.keys(skills).map((key) => skills[key]);
     const backpackUrl = {
-      img: "../../../assets/img/backpack.svg"
+      img: '../../../assets/img/backpack.svg'
     };
 
     return (
@@ -84,9 +83,9 @@ export default class Skills extends Component {
                 <div className="tags-wrapper">
                   <p>Other skills:</p>
                   <TagsInput
-                    value={this.state.skills}
                     onChange={e => this.handleChange(e)}
                     renderInput={this.defaultRenderInput}
+                    value={this.state.skills}
                   />
                 </div>
               </div>

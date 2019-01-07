@@ -22,14 +22,15 @@ export default class Roles extends Component {
       role: null,
       select: false,
       current: ''
-    }
+    };
   }
 
   proceed() {
     if (!this.state.role) {
       this.setState({select: true});
       setTimeout(() => { this.setState({select: false}); }, 5000);
-    } else {
+    }
+    else {
       const {actions: {saveRole, nextScreen}} = this.props;
       saveRole(this.state.role);
       this.setState({current: this.state.role.id, select: false});

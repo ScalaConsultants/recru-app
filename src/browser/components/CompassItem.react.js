@@ -13,10 +13,10 @@ const CompassItem = (props, {data = {}}) => {
       <span>{item.subtitle}</span>
     </div>
   );
-}
+};
 
 CompassItem.propTypes = {
   data: React.PropTypes.object
-}
+};
 
 export default CompassItem;

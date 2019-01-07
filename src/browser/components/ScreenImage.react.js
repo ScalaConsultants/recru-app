@@ -10,10 +10,10 @@ const ScreenImage = props => {
       { props.data && <img src={props.data.img} /> }
     </div>
   );
-}
+};
 
 ScreenImage.propTypes = {
   data: React.PropTypes.object.isRequired
-}
+};
 
 export default ScreenImage;

@@ -14,11 +14,11 @@ const Alert = (props, {desc = '', select = false}) => {
       }
     </div>
   );
-}
+};
 
 Alert.propTypes = {
   desc: React.PropTypes.string.isRequired,
   select: React.PropTypes.bool.isRequired,
-}
+};
 
 export default Alert;

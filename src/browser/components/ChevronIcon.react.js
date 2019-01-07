@@ -20,10 +20,12 @@ const ChevronIcon = (props, {isAnimated = true}) => {
       <i className={arrowColor}></i>
     </div>
   );
-}
+};
 
 ChevronIcon.propTypes = {
+  color: React.PropTypes.string,
+  isAnimated: React.PropTypes.bool,
   onClick: React.PropTypes.func,
-}
+};
 
 export default ChevronIcon;

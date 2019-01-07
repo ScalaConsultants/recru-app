@@ -10,11 +10,11 @@ const Hello = props => {
   return (
     <div className={className}><span>{props.message}</span></div>
   );
-}
+};
 
 Hello.propTypes = {
   className: React.PropTypes.string,
   message: React.PropTypes.string.isRequired
-}
+};
 
 export default Hello;

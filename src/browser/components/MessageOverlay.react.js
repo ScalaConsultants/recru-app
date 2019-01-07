@@ -1,4 +1,3 @@
-import Component from 'react-pure-render/component';
 import classNames from 'classnames';
 import React from 'react';
 
@@ -16,12 +15,12 @@ const MessageOverlay = props => {
       </div>
     </div>
   );
-}
+};
 
 MessageOverlay.propTypes = {
   className: React.PropTypes.string,
   content: React.PropTypes.string,
   title: React.PropTypes.string
-}
+};
 
 export default MessageOverlay;

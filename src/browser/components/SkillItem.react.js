@@ -44,8 +44,8 @@ export default class SkillItem extends Component {
         {hint}
         <div>
           <img
-            className={className}
             alt={this.props.data.name}
+            className={className}
             onMouseEnter={this.handleMouseEnter}
             onMouseLeave={this.handleMouseLeave}
             src={this.props.data.src}

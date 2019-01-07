@@ -14,11 +14,11 @@ const AlertCustom = (props, {desc = '', select = false}) => {
       }
     </div>
   );
-}
+};
 
 AlertCustom.propTypes = {
   desc: React.PropTypes.string.isRequired,
   select: React.PropTypes.bool.isRequired,
-}
+};
 
 export default AlertCustom;

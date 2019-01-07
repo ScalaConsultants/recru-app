@@ -3,11 +3,10 @@ import Component from 'react-pure-render/component';
 
 import ScreenImage from '../components/ScreenImage.react';
 import ValueItem from '../components/CompassItem.react';
-import JobDescription from '../components/JobDescription.react';
 import boundScroll from '../lib/boundScroll';
 import ChevronIcon from '../components/ChevronIcon.react';
 
-import data from '../data/scalac.json'
+import data from '../data/scalac.json';
 
 if (process.env.IS_BROWSER) {
   require('./Compass.styl');
@@ -27,7 +26,7 @@ export default class Compass extends Component {
 
   render() {
     const compassUrl = {
-      img: "../../../assets/img/Compass.svg"
+      img: '../../../assets/img/Compass.svg'
     };
 
     return (
