@@ -4,6 +4,9 @@ import boundScroll from '../lib/boundScroll';
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
+import {Scrollbars} from 'react-custom-scrollbars';
+
+import data from '../data/regulations.json';
 
 if (process.env.IS_BROWSER) {
   require('./Submit.styl');
@@ -30,15 +33,18 @@ class Submit extends Component {
       fileUploaded: false,
       urlPassed: false,
       emailPassed: false,
-      namePassed: false
+      namePassed: false,
+      policyKeyPassed: false
     };
   }
 
   isDataValid() {
+    const {emailPassed, policyKeyPassed, namePassed} = this.state;
+
     if (this.props.candidate.name) {
-      return !!this.state.emailPassed;
+      return !!emailPassed && policyKeyPassed;
     }
-    return this.state.emailPassed && this.state.namePassed;
+    return emailPassed && namePassed && policyKeyPassed;
   }
 
   submit() {
@@ -58,9 +64,7 @@ class Submit extends Component {
       skills: [...skills],
       extraSkills: this.props.candidate.extraSkills,
       features,
-      exp,
-      consentRecruitment: rawCandidate.rodoPermissions,
-      consentInformationClause: rawCandidate.rodoPermissions
+      exp
     };
 
     // Only add linkedin property if we really have cvFile here
@@ -116,6 +120,11 @@ class Submit extends Component {
     this.setState({fileUploaded: true});
   }
 
+  handleChange() {
+    const {policyKeyPassed} = this.state;
+    this.setState({policyKeyPassed: !policyKeyPassed});
+  }
+
   componentDidMount() {
     const dropArea = ReactDOM.findDOMNode(this.refs.dropArea);
     const fileInput = ReactDOM.findDOMNode(this.refs.fileInput);
@@ -136,6 +145,7 @@ class Submit extends Component {
 
   render() {
     const {candidate} = this.props;
+    const {policyKeyPassed} = this.state;
 
     const dropAreaclassName = classNames('drop-area', {
       hover: this.state.dragOver,
@@ -204,6 +214,43 @@ class Submit extends Component {
             { this.state.fileUploaded ? 'resume uploaded' : 'drop or click to select resume'}
           </span>
         </div>
+        <div className="checkbox-terms">
+          <div className="checkbox-list">
+            <div className="list-item">
+              <input
+                id="policy-key"
+                onChange={(e) => this.handleChange('policy-key')}
+                type="checkbox"
+                value={policyKeyPassed}
+              />
+              <label htmlFor={`policy-key`}>
+                <span>Do You agree to the processing of your personal data by Scalac and accept the <a href="#terms&conditions">Terms and Conditions</a> and <a href="#privacy-policy">Privacy Policy</a> of Scalac?</span>
+              </label>
+            </div>
+          </div>
+        </div>
+          <div className="overlay" id="terms&conditions">
+            <div className="popup">
+            <Scrollbars autoHeight autoHeightMin={400} >
+              <h2>Terms and Conditions</h2>
+              <a className="close" href="#">&times;</a>
+              <div className="content">
+                {data.termsConditions.map(terms => <p key={terms.id}>{terms.desc}</p>)}
+              </div>
+            </Scrollbars>
+            </div>
+          </div>
+          <div className="overlay" id="privacy-policy">
+            <div className="popup">
+            <Scrollbars autoHeight autoHeightMin={400}>
+              <h2>Privacy Policy</h2>
+              <a className="close" href="#">&times;</a>
+              <div className="content">
+                <p>{data.privacyPolicy.desc}</p>
+              </div>
+              </Scrollbars>
+            </div>
+          </div>
         <button
           className={buttonInputClassName}
           disabled={!this.isDataValid() || candidate.isSubmittingForm}

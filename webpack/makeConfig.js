@@ -15,8 +15,6 @@ const devtools = process.env.CONTINUOUS_INTEGRATION
 const loaders = {
   'css': [],
   'less': [{loader: 'less-loader'}],
-  'scss': [{loader: 'sass-loader'}],
-  'sass': [{loader: 'sass-loader?indentedSyntax'}],
   'styl': [{loader: 'stylus-loader'}]
 };
 

@@ -1,0 +1,66 @@
+{
+  "termsConditions":[{
+    "id": 1,
+    "desc": "According to art. 13 item 1 and item 2 of Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation), Hereinafter Regulation or GDPR I hereby inform you:"
+  },
+  {
+    "id": 2,
+    "desc": "1) controller of the your personal data is Scalac Spółka z ograniczoną odpowiedzialnością, with its registered office: Czesława Miłosza Str. 9/9, 80-126 Gdańsk, Poland (hereinafter Scalac) e-mail: recruitment@scalac.io your personal data will be processed upon your consent for the purpose of taking part in recruitment proceedings conducted by Scalac (GDPR art. 6 item 1 let. a)), specified in job offer;"
+  },
+  {
+    "id": 3,
+    "desc": "2) your personal data will be entrusted, upon your consent, by Scalac Spółka z ograniczoną odpowiedzialnością, with its registered office Czesława Miłosza Str. 9/9, 80-126 Gdańsk, Poland, for the purpose of its processing according to point 2;"
+  },
+  {
+    "id": 4,
+    "desc": "3) your personal data will be stored for a period of the duration of said recruitment proceedings;"
+  },
+  {
+    "id": 5,
+    "desc": "you have the right to:"
+  },
+  {
+    "id": 6,
+    "desc": "1. access your personal data and receive copies thereof,"
+  },
+  {
+    "id": 7,
+    "desc": "2. rectify your personal data,"
+  },
+  {
+    "id": 8,
+    "desc": "3. have your personal data erased,"
+  },
+  {
+    "id": 9,
+    "desc": "4. restrict the personal data processing,"
+  },
+  {
+    "id": 10,
+    "desc": "5. lodge a complaint regarding data processing, including its processing for the purpose of direct marketing,"
+  },
+  {
+    "id": 11,
+    "desc": "6. transfer your data,"
+  },
+  {
+    "id": 12,
+    "desc": "7. lodge a complaint with supervisory authority (Polish: Prezes Urzędu Ochrony Danych Osobowych or other supervisory authority in charge) in case of illegal data processing,"
+  },
+  {
+    "id": 13,
+    "desc": "8. withdraw your consent for data processing – consent withdrawal does not affect the lawfulness of processing base on consent prior to its withdrawal."
+  },
+  {
+    "id": 14,
+    "desc": "4) granting consent for personal data processing and its entrustment be Scalac is voluntary, however, lack thereof will result in impossibility to execute rights and obligations provided in item 2,"
+  },
+  {
+    "id": 15,
+    "desc": "5) in order to execute your rights provided in item 3.5 please submit a statement via this form (answer \"NO\") 6) data will be subject to automated decision-making, including profiling."
+  }],
+  "privacyPolicy": {
+    "id": 1,
+    "desc": "Statement on consent granting: According to art. 7 item 1 Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation), I hereby grant my consent for processing by Scalac Spółka z ograniczoną odpowiedzialnością, with its registered office: Czesława Miłosza Str. 9/9, 80-126 Gdańsk, Poland, e-mail: recruitment@scalac.io, the personal data provided in the form above for the purpose and in scope necessary for conducting recruitment proceedings for the position provided therein. I further declare, to have made myself familiar with the merits of Information Clause and raise no remarks or objections to its merits.The consent above has been granted voluntary according to GDPR art. 4 point 11."
+  }
+}

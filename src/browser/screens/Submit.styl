@@ -7,6 +7,68 @@
   font-weight 300
   position relative
 
+  .overlay
+    position: fixed
+    background: rgba(0, 0, 0, 0.7)
+    transition: opacity 500ms
+    visibility: hidden
+    opacity: 0
+    margin-top: -50%
+
+    @media screen and (max-width: 700px)
+      margin-top: -140%
+
+
+  .overlay:target
+    visibility: visible
+    opacity: 1
+    z-index: 5
+    overflow-y: scroll
+
+  .popup
+    margin: 70px auto
+    padding: 20px
+    background: #fff
+    border-radius: 5px
+    width: 50%
+    transition: all 500ms ease-in-out
+    margin-left: 40%
+    overflow-y: scroll
+    z-index:10
+    margin: auto;
+
+    p
+      color: #000
+
+  .popup h2
+    margin-top: 0
+    color: #333
+    font-family: Tahoma, Arial, sans-serif
+
+  .popup .close
+    position: absolute
+    top: 20px
+    right: 30px
+    transition: all 200ms
+    font-size: 30px
+    font-weight: bold
+    text-decoration: none
+    color: #333
+
+  .popup .close:hover
+    color: #f00
+
+  .popup .content
+    max-height: 30%
+    overflow: auto
+
+  @media screen and (max-width: 700px)
+    .box
+      width: 70%
+
+    .popup
+      width: 70%
+
   header
     font-size 36px
     margin-bottom 20px
@@ -23,6 +85,64 @@
     display block
     font-size 18px
     margin auto auto 30px
+
+  .regulations
+    font-size 13px
+    font-weight 300
+    text-align center
+    color #ffffff
+
+  .checkbox-terms
+    .checkbox-list
+        display flex
+        text-align center
+        flex-direction column
+        align-items flex-start
+        margin-left 30px
+        margin-top 5vw
+        width: 50%
+        margin: auto
+
+      .list-item
+        margin 10px 0
+
+      input
+        display none
+
+      label
+        align-items flex-start
+        display flex
+        flex-direction row
+        padding 0
+        cursor pointer
+        padding-bottom: 15px
+
+        span
+          display inline
+          margin 0px
+          font-size 20px
+          font-weight 400
+
+      label:before
+        position absolute
+        margin-left -35px
+        content ''
+        width 25px
+        height 25px
+        opacity 0.8
+        display block
+        background #d9d9d9 url('../../../assets/img/bullet.svg') no-repeat
+        background-position -100px 0
+        transition transform .25s
+        transform rotate(-90deg)
+        margin-top: 0.2%
+
+      input:checked ~ label:before
+        background-position 0
+
+      label:hover:before
+      label:hover ~ label:before
+        background-position -32px 0
 
   input[type=file]
     visibility hidden
