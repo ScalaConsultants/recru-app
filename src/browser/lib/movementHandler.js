@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Component from 'react-pure-render/component';
 import throttle from 'lodash.throttle';
 
@@ -11,6 +12,10 @@ export default function movementHandler(BaseComponent) {
         sY: 0,
         eY: 0
       };
+    }
+
+    static propTypes = {
+      location: PropTypes.object.isRequired,
     }
 
     handleMouseWheel(e) {

@@ -223,14 +223,14 @@ class Submit extends Component {
                 type="checkbox"
                 value={policyKeyPassed}
               />
-              <label htmlFor={`policy-key`}>
+              <label htmlFor={'policy-key'}>
                 <span>Do You agree to the processing of your personal data by Scalac and accept the <a href="#terms&conditions">Terms and Conditions</a> and <a href="#privacy-policy">Privacy Policy</a> of Scalac?</span>
               </label>
             </div>
           </div>
         </div>
-          <div className="overlay" id="terms&conditions">
-            <div className="popup">
+        <div className="overlay" id="terms&conditions">
+          <div className="popup">
             <Scrollbars autoHeight autoHeightMin={400} >
               <h2>Terms and Conditions</h2>
               <a className="close" href="#">&times;</a>
@@ -238,19 +238,19 @@ class Submit extends Component {
                 {data.termsConditions.map(terms => <p key={terms.id}>{terms.desc}</p>)}
               </div>
             </Scrollbars>
-            </div>
           </div>
-          <div className="overlay" id="privacy-policy">
-            <div className="popup">
+        </div>
+        <div className="overlay" id="privacy-policy">
+          <div className="popup">
             <Scrollbars autoHeight autoHeightMin={400}>
               <h2>Privacy Policy</h2>
               <a className="close" href="#">&times;</a>
               <div className="content">
                 <p>{data.privacyPolicy.desc}</p>
               </div>
-              </Scrollbars>
-            </div>
+            </Scrollbars>
           </div>
+        </div>
         <button
           className={buttonInputClassName}
           disabled={!this.isDataValid() || candidate.isSubmittingForm}
