@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Component from 'react-pure-render/component';
 
 import ScreenImage from '../components/ScreenImage.react';
@@ -13,10 +14,10 @@ if (process.env.IS_BROWSER) {
 }
 
 @boundScroll()
-export default class Compass extends Component {
+class Compass extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    candidate: React.PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    candidate: PropTypes.object.isRequired
   }
 
   proceed() {
@@ -58,3 +59,4 @@ export default class Compass extends Component {
     );
   }
 }
+export default Compass;

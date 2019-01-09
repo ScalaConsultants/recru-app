@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
   require('./CompassItem.styl');
@@ -16,7 +17,7 @@ const CompassItem = (props, {data = {}}) => {
 };
 
 CompassItem.propTypes = {
-  data: React.PropTypes.object
+  data: PropTypes.object
 };
 
 export default CompassItem;

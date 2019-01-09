@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Component from 'react-pure-render/component';
 import classNames from 'classnames';
 
@@ -13,10 +14,10 @@ if (process.env.IS_BROWSER) {
 }
 
 @boundScroll()
-export default class Compass extends Component {
+class Compass extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    candidate: React.PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    candidate: PropTypes.object.isRequired
   }
 
   constructor(props) {
@@ -33,9 +34,9 @@ export default class Compass extends Component {
     const id = this.state.currentTab;
     return (
       data[id].map(element =>
-        <li key={element}>
+        (<li key={element}>
           {element}
-        </li>
+        </li>)
       )
     );
   }
@@ -64,7 +65,7 @@ export default class Compass extends Component {
                 <p className="desc screen-desc">{data.desc}</p>
                 <div className="options list">
                   {data.options.map((element) =>
-                    <div
+                    (<div
                       className={classNames('option', {'active' : element.id === currentTab})}
                       key={element.id} onClick={() => this.selectTab(element.id)}
                     >
@@ -75,7 +76,7 @@ export default class Compass extends Component {
                         />
                       </div>
                       <p>{element.title}</p>
-                    </div>
+                    </div>)
                   )}
                 </div>
                 <div className="content-list">
@@ -92,3 +93,5 @@ export default class Compass extends Component {
     );
   }
 }
+
+export default Compass;

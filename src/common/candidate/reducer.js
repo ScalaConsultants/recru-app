@@ -61,7 +61,7 @@ export default function candidateReducer(state = initialState, action) {
     case actions.SAVE_EXTRA_SKILL: {
       const {skills} = action.payload;
       return state
-       .set('extraSkills', skills);
+        .set('extraSkills', skills);
     }
 
     case actions.SAVE_SKILL: {

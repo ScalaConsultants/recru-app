@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
   require('./JobDescription.styl');
@@ -25,7 +26,7 @@ const JobDescription = (props, {data = {}}) => {
 };
 
 JobDescription.propTypes = {
-  data: React.PropTypes.object.isRequired
+  data: PropTypes.object.isRequired
 };
 
 export default JobDescription;

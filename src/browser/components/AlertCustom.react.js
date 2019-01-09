@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
   require('./AlertCustom.styl');
 }
+
 
 const AlertCustom = (props, {desc = '', select = false}) => {
   return (
@@ -17,8 +19,8 @@ const AlertCustom = (props, {desc = '', select = false}) => {
 };
 
 AlertCustom.propTypes = {
-  desc: React.PropTypes.string.isRequired,
-  select: React.PropTypes.bool.isRequired,
+  desc: PropTypes.string.isRequired,
+  select: PropTypes.bool.isRequired,
 };
 
 export default AlertCustom;

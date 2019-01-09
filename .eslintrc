@@ -8,6 +8,10 @@
     "it": false,
     "require": false
   },
+  "plugins": [
+    "import",
+    "react"
+  ],
   "parser": "babel-eslint",
   "rules": {
     "array-bracket-spacing": 2,
@@ -85,12 +89,11 @@
     "radix": 2,
     "semi": [2, "always"],
     "semi-spacing": [2, {"before": false, "after": true}],
-    "space-after-keywords": [2, "always"],
+    "keyword-spacing": [2, {"before": true, "after": true}],
     "space-before-blocks": [2, "always"],
     "space-before-function-paren": [2, "never"],
     "space-in-parens": [2, "never"],
     "space-infix-ops": 2,
-    "space-return-throw-case": 2,
     "space-unary-ops": [2, {"words": true, "nonwords": false}],
     "strict": [0, "never"],
     "use-isnan": 2,
@@ -107,7 +110,7 @@
     "react/jsx-boolean-value": 2,
     "react/jsx-no-undef": 2,
     "react/jsx-sort-props": 2,
-    "react/jsx-sort-prop-types": 2,
+    "react/sort-prop-types": 2,
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
     "react/no-did-mount-set-state": 2,
@@ -118,20 +121,13 @@
     "react/react-in-jsx-scope": 2,
     "react/self-closing-comp": 2,
     // Not ready yet. "react/sort-comp": 2,
-    "react/wrap-multilines": 2,
+    "react/jsx-wrap-multilines": 2,
     // Import
     "import/no-unresolved": [2, {"commonjs": true, "amd": true}],
     "import/named": 2,
     "import/namespace": 2,
     "import/default": 2,
     "import/export": 2,
-  },
-  "plugins": [
-    "import",
-    "react"
-  ],
-  "ecmaFeatures": {
-    "jsx": true
   },
   "settings": {
     "import/ignore": [
@@ -145,6 +141,9 @@
         ".jsx",
         ".json"
       ]
+    },
+    "react": {
+      "version": "detect"
     }
   }
 }

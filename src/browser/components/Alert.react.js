@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
   require('./Alert.styl');
@@ -17,8 +18,8 @@ const Alert = (props, {desc = '', select = false}) => {
 };
 
 Alert.propTypes = {
-  desc: React.PropTypes.string.isRequired,
-  select: React.PropTypes.bool.isRequired,
+  desc: PropTypes.string.isRequired,
+  select: PropTypes.bool.isRequired,
 };
 
 export default Alert;

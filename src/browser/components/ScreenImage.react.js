@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
   require('./ScreenImage.styl');
@@ -13,7 +14,7 @@ const ScreenImage = props => {
 };
 
 ScreenImage.propTypes = {
-  data: React.PropTypes.object.isRequired
+  data: PropTypes.object.isRequired
 };
 
 export default ScreenImage;

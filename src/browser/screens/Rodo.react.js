@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Component from 'react-pure-render/component';
 
 import ScreenImage from '../components/ScreenImage.react';
@@ -12,10 +13,10 @@ if (process.env.IS_BROWSER) {
 }
 
 @boundScroll()
-export default class Rodo extends Component {
+class Rodo extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    candidate: React.PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    candidate: PropTypes.object.isRequired
   }
 
   state = {
@@ -74,7 +75,7 @@ export default class Rodo extends Component {
         <div className="container">
           <ScreenImage data={backpackUrl} />
           <div className="right">
-            {<AlertCustom desc={"We need both permissions to proceed"} select={this.state.select} />}
+            {<AlertCustom desc={'We need both permissions to proceed'} select={this.state.select} />}
             <div className="content">
               <div className="screen-content">
                 <h1 className="heading-1">{data.title}</h1>
@@ -83,7 +84,7 @@ export default class Rodo extends Component {
                   {
                     data.permissions &&
                     data.permissions.map(item =>
-                      <div className="list-item" key={item.id}>
+                      (<div className="list-item" key={item.id}>
                         <input
                           id={`rodo${item.id}`}
                           onChange={(e) => this.handleChange(item.id)}
@@ -93,7 +94,7 @@ export default class Rodo extends Component {
                         <label htmlFor={`rodo${item.id}`}>
                           {item.title} {item.value}
                         </label>
-                      </div>
+                      </div>)
                     )
                   }
                 </div>
@@ -101,7 +102,7 @@ export default class Rodo extends Component {
                 <div className="footer">{data.footer}</div>
 
               </div>
-              </div>
+            </div>
             <ChevronIcon isAnimated onClick={e => this.proceed(e)}/>
           </div>
         </div>
@@ -109,3 +110,5 @@ export default class Rodo extends Component {
     );
   }
 }
+
+export default Rodo;

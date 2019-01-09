@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Component from 'react-pure-render/component';
 import TagsInput from 'react-tagsinput';
 
@@ -15,8 +16,8 @@ if (process.env.IS_BROWSER) {
 
 export default class Skills extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    candidate: React.PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    candidate: PropTypes.object.isRequired
   }
 
   constructor() {
@@ -36,7 +37,7 @@ export default class Skills extends Component {
   }
 
   defaultRenderInput(props) {
-    const {placeholder, onChange, value, addTag, ...other} = props;
+    const {placeholder, onChange, value, addTag, ...other} = props; // eslint-disable-line no-unused-vars
     return (
       <input
         onChange={onChange}
@@ -68,17 +69,17 @@ export default class Skills extends Component {
                 <p className="screen-desc">
                   { this.props.candidate.name
                     ?
-                      `${this.props.candidate.name}, ${technologies.title}`
+                    `${this.props.candidate.name}, ${technologies.title}`
                     :
-                      `${technologies.title}`
+                    `${technologies.title}`
                   }
                 </p>
               </div>
               <div className="skills-block">
                 <ul>
-                {skillsForCurrentRole.map((skill) =>
-                  <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
-                )}
+                  {skillsForCurrentRole.map((skill) =>
+                    <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
+                  )}
                 </ul>
                 <div className="tags-wrapper">
                   <p>Other skills:</p>
@@ -89,7 +90,7 @@ export default class Skills extends Component {
                   />
                 </div>
               </div>
-              <div></div>
+              <div />
             </div>
             <ChevronIcon isAnimated onClick={e => this.proceed(e)}/>
           </div>

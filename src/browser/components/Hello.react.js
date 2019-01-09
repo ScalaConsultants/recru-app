@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
   require('./Hello.styl');
@@ -13,8 +14,8 @@ const Hello = props => {
 };
 
 Hello.propTypes = {
-  className: React.PropTypes.string,
-  message: React.PropTypes.string.isRequired
+  className: PropTypes.string,
+  message: PropTypes.string.isRequired
 };
 
 export default Hello;

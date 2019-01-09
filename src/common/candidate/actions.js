@@ -19,8 +19,8 @@ function handleSubmitResponse(response) {
     throw new Error('Non OK status has been returned.');
   }
   // After showing thank you screen, redirect to homepage
-  window.setTimeout(() => window.location = 'http://scalac.io', 5000);
-};
+  window.setTimeout(() => {window.location = 'http://scalac.io';}, 5000);
+}
 
 export function saveName(name) {
   return {

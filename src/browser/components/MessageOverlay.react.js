@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
   require('./MessageOverlay.styl');
@@ -18,9 +19,9 @@ const MessageOverlay = props => {
 };
 
 MessageOverlay.propTypes = {
-  className: React.PropTypes.string,
-  content: React.PropTypes.string,
-  title: React.PropTypes.string
+  className: PropTypes.string,
+  content: PropTypes.string,
+  title: PropTypes.string
 };
 
 export default MessageOverlay;

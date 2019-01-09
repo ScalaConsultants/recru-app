@@ -4,7 +4,8 @@ import MiniMap from '../components/Minimap.react';
 import Hello from '../components/Hello.react';
 import MessageOverlay from '../components/MessageOverlay.react.js';
 import Helmet from 'react-helmet';
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import RouterHandler from '../../common/components/RouterHandler.react';
 import mapDispatchToProps from '../../common/app/mapDispatchToProps';
 import mapStateToProps from '../../common/app/mapStateToProps';
@@ -19,7 +20,7 @@ require('./Large.styl');
 
 @connect(mapStateToProps, mapDispatchToProps)
 // @logRenderTime
-export default class App extends Component {
+class App extends Component {
 
   static propTypes = {
     candidate: PropTypes.object.isRequired,
@@ -41,10 +42,10 @@ export default class App extends Component {
     });
     const messageOverlayTitle = candidate.hasSubmissionErroredOut ? 'Whoops' : 'Thank You';
     const messageOverlayContent = candidate.hasSubmissionErroredOut
-      ? `Something went wrong and we are very sorry about that. Drop us a message at info@scalac.io, thanks!`
-      : `You'll hear from us very soon.`;
+      ? 'Something went wrong and we are very sorry about that. Drop us a message at info@scalac.io, thanks!'
+      : 'You\'ll hear from us very soon.';
 
-    const message = candidate.name ? `Hello, ${candidate.name}.` : `Hello!`;
+    const message = candidate.name ? `Hello, ${candidate.name}.` : 'Hello!';
 
     return (
       // Pass data-pathname to allow route specific styling.
@@ -66,3 +67,5 @@ export default class App extends Component {
   }
 
 }
+
+export default App;

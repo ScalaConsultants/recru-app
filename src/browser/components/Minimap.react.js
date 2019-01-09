@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // if (process.env.IS_BROWSER) {
 require('./Minimap.styl');
@@ -49,9 +50,9 @@ const MiniMap = props => {
 };
 
 MiniMap.propTypes = {
-  actions: React.PropTypes.object.isRequired,
-  className: React.PropTypes.string,
-  screens: React.PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  className: PropTypes.string,
+  screens: PropTypes.object.isRequired
 };
 
 export default MiniMap;

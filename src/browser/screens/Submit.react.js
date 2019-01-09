@@ -2,6 +2,7 @@ import Component from 'react-pure-render/component';
 import classNames from 'classnames';
 import boundScroll from '../lib/boundScroll';
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
 if (process.env.IS_BROWSER) {
@@ -9,11 +10,11 @@ if (process.env.IS_BROWSER) {
 }
 
 @boundScroll()
-export default class Submit extends Component {
+class Submit extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    candidate: React.PropTypes.object.isRequired,
-    config: React.PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    candidate: PropTypes.object.isRequired,
+    config: PropTypes.object.isRequired
   }
 
   constructor(props) {
@@ -163,11 +164,11 @@ export default class Submit extends Component {
         <div className="field">
           <h2>Leave us your email</h2>
           <input className={emailInputClassName}
-                 onChange={(e) => this.handleEmailChange(e)}
-                 placeholder="email"
-                 ref="emailInput"
-                 tabIndex="-1"
-                 type="email"/>
+            onChange={(e) => this.handleEmailChange(e)}
+            placeholder="email"
+            ref="emailInput"
+            tabIndex="-1"
+            type="email"/>
         </div>
         { !this.props.candidate.name &&
           <div className="field">
@@ -208,9 +209,11 @@ export default class Submit extends Component {
           disabled={!this.isDataValid() || candidate.isSubmittingForm}
           onClick={() => this.submit()}
         >
-          <i></i>{buttonTitle}
+          <i />{buttonTitle}
         </button>
       </section>
     );
   }
 }
+
+export default Submit;

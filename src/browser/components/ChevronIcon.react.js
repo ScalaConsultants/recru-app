@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 if (process.env.IS_BROWSER) {
   require('./ChevronIcon.styl');
@@ -17,15 +18,15 @@ const ChevronIcon = (props, {isAnimated = true}) => {
 
   return (
     <div className={className} onClick={props.onClick}>
-      <i className={arrowColor}></i>
+      <i className={arrowColor} />
     </div>
   );
 };
 
 ChevronIcon.propTypes = {
-  color: React.PropTypes.string,
-  isAnimated: React.PropTypes.bool,
-  onClick: React.PropTypes.func,
+  color: PropTypes.string,
+  isAnimated: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 export default ChevronIcon;
