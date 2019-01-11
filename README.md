@@ -7,35 +7,25 @@ We are currently [hiring](https://www.scalac.io/join_us) all kinds of talented r
 
 ## Prerequisites
 
-Install [node.js](http://nodejs.org) v4.
-Then install [gulp.js](http://gulpjs.com/).
-```shell
-npm install -g gulp
-```
-
-#### Windows
-
-- Install Python - Install version 2.7 of Python and add it to your path or/and create a PYTHONPATH environment variable.
-- Install Visual Studio (Express Edition is fine) - We will need this for some of modules that are compiled when we are installing Este. [Download VS Express](https://www.visualstudio.com/en-us/products/visual-studio-express-vs.aspx), get one of the versions that has C++ - Express 2013 for Windows Desktop for example.
-- Set Visual Studio Version Flags - We need to tell node-gyp (something that is used for compiling addons) what version of Visual Studio we want to compile with. You can do this either through an environment variable GYP_MSVS_VERSION. If you are using Express, you have to say GYP_MSVS_VERSION=2013e.
+Install [node.js](http://nodejs.org) and npm.
 
 ## Start Development
 
 
-- run `gulp`
+- run `npm run start`
 - point your browser to [localhost:8000](http://localhost:8000)
 
 ## Dev Tasks
 
-- `gulp` run app in development mode
-- `gulp -p` run app in production mode
-- `gulp test`
+- `npm run start` run app in development mode
+- `npm run start:production` run app in production mode
+- `npm test` run lint and test if build generates correctly
+- `npm run lint` run eslint
 
 ## CI Tasks
 
 - `npm start` just run app, remember to set NODE_ENV=production and other environment variables.
-- `gulp build -p` builds for production.
-- `npm test` just alias for `gulp test`
+- `npm run build` builds for production.
 
 ### Note on production builds
 

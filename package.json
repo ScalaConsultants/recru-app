@@ -11,9 +11,6 @@
     "start:production": "gulp -p",
     "test": "gulp test"
   },
-  "engines": {
-    "node": "4.2.x"
-  },
   "dependencies": {
     "@babel/core": "^7.2.2",
     "@babel/node": "^7.2.2",
@@ -82,7 +79,7 @@
     "urijs": "^1.16.1",
     "url-loader": "^1.1.2",
     "validator": "^4.0.6",
-    "webpack": "^4.28.3",
+    "webpack": "^4.28.4",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.24.3",
     "yargs": "^3.27.0"
