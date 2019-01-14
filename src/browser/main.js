@@ -1,33 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Router from 'react-router';
-import configureStore from '../common/configureStore';
-import createBrowserHistory from 'history/lib/createBrowserHistory';
+import {Provider} from 'react-redux';
+import {Router, browserHistory} from 'react-router';
+import {hot} from 'react-hot-loader/root';
 import createEngine from 'redux-storage/engines/localStorage';
 import createRoutes from './createRoutes';
-import {Provider} from 'react-redux';
 
-// TODO: Add app storage example.
-// import storage from 'redux-storage';
+import configureStore from '../common/configureStore';
 
-// Enabling ES7 `async/await` in browser:
-if (process.env.IS_BROWSER) require('regenerator/runtime');
-
-const app = document.getElementById('app');
 const engine = createEngine('este-app');
 const initialState = window.__INITIAL_STATE__;
 const store = configureStore({engine, initialState});
-const routes = createRoutes(store.getState);
+const routes = createRoutes();
 
-ReactDOM.render(
-  <Provider store={store}>
-    <Router history={createBrowserHistory()}>
-      {routes}
-    </Router>
-  </Provider>,
-  app,
-  () => {
-    // This is where state from local storage should be retrieved.
-    // storage.createLoader(engine)(store);
-  }
-);
+const Application = () => (<Provider store={store}>
+  <Router history={browserHistory}>
+    {routes}
+  </Router>
+</Provider>);
+
+export default process.env.NODE_ENV === 'production' ? Application : hot(Application);

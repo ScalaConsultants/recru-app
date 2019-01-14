@@ -1,23 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Component from 'react-pure-render/component';
 
 import ScreenImage from '../components/ScreenImage.react';
 import ValueItem from '../components/CompassItem.react';
-import JobDescription from '../components/JobDescription.react';
 import boundScroll from '../lib/boundScroll';
 import ChevronIcon from '../components/ChevronIcon.react';
 
-import data from '../data/scalac.json'
+import data from '../data/scalac.json';
 
 if (process.env.IS_BROWSER) {
   require('./Compass.styl');
 }
 
 @boundScroll()
-export default class Compass extends Component {
+class Compass extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    candidate: React.PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    candidate: PropTypes.object.isRequired
   }
 
   proceed() {
@@ -27,7 +27,7 @@ export default class Compass extends Component {
 
   render() {
     const compassUrl = {
-      img: "../../../assets/img/Compass.svg"
+      img: '../../../assets/img/Compass.svg'
     };
 
     return (
@@ -59,3 +59,4 @@ export default class Compass extends Component {
     );
   }
 }
+export default Compass;

@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Component from 'react-pure-render/component';
 import TagsInput from 'react-tagsinput';
 
-import boundScroll from '../lib/boundScroll';
 import ChevronIcon from '../components/ChevronIcon.react';
 import SkillItem from '../components/SkillItem.react';
 import ScreenImage from '../components/ScreenImage.react';
@@ -16,13 +16,13 @@ if (process.env.IS_BROWSER) {
 
 export default class Skills extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    candidate: React.PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    candidate: PropTypes.object.isRequired
   }
 
   constructor() {
-    super()
-    this.state = {skills: []}
+    super();
+    this.state = {skills: []};
   }
 
   proceed() {
@@ -31,23 +31,23 @@ export default class Skills extends Component {
   }
 
   handleChange(skills) {
-    this.setState({skills})
+    this.setState({skills});
     const {actions: {saveExtraSkill}} = this.props;
     saveExtraSkill(skills);
   }
 
-  defaultRenderInput (props) {
-    const {placeholder, onChange, value, addTag, ...other} = props
+  defaultRenderInput(props) {
+    const {placeholder, onChange, value, addTag, ...other} = props; // eslint-disable-line no-unused-vars
     return (
       <input
-        type='text'
-        tabIndex="-1"
-        placeholder="Skill name"
         onChange={onChange}
+        placeholder="Skill name"
+        tabIndex="-1"
+        type='text'
         value={value}
         {...other}
       />
-    )
+    );
   }
 
 
@@ -55,7 +55,7 @@ export default class Skills extends Component {
     const skills = technologies[this.props.candidate.role.id] || {};
     const skillsForCurrentRole = Object.keys(skills).map((key) => skills[key]);
     const backpackUrl = {
-      img: "../../../assets/img/backpack.svg"
+      img: '../../../assets/img/backpack.svg'
     };
 
     return (
@@ -69,28 +69,28 @@ export default class Skills extends Component {
                 <p className="screen-desc">
                   { this.props.candidate.name
                     ?
-                      `${this.props.candidate.name}, ${technologies.title}`
+                    `${this.props.candidate.name}, ${technologies.title}`
                     :
-                      `${technologies.title}`
+                    `${technologies.title}`
                   }
                 </p>
               </div>
               <div className="skills-block">
                 <ul>
-                {skillsForCurrentRole.map((skill) =>
-                  <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
-                )}
+                  {skillsForCurrentRole.map((skill) =>
+                    <SkillItem actions={this.props.actions} data={skill} key={skill.id}/>
+                  )}
                 </ul>
                 <div className="tags-wrapper">
                   <p>Other skills:</p>
                   <TagsInput
-                    value={this.state.skills}
                     onChange={e => this.handleChange(e)}
                     renderInput={this.defaultRenderInput}
+                    value={this.state.skills}
                   />
                 </div>
               </div>
-              <div></div>
+              <div />
             </div>
             <ChevronIcon isAnimated onClick={e => this.proceed(e)}/>
           </div>

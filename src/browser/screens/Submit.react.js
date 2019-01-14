@@ -2,6 +2,7 @@ import Component from 'react-pure-render/component';
 import classNames from 'classnames';
 import boundScroll from '../lib/boundScroll';
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import {Scrollbars} from 'react-custom-scrollbars';
 
@@ -12,11 +13,11 @@ if (process.env.IS_BROWSER) {
 }
 
 @boundScroll()
-export default class Submit extends Component {
+class Submit extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    candidate: React.PropTypes.object.isRequired,
-    config: React.PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    candidate: PropTypes.object.isRequired,
+    config: PropTypes.object.isRequired
   }
 
   constructor(props) {
@@ -173,11 +174,11 @@ export default class Submit extends Component {
         <div className="field">
           <h2>Leave us your email</h2>
           <input className={emailInputClassName}
-                 onChange={(e) => this.handleEmailChange(e)}
-                 placeholder="email"
-                 ref="emailInput"
-                 tabIndex="-1"
-                 type="email"/>
+            onChange={(e) => this.handleEmailChange(e)}
+            placeholder="email"
+            ref="emailInput"
+            tabIndex="-1"
+            type="email"/>
         </div>
         { !this.props.candidate.name &&
           <div className="field">
@@ -222,14 +223,14 @@ export default class Submit extends Component {
                 type="checkbox"
                 value={policyKeyPassed}
               />
-              <label htmlFor={`policy-key`}>
+              <label htmlFor={'policy-key'}>
                 <span>Do You agree to the processing of your personal data by Scalac and accept the <a href="#terms&conditions">Terms and Conditions</a> and <a href="#privacy-policy">Privacy Policy</a> of Scalac?</span>
               </label>
             </div>
           </div>
         </div>
-          <div className="overlay" id="terms&conditions">
-            <div className="popup">
+        <div className="overlay" id="terms&conditions">
+          <div className="popup">
             <Scrollbars autoHeight autoHeightMin={400} >
               <h2>Terms and Conditions</h2>
               <a className="close" href="#">&times;</a>
@@ -237,27 +238,29 @@ export default class Submit extends Component {
                 {data.termsConditions.map(terms => <p key={terms.id}>{terms.desc}</p>)}
               </div>
             </Scrollbars>
-            </div>
           </div>
-          <div className="overlay" id="privacy-policy">
-            <div className="popup">
+        </div>
+        <div className="overlay" id="privacy-policy">
+          <div className="popup">
             <Scrollbars autoHeight autoHeightMin={400}>
               <h2>Privacy Policy</h2>
               <a className="close" href="#">&times;</a>
               <div className="content">
                 <p>{data.privacyPolicy.desc}</p>
               </div>
-              </Scrollbars>
-            </div>
+            </Scrollbars>
           </div>
+        </div>
         <button
           className={buttonInputClassName}
           disabled={!this.isDataValid() || candidate.isSubmittingForm}
           onClick={() => this.submit()}
         >
-          <i></i>{buttonTitle}
+          <i />{buttonTitle}
         </button>
       </section>
     );
   }
 }
+
+export default Submit;

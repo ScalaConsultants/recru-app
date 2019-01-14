@@ -10,7 +10,7 @@ import createRoutes from '../../browser/createRoutes';
 import serialize from 'serialize-javascript';
 import {HOT_RELOAD_PORT} from '../../../webpack/constants';
 import {Provider} from 'react-redux';
-import {RoutingContext, match} from 'react-router';
+import {RouterContext, match} from 'react-router';
 import {createMemoryHistory} from 'history';
 
 export default function render(req, res, next) {
@@ -28,7 +28,7 @@ export default function render(req, res, next) {
   const routes = createRoutes(() => store.getState());
   const location = createMemoryHistory().createLocation(req.url);
 
-  match({routes, location}, async (error, redirectLocation, renderProps) => {
+  match({routes, location}, async(error, redirectLocation, renderProps) => {
 
     if (redirectLocation) {
       res.redirect(301, redirectLocation.pathname + redirectLocation.search);
@@ -97,7 +97,7 @@ async function renderPageAsync(store, renderProps, req) {
 function getAppHtml(store, renderProps) {
   return ReactDOMServer.renderToString(
     <Provider store={store}>
-      <RoutingContext {...renderProps} />
+      <RouterContext {...renderProps} />
     </Provider>
   );
 }

@@ -1,5 +1,6 @@
 import Component from 'react-pure-render/component';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 import boundScroll from '../lib/boundScroll';
@@ -11,9 +12,9 @@ if (process.env.IS_BROWSER) {
 }
 
 @boundScroll()
-export default class Roles extends Component {
+class Roles extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired
   }
 
   constructor(props) {
@@ -22,14 +23,15 @@ export default class Roles extends Component {
       role: null,
       select: false,
       current: ''
-    }
+    };
   }
 
   proceed() {
     if (!this.state.role) {
       this.setState({select: true});
       setTimeout(() => { this.setState({select: false}); }, 5000);
-    } else {
+    }
+    else {
       const {actions: {saveRole, nextScreen}} = this.props;
       saveRole(this.state.role);
       this.setState({current: this.state.role.id, select: false});
@@ -46,7 +48,7 @@ export default class Roles extends Component {
 
     return (
       <section className="roles-screen screen">
-        {<Alert desc={"role"} select={this.state.select}/>}
+        {<Alert desc={'role'} select={this.state.select}/>}
         <h1 className="heading-1">Who are you?</h1>
         <ul>
           {json.map((role) => {
@@ -67,3 +69,5 @@ export default class Roles extends Component {
     );
   }
 }
+
+export default Roles;

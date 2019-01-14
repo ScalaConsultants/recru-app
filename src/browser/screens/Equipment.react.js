@@ -1,24 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Component from 'react-pure-render/component';
 import classNames from 'classnames';
 
 import ScreenImage from '../components/ScreenImage.react';
-import Item from '../components/CompassItem.react';
-import JobDescription from '../components/JobDescription.react';
 import boundScroll from '../lib/boundScroll';
 import ChevronIcon from '../components/ChevronIcon.react';
 
-import data from '../data/equipment.json'
+import data from '../data/equipment.json';
 
 if (process.env.IS_BROWSER) {
   require('./Equipment.styl');
 }
 
 @boundScroll()
-export default class Compass extends Component {
+class Compass extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    candidate: React.PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    candidate: PropTypes.object.isRequired
   }
 
   constructor(props) {
@@ -35,22 +34,22 @@ export default class Compass extends Component {
     const id = this.state.currentTab;
     return (
       data[id].map(element =>
-        <li key={element}>
+        (<li key={element}>
           {element}
-        </li>
+        </li>)
       )
-    )
+    );
   }
 
   selectTab(id) {
     this.setState({
       currentTab: id
-    })
+    });
   }
 
   render() {
     const equipmentUrl = {
-      img: "../../../assets/img/equipment.svg"
+      img: '../../../assets/img/equipment.svg'
     };
 
     const currentTab = this.state.currentTab;
@@ -66,18 +65,18 @@ export default class Compass extends Component {
                 <p className="desc screen-desc">{data.desc}</p>
                 <div className="options list">
                   {data.options.map((element) =>
-                    <div
-                      key={element.id} onClick={() => this.selectTab(element.id)}
+                    (<div
                       className={classNames('option', {'active' : element.id === currentTab})}
+                      key={element.id} onClick={() => this.selectTab(element.id)}
                     >
                       <div className="icon">
                         <img
-                          src={element.id === this.state.currentTab ? element.active : element.img}
                           alt={element.title}
+                          src={element.id === this.state.currentTab ? element.active : element.img}
                         />
                       </div>
                       <p>{element.title}</p>
-                    </div>
+                    </div>)
                   )}
                 </div>
                 <div className="content-list">
@@ -94,3 +93,5 @@ export default class Compass extends Component {
     );
   }
 }
+
+export default Compass;
