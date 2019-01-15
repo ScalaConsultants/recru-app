@@ -1,6 +1,7 @@
 import Component from 'react-pure-render/component';
 import ChevronIcon from '../components/ChevronIcon.react';
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 
@@ -10,7 +11,7 @@ if (process.env.IS_BROWSER) {
 
 export default class FirstScreen extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired
   }
 
   constructor(props) {
@@ -47,8 +48,8 @@ export default class FirstScreen extends Component {
     });
 
     const background = {
-      backgroundImage: `url(../../../assets/img/bg.png)`
-    }
+      backgroundImage: 'url(../../../assets/img/bg.png)'
+    };
 
     return (
       <section className="first-screen screen" style={background}>

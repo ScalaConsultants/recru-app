@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Component from 'react-pure-render/component';
 
@@ -15,7 +16,7 @@ import Experience from '../screens/Experience.react';
 import movementHandler from '../lib/movementHandler';
 
 @movementHandler
-export default class Screens extends Component {
+class Screens extends Component {
 
   static propTypes = {
     actions: PropTypes.object.isRequired,
@@ -70,3 +71,5 @@ export default class Screens extends Component {
     );
   }
 }
+
+export default Screens;

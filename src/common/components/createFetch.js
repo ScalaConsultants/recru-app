@@ -1,13 +1,13 @@
-export default function createFetch(React, Component) {
+export default function createFetch(React, Component, PropTypes) {
 
   return function fetch(...actions) {
 
     return Wrapped => class Fetch extends Component {
 
       static propTypes = {
-        dispatch: React.PropTypes.func,
-        location: React.PropTypes.object,
-        params: React.PropTypes.object
+        dispatch: PropTypes.func,
+        location: PropTypes.object,
+        params: PropTypes.object
       }
 
       // This enables server side fetching.

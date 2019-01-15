@@ -3,12 +3,8 @@ import bg from 'gulp-bg';
 import del from 'del';
 import eslint from 'gulp-eslint';
 import gulp from 'gulp';
-import mochaRunCreator from './test/mochaRunCreator';
-import path from 'path';
-import runSequence from 'run-sequence';
-import shell from 'gulp-shell';
-import webpackBuild from './webpack/build';
 import yargs from 'yargs';
+import webpackBuild from './webpack/build';
 
 const args = yargs
   .alias('p', 'production')
@@ -20,18 +16,18 @@ const runEslint = () => {
     'src/**/*.js',
     'webpack/*.js'
   ])
-  .pipe(eslint())
-  .pipe(eslint.format());
+    .pipe(eslint())
+    .pipe(eslint.format());
 };
 
-gulp.task('env', () => {
+gulp.task('env', (done) => {
   process.env.NODE_ENV = args.production ? 'production' : 'development';
+  done();
 });
 
 gulp.task('clean', done => del('build/*', done));
 
-gulp.task('build-webpack', ['env'], webpackBuild);
-gulp.task('build', ['build-webpack']);
+gulp.task('build', gulp.series('env',  done => webpackBuild(done)));
 
 gulp.task('eslint', () => {
   return runEslint();
@@ -42,41 +38,23 @@ gulp.task('eslint-ci', () => {
   return runEslint().pipe(eslint.failAfterError());
 });
 
-gulp.task('mocha', () => {
-  mochaRunCreator('process')();
-});
+gulp.task('test', gulp.series(['eslint-ci', 'build', 'clean']));
 
-// Continuous test running
-gulp.task('mocha-watch', () => {
-  gulp.watch(
-    ['src/browser/**', 'src/common/**', 'src/server/**'],
-    mochaRunCreator('log')
-  );
-});
 
-// Enable to run single test file
-// ex. gulp mocha-file --file src/browser/components/__test__/Button.js
-gulp.task('mocha-file', () => {
-  mochaRunCreator('process')({path: path.join(__dirname, args['file'])});
-});
+gulp.task('server-node', bg('babel-node', './src/server'));
 
-gulp.task('test', done => {
-  runSequence('eslint-ci', 'mocha', 'build-webpack', done);
-});
+gulp.task('server-hot', bg('babel-node', './webpack/server'));
 
-gulp.task('server-node', bg('node', './src/server'));
-gulp.task('server-hot', bg('node', './webpack/server'));
-// Shell fixes Windows este/issues/522, bg is still needed for server-hot.
-gulp.task('server-nodemon', shell.task(
-  // Normalize makes path cross platform.
-  path.normalize('node_modules/.bin/nodemon src/server')
-));
+gulp.task('server-nodemon', bg('nodemon', '--exec', 'NODE_ENV=development babel-node', 'src/server'));
 
-gulp.task('server', ['env'], done => {
-  if (args.production)
-    runSequence('clean', 'build', 'server-node', done);
-  else
-    runSequence('server-hot', 'server-nodemon', done);
-});
+gulp.task('server-prod', gulp.series('clean', 'build', 'server-node'));
+gulp.task('server-dev', gulp.parallel('server-hot', 'server-nodemon'));
 
-gulp.task('default', ['server']);
+
+if (args.production) {
+  gulp.task('default', gulp.series(['server-prod']));
+}
+else {
+  gulp.task('default', gulp.series(['server-dev']));
+}
+
