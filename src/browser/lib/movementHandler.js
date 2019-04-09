@@ -21,7 +21,6 @@ export default function movementHandler(BaseComponent) {
     handleMouseWheel(e) {
       const delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
 
-      console.log('eeeeeloooo3');
       if (this.props.location.hash.length) return null;
       if (delta > 0)
         this.refs.baseComponent.handleMoveUp();
@@ -32,8 +31,6 @@ export default function movementHandler(BaseComponent) {
     handleTouchStart(e) {
       this.swipeDetails.sY = e.touches[0].screenY;
       // Reset end as well in case user only clicked without moving
-      console.log('eeeeeloooo2');
-      console.log(e.touches[0].screenY);
       this.swipeDetails.eY = this.swipeDetails.sY;
     }
 
@@ -43,7 +40,6 @@ export default function movementHandler(BaseComponent) {
 
     handleTouchEnd(e) {
       const delta = this.swipeDetails.eY - this.swipeDetails.sY;
-      console.log('eeeeeloooo4');
       if (delta > 0) {
         this.refs.baseComponent.handleMoveUp();
       }
