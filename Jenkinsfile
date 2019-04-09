@@ -99,7 +99,7 @@ pipeline {
       }
       steps {
         script {
-          rsync -v -e "ssh -p18765 -i ~/.ssh/scalac-builder" ~/workspace/recruapp/ scalac11@scalac.io:~/public_html/join_us2
+          rsync -v -e "ssh -p 18765 -i ~/.ssh/scalac-builder" ~/workspace/recruapp/ scalac11@scalac.io:~/public_html/join_us2
         }
       }
     }
