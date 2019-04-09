@@ -20,6 +20,7 @@ export default function movementHandler(BaseComponent) {
 
     handleMouseWheel(e) {
       const delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+
       if (this.props.location.hash.length) return null;
       if (delta > 0)
         this.refs.baseComponent.handleMoveUp();
@@ -39,10 +40,13 @@ export default function movementHandler(BaseComponent) {
 
     handleTouchEnd(e) {
       const delta = this.swipeDetails.eY - this.swipeDetails.sY;
-      if (delta > 0)
+      if (delta > 0) {
         this.refs.baseComponent.handleMoveUp();
-      else if (delta < 0)
+      }
+      else if (delta < 0) {
         this.refs.baseComponent.handleMoveDown();
+      }
+
     }
 
     componentWillMount() {
@@ -59,9 +63,9 @@ export default function movementHandler(BaseComponent) {
     componentDidMount() {
       window.addEventListener('mousewheel', this.handleMouseWheel, false);
       window.addEventListener('DOMMouseScroll', this.handleMouseWheel, false);
-      window.addEventListener('touchstart', this.handleTouchStart, false);
-      window.addEventListener('touchmove', this.handleTouchMove, false);
-      window.addEventListener('touchend', this.handleTouchEnd, false);
+      window.addEventListener('touchstart', this.handleTouchStart, {passive: false});
+      window.addEventListener('touchmove', this.handleTouchMove, {passive: false});
+      window.addEventListener('touchend', this.handleTouchEnd, {passive: false});
     }
 
     componentWillUnmount() {
