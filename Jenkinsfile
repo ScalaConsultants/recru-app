@@ -89,10 +89,7 @@ pipeline {
         branch 'master'
       }
       agent {
-        docker {
-          image 'garland/aws-cli-docker:latest'
-          reuseNode true
-        }
+        label 'prod'
       }
       environment {
         HOME = "."
