@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    label 'recruapp'
+    label 'prod'
   }
 
   options { 
@@ -99,18 +99,7 @@ pipeline {
       }
       steps {
         script {
-          withCredentials([usernamePassword(credentialsId: 'AWS-scalac-admin', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-            sh 'set -xeuo pipefail'
-            sh 'export EPOCH=$(date +%s)'
-            sh 'aws s3 cp s3://${PROD_S3_BUCKET}/join_us s3://${PROD_S3_BUCKET}/join_us_${EPOCH} --recursive'
-            // retain last 5 backups
-            sh 'aws s3 ls s3://${PROD_S3_BUCKET}/ | egrep -o "join_us_[[:digit:]]+" | egrep -o "[[:digit:]]+$" | sort -r |  tail -n +5 | xargs -n 1 -I {} aws s3 rm s3://${PROD_S3_BUCKET}/join_us_{} --recursive'
-            sh 'aws s3 rm s3://${PROD_S3_BUCKET}/join_us/ --recursive'
-            sh 'aws s3 cp assets s3://${PROD_S3_BUCKET}/join_us/assets --recursive'
-            sh 'aws s3 cp build/ s3://${PROD_S3_BUCKET}/join_us/ --recursive'
-            sh 'aws s3 cp index.html s3://${PROD_S3_BUCKET}/join_us/'
-            sh 'aws configure set preview.cloudfront true'
-            sh 'aws cloudfront create-invalidation --distribution-id $PROD_CLOUDFRONT_ID --paths "/*"'
+          rsync -v -e "ssh -p18765 -i ~/.ssh/scalac-builder" ~/workspace/recruapp/ scalac11@scalac.io:~/public_html/join_us2
           }
         }
       }
