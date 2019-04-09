@@ -99,7 +99,7 @@ pipeline {
       }
       steps {
         script {
-          sh 'rsync -r -a -v -e --delete "ssh -p 18765 -i ~/.ssh/scalac-builder" ~/workspace/recruapp scalac11@scalac.io:~/public_html/join_us2'
+          sh 'rsync -r -a -v -e --delete "ssh -p 18765 -i ~/.ssh/scalac-builder" ~/workspace/recru-app_master scalac11@scalac.io:~/public_html/join_us2'
         }
       }
     }
