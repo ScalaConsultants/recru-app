@@ -4,11 +4,19 @@ import {Router, browserHistory} from 'react-router';
 import {hot} from 'react-hot-loader/root';
 import createEngine from 'redux-storage/engines/localStorage';
 import createRoutes from './createRoutes';
+import roles from './data/roles.json';
 
 import configureStore from '../common/configureStore';
 
 const engine = createEngine('este-app');
 const initialState = window.__INITIAL_STATE__;
+
+const path = location.pathname.substring(1);
+const role = roles.find(r => r.position.toLowerCase() === path);
+if (path && role) {
+  initialState.screens.currentScreen = 2;
+  initialState.candidate.role = role;
+}
 const store = configureStore({engine, initialState});
 const routes = createRoutes();
 

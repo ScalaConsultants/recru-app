@@ -24,6 +24,14 @@ class Screens extends Component {
     screens: PropTypes.object.isRequired
   }
 
+  componentDidMount() {
+    const {currentScreen} = this.props.screens;
+    if (currentScreen === 2) {
+      const {actions: {nextScreen}} = this.props;
+      nextScreen(currentScreen);
+    }
+  }
+
   getPageOffset() {
     const {currentScreen} = this.props.screens;
     return -(currentScreen * 100);
