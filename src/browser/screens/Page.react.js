@@ -22,11 +22,11 @@ class Screens extends Component {
     actions: PropTypes.object.isRequired,
     candidate: PropTypes.object.isRequired,
     screens: PropTypes.object.isRequired
-  }
+  };
 
   componentDidMount() {
     const {currentScreen} = this.props.screens;
-    if (currentScreen === 7) {
+    if (currentScreen === 6) {
       const {actions: {nextScreen}} = this.props;
       nextScreen(currentScreen);
     }

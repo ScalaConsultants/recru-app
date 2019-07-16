@@ -19,7 +19,7 @@ if (path && role) {
     ...initialState,
     screens: {
       ...initialState.screens,
-      currentScreen: 7
+      currentScreen: 6
     },
     candidate: {
       ...initialState.candidate,
