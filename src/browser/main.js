@@ -9,14 +9,23 @@ import roles from './data/roles.json';
 import configureStore from '../common/configureStore';
 
 const engine = createEngine('este-app');
-const initialState = window.__INITIAL_STATE__;
+let initialState = window.__INITIAL_STATE__ || {};
 
 const url = new URL(location.href);
 const path = url.searchParams.get('role');
 const role = path && roles.find(r => r.position.toLowerCase() === path);
 if (path && role) {
-  initialState.screens.currentScreen = 2;
-  initialState.candidate.role = role;
+  initialState = {
+    ...initialState,
+    screens: {
+      ...initialState.screens,
+      currentScreen: 2
+    },
+    candidate: {
+      ...initialState.candidate,
+      role: role
+    }
+  };
 }
 const store = configureStore({engine, initialState});
 const routes = createRoutes();
