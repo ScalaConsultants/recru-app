@@ -26,7 +26,7 @@ class Screens extends Component {
 
   componentDidMount() {
     const {currentScreen} = this.props.screens;
-    if (currentScreen === 6) {
+    if (currentScreen === 5) {
       const {actions: {nextScreen}} = this.props;
       nextScreen(currentScreen);
     }
