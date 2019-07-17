@@ -1,4 +1,5 @@
 import Component from 'react-pure-render/component';
+import ReactPixel from 'react-facebook-pixel';
 import classNames from 'classnames';
 import boundScroll from '../lib/boundScroll';
 import React from 'react';
@@ -18,7 +19,7 @@ class Submit extends Component {
     actions: PropTypes.object.isRequired,
     candidate: PropTypes.object.isRequired,
     config: PropTypes.object.isRequired
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -50,6 +51,8 @@ class Submit extends Component {
   submit() {
     if (!this.isDataValid())
       return;
+
+    ReactPixel.track('CompleteRegistration');
 
     const rawCandidate = this.props.candidate.toObject();
     const skills = Object.values(rawCandidate.skills.toObject()).map(item => item.toObject());
@@ -126,6 +129,7 @@ class Submit extends Component {
   }
 
   componentDidMount() {
+    ReactPixel.init('2693229224027801', {}, {});
     const dropArea = ReactDOM.findDOMNode(this.refs.dropArea);
     const fileInput = ReactDOM.findDOMNode(this.refs.fileInput);
     dropArea.addEventListener('dragover', this.handleDragOver, false);
