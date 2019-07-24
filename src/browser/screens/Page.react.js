@@ -17,19 +17,20 @@ import movementHandler from '../lib/movementHandler';
 
 @movementHandler
 class Screens extends Component {
+
   static propTypes = {
     actions: PropTypes.object.isRequired,
     candidate: PropTypes.object.isRequired,
     screens: PropTypes.object.isRequired
   };
 
-  // componentDidMount() {
-  //   const {currentScreen} = this.props.screens;
-  //   if (currentScreen === 5) {
-  //     const {actions: {nextScreen}} = this.props;
-  //     nextScreen(currentScreen);
-  //   }
-  // }
+  componentDidMount() {
+    const {currentScreen} = this.props.screens;
+    if (currentScreen === 5) {
+      const {actions: {nextScreen}} = this.props;
+      nextScreen(currentScreen);
+    }
+  }
 
   getPageOffset() {
     const {currentScreen} = this.props.screens;
@@ -45,9 +46,7 @@ class Screens extends Component {
   }
 
   handleMoveUp(e) {
-    const {
-      actions: {previousScreen}
-    } = this.props;
+    const {actions: {previousScreen}} = this.props;
     previousScreen();
   }
 
@@ -65,57 +64,17 @@ class Screens extends Component {
 
     return (
       <div className="screen-list" style={listStyle}>
-        <Helmet title="Join Us" />
-        <FirstScreen
-          {...this.props}
-          isCurrent={this.isCurrent(0)}
-          ref={this.getRefNameFor(0)}
-        />
-        <SecondScreen
-          {...this.props}
-          isCurrent={this.isCurrent(1)}
-          ref={this.getRefNameFor(1)}
-        />
-        <Roles
-          {...this.props}
-          isCurrent={this.isCurrent(2)}
-          ref={this.getRefNameFor(2)}
-        />
-        <Position
-          {...this.props}
-          isCurrent={this.isCurrent(3)}
-          ref={this.getRefNameFor(3)}
-        />
-        <Compass
-          {...this.props}
-          isCurrent={this.isCurrent(4)}
-          ref={this.getRefNameFor(4)}
-        />
-        <Equipment
-          {...this.props}
-          isCurrent={this.isCurrent(5)}
-          ref={this.getRefNameFor(5)}
-        />
-        <Skills
-          {...this.props}
-          isCurrent={this.isCurrent(6)}
-          ref={this.getRefNameFor(6)}
-        />
-        <Check
-          {...this.props}
-          isCurrent={this.isCurrent(7)}
-          ref={this.getRefNameFor(7)}
-        />
-        <Experience
-          {...this.props}
-          isCurrent={this.isCurrent(8)}
-          ref={this.getRefNameFor(8)}
-        />
-        <Submit
-          {...this.props}
-          isCurrent={this.isCurrent(9)}
-          ref={this.getRefNameFor(9)}
-        />
+        <Helmet title='Join Us'/>
+        <FirstScreen {...this.props} isCurrent={this.isCurrent(0)} ref={this.getRefNameFor(0)}/>
+        <SecondScreen {...this.props} isCurrent={this.isCurrent(1)} ref={this.getRefNameFor(1)}/>
+        <Roles {...this.props} isCurrent={this.isCurrent(2)} ref={this.getRefNameFor(2)}/>
+        <Position {...this.props} isCurrent={this.isCurrent(3)} ref={this.getRefNameFor(3)}/>
+        <Compass {...this.props} isCurrent={this.isCurrent(4)} ref={this.getRefNameFor(4)}/>
+        <Equipment {...this.props} isCurrent={this.isCurrent(5)} ref={this.getRefNameFor(5)}/>
+        <Skills {...this.props} isCurrent={this.isCurrent(6)} ref={this.getRefNameFor(6)}/>
+        <Check {...this.props} isCurrent={this.isCurrent(7)} ref={this.getRefNameFor(7)}/>
+        <Experience {...this.props} isCurrent={this.isCurrent(8)} ref={this.getRefNameFor(8)}/>
+        <Submit {...this.props} isCurrent={this.isCurrent(9)} ref={this.getRefNameFor(9)}/>
       </div>
     );
   }
