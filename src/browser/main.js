@@ -11,31 +11,29 @@ import configureStore from '../common/configureStore';
 const engine = createEngine('este-app');
 let initialState = window.__INITIAL_STATE__ || {};
 
-// const url = new URL(location.href);
-// const path = url.searchParams.get('role');
-// const role = path && roles.find(r => r.position.toLowerCase() === path);
-// if (path && role) {
-//   initialState = {
-//     ...initialState,
-//     screens: {
-//       ...initialState.screens,
-//       currentScreen: 5
-//     },
-//     candidate: {
-//       ...initialState.candidate,
-//       role: role
-//     }
-//   };
-// }
+const url = new URL(location.href);
+const path = url.searchParams.get('role');
+const role = path && roles.find(r => r.position.toLowerCase() === path);
+if (path && role) {
+  initialState = {
+    ...initialState,
+    screens: {
+      ...initialState.screens,
+      currentScreen: 5
+    },
+    candidate: {
+      ...initialState.candidate,
+      role: role
+    }
+  };
+}
 const store = configureStore({engine, initialState});
 const routes = createRoutes();
 
-const Application = () => (
-  <Provider store={store}>
-    <Router history={browserHistory}>{routes}</Router>
-  </Provider>
-);
+const Application = () => (<Provider store={store}>
+  <Router history={browserHistory}>
+    {routes}
+  </Router>
+</Provider>);
 
-export default (process.env.NODE_ENV === 'production'
-  ? Application
-  : hot(Application));
+export default process.env.NODE_ENV === 'production' ? Application : hot(Application);
