@@ -10,29 +10,30 @@ const InitialState = Record({
   name: '',
   email: '',
   role: new Role(null),
-  skills: {},
+  skills: Map(),
   extraSkills: [],
   exp: new Exp(null),
-  features: {},
+  features: Map(),
   isSubmittingForm: false,
   hasSubmittedForm: false,
   hasSubmissionErroredOut: false
 });
-const initialState = new InitialState;
+const initialState = new InitialState();
 
 // Note how JSON from server is revived to immutable record.
-const revive = (candidate) => initialState.merge({
-  name: candidate.name,
-  email: candidate.email,
-  role: new Role(candidate.role),
-  skills: map(candidate.skills, (skill => new Skill(skill))),
-  extraSkills: candidate.extraSkills,
-  exp: new Exp(candidate.exp),
-  features: map(candidate.features, (feature => new Skill(feature))),
-  isSubmittingForm: candidate.isSubmittingForm,
-  hasSubmittedForm: candidate.hasSubmittedForm,
-  hasSubmissionErroredOut: candidate.hasSubmittedForm
-});
+const revive = candidate =>
+  initialState.merge({
+    name: candidate.name,
+    email: candidate.email,
+    role: new Role(candidate.role),
+    skills: candidate.skills,
+    extraSkills: candidate.extraSkills,
+    exp: new Exp(candidate.exp),
+    features: candidate.features,
+    isSubmittingForm: candidate.isSubmittingForm,
+    hasSubmittedForm: candidate.hasSubmittedForm,
+    hasSubmissionErroredOut: candidate.hasSubmittedForm
+  });
 
 export default function candidateReducer(state = initialState, action) {
   if (!(state instanceof InitialState)) return revive(state);
@@ -58,8 +59,7 @@ export default function candidateReducer(state = initialState, action) {
 
     case actions.SAVE_EXTRA_SKILL: {
       const {skills} = action.payload;
-      return state
-        .set('extraSkills', skills);
+      return state.set('extraSkills', skills);
     }
 
     case actions.SAVE_SKILL: {
@@ -71,14 +71,12 @@ export default function candidateReducer(state = initialState, action) {
 
     case actions.SAVE_FEATURE: {
       const {feature} = action.payload;
-      return state
-        .setIn(['features', feature.id], new Feature(feature));
+      return state.setIn(['features', feature.id], new Feature(feature));
     }
 
     case actions.SAVE_EXP: {
       const {exp} = action.payload;
-      return state
-        .set('exp', new Exp(exp));
+      return state.set('exp', new Exp(exp));
     }
 
     case actions.SUBMIT_START: {
@@ -86,9 +84,7 @@ export default function candidateReducer(state = initialState, action) {
     }
 
     case actions.SUBMIT_SUCCESS: {
-      return state
-        .set('isSubmittingForm', false)
-        .set('hasSubmittedForm', true);
+      return state.set('isSubmittingForm', false).set('hasSubmittedForm', true);
     }
 
     case actions.SUBMIT_ERROR: {
