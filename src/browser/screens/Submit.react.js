@@ -1,5 +1,4 @@
 import Component from 'react-pure-render/component';
-import ReactPixel from 'react-facebook-pixel';
 import classNames from 'classnames';
 import boundScroll from '../lib/boundScroll';
 import React from 'react';
@@ -49,19 +48,21 @@ class Submit extends Component {
   }
 
   submit() {
-    if (!this.isDataValid())
-      return;
-
-    ReactPixel.track('CompleteRegistration');
+    if (!this.isDataValid()) return;
 
     const rawCandidate = this.props.candidate.toObject();
-    const skills = Object.values(rawCandidate.skills.toObject()).map(item => item.toObject());
+    const skills = Object.values(rawCandidate.skills.toObject()).map(item =>
+      item.toObject()
+    );
     const features = Object.values(
-      this.props.candidate.features.toObject()).map(item => item.toObject().desc);
+      this.props.candidate.features.toObject()
+    ).map(item => item.toObject().desc);
     const exp = this.props.candidate.exp.toObject().position;
 
     const candidateData = {
-      name: this.props.candidate.name || ReactDOM.findDOMNode(this.refs.nameInput).value,
+      name:
+        this.props.candidate.name ||
+        ReactDOM.findDOMNode(this.refs.nameInput).value,
       role: rawCandidate.role.position,
       email: ReactDOM.findDOMNode(this.refs.emailInput).value,
       skills: [...skills],
@@ -71,7 +72,8 @@ class Submit extends Component {
     };
 
     // Only add linkedin property if we really have cvFile here
-    if (this.state.urlPassed) candidateData.linkedin = ReactDOM.findDOMNode(this.refs.urlInput).value;
+    if (this.state.urlPassed)
+      candidateData.linkedin = ReactDOM.findDOMNode(this.refs.urlInput).value;
 
     let parts = {
       jsonData: JSON.stringify(candidateData)
@@ -80,8 +82,11 @@ class Submit extends Component {
     // Only add cvFile property if we really have cvFile here
     if (this.state.fileUploaded) parts.cvFile = this.cvFile;
 
-    const {actions: {submit}} = this.props;
-    const endpoint = this.props.config.apiEndpoint || 'https://recru-app-backend.scalac.io/';
+    const {
+      actions: {submit}
+    } = this.props;
+    const endpoint =
+      this.props.config.apiEndpoint || 'https://recru-app-backend.scalac.io/';
     const apiEndpoint = `${endpoint.replace(/\/?$/, '/')}upload`;
 
     submit(apiEndpoint, parts);
@@ -129,7 +134,6 @@ class Submit extends Component {
   }
 
   componentDidMount() {
-    ReactPixel.init('2693229224027801', {}, {});
     const dropArea = ReactDOM.findDOMNode(this.refs.dropArea);
     const fileInput = ReactDOM.findDOMNode(this.refs.fileInput);
     dropArea.addEventListener('dragover', this.handleDragOver, false);
@@ -177,30 +181,33 @@ class Submit extends Component {
         <header>One more thing...</header>
         <div className="field">
           <h2>Leave us your email</h2>
-          <input className={emailInputClassName}
-            onChange={(e) => this.handleEmailChange(e)}
+          <input
+            className={emailInputClassName}
+            onChange={e => this.handleEmailChange(e)}
             placeholder="email"
             ref="emailInput"
             tabIndex="-1"
-            type="email"/>
+            type="email"
+          />
         </div>
-        { !this.props.candidate.name &&
+        {!this.props.candidate.name && (
           <div className="field">
             <h2>and name</h2>
             <input
               className={nameClassName}
-              onChange={(e) => this.nameChange(e)}
+              onChange={e => this.nameChange(e)}
               placeholder="name"
               ref="nameInput"
               tabIndex="-1"
-              type="text"/>
+              type="text"
+            />
           </div>
-        }
+        )}
         <div className="field">
           <h2>and either a LinkedIn profile URI</h2>
           <input
             className="optional"
-            onChange={(e) => this.handleUrlChange(e)}
+            onChange={e => this.handleUrlChange(e)}
             placeholder="linkedin.com/in/username"
             ref="urlInput"
             tabIndex="-1"
@@ -211,11 +218,14 @@ class Submit extends Component {
         <input ref="fileInput" tabIndex="-1" type="file" />
         <div
           className={dropAreaclassName}
-          id="drop" onClick={() => ReactDOM.findDOMNode(this.refs.fileInput).click()}
+          id="drop"
+          onClick={() => ReactDOM.findDOMNode(this.refs.fileInput).click()}
           ref="dropArea"
         >
           <span>
-            { this.state.fileUploaded ? 'resume uploaded' : 'drop or click to select resume'}
+            {this.state.fileUploaded
+              ? 'resume uploaded'
+              : 'drop or click to select resume'}
           </span>
         </div>
         <div className="checkbox-terms">
@@ -223,23 +233,32 @@ class Submit extends Component {
             <div className="list-item">
               <input
                 id="policy-key"
-                onChange={(e) => this.handleChange('policy-key')}
+                onChange={e => this.handleChange('policy-key')}
                 type="checkbox"
                 value={policyKeyPassed}
               />
               <label htmlFor={'policy-key'}>
-                <span>Do You agree to the processing of your personal data by Scalac and accept the <a href="#terms&conditions">Terms and Conditions</a> and <a href="#privacy-policy">Privacy Policy</a> of Scalac?</span>
+                <span>
+                  Do You agree to the processing of your personal data by Scalac
+                  and accept the{' '}
+                  <a href="#terms&conditions">Terms and Conditions</a> and{' '}
+                  <a href="#privacy-policy">Privacy Policy</a> of Scalac?
+                </span>
               </label>
             </div>
           </div>
         </div>
         <div className="overlay" id="terms&conditions">
           <div className="popup">
-            <Scrollbars autoHeight autoHeightMin={400} >
+            <Scrollbars autoHeight autoHeightMin={400}>
               <h2>Terms and Conditions</h2>
-              <a className="close" href="#">&times;</a>
+              <a className="close" href="#">
+                &times;
+              </a>
               <div className="content">
-                {data.termsConditions.map(terms => <p key={terms.id}>{terms.desc}</p>)}
+                {data.termsConditions.map(terms => (
+                  <p key={terms.id}>{terms.desc}</p>
+                ))}
               </div>
             </Scrollbars>
           </div>
@@ -248,7 +267,9 @@ class Submit extends Component {
           <div className="popup">
             <Scrollbars autoHeight autoHeightMin={400}>
               <h2>Privacy Policy</h2>
-              <a className="close" href="#">&times;</a>
+              <a className="close" href="#">
+                &times;
+              </a>
               <div className="content">
                 <p>{data.privacyPolicy.desc}</p>
               </div>
@@ -260,7 +281,8 @@ class Submit extends Component {
           disabled={!this.isDataValid() || candidate.isSubmittingForm}
           onClick={() => this.submit()}
         >
-          <i />{buttonTitle}
+          <i />
+          {buttonTitle}
         </button>
       </section>
     );
