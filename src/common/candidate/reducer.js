@@ -1,5 +1,4 @@
 import * as actions from './actions';
-import map from 'lodash.map';
 import Role from './role';
 import Skill from './skill';
 import Exp from './exp';
@@ -26,10 +25,10 @@ const revive = candidate =>
     name: candidate.name,
     email: candidate.email,
     role: new Role(candidate.role),
-    skills: candidate.skills,
+    skills: Map(candidate.skills),
     extraSkills: candidate.extraSkills,
     exp: new Exp(candidate.exp),
-    features: candidate.features,
+    features: Map(candidate.features),
     isSubmittingForm: candidate.isSubmittingForm,
     hasSubmittedForm: candidate.hasSubmittedForm,
     hasSubmissionErroredOut: candidate.hasSubmittedForm
