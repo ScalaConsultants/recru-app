@@ -26,7 +26,7 @@ const revive = candidate =>
     email: candidate.email,
     role: new Role(candidate.role),
     skills: Map(candidate.skills),
-    extraSkills: candidate.extraSkills || [],
+    extraSkills: candidate.extraSkills,
     exp: new Exp(candidate.exp),
     features: Map(candidate.features),
     isSubmittingForm: candidate.isSubmittingForm,
