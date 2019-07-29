@@ -52,7 +52,7 @@ class Submit extends Component {
     if (!this.isDataValid())
       return;
 
-    ReactPixel.track('CompleteRegistration');
+    ReactPixel.track('SubmitApplication');
 
     const rawCandidate = this.props.candidate.toObject();
     const skills = Object.values(rawCandidate.skills.toObject()).map(item => item.toObject());
