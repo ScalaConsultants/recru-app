@@ -44,3 +44,5 @@ Because este.js which was chosen as an underlying framework doesn't support this
 ### How to change the API endpoint?
 
 Open `index.html` file and look for the `script` section where `_appState` is stored. It should contain `apiEndpoint` property - this is what you need to modify.
+
+Developed by [Scalac](https://scalac.io/?utm_source=scalac_github&utm_campaign=scalac1&utm_medium=web)
