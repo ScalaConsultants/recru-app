@@ -79,7 +79,7 @@
     "stylus-loader": "^3.0.2",
     "urijs": "^1.16.1",
     "url-loader": "^1.1.2",
-    "validator": "^4.0.6",
+    "validator": "^13.7.0",
     "webpack": "^4.28.4",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.24.3",
